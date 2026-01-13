@@ -65,4 +65,5 @@ if __name__ == "__main__":
         label_2="draw",
         save_winner_0=False,
         save_winner_1=True,
+        handle_bias=False
     )

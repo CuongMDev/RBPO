@@ -49,7 +49,7 @@ def read_jsonl(filepath):
 
 
 # ==== RANK PAIR WITH POSITION BIAS HANDLING ====
-def rank_pair(eval_fn, raw_prompt, instruction, output_1, output_2):
+def rank_pair(eval_fn, raw_prompt, instruction, output_1, output_2, handle_bias=True):
     """
     So sánh 2 outputs với xử lý position bias (đổi chỗ 2 lần).
 
@@ -59,6 +59,7 @@ def rank_pair(eval_fn, raw_prompt, instruction, output_1, output_2):
         instruction: câu hỏi gốc
         output_1: output thứ nhất (original)
         output_2: output thứ hai (optimized)
+        handle_bias: nếu True, chạy 2 lần (đổi chỗ) để xử lý position bias
 
     Returns:
         winner: 0 = output_1 thắng, 1 = output_2 thắng, 2 = hòa, None = lỗi
@@ -67,6 +68,10 @@ def rank_pair(eval_fn, raw_prompt, instruction, output_1, output_2):
     prompt_order1 = fill_prompt(raw_prompt, instruction, output_1, output_2)
     result_1 = eval_fn(prompt_order1)
     winner_1 = extract_winner(result_1)
+
+    if not handle_bias:
+        # Không xử lý bias, trả về kết quả lần 1
+        return winner_1
 
     # Lần 2: model_1 = output_2, model_2 = output_1 (đổi chỗ)
     prompt_order2 = fill_prompt(raw_prompt, instruction, output_2, output_1)
@@ -116,6 +121,7 @@ def run_ranking_loop(
     label_2="draw",
     save_winner_0=True,  # Lưu item khi winner=0
     save_winner_1=False,  # Lưu item khi winner=1
+    handle_bias=True,  # Xử lý position bias (chạy 2 lần đổi chỗ)
 ):
     """
     Chạy ranking loop chung cho tất cả các file ranking.
@@ -130,6 +136,7 @@ def run_ranking_loop(
         get_output_2_fn: hàm lấy output_2 từ item
         label_0, label_1, label_2: tên labels cho summary
         save_winner_0, save_winner_1: quyết định lưu item khi thắng
+        handle_bias: nếu True, chạy 2 lần (đổi chỗ) để xử lý position bias
     """
     total_0 = 0
     total_1 = 0
@@ -147,7 +154,7 @@ def run_ranking_loop(
             if prompt_1 == prompt_2 or output_1 == output_2:
                 winner = 2
             else:
-                winner = rank_pair(eval_fn, raw_prompt, instruction, output_1, output_2)
+                winner = rank_pair(eval_fn, raw_prompt, instruction, output_1, output_2, handle_bias=handle_bias)
 
             # Cập nhật counters và lưu file
             save_item = {
