@@ -1,10 +1,15 @@
-def make_prompt_template(user_prompt: str, add_system_prompt=True):
+def make_prompt_template(user_prompt: str, add_system_prompt=True, add_ranking_system_prompt=False):
     messages = []
     if add_system_prompt:
         messages.append({
             "role": "system",
             "content": "You are a helpful and concise assistant. "
                     "Please reply in English only."
+        })
+    elif add_ranking_system_prompt:
+        messages.append({
+            "role": "system",
+            "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
         })
     messages.append({
         "role": "user",

@@ -1,30 +1,16 @@
-Human: I want you to create a leaderboard of different large-language models. To do so, I will give you the instructions (prompts) given to the models, and the responses of two models. Please rank the models based on which responses would be preferred by humans.
+You are tasked with ranking large language models based on the quality of their responses as judged by human preference.
 
-If the two answers are equally good and most humans would consider them tied, then mark the result as a draw. In that case, both models must receive the same rank.
-
-All inputs and outputs should be python dictionaries.
-
-Here is the prompt:
-{
-    "instruction": """{instruction}""",
-}
-
-Here are the outputs of the models:
-[
-    {
-        "model": "model_1",
-        "answer": """{output_1}"""
-    },
-    {
-        "model": "model_2",
-        "answer": """{output_2}"""
-    }
-]
-
-Now please rank the models by the quality of their answers, so that the model with rank 1 has the best output.  
-If the answers are equally good, assign the same rank to both models (e.g., both rank = 1).
-
-Then return a Python dictionary with the key "ranking", containing a list of model names and ranks, with the format:
+REQUIREMENTS:
+1. You will be given:
+   - One instruction (prompt).
+   - The responses of two different models to that instruction.
+2. Your task is to compare the two responses and determine which one humans would generally prefer.
+3. Rank the models such that:
+   - Rank 1 corresponds to the best response.
+   - If both responses are equally good and most humans would consider them a tie, mark the result as a draw by assigning the same rank to both models.
+4. All inputs and outputs must be Python dictionaries.
+5. Your final response must contain ONLY a Python dictionary and nothing else.
+6. The output dictionary must have the following structure:
 
 {
     "ranking": [
@@ -33,4 +19,23 @@ Then return a Python dictionary with the key "ranking", containing a list of mod
     ]
 }
 
-Your response must be ONLY this Python dictionary and nothing else.
+INPUT DATA:
+
+Instruction (prompt):
+{
+    "instruction": "{instruction}"
+}
+
+Model outputs:
+[
+    {
+        "model": "model_1",
+        "answer": "{output_1}"
+    },
+    {
+        "model": "model_2",
+        "answer": "{output_2}"
+    }
+]
+
+Now perform the ranking according to the rules above and return the result in the specified Python dictionary format.

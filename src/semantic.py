@@ -21,7 +21,7 @@ input_jsonl = "optimized_prompts.jsonl"
 tmp_step1 = "tmp_step1_r0.jsonl"
 tmp_step2 = "tmp_step2_r0.jsonl"
 output_jsonl = "responses_with_semantic.jsonl"
-infer_model_path = "lmsys/vicuna-7b-v1.3"  # chỉnh nếu cần
+infer_model_path = "meta-llama/Llama-2-7b-chat-hf"  # chỉnh nếu cần
 M = 10
 
 
@@ -88,13 +88,13 @@ def step2_infer_vicuna(device="cuda:0"):
     model = AutoModelForCausalLM.from_pretrained(
         infer_model_path,
         cache_dir=MODEL_CACHE_PATH,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.float16
     ).eval().to(device)
 
     tokenizer = AutoTokenizer.from_pretrained(
         infer_model_path,
         cache_dir=MODEL_CACHE_PATH,
-        legacy=False,
+        legacy=False
     )
 
     batch_size = 6  # Điều chỉnh tùy theo VRAM
@@ -163,7 +163,7 @@ def step2_infer_vicuna(device="cuda:0"):
 # -----------------------------------------------------
 # STEP 3: SBERT clustering + semantic entropy 
 # -----------------------------------------------------
-def step3_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.7):
+def step3_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.5, M=10):
     """
     STEP 3: SBERT clustering + semantic entropy
 
@@ -187,8 +187,11 @@ def step3_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.7
         for line in tqdm(fin):
             item = json.loads(line)
             original_prompt = item["prompt"]
-            samples = item["paraphrase_prompts"][:5]
-            responses = item["paraphrase_responses"][:5]
+            samples = item["paraphrase_prompts"]
+            responses = item["paraphrase_responses"]
+            if M > 0:
+                samples = samples[:M]
+                responses = responses[:M]
 
             # Encode tất cả các câu
             embeddings = sbert.encode(samples, convert_to_tensor=True)

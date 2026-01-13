@@ -9,7 +9,7 @@ from ranking_utils import (
 )
 
 device = 'cuda:0'
-model_name = "unsloth/gemma-3-27b-it-bnb-4bit"
+model_name = "unsloth/Qwen3-32B-bnb-4bit"# "unsloth/gemma-3-27b-it-bnb-4bit"
 
 input_jsonl = "responses_with_semantic.jsonl"
 output_jsonl = "lose_pairwise_results.jsonl"
@@ -50,3 +50,38 @@ if __name__ == "__main__":
         save_winner_0=False,
         save_winner_1=False,
     )
+
+    
+    # run_ranking_loop(
+    #     rows=rows,
+    #     eval_fn=eval_fn,
+    #     raw_prompt=raw_prompt,
+    #     output_jsonl=output_jsonl,
+    #     get_instruction_fn=lambda item: item["prompt"],
+    #     get_prompt_1_fn=lambda item: item["prompt"],
+    #     get_output_1_fn=lambda item: item["response_original"],
+    #     get_prompt_2_fn=lambda item: item["bpo_prompt"],
+    #     get_output_2_fn=lambda item: item["bpo_response"],
+    #     label_0="original_win",
+    #     label_1="bpo_win",
+    #     label_2="draw",
+    #     save_winner_0=True,
+    #     save_winner_1=False,
+    # )
+
+    # run_ranking_loop(
+    #     rows=rows,
+    #     eval_fn=eval_fn,
+    #     raw_prompt=raw_prompt,
+    #     output_jsonl=output_jsonl,
+    #     get_instruction_fn=lambda item: item["prompt"],
+    #     get_prompt_1_fn=lambda item: item["bpo_prompt"],
+    #     get_output_1_fn=lambda item: item["bpo_response"],
+    #     get_prompt_2_fn=lambda item: item["optimized_prompt"],
+    #     get_output_2_fn=lambda item: item["optimized_response"],
+    #     label_0="bpo_win",
+    #     label_1="rbpo_win",
+    #     label_2="draw",
+    #     save_winner_0=True,
+    #     save_winner_1=False,
+    # )

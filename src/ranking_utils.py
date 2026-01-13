@@ -12,9 +12,9 @@ def load_ranking_prompt(prompt_file="ranking_prompt.txt"):
 def fill_prompt(raw_prompt, instruction, output_1, output_2):
     """Điền instruction và 2 outputs vào template"""
     prompt = raw_prompt
-    prompt = prompt.replace('""{instruction}""', instruction)
-    prompt = prompt.replace('""{output_1}""', output_1)
-    prompt = prompt.replace('""{output_2}""', output_2)
+    prompt = prompt.replace('{instruction}', instruction)
+    prompt = prompt.replace('{output_1}', output_1)
+    prompt = prompt.replace('{output_2}', output_2)
     return prompt
 
 # ==== EXTRACT WINNER ====
@@ -237,8 +237,13 @@ def run_first_inference(prompt, model, tokenizer, device='cuda:0'):
     Chỉ dùng cho local models (Gemma, Llama, etc.)
     """
     # Chuẩn bị prompt với chat template
-    formatted_prompt = make_prompt_template(prompt, add_system_prompt=False)
-    formatted_prompt = tokenizer.apply_chat_template(formatted_prompt, tokenize=False, add_generation_prompt=True)
+    formatted_prompt = make_prompt_template(prompt, add_system_prompt=False, add_ranking_system_prompt=False)
+    formatted_prompt = tokenizer.apply_chat_template(
+        formatted_prompt, 
+        tokenize=False, 
+        add_generation_prompt=True,
+        enable_thinking=False
+    )
 
     # Tokenize và infer
     model_inputs = tokenizer(formatted_prompt, return_tensors="pt", truncation=False).to(device)
