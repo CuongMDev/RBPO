@@ -12,7 +12,7 @@ from ranking_utils import (
 device = 'cuda:0'
 model_name = "meta-llama/Llama-2-7b-chat-hf"
 
-input_jsonl = "optimized_prompts_llama2_7b_res.jsonl"
+input_jsonl = "responses_with_semantic.jsonl"
 output_jsonl = "lose_pairwise_results.jsonl"
 
 # ==== LOAD MODEL (for followup inference) ====
@@ -57,13 +57,14 @@ if __name__ == "__main__":
         raw_prompt=raw_prompt,
         output_jsonl=output_jsonl,
         get_instruction_fn=lambda item: item["prompt"],
-        get_optimized_instruction_fn=lambda item: item["optimized_prompt"],
-        get_output_1_fn=lambda item: item["optimized_res"],
-        get_output_2_fn=lambda item: item["res"],
-        label_0="optimized_win",
-        label_1="original_win",
+        get_prompt_1_fn=lambda item: item["prompt"],
+        get_output_1_fn=lambda item: item["response_original"],
+        get_prompt_2_fn=lambda item: item["bpo_prompt"],
+        get_output_2_fn=lambda item: item["bpo_response"],
+        label_0="original_win",
+        label_1="bpo_win",
         label_2="draw",
-        save_winner_0=False,
-        save_winner_1=True,
-        handle_bias=False
+        save_winner_0=True,
+        save_winner_1=False,
+        handle_bias=True,
     )
