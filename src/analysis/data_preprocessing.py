@@ -1,6 +1,6 @@
 import json
 
-path = "src/eval_dataset"
+path = "src/analysis"
 folder_name = "vicuna_llama_claude4"
 file_path = ["lose_pairwise_results_ori_rbpo.jsonl",
              "lose_pairwise_results_bpo_rbpo.jsonl" ]
@@ -65,11 +65,25 @@ def save_json(data, output_path):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
         
+def add_id(data, start_id=1):
+    """
+    Gán id tuần tự cho mỗi bản ghi sau khi preprocess.
+    """
+    new_data = []
+    for idx, item in enumerate(data, start=start_id):
+        item_with_id = {"id": idx}
+        item_with_id.update(item)
+        new_data.append(item_with_id)
+    return new_data
+
+        
 for file_name in file_path:
     full_path = f"{path}/{folder_name}/{file_name}"
     data = load_jsonl(full_path)
 
     unique_data = remove_duplicates(data, file_name)
+    # Thêm id sau khi preprocess
+    unique_data = add_id(unique_data, start_id=1)
 
     output_file_name = file_name.replace(".jsonl", "_preprocessed.json")
     output_full_path = f"{path}/{folder_name}/{output_file_name}"

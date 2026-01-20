@@ -1,0 +1,258 @@
+[
+  {
+    "id": 1,
+    "labels": ["Intensification"],
+    "descriptions": {
+      "Intensification": "Prompt được làm mạnh hơn bằng cách thêm trạng từ để tăng mức độ yêu cầu."
+    },
+    "evidence": {
+      "Intensification": "effectively improve"
+    }
+  },
+  {
+    "id": 2,
+    "labels": ["Verb_Substitution"],
+    "descriptions": {
+      "Verb_Substitution": "Động từ trung tâm được thay bằng từ gần nghĩa nhưng giữ nguyên mục đích câu hỏi."
+    },
+    "evidence": {
+      "Verb_Substitution": "manage stress"
+    }
+  },
+  {
+    "id": 3,
+    "labels": ["Aspect_Expansion", "Depth_Requirement"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung nhiều khía cạnh nội dung cụ thể chưa có trong prompt gốc.",
+      "Depth_Requirement": "Prompt yêu cầu phân tích chi tiết và sâu hơn so với câu hỏi ban đầu."
+    },
+    "evidence": {
+      "Aspect_Expansion": "including any differences",
+      "Depth_Requirement": "accurate and detailed information"
+    }
+  },
+  {
+    "id": 4,
+    "labels": ["Aspect_Expansion", "Instructional_Framing"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể cần đề cập trong câu trả lời.",
+      "Instructional_Framing": "Prompt chuyển sang dạng mệnh lệnh yêu cầu người trả lời thực hiện nhiệm vụ."
+    },
+    "evidence": {
+      "Aspect_Expansion": "including the importance",
+      "Instructional_Framing": "Provide specific strategies"
+    }
+  },
+  {
+    "id": 5,
+    "labels": ["Aspect_Expansion", "Depth_Requirement"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các chủ đề cụ thể như qubit, thuật toán và thách thức.",
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn về nội dung cơ bản."
+    },
+    "evidence": {
+      "Aspect_Expansion": "including quantum bits",
+      "Depth_Requirement": "provide an explanation"
+    }
+  },
+  {
+    "id": 6,
+    "labels": ["Aspect_Expansion", "Depth_Requirement", "Instructional_Framing"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể như hàm lượng protein, axit amin và giá trị dinh dưỡng.",
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn so với câu hỏi ban đầu.",
+      "Instructional_Framing": "Prompt thêm mệnh lệnh yêu cầu người trả lời cung cấp giải thích chi tiết."
+    },
+    "evidence": {
+      "Aspect_Expansion": "protein content, amino acid composition",
+      "Depth_Requirement": "a detailed explanation",
+      "Instructional_Framing": "Please provide"
+    }
+  },
+  {
+    "id": 7,
+    "labels": ["Intensification"],
+    "descriptions": {
+      "Intensification": "Prompt được làm mạnh hơn bằng cách thêm trạng từ để tăng mức độ yêu cầu."
+    },
+    "evidence": {
+      "Intensification": "effectively develop"
+    }
+  },
+  {
+    "id": 8,
+    "labels": ["Aspect_Expansion", "Depth_Requirement", "Output_Structuring"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh mới như ví dụ cụ thể và giải pháp tiềm năng.",
+      "Depth_Requirement": "Prompt yêu cầu câu trả lời chi tiết hơn so với câu hỏi ban đầu.",
+      "Output_Structuring": "Prompt yêu cầu câu trả lời bao gồm các thành phần nội dung cụ thể."
+    },
+    "evidence": {
+      "Aspect_Expansion": "specific examples and potential solutions",
+      "Depth_Requirement": "a detailed response",
+      "Output_Structuring": "includes specific examples"
+    }
+  },
+  {
+    "id": 9,
+    "labels": ["Aspect_Expansion", "Depth_Requirement", "Instructional_Framing"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung nhiều khía cạnh cụ thể như nhân khẩu học, kinh tế và cảm xúc.",
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn so với câu hỏi ban đầu.",
+      "Instructional_Framing": "Prompt thêm mệnh lệnh yêu cầu cung cấp giải thích chi tiết."
+    },
+    "evidence": {
+      "Aspect_Expansion": "demographics, economics, social and cultural",
+      "Depth_Requirement": "a detailed explanation",
+      "Instructional_Framing": "Please provide"
+    }
+  },
+  {
+    "id": 10,
+    "labels": ["Instructional_Framing", "Aspect_Expansion", "Output_Structuring", "Depth_Requirement"],
+    "descriptions": {
+      "Instructional_Framing": "Prompt chuyển từ câu hỏi sang dạng mệnh lệnh yêu cầu cung cấp hướng dẫn.",
+      "Aspect_Expansion": "Prompt bổ sung nhiều chiến lược cụ thể như lắng nghe tích cực và hợp tác.",
+      "Output_Structuring": "Prompt yêu cầu cấu trúc câu trả lời theo các bước và chiến lược cụ thể.",
+      "Depth_Requirement": "Prompt yêu cầu nội dung toàn diện và chi tiết hơn."
+    },
+    "evidence": {
+      "Instructional_Framing": "Provide a comprehensive guide",
+      "Aspect_Expansion": "such as active listening",
+      "Output_Structuring": "Include specific steps",
+      "Depth_Requirement": "a comprehensive guide"
+    }
+  },
+  {
+    "id": 11,
+    "labels": ["Aspect_Expansion", "Depth_Requirement", "Example_Request", "Instructional_Framing"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung nhiều khía cạnh như vòng đời sản phẩm và rủi ro sức khỏe.",
+      "Depth_Requirement": "Prompt yêu cầu phân tích chi tiết và toàn diện hơn so với ban đầu.",
+      "Example_Request": "Prompt yêu cầu cung cấp các ví dụ cụ thể để minh họa.",
+      "Instructional_Framing": "Prompt thêm mệnh lệnh yêu cầu người trả lời thực hiện nhiệm vụ."
+    },
+    "evidence": {
+      "Aspect_Expansion": "consider the life cycle",
+      "Depth_Requirement": "address any potential health risks",
+      "Example_Request": "provide specific examples",
+      "Instructional_Framing": "Please provide"
+    }
+  },
+  {
+    "id": 12,
+    "labels": ["Depth_Requirement", "Secondary_Objective", "Instructional_Framing"],
+    "descriptions": {
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết cho từng yếu tố được nêu.",
+      "Secondary_Objective": "Prompt bổ sung yêu cầu về tính toàn diện và mạch lạc của câu trả lời.",
+      "Instructional_Framing": "Prompt chuyển sang dạng mệnh lệnh yêu cầu cung cấp giải thích."
+    },
+    "evidence": {
+      "Depth_Requirement": "Provide detailed explanations",
+      "Secondary_Objective": "comprehensive and coherent",
+      "Instructional_Framing": "Provide detailed explanations"
+    }
+  },
+  {
+    "id": 13,
+    "labels": ["Intensification", "Aspect_Expansion", "Depth_Requirement", "Instructional_Framing"],
+    "descriptions": {
+      "Intensification": "Prompt được làm mạnh hơn bằng cách thêm trạng từ để tăng mức độ yêu cầu.",
+      "Aspect_Expansion": "Prompt bổ sung nhiều khía cạnh như công cụ, chiến lược và phía cung cầu.",
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn về các công cụ và chính sách.",
+      "Instructional_Framing": "Prompt thêm mệnh lệnh yêu cầu cung cấp giải thích chi tiết."
+    },
+    "evidence": {
+      "Intensification": "effectively utilize",
+      "Aspect_Expansion": "different tools and strategies",
+      "Depth_Requirement": "provide detailed explanations",
+      "Instructional_Framing": "Please provide"
+    }
+  },
+  {
+    "id": 14,
+    "labels": ["Depth_Requirement", "Instructional_Framing"],
+    "descriptions": {
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn về tác động được nêu.",
+      "Instructional_Framing": "Prompt chuyển sang dạng mệnh lệnh yêu cầu cung cấp giải thích."
+    },
+    "evidence": {
+      "Depth_Requirement": "a detailed explanation",
+      "Instructional_Framing": "Provide a detailed explanation"
+    }
+  },
+  {
+    "id": 15,
+    "labels": ["Aspect_Expansion"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể như tự động hóa, ra quyết định và phân bổ nguồn lực."
+    },
+    "evidence": {
+      "Aspect_Expansion": "by automating tasks"
+    }
+  },
+  [
+  {
+    "id": 16,
+    "labels": ["Aspect_Expansion", "Depth_Requirement"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể như các bước thực hiện và hệ quả không mong muốn.",
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn về quy trình và hệ quả đạo đức."
+    },
+    "evidence": {
+      "Aspect_Expansion": "including the steps involved",
+      "Depth_Requirement": "including concerns related to safety"
+    }
+  },
+  {
+    "id": 17,
+    "labels": ["Depth_Requirement", "Aspect_Expansion", "Instructional_Framing"],
+    "descriptions": {
+      "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn về cơ chế bảo vệ của vaccine.",
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh như lợi ích và tác động của miễn dịch cộng đồng.",
+      "Instructional_Framing": "Prompt thêm mệnh lệnh yêu cầu cung cấp giải thích chi tiết."
+    },
+    "evidence": {
+      "Depth_Requirement": "a detailed explanation",
+      "Aspect_Expansion": "including its benefit and potential impact",
+      "Instructional_Framing": "Please provide"
+    }
+  },
+  {
+    "id": 18,
+    "labels": ["Instructional_Framing", "Aspect_Expansion", "Example_Request", "Secondary_Objective"],
+    "descriptions": {
+      "Instructional_Framing": "Prompt chuyển từ câu hỏi sang dạng mệnh lệnh yêu cầu thảo luận và trình bày.",
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh tích cực và tiêu cực của vấn đề.",
+      "Example_Request": "Prompt yêu cầu cung cấp ví dụ cụ thể để minh họa.",
+      "Secondary_Objective": "Prompt bổ sung yêu cầu về giọng điệu chuyên nghiệp trong câu trả lời."
+    },
+    "evidence": {
+      "Instructional_Framing": "Discuss how social media",
+      "Aspect_Expansion": "both positive and negative aspects",
+      "Example_Request": "Provide specific examples",
+      "Secondary_Objective": "maintain a professional tone"
+    }
+  },
+  {
+    "id": 19,
+    "labels": ["Aspect_Expansion"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung khía cạnh cụ thể về các chiến lược thúc đẩy chế độ ăn lành mạnh."
+    },
+    "evidence": {
+      "Aspect_Expansion": "what specific strategies can be used"
+    }
+  },
+  {
+    "id": 20,
+    "labels": ["Aspect_Expansion"],
+    "descriptions": {
+      "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể như đột biến và tính lặp của quá trình."
+    },
+    "evidence": {
+      "Aspect_Expansion": "including the role of mutation"
+    }
+  }
+]
+]

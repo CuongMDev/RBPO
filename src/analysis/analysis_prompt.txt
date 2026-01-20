@@ -5,6 +5,7 @@ SYSTEM_PROMPT = (
     "so với org_prompt. "
     "Bạn có thể suy luận nội bộ nhưng KHÔNG được tiết lộ chuỗi suy luận. "
     "CHỈ trả về JSON hợp lệ."
+    Hãy phân loại cho từng cặp prompt trong danh sách theo đúng SYSTEM_PROMPT và chỉ trả về JSON cho mỗi cặp
 )
 
 USER_PROMPT_TEMPLATE = """
