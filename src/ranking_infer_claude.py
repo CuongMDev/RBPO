@@ -68,7 +68,7 @@ raw_prompt = load_ranking_prompt()
 input_jsonl = "responses_with_semantic.jsonl"
 
 output_jsonl = ["lose_pairwise_results_ori_bpo.jsonl",
-                "lose_pairwise_results_ori_rbpo.jsonl"
+                "lose_pairwise_results_ori_rbpo.jsonl",
                 "lose_pairwise_results_bpo_rbpo.jsonl"]
 
 

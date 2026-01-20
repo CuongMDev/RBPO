@@ -4,8 +4,8 @@ SYSTEM_PROMPT = (
     "Nhiệm vụ của bạn là phân loại cách prompt_B đã được chỉnh sửa "
     "so với org_prompt. "
     "Bạn có thể suy luận nội bộ nhưng KHÔNG được tiết lộ chuỗi suy luận. "
-    "CHỈ trả về JSON hợp lệ."
-    Hãy phân loại cho từng cặp prompt trong danh sách theo đúng SYSTEM_PROMPT và chỉ trả về JSON cho mỗi cặp
+    "CHỈ trả về JSONL hợp lệ."
+    Hãy phân loại cho từng cặp prompt trong danh sách theo đúng SYSTEM_PROMPT và chỉ trả về JSONL cho mỗi cặp
 )
 
 USER_PROMPT_TEMPLATE = """
@@ -59,7 +59,7 @@ Prompt hầu như giữ nguyên, chỉ chỉnh sửa rất nhỏ (ví dụ: dấ
 13. Unclear_or_Other (Không xác định / khác):
 Sự chỉnh sửa không rõ ràng, mơ hồ, hoặc không phù hợp với bất kỳ loại nào ở trên.
 
-================= ĐỊNH DẠNG OUTPUT (CHỈ JSON) =================
+================= ĐỊNH DẠNG OUTPUT (CHỈ JSONL) =================
 
 {{
   "labels": ["<nhãn1>", "<nhãn2>"],
