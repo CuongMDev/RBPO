@@ -10,7 +10,7 @@ from ranking_utils import (
     run_followup_inference
 )
 
-ANTHROPIC_API_KEY = "API_KEY_HERE"
+ANTHROPIC_API_KEY = "sk-or-v1-xxx"
 client = OpenAI(
     api_key=ANTHROPIC_API_KEY,
     base_url="https://openrouter.ai/api/v1"
@@ -67,7 +67,10 @@ raw_prompt = load_ranking_prompt()
 # input_jsonl = "optimized_prompts_llama2_7b_res.jsonl"
 input_jsonl = "responses_with_semantic.jsonl"
 
-output_jsonl = "lose_pairwise_results.jsonl"
+output_jsonl = ["lose_pairwise_results_ori_bpo.jsonl",
+                "lose_pairwise_results_ori_rbpo.jsonl"
+                "lose_pairwise_results_bpo_rbpo.jsonl"]
+
 
 output_result= "results.json"
 
@@ -81,7 +84,7 @@ if __name__ == "__main__":
         rows=rows,
         eval_fn=run_with_claude,
         raw_prompt=raw_prompt,
-        output_jsonl=output_jsonl,
+        output_jsonl=output_jsonl[0],
         get_instruction_fn=lambda item: item["prompt"],
         get_prompt_1_fn=lambda item: item["prompt"],
         get_output_1_fn=lambda item: item["response_original"],
@@ -102,11 +105,11 @@ if __name__ == "__main__":
     }
     
     # ===== 1. ORIGINAL vs RBPO =====
-    bpo_1, rbpo_1, draw_1 = run_ranking_loop(
+    orig_1, rbpo_1, draw_1 = run_ranking_loop(
         rows=rows,
         eval_fn=run_with_claude,
         raw_prompt=raw_prompt,
-        output_jsonl=output_jsonl,
+        output_jsonl=output_jsonl[1],
         get_instruction_fn=lambda item: item["prompt"],
         get_prompt_1_fn=lambda item: item["prompt"],
         get_output_1_fn=lambda item: item["response_original"],
@@ -121,7 +124,7 @@ if __name__ == "__main__":
     )
 
     stats["original_vs_rbpo"] = {
-        "bpo_win": bpo_1,
+        "original_win": orig_1,
         "rbpo_win": rbpo_1,
         "draw": draw_1,
     }
@@ -131,7 +134,7 @@ if __name__ == "__main__":
         rows=rows,
         eval_fn=run_with_claude,
         raw_prompt=raw_prompt,
-        output_jsonl=output_jsonl,
+        output_jsonl=output_jsonl[2],
         get_instruction_fn=lambda item: item["prompt"],
         get_prompt_1_fn=lambda item: item["bpo_prompt"],
         get_output_1_fn=lambda item: item["bpo_response"],
