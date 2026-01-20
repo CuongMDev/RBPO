@@ -1,0 +1,79 @@
+# ================== PROMPTS (TIẾNG VIỆT) ==================
+SYSTEM_PROMPT = (
+    "Bạn là một chuyên gia phân tích prompt. "
+    "Nhiệm vụ của bạn là phân loại cách prompt_B đã được chỉnh sửa "
+    "so với org_prompt. "
+    "Bạn có thể suy luận nội bộ nhưng KHÔNG được tiết lộ chuỗi suy luận. "
+    "CHỈ trả về JSON hợp lệ."
+)
+
+USER_PROMPT_TEMPLATE = """
+org_prompt (prompt gốc):
+\"\"\"{org_prompt}\"\"\"
+
+prompt_B (prompt đã chỉnh sửa):
+\"\"\"{prompt_B}\"\"\"
+
+Nhiệm vụ:
+Hãy phân loại các kiểu chỉnh sửa đã được áp dụng trong prompt_B so với org_prompt.
+
+================= CÁC LOẠI CHỈNH SỬA (CHỈ DÙNG CÁC NHÃN SAU) =================
+
+1. Intensification (Tăng mức độ yêu cầu):
+Prompt được làm “mạnh hơn” bằng cách thêm trạng từ hoặc tính từ (ví dụ: hiệu quả hơn, sâu hơn, kỹ lưỡng hơn) mà KHÔNG thêm nội dung mới.
+
+2. Verb_Substitution (Thay động từ trung tâm):
+Động từ chính của prompt được thay bằng từ gần nghĩa, nhưng vẫn giữ nguyên mục đích và phạm vi câu hỏi.
+
+3. Aspect_Expansion (Mở rộng khía cạnh nội dung):
+Prompt bổ sung các khía cạnh, chiều cạnh hoặc chủ đề cụ thể chưa xuất hiện trong prompt gốc (ví dụ: liệt kê các yếu tố cần phân tích).
+
+4. Depth_Requirement (Yêu cầu phân tích sâu hơn):
+Prompt yêu cầu giải thích chi tiết hơn, phân tích sâu hơn, nhưng KHÔNG thêm khía cạnh nội dung mới.
+
+5. Output_Structuring (Áp đặt cấu trúc đầu ra):
+Prompt yêu cầu định dạng câu trả lời theo cấu trúc cụ thể (ví dụ: từng bước, gạch đầu dòng, có ví dụ minh họa).
+
+6. Secondary_Objective (Mục tiêu phụ về chất lượng):
+Prompt bổ sung các yêu cầu phụ như: mạch lạc, dễ hiểu, hấp dẫn, chính xác, an toàn, hoặc phù hợp với đối tượng người đọc.
+
+7. Instructional_Framing (Chuyển sang dạng mệnh lệnh):
+Prompt được chuyển từ câu hỏi mở sang dạng hướng dẫn hoặc mệnh lệnh (ví dụ: “Hãy trình bày…”, “Vui lòng cung cấp…”).
+
+8. Implication_Expansion (Mở rộng hệ quả / tác động):
+Prompt yêu cầu phân tích hệ quả, tác động xã hội, đạo đức, hoặc ảnh hưởng dài hạn của vấn đề.
+
+9. Audience_Specification (Chỉ định đối tượng người đọc):
+Prompt bổ sung thông tin về nhóm đối tượng mục tiêu để điều chỉnh mức độ và phong cách trả lời. (ví dụ: “for beginners”, “for high school students”, “for non-technical readers”,...)
+
+10.Example_Request (Yêu cầu ví dụ minh họa):
+Prompt bổ sung yêu cầu cung cấp ví dụ cụ thể để minh họa cho nội dung trả lời. (ví dụ: “with examples”, “give a concrete example”,..)
+
+11. Scope_Narrowing (Thu hẹp phạm vi):
+Prompt giới hạn phạm vi chủ đề hoặc bối cảnh để thu hẹp không gian câu trả lời. (ví dụ: “in the context of healthcare only”, “focusing only on recent studies”,...)
+
+12. Minimal_Change (Gần như không thay đổi):
+Prompt hầu như giữ nguyên, chỉ chỉnh sửa rất nhỏ (ví dụ: dấu câu, từ nối, hoặc thay đổi không ảnh hưởng ý nghĩa).
+
+13. Unclear_or_Other (Không xác định / khác):
+Sự chỉnh sửa không rõ ràng, mơ hồ, hoặc không phù hợp với bất kỳ loại nào ở trên.
+
+================= ĐỊNH DẠNG OUTPUT (CHỈ JSON) =================
+
+{{
+  "labels": ["<nhãn1>", "<nhãn2>"],
+  "descriptions": {{
+"<nhãn>": "<mô tả đúng 1 câu bằng tiếng Việt>"
+  }},
+  "evidence": {{
+    "<nhãn>": "<trích dẫn ngắn từ prompt_B (tối đa 12 từ)>"
+  }}
+}}
+
+================= QUY TẮC =================
+- Chỉ sử dụng các nhãn đã liệt kê ở trên.
+- Mỗi mô tả phải đúng 1 câu, bằng tiếng Việt.
+- Evidence phải được trích nguyên văn từ prompt_B.
+- Nếu hầu như không có thay đổi, chỉ dùng ["Minimal_Change"].
+- "Minimal_Change" và "Unclear_or_Other" KHÔNG được đi kèm nhãn khác.
+"""

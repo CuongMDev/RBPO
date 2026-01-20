@@ -3,3 +3,4 @@ transformers
 torch
 sentence_transformers
 accelerate
+openai

@@ -10,26 +10,12 @@ from ranking_utils import (
     run_followup_inference
 )
 
-ANTHROPIC_API_KEY = "API_KEY"
+ANTHROPIC_API_KEY = "API_KEY_HERE"
 client = OpenAI(
     api_key=ANTHROPIC_API_KEY,
     base_url="https://openrouter.ai/api/v1"
 )
 
-device = 'cuda:0'
-model_name = "Qwen/Qwen3-4B"
-
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    cache_dir=MODEL_CACHE_PATH,
-    torch_dtype=torch.bfloat16,
-    device_map="auto",
-).eval()
-
-tokenizer = AutoTokenizer.from_pretrained(
-    model_name,
-    cache_dir=MODEL_CACHE_PATH
-)
 
 def run_with_claude(prompt):
     """
@@ -56,9 +42,29 @@ def run_with_claude(prompt):
         device
     )
 
+device = 'cuda:0'
+# model_name = "meta-llama/Llama-2-7b-chat-hf"
+# model_name = "Qwen/Qwen2.5-7B-Instruct"
+model_name = "Qwen/Qwen3-4B"
+
+
+
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    cache_dir=MODEL_CACHE_PATH,
+    torch_dtype=torch.bfloat16,
+    device_map="auto",
+).eval()
+
+tokenizer = AutoTokenizer.from_pretrained(
+    model_name,
+    cache_dir=MODEL_CACHE_PATH
+)
+
 # ==== LOAD PROMPT TEMPLATE ====
 raw_prompt = load_ranking_prompt()
 
+# input_jsonl = "optimized_prompts_llama2_7b_res.jsonl"
 input_jsonl = "responses_with_semantic.jsonl"
 
 output_jsonl = "lose_pairwise_results.jsonl"
@@ -84,7 +90,7 @@ if __name__ == "__main__":
         label_0="original_win",
         label_1="bpo_win",
         label_2="draw",
-        save_winner_0=True,
+        save_winner_0=False,
         save_winner_1=False,
         handle_bias=False
     )
@@ -109,7 +115,7 @@ if __name__ == "__main__":
         label_0="original_win",
         label_1="rbpo_win",
         label_2="draw",
-        save_winner_0=True,
+        save_winner_0=False,
         save_winner_1=False,
         handle_bias=False
     )
@@ -134,7 +140,7 @@ if __name__ == "__main__":
         label_0="bpo_win",
         label_1="rbpo_win",
         label_2="draw",
-        save_winner_0=True,
+        save_winner_0=False,
         save_winner_1=False,
         handle_bias=False
     )
