@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "prompt_0": "How can I improve my time management skills?",
+        "prompt_1": "How can I effectively improve my time management skills?",
+        "winner": 1
+    },
+    {
+        "id": 2,
+        "prompt_0": "What are the most effective ways to deal with stress?",
+        "prompt_1": "What are some effective ways to manage stress?",
+        "winner": 1
+    },
+    {
+        "id": 3,
+        "prompt_0": "What are the main differences between Python and JavaScript programming languages?",
+        "prompt_1": "What are the main differences between Python and JavaScript programming languages? Provide accurate and detailed information about the syntax, structure, and features of each language, including any differences in data modeling, algorithmic complexity, and object-oriented programming.",
+        "winner": 1
+    },
+    {
+        "id": 4,
+        "prompt_0": "How can I increase my productivity while working from home?",
+        "prompt_1": "How can I increase my productivity while working from home? Provide specific strategies and tips to enhance productivity, including the importance of a dedicated workspace, setting boundaries with family and friends, prioritizing tasks, taking breaks, and staying organized.",
+        "winner": 1
+    },
+    {
+        "id": 5,
+        "prompt_0": "Can you explain the basics of quantum computing?",
+        "prompt_1": "Can you provide an explanation of the basics of quantum computing, including quantum bits (qubits), quantum algorithms, and the challenges of practical applications?",
+        "winner": 1
+    }
+]

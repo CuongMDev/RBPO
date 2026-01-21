@@ -1,13 +1,20 @@
 import json
+import os
 
 path = "src/analysis"
-folder_name = "vicuna_llama_claude4"
-file_path = ["lose_pairwise_results_ori_rbpo.jsonl",
+
+folder_names = ["claude4/vicuna_llama_claude4",
+               "claude4/vicuna_vicuna_claude4",
+               "claude4/dolly_vicuna_claude4",
+               "claude4/dolly_llama_claude4" ]
+
+file_paths = ["lose_pairwise_results_ori_rbpo.jsonl",
              "lose_pairwise_results_bpo_rbpo.jsonl" ]
 
-# output_path = path + "/" + folder_name +"
-
-"""Chuyen jsonl sang json. ori vs rbpo giu 2 key: prompt_0,prompt_1. rbpo vs bpo giu 3 key: org_prompt,prompt_0,prompt_1."""
+"""Chuyển jsonl sang json. 
+ori vs rbpo giữ 2 key: prompt_0, prompt_1. 
+rbpo vs bpo giữ 3 key: org_prompt, prompt_0, prompt_1.
+"""
 
 # 1. Loại trùng lặp các bản ghi jsonl
 def load_jsonl(file_path):
@@ -60,8 +67,10 @@ def remove_duplicates(data, file_name):
 
 
 def save_json(data, output_path):
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     print(f"[INFO] Saving preprocessed data to {output_path} ...")
     print(f"[INFO] Total records to save: {len(data)}")
+    
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
         
@@ -76,17 +85,28 @@ def add_id(data, start_id=1):
         new_data.append(item_with_id)
     return new_data
 
-        
-for file_name in file_path:
-    full_path = f"{path}/{folder_name}/{file_name}"
-    data = load_jsonl(full_path)
+    
+# ================== MAIN LOOP ==================
 
-    unique_data = remove_duplicates(data, file_name)
-    # Thêm id sau khi preprocess
-    unique_data = add_id(unique_data, start_id=1)
+for folder in folder_names:
+    for file_name in file_paths:
+        full_path = os.path.join(path, folder, file_name)
 
-    output_file_name = file_name.replace(".jsonl", "_preprocessed.json")
-    output_full_path = f"{path}/{folder_name}/{output_file_name}"
-    save_json(unique_data, output_full_path)
+        if not os.path.exists(full_path):
+            print(f"[WARN] File not found: {full_path}")
+            continue
+
+        print(f"[INFO] Processing: {full_path}")
+
+        data = load_jsonl(full_path)
+        unique_data = remove_duplicates(data, file_name)
+
+        # reset id cho từng file
+        unique_data = add_id(unique_data, start_id=1)
+
+        output_file_name = file_name.replace(".jsonl", "_preprocessed.json")
+        output_full_path = os.path.join(path, folder, output_file_name)
+
+        save_json(unique_data, output_full_path)
 
 

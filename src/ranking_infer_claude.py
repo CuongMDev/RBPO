@@ -9,10 +9,12 @@ from ranking_utils import (
     run_ranking_loop,
     run_followup_inference
 )
+import os
+OPENROUTER_API_KEY = os.environ["OPENROUTER_API_KEY"]
 
-ANTHROPIC_API_KEY = "sk-or-v1-xxx"
+
 client = OpenAI(
-    api_key=ANTHROPIC_API_KEY,
+    api_key=OPENROUTER_API_KEY,
     base_url="https://openrouter.ai/api/v1"
 )
 

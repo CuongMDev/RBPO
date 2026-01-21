@@ -32,3 +32,5 @@ src/tmp
 src/vicuna-llama
 
 src/vicuna-vicuna
+
+*.env
