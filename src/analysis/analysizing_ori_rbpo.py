@@ -42,6 +42,7 @@ def classify_pair(prompt_0: str, prompt_1: str) -> str:
 def process_one_item(item):
     prompt_0 = item.get("prompt_0")
     prompt_1 = item.get("prompt_1")
+    winner = item.get("winner")
 
     classification = classify_pair(prompt_0, prompt_1)
     parsed = json.loads(classification)
@@ -50,6 +51,7 @@ def process_one_item(item):
         "id": item.get("id"),
         "prompt_0": prompt_0,
         "prompt_1": prompt_1,
+        "winner": winner,
         "classification": parsed
     }
 
@@ -70,11 +72,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 def classify_dataset(input_json_path: str,
-                     output_jsonl_path: str,
+                     output_json_path: str,
                      batch_size: int = 2,
                      max_workers: int = 3):
     """
-    Đọc dataset prompt pair, phân loại song song và ghi ra JSONL.
+    Đọc dataset prompt pair, phân loại song song và ghi ra JSON (list object).
     Skip an toàn nếu input file không tồn tại hoặc JSON lỗi.
     """
 
@@ -87,7 +89,6 @@ def classify_dataset(input_json_path: str,
     try:
         with open(input_json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-
     except json.JSONDecodeError as e:
         print(f"[SKIP] Invalid JSON in {input_json_path}: {e}")
         return
@@ -114,40 +115,21 @@ def classify_dataset(input_json_path: str,
                     r = future.result()
                     results.append(r)
                     print(f"[OK] id={r['id']}")
-
                 except Exception as e:
                     print(f"[ERROR] {e}")
 
-    # ---------- 4. Ghi output ----------
-    os.makedirs(os.path.dirname(output_jsonl_path), exist_ok=True)
+    # ---------- 4. Sort results ----------
+    try:
+        results.sort(key=lambda x: x.get("id", float("inf")))
+    except Exception as e:
+        print(f"[WARN] Sort failed: {e}")
 
-    with open(output_jsonl_path, "w", encoding="utf-8") as f:
-        for r in results:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    # ---------- 5. Ghi output (JSON) ----------
+    out_dir = os.path.dirname(output_json_path)
+    if out_dir:  # tránh WinError 3 khi path rỗng
+        os.makedirs(out_dir, exist_ok=True)
 
-    print(f"[DONE] Saved {len(results)} rows to: {output_jsonl_path}")
+    with open(output_json_path, "w", encoding="utf-8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
 
-
-# ================== ENTRY POINT ==================
-
-# if __name__ == "__main__":
-    
-#     folder_paths = [
-#         "claude4/vicuna_llama_claude4/",
-#         "claude4/vicuna_vicuna_claude4/",
-#         "claude4/dolly_vicuna_claude4/",
-#         "claude4/dolly_llama_claude4/"]
-    
-#     input = "lose_pairwise_results_ori_rbpo_preprocessed.json"
-#     output = "lose_pairwise_results_ori_rbpo_classified.jsonl"
-    
-#     for folder in folder_paths:
-#         INPUT_PATH = folder+input
-#         OUTPUT_PATH = folder+output
-#         classify_dataset(
-#             input_json_path=INPUT_PATH,
-#             output_jsonl_path=OUTPUT_PATH,
-#             batch_size=2,     # mỗi batch 1 item
-#             max_workers=2     # 4 request song song
-#         )
-
+    print(f"[DONE] Saved {len(results)} rows to: {output_json_path}")

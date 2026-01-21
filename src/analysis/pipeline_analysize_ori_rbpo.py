@@ -37,9 +37,7 @@ if __name__ == "__main__":
     )
 
     for evaluator_name in evaluator:
-        folder_names_evaluator = [evaluator_name + folder for folder in folder_names]
-        data_preprocessing(folder_names_evaluator, file_paths, path)
-        
+        folder_names_evaluator = [evaluator_name + folder for folder in folder_names]        
         input = "lose_pairwise_results_ori_rbpo_preprocessed.json"
         output = "lose_pairwise_results_ori_rbpo_classified.jsonl"
         
