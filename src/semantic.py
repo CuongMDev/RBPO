@@ -1,3 +1,4 @@
+import gc
 import json
 import math
 import torch
@@ -35,6 +36,8 @@ M = 10
 # -----------------------------------------------------
 def step1_generate_paraphrase():
     print("\n===== STEP 1: Paraphrase =====")
+    torch.cuda.empty_cache()
+    gc.collect()
 
     optimize_path = "THUDM/BPO"
     model = AutoModelForCausalLM.from_pretrained(

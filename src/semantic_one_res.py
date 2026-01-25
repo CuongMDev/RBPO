@@ -7,6 +7,7 @@ from sentence_transformers import SentenceTransformer, util
 from sklearn.cluster import AgglomerativeClustering
 from utils import generate_batch
 from semantic import step1_generate_paraphrase
+import gc
 
 from config import (
     MODEL_CACHE_PATH,
@@ -47,6 +48,8 @@ def step2_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.5
     STEP 2: SBERT clustering để chọn optimized_prompt
     """
     print("===== STEP 2: SBERT clustering =====")
+    torch.cuda.empty_cache()
+    gc.collect()
 
     sbert = SentenceTransformer(
         'sentence-transformers/all-MiniLM-L12-v2',
@@ -163,8 +166,10 @@ def step2_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.5
                 "semantic_entropy": entropy,
                 "conf_score": conf_score
             }, ensure_ascii=False) + "\n")
-
+    
     print("✓ Done STEP 2 →", tmp_step2)
+    torch.cuda.empty_cache()
+    gc.collect()
 
 
 # -----------------------------------------------------
@@ -225,6 +230,7 @@ def step3_infer_response(device="cuda:0"):
     # Cleanup
     del model
     torch.cuda.empty_cache()
+    gc.collect()
     print("✓ Done STEP 3 →", output_jsonl)
 
 
