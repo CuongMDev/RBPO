@@ -1,0 +1,79 @@
+[
+    {
+        "instruction": "Who owns the largest share of the Vancouver Whitecaps FC?",
+        "context": "Vancouver Whitecaps FC is owned by a group of four investors: Greg Kerfoot, Steve Luczo, Jeff Mallett, and Steve Nash. The group has a collective net worth over $2 billion. Kerfoot has been the majority owner of the Whitecaps since 2002, when he saved the club from contraction after previous owner David Stadnyk left the club, selling it to United Soccer Leagues. Mallett, a former chief operating officer (COO) of Yahoo!, who was raised in Victoria, British Columbia, and played for several collegiate soccer teams. He later purchased minority stakes in the San Francisco Giants of Major League Baseball and English soccer club Derby County F.C. Having first met at a charity soccer event in 2005, Mallett partnered with Steve Nash\u2014a two-time National Basketball Association (NBA) Most Valuable Player who was also raised in Victoria\u2014to put together a bid for a minority share of English soccer club Tottenham Hotspur F.C. in 2008. After that transaction fell through, the duo contacted Kerfoot about a minority stake in the club. Nash is the older brother of former Whitecaps midfielder Martin Nash. The fourth partner, Steve Luczo, is the president, chairman, and CEO of Seagate Technology and a partner in Boston Basketball Partners L.L.C., a group who own the NBA Boston Celtics. Luczo met Kerfoot while the two were both employed by Seagate Technology, and Kerfoot contacted Luczo proposing he become part of the club's MLS bid. In 2009, the group paid a $35 million expansion fee to MLS for the right to join the league.",
+        "response": "Of the group of 4 investors, Greg Kerfoot is the majority owner the Vancouver Whitecaps FC investors group.",
+        "category": "information_extraction",
+        "idx": 0
+    },
+    {
+        "instruction": "Is the Jakobshorn in Davos worth a trip",
+        "context": "The Jakobshorn (2,590 metres (8,500 ft)) is a mountain of the Albula Alps, overlooking Davos in the Swiss canton of Graub\u00fcnden. It is also one of the five skiing regions of the Davos Klosters Mountains, offering 14 pistes.\n\n\nJakobshorn panorama\nLocated at the northern end of the range between the Dischmatal and Sertigtal, the Jakobshorn is served by a two-part cable car running from Davos Platz. Once on the mountain there are three chairlifts, one short cable car, and one T-Bar. Since 1995 there has also been a two-person chair-lift, running from near the base station to the near the bottom of Usser Isch.\n\nThere are a variety of pistes on the Jakobshorn\u2014blue, red and black\u2014and the mountain is renowned for being a centre for snowboarding; Bolgen provides an illuminated super pipe.\n\nPistes are very wide and the area is popular with novice skiers, there are however a number of black terrains for the more adventurous skier. The main two lifts also open during the summer, from July\u2013October, and there are many walks on the Jakobshorn.\n\nThe Jakobshorn is also a favoured take-off point for hang-gliders and snowkiters.",
+        "response": "The Jakobshorn (2,590 metres (8,500 ft)) is a mountain of the Albula Alps, overlooking Davos in the Swiss canton of Graub\u00fcnden. It is also one of the five skiing regions of the Davos Klosters Mountains, offering 14 pistes.\n\nThere are a variety of pistes on the Jakobshorn\u2014blue, red and black\u2014and the mountain is renowned for being a centre for snowboarding; Bolgen provides an illuminated super pipe.\n\nPistes are very wide and the area is popular with novice skiers, there are however a number of black terrains for the more adventurous skier. The main two lifts also open during the summer, from July\u2013October, and there are many walks on the Jakobshorn.\n\nThe Jakobshorn is also a favoured take-off point for hang-gliders and snowkiters.",
+        "category": "summarization",
+        "idx": 1
+    },
+    {
+        "instruction": "List all the people mentioned in this paragraph on the history of Unix",
+        "context": "The new operating system was initially without organizational backing, and also without a name. At this stage, the new operating system was a singletasking operating system, not a multitasking one such as Multics. The name Unics (Uniplexed Information and Computing Service, pronounced as \"eunuchs\"), a pun on Multics (Multiplexed Information and Computer Services), was initially suggested for the project in 1970. Brian Kernighan claims the coining for himself, and adds that \"no one can remember\" who came up with the final spelling Unix. Dennis Ritchie and Doug McIlroy also credit Kernighan.\n\nWhen the Computing Sciences Research Center wanted to use Unix on a machine larger than the PDP-7, while another department needed a word processor, Thompson and Ritchie added text processing capabilities to Unix and received funding for a PDP-11. For the first time in 1970, the Unix operating system was officially named and ran on the PDP-11. A text-formatting program called roff and a text editor were added. All three were written in PDP-11 assembly language. Bell Labs used this initial text-processing system, consisting of Unix, roff, and the editor, for text processing of patent applications. Roff soon evolved into troff, the first electronic publishing program with full typesetting capability.\n\nAs the system grew in complexity and the research team wanted more users, the need for a manual grew apparent. The UNIX Programmer's Manual was published on 3 November 1971; commands were documented in the \"man page\" format that is still used, offering terse reference information about usage as well as bugs in the software, and listing the authors of programs to channel questions to them.\n\nAfter other Bell Labs departments purchased DEC PDP-11s, they also chose to run Unix instead of DEC's own operating system. By Version 4 it was widely used within the laboratory and a Unix Support Group was formed, helping the operating system survive by formalizing its distribution.\n\nIn 1973, Version 4 Unix was rewritten in the higher-level language C, contrary to the general notion at the time that an operating system's complexity and sophistication required it to be written in assembly language. The C language appeared as part of Version 2. Thompson and Ritchie were so influential on early Unix that McIlroy estimated that they wrote and debugged about 100,000 lines of code that year, stating that \"[their names] may safely be assumed to be attached to almost everything not otherwise attributed\". Although assembly did not disappear from the man pages until Version 8, the migration to C suggested portability of the software, requiring only a relatively small amount of machine-dependent code to be replaced when porting Unix to other computing platforms. Version 4 Unix, however, still had considerable PDP-11-dependent code and was not suitable for porting. The first port to other platform was made five years later (1978) for Interdata 8/32.\n\nThe Unix operating system was first presented formally to the outside world at the 1973 Symposium on Operating Systems Principles, where Ritchie and Thompson delivered a paper. This led to requests for the system, but under a 1956 consent decree in settlement of an antitrust case, the Bell System (the parent organization of Bell Labs) was forbidden from entering any business other than \"common carrier communications services\", and was required to license any patents it had upon request. Unix could not, therefore, be turned into a product. Bell Labs instead shipped the system for the cost of media and shipping. Ken Thompson quietly began answering requests by shipping out tapes and disks, each accompanied by \u2013 according to legend \u2013 a note signed, \"Love, Ken\".",
+        "response": "- Brian Kernighan\n- Dennis Ritchie\n- Doug McIlroy\n- Ken Thompson",
+        "category": "information_extraction",
+        "idx": 2
+    },
+    {
+        "instruction": "What are the best types of pets for a family with kids?",
+        "context": "",
+        "response": "The most common family pets are dogs and cats. They are great with kids and very social by nature, they love interacting with their owners and easy to take care for. There are records of dogs being domesticated around 20,000 years ago while cats showing up around 10,000 years ago.  Even though those are the two most common family pets, you will find many families have other animal classes like birds, reptiles, rodents, among other more exotic variations.",
+        "category": "open_qa",
+        "idx": 3
+    },
+    {
+        "instruction": "In what year were the first Air Jordan sneakers released?",
+        "context": "",
+        "response": "1984.",
+        "category": "open_qa",
+        "idx": 4
+    },
+    {
+        "instruction": "Who created Final Fantasy?",
+        "context": "Final Fantasy is a Japanese science fantasy anthology media franchise created by Hironobu Sakaguchi and developed and owned by Square Enix (formerly Square). The franchise centers on a series of fantasy and science fantasy role-playing video games. The first game in the series was released in 1987, with 15 numbered main entries having been released to date.",
+        "response": "Final Fantasy was created by Hironobu Sakaguchi",
+        "category": "closed_qa",
+        "idx": 5
+    },
+    {
+        "instruction": "What is the tallest building in Chicago?",
+        "context": "",
+        "response": "The tallest building in Chicago is the Sears Tower",
+        "category": "open_qa",
+        "idx": 6
+    },
+    {
+        "instruction": "What's a gaya melon? How does it taste like?",
+        "context": "Gaya melon, also known as snowball melon, ghost melon, dinosaur melon, dinosaur egg melon, dino melon, and dino egg melon, is a small to medium-sized honeydew melon developed originally in Japan and Korea and now grown in China, Mexico, southern California, and South America.\nThe rind is very thin and is ivory in color with green streaking and the interior flesh is white. They are round in shape and may be slightly oblong. The flesh is juicy and soft towards the center but crisper towards the rind. It has been described to have a mild, sweet flavor with floral notes. It is best kept at room temperature and cut melons will stay good in a refrigerator for up to 5 days.",
+        "response": "Gaya melon is a type of honeydew melon originally developed in Japan and Korea. They are very juicy and soft towards the center but crisper towards the grind. It has been described to have a mild, sweet flavor with floral notes.",
+        "category": "summarization",
+        "idx": 7
+    },
+    {
+        "instruction": "Given this paragraph about magnesium, what is the boiling point of magnesium in celsius?",
+        "context": "Elemental magnesium is a gray-white lightweight metal, two-thirds the density of aluminium. Magnesium has the lowest melting (923 K (650 \u00b0C)) and the lowest boiling point 1,363 K (1,090 \u00b0C) of all the alkaline earth metals.",
+        "response": "The boiling point of magnesium is 1,090 \u00b0C.",
+        "category": "closed_qa",
+        "idx": 8
+    },
+    {
+        "instruction": "From the provided paragraph, write a bulleted list of how cheeses can be grouped.",
+        "context": "There are many different types of cheese. Cheeses can be grouped or classified according to criteria such as length of fermentation, texture, methods of production, fat content, animal milk, and country or region of origin. The method most commonly and traditionally used is based on moisture content, which is then further narrowed down by fat content and curing or ripening methods. The criteria may either be used singly or in combination, with no single method being universally used.",
+        "response": "* Length of fermentation\n* Texture\n* Methods of production\n* Fat content\n* Animal milk\n* Country or region of origin",
+        "category": "information_extraction",
+        "idx": 9
+    },
+    {
+        "instruction": "How do you know if a chicken breast is fully cooked?",
+        "context": "",
+        "response": "When the internal temperature reaches a minimum of 150 F",
+        "category": "open_qa",
+        "idx": 10
+    }
+]
