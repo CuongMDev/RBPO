@@ -52,7 +52,7 @@ if __name__ == "__main__":
             
             classify_dataset(
                 input_json_path=INPUT_PATH,
-                output_jsonl_path=OUTPUT_PATH,
+                output_json_path=OUTPUT_PATH,
                 batch_size=2,     # mỗi batch 1 item
                 max_workers=2     # 4 request song song
             )

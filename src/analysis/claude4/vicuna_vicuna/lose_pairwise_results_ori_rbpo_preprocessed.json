@@ -28,7 +28,7 @@
         "prompt_0": "Can you explain the basics of quantum computing?",
         "prompt_1": "Can you provide an explanation of the basics of quantum computing, including quantum bits (qubits), quantum algorithms, and the challenges of practical applications?",
         "winner": 0
-    },
+    }, 
     {
         "id": 6,
         "prompt_0": "What are the differences between plant-based and animal-based protein sources?",

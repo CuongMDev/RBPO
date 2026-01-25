@@ -4,3 +4,5 @@ torch
 sentence_transformers
 accelerate
 openai
+sentencepiece
+protobuf

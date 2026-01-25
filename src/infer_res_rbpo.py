@@ -16,21 +16,6 @@ from sklearn.cluster import AgglomerativeClustering
 from config import MODEL_CACHE_PATH, prompt_template_optimize
 from utils import generate_batch
 
-# ============ CONFIG ============
-device = "cuda:0"
-M = 10  # Số prompt tối ưu cần sinh
-distance_threshold = 0.05  # Ngưỡng cosine distance cho clustering
-imc_enc = 0.2  # Hệ số khuyến khích cải tiến
-
-# Model paths
-bpo_model_path = "THUDM/BPO"
-sbert_model_path = "sentence-transformers/all-MiniLM-L12-v2"
-
-# Input/Output
-input_jsonl = "testset/vicuna_eval.jsonl"
-output_jsonl = "rbpo_results.jsonl"
-
-
 def load_models(device="cuda:0"):
     """Load tất cả models cần thiết"""
     print("Loading BPO model...")
@@ -299,6 +284,18 @@ def main():
 
     print(f"\n✓ Done! Saved to: {output_jsonl}")
 
+# ============ CONFIG ============
+device = "cuda:0"
+M = 10  # Số prompt tối ưu cần sinh
+distance_threshold = 0.05  # Ngưỡng cosine distance cho clustering
+imc_enc = 0.2  # Hệ số khuyến khích cải tiến
 
+# Model paths
+bpo_model_path = "THUDM/BPO"
+sbert_model_path = "sentence-transformers/all-MiniLM-L12-v2"
+
+# Input/Output
+input_jsonl = "testset/vicuna_eval.jsonl"
+output_jsonl = "rbpo_results.jsonl"
 if __name__ == "__main__":
     main()

@@ -8,7 +8,7 @@ from utils import generate_batch
 
 model_path = 'THUDM/BPO'
 
-input_jsonl = "testset/self_instruct_eval.json"
+input_jsonl = "testset/demo.json"
 output_jsonl = "optimized_prompts.jsonl"
 
 device = 'cuda:0'

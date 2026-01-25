@@ -108,5 +108,7 @@ def data_preprocessing(folder_names, file_paths, path):
             output_full_path = os.path.join(path, folder, output_file_name)
 
             save_json(unique_data, output_full_path)
+            
+            
 
 
