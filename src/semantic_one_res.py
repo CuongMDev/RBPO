@@ -161,7 +161,7 @@ def step2_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.5
 # -----------------------------------------------------
 def step3_infer_response(device="cuda:0"):
     """
-    STEP 3: Sinh response cho optimized_prompt đã chọn (chỉ 1 câu)
+    STEP 3: Sinh response cho prompt gốc và optimized_prompt
     """
     print("===== STEP 3: Infer response =====")
 
@@ -183,23 +183,41 @@ def step3_infer_response(device="cuda:0"):
 
         for line in tqdm(fin, desc="Step 3 - Infer response"):
             item = json.loads(line)
-            optimized_prompt = item["optimized_prompt"]
+            original_prompt = item["prompt"].strip()
+            bpo_prompt = item["bpo_prompt"].strip()
+            optimized_prompt = item["optimized_prompt"].strip()
 
-            # Sinh response cho optimized_prompt
-            # formatted_prompt = prompt_template_vicuna.format(optimized_prompt.strip())
-            formatted_prompt = optimized_prompt.strip()
-            responses = generate_batch(
+            # Lọc unique prompts để tránh infer trùng
+            all_prompts = [original_prompt, bpo_prompt, optimized_prompt]
+            unique_prompts = []
+            prompt_to_idx = {}
+            original_to_unique = []
+
+            for p in all_prompts:
+                if p not in prompt_to_idx:
+                    prompt_to_idx[p] = len(unique_prompts)
+                    unique_prompts.append(p)
+                original_to_unique.append(prompt_to_idx[p])
+
+            # unique_prompts = [prompt_template_vicuna.format(p) for p in unique_prompts] # for Vicuna-style model (turn off apply_chat_template)
+
+            # Sinh response chỉ cho unique prompts
+            unique_responses = generate_batch(
                 model,
                 tokenizer,
-                [formatted_prompt],
+                unique_prompts,
                 do_sample=False,
                 apply_chat_template=True,
                 device=device
             )
-            optimized_res = responses[0]
+
+            # Map lại response cho tất cả prompts
+            responses = [unique_responses[original_to_unique[i]] for i in range(len(all_prompts))]
 
             # Thêm response vào item
-            item["optimized_response"] = optimized_res
+            item["response_original"] = responses[0]
+            item["bpo_response"] = responses[1]
+            item["optimized_response"] = responses[2]
 
             fout.write(json.dumps(item, ensure_ascii=False) + "\n")
             torch.cuda.empty_cache()
