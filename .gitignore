@@ -34,3 +34,5 @@ src/vicuna-llama
 src/vicuna-vicuna
 
 *.env
+
+!src/testset/vicuna_eval.jsonl
