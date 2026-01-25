@@ -51,7 +51,6 @@ from config import (
     prompt_template_vicuna
 )
 
-
 # -----------------------------------------------------
 # Helper: generate text
 # -----------------------------------------------------
@@ -381,14 +380,14 @@ from ranking_utils import (
 # =========================
 # Claude wrapper
 # =========================
-def run_with_claude(client, prompt, model, tokenizer, device, retries=3):
+def run_with_claude(client,evaluator, prompt, model, tokenizer, device, retries=3):
     """
     Call Claude for reasoning, then use local model to extract boxed answer
     """
     for _ in range(retries):
         try:
             response = client.chat.completions.create(
-                model="anthropic/claude-sonnet-4",
+                model=evaluator,
                 max_tokens=2048,
                 temperature=0.0,
                 messages=[{"role": "user", "content": prompt}],
@@ -417,6 +416,7 @@ def run_with_claude(client, prompt, model, tokenizer, device, retries=3):
 # Main ranking pipeline
 # =========================
 def run_pairwise_ranking(
+    evaluator,
     input_jsonl="responses_with_semantic.jsonl",
     output_jsonls=None,
     output_result="results.json",
@@ -484,6 +484,7 @@ def run_pairwise_ranking(
     def eval_fn(prompt):
         return run_with_claude(
             client,
+            evaluator,
             prompt,
             model,
             tokenizer,

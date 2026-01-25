@@ -39,9 +39,21 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1"
 )
 
-loading_data(input_path="testset/demo.json")
-step1_generate_paraphrase()
-step2_infer_vicuna(base_llm_models[0])
-step3_sbert_clustering()
-# print("\n🎉 ALL DONE!")
-run_pairwise_ranking()
+for evaluator in evaluator_models:
+    # Vào folder của mỗi evaluator
+    os.makedirs(f"results/{evaluator.replace('/', '_')}", exist_ok=True)
+    for dataset in evaluation_datasets:
+        # Vào folder của mỗi dataset
+        os.makedirs(f"results/{evaluator.replace('/', '_')}/{os.path.basename(dataset).replace('.', '_')}", exist_ok=True)
+        for base_model in base_llm_models:
+            # Vào folder của mỗi base model
+            os.makedirs(f"results/{evaluator.replace('/', '_')}/{os.path.basename(dataset).replace('.', '_')}/{base_model.replace('/', '_')}", exist_ok=True)
+            print(f"\n=== Evaluator: {evaluator} | Dataset: {dataset} | Base model: {base_model} ===\n")
+            
+            # Chạy pipeline
+            loading_data(input_path=dataset)
+            step1_generate_paraphrase()
+            step2_infer_vicuna(base_model)
+            step3_sbert_clustering()
+            # print("\n🎉 ALL DONE!")
+            run_pairwise_ranking(evaluator=evaluator)

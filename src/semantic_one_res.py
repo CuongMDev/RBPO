@@ -21,7 +21,20 @@ tmp_step1 = "tmp_step1_r0.jsonl"
 tmp_step2 = "tmp_step2_r0.jsonl"
 output_jsonl = "responses_with_semantic.jsonl"
 infer_model_path = "meta-llama/Llama-2-7b-chat-hf"
-M = 100
+M = 10
+
+# Load model
+model = AutoModelForCausalLM.from_pretrained(
+    infer_model_path,
+    cache_dir=MODEL_CACHE_PATH,
+    torch_dtype=torch.float16
+).eval().to(device)
+
+tokenizer = AutoTokenizer.from_pretrained(
+    infer_model_path,
+    cache_dir=MODEL_CACHE_PATH,
+    legacy=False
+)
 
 
 # -----------------------------------------------------
@@ -165,19 +178,6 @@ def step3_infer_response(device="cuda:0"):
     """
     print("===== STEP 3: Infer response =====")
 
-    # Load model
-    model = AutoModelForCausalLM.from_pretrained(
-        infer_model_path,
-        cache_dir=MODEL_CACHE_PATH,
-        torch_dtype=torch.float16
-    ).eval().to(device)
-
-    tokenizer = AutoTokenizer.from_pretrained(
-        infer_model_path,
-        cache_dir=MODEL_CACHE_PATH,
-        legacy=False
-    )
-
     with open(tmp_step2, "r", encoding="utf-8") as fin, \
         open(output_jsonl, "w", encoding="utf-8") as fout:
 
@@ -233,6 +233,6 @@ def step3_infer_response(device="cuda:0"):
 # -----------------------------------------------------
 if __name__ == "__main__":
     # step1_generate_paraphrase()
-    step2_sbert_clustering()
+    # step2_sbert_clustering()
     step3_infer_response()
     print("\n🎉 ALL DONE!")
