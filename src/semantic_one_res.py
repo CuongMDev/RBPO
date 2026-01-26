@@ -170,8 +170,6 @@ def step2_sbert_clustering(device='cuda:0', distance_threshold=0.05, imp_enc=0.5
     print("✓ Done STEP 2 →", tmp_step2)
     torch.cuda.empty_cache()
     gc.collect()
-
-
 # -----------------------------------------------------
 # STEP 3: Infer response cho optimized_prompt đã chọn
 # Input  : tmp_step2 (chứa optimized_prompt)
