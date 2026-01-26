@@ -68,3 +68,12 @@ with open(output_jsonl, "w", encoding="utf-8") as f_out:
         torch.cuda.empty_cache()
 
 print("Done! Saved to:", output_jsonl)
+# ---- CLEANUP MODEL & GPU ----
+del model
+del tokenizer
+
+torch.cuda.empty_cache()
+torch.cuda.ipc_collect()
+
+print("✓ Model unloaded and GPU memory cleared")
+

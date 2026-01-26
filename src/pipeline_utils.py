@@ -6,6 +6,7 @@ from tqdm import tqdm
 from config import prompt_template_optimize
 from utils import generate_batch
 import gc
+from clean_cache import nuke_hf_cache
 
 
 def loading_data(input_path, output_path = "optimized_prompts.jsonl", batch_size=10):
@@ -73,6 +74,8 @@ def step1_generate_paraphrase(input_path="optimized_prompts.jsonl",
         optimize_path, cache_dir=MODEL_CACHE_PATH, use_fast=False, legacy=True
     )
     model.config.return_dict = True
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
     with open(input_path, "r", encoding="utf-8") as fin, \
          open(tmp_step1, "w", encoding="utf-8") as fout:
@@ -98,7 +101,8 @@ def step1_generate_paraphrase(input_path="optimized_prompts.jsonl",
             }, ensure_ascii=False) + "\n")
 
     del model
-    torch.cuda.empty_cache()
+    del tokenizer
+    nuke_hf_cache(MODEL_CACHE_PATH)
     print("✓ Done Step 1 →", tmp_step1)
     
 # -----------------------------------------------------
@@ -188,8 +192,8 @@ def step2_infer_vicuna(infer_model_path,
 
     # cleanup
     del model
-    torch.cuda.empty_cache()
-    gc.collect()
+    del tokenizer
+    nuke_hf_cache(MODEL_CACHE_PATH)
     print("✓ Done STEP 2 →", tmp_step2)
 
 # -----------------------------------------------------
@@ -573,4 +577,11 @@ def run_pairwise_ranking(
         json.dump(stats, f, indent=2, ensure_ascii=False)
 
     print(f"[OK] Saved ranking results to {output_result}")
+    
+    #cleanup
+    del model
+    del tokenizer
+    nuke_hf_cache(MODEL_CACHE_PATH)
     return stats
+
+
