@@ -5,6 +5,7 @@ from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from sentence_transformers import SentenceTransformer, util
 from sklearn.cluster import AgglomerativeClustering
+from clean_cache import nuke_hf_cache
 from utils import generate_batch
 from semantic import step1_generate_paraphrase
 import gc
@@ -236,7 +237,13 @@ def step3_infer_response(device="cuda:0"):
 # RUN ALL STEPS
 # -----------------------------------------------------
 if __name__ == "__main__":
-    # step1_generate_paraphrase()
-    # step2_sbert_clustering()
+    step1_generate_paraphrase()
+    nuke_hf_cache(cache_dir=MODEL_CACHE_PATH)
+    
+    step2_sbert_clustering()
+    nuke_hf_cache(cache_dir=MODEL_CACHE_PATH)
+    
     step3_infer_response()
+    nuke_hf_cache(cache_dir=MODEL_CACHE_PATH)
+    
     print("\n🎉 ALL DONE!")

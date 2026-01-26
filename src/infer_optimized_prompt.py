@@ -1,6 +1,7 @@
 import json
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from clean_cache import nuke_hf_cache
 from config import MODEL_CACHE_PATH
 from tqdm import tqdm
 from config import prompt_template_optimize
@@ -71,6 +72,7 @@ print("Done! Saved to:", output_jsonl)
 # ---- CLEANUP MODEL & GPU ----
 del model
 del tokenizer
+nuke_hf_cache(cache_dir=MODEL_CACHE_PATH)
 
 torch.cuda.empty_cache()
 torch.cuda.ipc_collect()
