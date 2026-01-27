@@ -6,6 +6,8 @@ from config import MODEL_CACHE_PATH
 
 
 def nuke_hf_cache(cache_dir=None):
+    print("🔄 Resetting memory...")
+    
     cache_dir = os.path.abspath(cache_dir)
     # Safety check
     if len(cache_dir) < 10 or cache_dir in ["/", "/root", "/home"]:
@@ -21,9 +23,9 @@ def nuke_hf_cache(cache_dir=None):
     gc.collect()
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
+        torch.cuda.ipc_collect()
 
     print("✓ hf_cache wiped completely\n")
 
 if __name__ == "__main__":
-    # Example usage
     nuke_hf_cache(cache_dir=MODEL_CACHE_PATH)

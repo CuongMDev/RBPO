@@ -7,7 +7,7 @@ from tqdm import tqdm
 from config import prompt_template_optimize
 from utils import generate_batch
 
-model_path = 'THUDM/BPO'
+# model_path = 'THUDM/BPO'
 
 input_jsonl = "testset/demo.json"
 output_jsonl = "optimized_prompts.jsonl"
@@ -15,14 +15,14 @@ output_jsonl = "optimized_prompts.jsonl"
 device = 'cuda:0'
 batch_size = 10  # Điều chỉnh tùy theo VRAM
 
-# Load model & tokenizer
-model = AutoModelForCausalLM.from_pretrained(model_path, cache_dir=MODEL_CACHE_PATH).half().eval().to(device)
-tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir=MODEL_CACHE_PATH, use_fast=False)
-model.config.return_dict = True
+# # Load model & tokenizer
+# model = AutoModelForCausalLM.from_pretrained(model_path, cache_dir=MODEL_CACHE_PATH).half().eval().to(device)
+# tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir=MODEL_CACHE_PATH, use_fast=False)
+# model.config.return_dict = True
 
-# Nếu pad_token chưa set, set = eos_token
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+# # Nếu pad_token chưa set, set = eos_token
+# if tokenizer.pad_token_id is None:
+#     tokenizer.pad_token_id = tokenizer.eos_token_id
 
 # ---- READ INPUT ----
 data = []
@@ -70,8 +70,6 @@ with open(output_jsonl, "w", encoding="utf-8") as f_out:
 
 print("Done! Saved to:", output_jsonl)
 # ---- CLEANUP MODEL & GPU ----
-del model
-del tokenizer
 nuke_hf_cache(cache_dir=MODEL_CACHE_PATH)
 
 torch.cuda.empty_cache()

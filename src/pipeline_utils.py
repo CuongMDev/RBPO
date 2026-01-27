@@ -59,23 +59,13 @@ from config import (
 # -----------------------------------------------------
 # STEP 1: Generate paraphrase prompts using BPO 
 # -----------------------------------------------------
-def step1_generate_paraphrase(input_path="optimized_prompts.jsonl",
+def step1_generate_paraphrase(model,
+                            tokenizer,
+                            input_path="optimized_prompts.jsonl",
                             tmp_step1="tmp_step1_r0.jsonl",
                             device='cuda:0',
                             M=10):
     print("\n===== STEP 1: Paraphrase =====")
-
-    optimize_path = "THUDM/BPO"
-    model = AutoModelForCausalLM.from_pretrained(
-        optimize_path, cache_dir=MODEL_CACHE_PATH, dtype=torch.float16
-    ).eval().to(device)
-
-    tokenizer = AutoTokenizer.from_pretrained(
-        optimize_path, cache_dir=MODEL_CACHE_PATH, use_fast=False, legacy=True
-    )
-    model.config.return_dict = True
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
 
     with open(input_path, "r", encoding="utf-8") as fin, \
          open(tmp_step1, "w", encoding="utf-8") as fout:
@@ -99,10 +89,6 @@ def step1_generate_paraphrase(input_path="optimized_prompts.jsonl",
                 "prompt": prompt,
                 "paraphrase_prompts": paraphrases
             }, ensure_ascii=False) + "\n")
-
-    del model
-    del tokenizer
-    nuke_hf_cache(MODEL_CACHE_PATH)
     print("✓ Done Step 1 →", tmp_step1)
     
 # -----------------------------------------------------
@@ -240,31 +226,31 @@ def step2_sbert_clustering(tmp_step1="tmp_step1_r0.jsonl",
             }, ensure_ascii=False) + "\n")
     
     print("✓ Done STEP 2 →", tmp_step2)
-    nuke_hf_cache(MODEL_CACHE_PATH)
 
 # -----------------------------------------------------
 # STEP 3: Infer response cho optimized_prompt đã chọn
 # Input  : tmp_step2 (chứa optimized_prompt)
 # Output : output_jsonl (thêm optimized_res)
 # -----------------------------------------------------
-def step3_infer_response(infer_model_path,
+def step3_infer_response(model,
+    tokenizer,
     tmp_step2="tmp_step2_r0.jsonl",
     output_jsonl="responses_with_semantic.jsonl",
     is_vicuna=False,
     device='cuda:0'
     ):
     print("===== STEP 3: Infer response =====")
-    model = AutoModelForCausalLM.from_pretrained(
-        infer_model_path,
-        cache_dir=MODEL_CACHE_PATH,
-        torch_dtype=torch.float16
-    ).eval().to(device)
+    # model = AutoModelForCausalLM.from_pretrained(
+    #     infer_model_path,
+    #     cache_dir=MODEL_CACHE_PATH,
+    #     torch_dtype=torch.float16
+    # ).eval().to(device)
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        infer_model_path,
-        cache_dir=MODEL_CACHE_PATH,
-        legacy=False
-    )
+    # tokenizer = AutoTokenizer.from_pretrained(
+    #     infer_model_path,
+    #     cache_dir=MODEL_CACHE_PATH,
+    #     legacy=False
+    # )
 
     with open(tmp_step2, "r", encoding="utf-8") as fin, \
         open(output_jsonl, "w", encoding="utf-8") as fout:
@@ -312,9 +298,6 @@ def step3_infer_response(infer_model_path,
             torch.cuda.empty_cache()
 
     # Cleanup
-    del model
-    torch.cuda.empty_cache()
-    gc.collect()
     print("✓ Done STEP 3 →", output_jsonl)
     
  
@@ -372,9 +355,9 @@ def run_with_claude(client,evaluator, prompt, model, tokenizer, device, retries=
 # =========================
 def run_pairwise_ranking(
     evaluator,
-    input_jsonl="responses_with_semantic.jsonl",
+    input_path="responses_with_semantic.jsonl",
     output_jsonls=None,
-    output_result="results.json",
+    output_dir="results.json",
     model_name="Qwen/Qwen3-4B",
     device="cuda:0",
     api_key_env="OPENROUTER_API_KEY"
@@ -429,7 +412,7 @@ def run_pairwise_ranking(
     # Load data
     # ---------------------
     raw_prompt = load_ranking_prompt()
-    rows = read_jsonl(input_jsonl)
+    rows = read_jsonl(input_path)
 
     stats = {}
 
@@ -524,10 +507,10 @@ def run_pairwise_ranking(
     # ---------------------
     # Save results
     # ---------------------
-    with open(output_result, "w", encoding="utf-8") as f:
+    with open(output_dir, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
 
-    print(f"[OK] Saved ranking results to {output_result}")
+    print(f"[OK] Saved ranking results to {output_dir}")
     
     #cleanup
     del model
