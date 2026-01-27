@@ -11,6 +11,7 @@ torch.manual_seed(42)
 
 CLAUDE4 = "anthropic/claude-sonnet-4"
 DEEPSEEK = "tngtech/deepseek-r1t2-chimera:free"
+MISTRAL = "mistralai/devstral-2512:free"
 LLAMA2_7B = "meta-llama/Llama-2-7b-chat-hf"
 VICUNA_7B = "lmsys/vicuna-7b-v1.3"
 GEMMA3 = "google/gemma-3-4b-it"
@@ -18,10 +19,11 @@ DOLLY_EVAL = "testset/dolly_eval.json"
 VICUNA_EVAL = "testset/vicuna_eval.jsonl"
 DEMO_EVAL = "testset/demo.json"
 
-# evaluator_models = [DEEPSEEK, CLAUDE4]
+evaluator_models = [DEEPSEEK, MISTRAL]
 base_llm_models = [LLAMA2_7B, VICUNA_7B, GEMMA3]
-evaluation_datasets = [DOLLY_EVAL, VICUNA_EVAL]
-# base_llm_models = [LLAMA2_7B]
+evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
+base_llm_models = [LLAMA2_7B]
+# base_llm_models = [VICUNA_7B, GEMMA3]
 evaluator_models = [DEEPSEEK]
 
 # evaluation_datasets = [DEMO_EVAL]
@@ -65,37 +67,37 @@ def clean_name(path_or_id: str):
 # =========================
 if __name__ == "__main__":
     for base_model in base_llm_models:
-        print(torch.cuda.empty_cache(), gc.collect())
+        torch.cuda.empty_cache(), gc.collect()
         
-        if base_model is base_llm_models[1]:  # nếu là VICUNA_7B
-            is_vicuna = True
-        else:
-            is_vicuna = False
+        # if base_model is base_llm_models[1]:  # nếu là VICUNA_7B
+        #     is_vicuna = True
+        # else:
+        #     is_vicuna = False
         
         base_llm_dir = os.path.join(RESULTS_ROOT, clean_name(base_model))
         os.makedirs(base_llm_dir, exist_ok=True)
         
-        model = AutoModelForCausalLM.from_pretrained(
-            base_model,
-            cache_dir=MODEL_CACHE_PATH,
-            torch_dtype=torch.float16
-        ).eval().to(device)
+        # model = AutoModelForCausalLM.from_pretrained(
+        #     base_model,
+        #     cache_dir=MODEL_CACHE_PATH,
+        #     torch_dtype=torch.float16
+        # ).eval().to(device)
 
-        tokenizer = AutoTokenizer.from_pretrained(
-            base_model,
-            cache_dir=MODEL_CACHE_PATH,
-            legacy=False
-        )
+        # tokenizer = AutoTokenizer.from_pretrained(
+        #     base_model,
+        #     cache_dir=MODEL_CACHE_PATH,
+        #     legacy=False
+        # )
 
         for dataset in evaluation_datasets:
-            print(torch.cuda.empty_cache(), gc.collect())
-            
+            torch.cuda.empty_cache(), gc.collect()
+
             dataset_name = clean_name(dataset)
             dataset_dir = os.path.join(base_llm_dir, dataset_name)
             os.makedirs(dataset_dir, exist_ok=True)
 
             for evaluator in evaluator_models:
-                print(torch.cuda.empty_cache(), gc.collect())
+                torch.cuda.empty_cache(), gc.collect()
                 
                 evaluator_name = clean_name(evaluator)
                 run_dir = os.path.join(dataset_dir, evaluator_name)
@@ -106,18 +108,18 @@ if __name__ == "__main__":
                 # -------------------------
                 # FILE PATHS
                 # -------------------------
-                optimized_path = os.path.join(dataset_dir, "optimized_prompts.jsonl")
-                tmp_step1 = os.path.join(dataset_dir, "tmp_step1_r0.jsonl")
-                tmp_step2 = os.path.join(dataset_dir, "tmp_step2_r0.jsonl")
-                output_path = os.path.join(dataset_dir, "responses_with_semantic.jsonl")
+                optimized_path = os.path.join(run_dir, "optimized_prompts.jsonl")
+                tmp_step1 = os.path.join(run_dir, "tmp_step1_r0.jsonl")
+                tmp_step2 = os.path.join(run_dir, "tmp_step2_r0.jsonl")
+                output_path = os.path.join(run_dir, "responses_with_semantic.jsonl")
 
                 # -------------------------
                 # PIPELINE
                 # -------------------------
-                loading_data(
-                    input_path=dataset,
-                    output_path=optimized_path
-                )
+                # loading_data(
+                #     input_path=dataset,
+                #     output_path=optimized_path
+                # )
 
                 # step1_generate_paraphrase(
                 #     model=bpo_model,
@@ -141,14 +143,23 @@ if __name__ == "__main__":
                 #     device=device,
                 #     is_vicuna=is_vicuna
                 # )
+                
+                print(output_path)
+                print(run_dir)
+                
+                ori_bpo_res = os.path.join(run_dir, "lose_pairwise_results_ori_bpo.jsonl")
+                ori_rbpo_res = os.path.join(run_dir, "lose_pairwise_results_ori_rbpo.jsonl")
+                bpo_rbpo_res = os.path.join(run_dir, "lose_pairwise_results_bpo_rbpo.jsonl")
+                output_jsonl = [ori_bpo_res, ori_rbpo_res, bpo_rbpo_res]
 
-                # run_pairwise_ranking(
-                #     evaluator=evaluator,
-                #     input_path=output_path,
-                #     output_dir=run_dir
-                # )
+                run_pairwise_ranking(
+                    evaluator=evaluator,
+                    input_path=output_path,
+                    output_jsonls=output_jsonl,
+                    output_dir=run_dir
+                )
 
-                print(f"✓ Run complete → {dataset_dir}")
+                print(f"✓ Run complete → {run_dir}")
 
     # =========================
     # FINAL CLEANUP
