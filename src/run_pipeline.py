@@ -9,7 +9,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch.manual_seed(42)
 
-DEEPSEEK = "deepseek-reasoner"
+DEEPSEEK = "deepseek-chat"
 
 LLAMA2_7B = "meta-llama/Llama-2-7b-chat-hf"
 VICUNA_7B = "lmsys/vicuna-7b-v1.3"
@@ -67,7 +67,7 @@ def clean_name(path_or_id: str):
 # =========================
 if __name__ == "__main__":
     for base_model in base_llm_models:
-        torch.cuda.empty_cache(), gc.collect()
+        # nuke_hf_cache(MODEL_CACHE_PATH) # Dùng khi chạy lại step 1, load model BPO
         
         # if base_model is base_llm_models[1]:  # nếu là VICUNA_7B
         #     is_vicuna = True
@@ -164,7 +164,5 @@ if __name__ == "__main__":
     # =========================
     # FINAL CLEANUP
     # =========================
-    torch.cuda.empty_cache()
-    gc.collect()
-
+    nuke_hf_cache(MODEL_CACHE_PATH)
     print("\n🎉 ALL EXPERIMENTS DONE")

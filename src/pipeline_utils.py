@@ -365,7 +365,7 @@ def run_with_claude(evaluator, prompt, model, tokenizer, device, retries=3, api_
 
 # =========================
 # Main ranking pipeline
-# =========================
+    # =========================
 def run_pairwise_ranking(
     evaluator,
     input_path="responses_with_semantic.jsonl",
@@ -444,7 +444,7 @@ def run_pairwise_ranking(
         label_2="draw",
         save_winner_0=False,
         save_winner_1=False,
-        handle_bias=False
+        handle_bias=True
     )
 
     stats["original_vs_bpo"] = {
@@ -469,7 +469,7 @@ def run_pairwise_ranking(
         label_2="draw",
         save_winner_0=False,
         save_winner_1=False,
-        handle_bias=False
+        handle_bias=True
     )
 
     stats["original_vs_rbpo"] = {
@@ -494,7 +494,7 @@ def run_pairwise_ranking(
         label_2="draw",
         save_winner_0=False,
         save_winner_1=False,
-        handle_bias=False
+        handle_bias=True
     )
 
     stats["bpo_vs_rbpo"] = {
@@ -506,13 +506,14 @@ def run_pairwise_ranking(
     # ---------------------
     # Save results
     # ---------------------
-    with open(output_dir, "w", encoding="utf-8") as f:
+    output_path = os.path.join(output_dir, "ranking_summary.json")
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
 
-    print(f"[OK] Saved ranking results to {output_dir}")
+    # print(f"[OK] Saved ranking results to {output_path}")
     
     #cleanup
     del model
     del tokenizer
-    nuke_hf_cache(MODEL_CACHE_PATH)
+    # nuke_hf_cache(MODEL_CACHE_PATH) # Trong này chỉ dùng Qwen3, không cần xóa
     return stats

@@ -16,7 +16,7 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1"
 )
 
-MODEL_NAME = "xiaomi/mimo-v2-flash:free"
+MODEL_NAME = "tngtech/deepseek-r1t2-chimera:free"
 MAX_TOKENS = 2048
 TEMPERATURE = 0.0
 

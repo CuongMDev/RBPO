@@ -87,27 +87,35 @@ def add_id(data, start_id=1):
 
     
 # ================== MAIN LOOP ==================
-def data_preprocessing(folder_names, file_paths, path):
-    for folder in folder_names:
-        for file_name in file_paths:
-            full_path = os.path.join(path, folder, file_name)
+def data_preprocessing(input_jsonl_path: str,
+                       output_json_path: str):
+    data = load_jsonl(input_jsonl_path)
+    unique_data = remove_duplicates(data, os.path.basename(input_jsonl_path))
+    # reset id cho từng file
+    unique_data = add_id(unique_data, start_id=1)
+    save_json(unique_data, output_json_path)
+    
+# def data_preprocessing(folder_names, file_paths, path):
+#     for folder in folder_names:
+#         for file_name in file_paths:
+#             full_path = os.path.join(path, folder, file_name)
 
-            if not os.path.exists(full_path):
-                print(f"[WARN] File not found: {full_path}")
-                continue
+#             if not os.path.exists(full_path):
+#                 print(f"[WARN] File not found: {full_path}")
+#                 continue
 
-            print(f"[INFO] Processing: {full_path}")
+#             print(f"[INFO] Processing: {full_path}")
 
-            data = load_jsonl(full_path)
-            unique_data = remove_duplicates(data, file_name)
+#             data = load_jsonl(full_path)
+#             unique_data = remove_duplicates(data, file_name)
 
-            # reset id cho từng file
-            unique_data = add_id(unique_data, start_id=1)
+#             # reset id cho từng file
+#             unique_data = add_id(unique_data, start_id=1)
 
-            output_file_name = file_name.replace(".jsonl", "_preprocessed.json")
-            output_full_path = os.path.join(path, folder, output_file_name)
+#             output_file_name = file_name.replace(".jsonl", "_preprocessed.json")
+#             output_full_path = os.path.join(path, folder, output_file_name)
 
-            save_json(unique_data, output_full_path)
+#             save_json(unique_data, output_full_path)
             
             
 

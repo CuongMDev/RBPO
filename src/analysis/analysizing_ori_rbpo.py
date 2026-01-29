@@ -6,10 +6,6 @@ from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from config import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE, MODEL_NAME, MAX_TOKENS, TEMPERATURE, client
 
-
-
-#
-
 # ================== CORE FUNCTIONS ==================
 
 def run_with_claude(system_prompt: str, user_prompt: str) -> str:
