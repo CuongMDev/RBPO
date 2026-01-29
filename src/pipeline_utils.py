@@ -318,14 +318,26 @@ from ranking_utils import (
 # =========================
 # Claude wrapper
 # =========================
-def run_with_claude(client,evaluator, prompt, model, tokenizer, device, retries=3):
+def run_with_claude(evaluator, prompt, model, tokenizer, device, retries=3, api_key_env="DEEPSEEK_API_KEY"):
     """
     Call Claude for reasoning, then use local model to extract boxed answer
     """
+    # ---------------------
+    # Setup client
+    # ---------------------
+    api_key = os.environ.get(api_key_env)
+    if api_key is None:
+        raise RuntimeError(f"Missing API key in env: {api_key_env}")
+
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://api.deepseek.com"
+    )
+
     for _ in range(retries):
         try:
             response = client.chat.completions.create(
-                model=evaluator,
+                model=evaluator,   # hoặc "deepseek-chat"
                 max_tokens=2048,
                 temperature=0.0,
                 messages=[{"role": "user", "content": prompt}],
@@ -344,10 +356,11 @@ def run_with_claude(client,evaluator, prompt, model, tokenizer, device, retries=
             torch.cuda.empty_cache()
             return result
 
-        except Exception:
+        except Exception as e:
+            print("API error:", e)
             time.sleep(2)
 
-    raise RuntimeError("Claude API failed after retries")
+    raise RuntimeError(f"API failed after {retries} retries")
 
 
 # =========================
@@ -360,7 +373,6 @@ def run_pairwise_ranking(
     output_dir="results.json",
     model_name="Qwen/Qwen3-4B",
     device="cuda:0",
-    api_key_env="OPENROUTER_API_KEY"
 ):
     """
     Runs pairwise ranking:
@@ -378,18 +390,6 @@ def run_pairwise_ranking(
             "lose_pairwise_results_ori_rbpo.jsonl",
             "lose_pairwise_results_bpo_rbpo.jsonl"
         ]
-
-    # ---------------------
-    # Setup client
-    # ---------------------
-    api_key = os.environ.get(api_key_env)
-    if api_key is None:
-        raise RuntimeError(f"Missing API key in env: {api_key_env}")
-
-    client = OpenAI(
-        api_key=api_key,
-        base_url="https://openrouter.ai/api/v1"
-    )
 
     # ---------------------
     # Load model
@@ -421,7 +421,6 @@ def run_pairwise_ranking(
     # ---------------------
     def eval_fn(prompt):
         return run_with_claude(
-            client,
             evaluator,
             prompt,
             model,

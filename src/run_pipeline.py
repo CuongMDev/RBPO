@@ -9,17 +9,17 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch.manual_seed(42)
 
-CLAUDE4 = "anthropic/claude-sonnet-4"
-DEEPSEEK = "tngtech/deepseek-r1t2-chimera:free"
-MISTRAL = "mistralai/devstral-2512:free"
+DEEPSEEK = "deepseek-reasoner"
+
 LLAMA2_7B = "meta-llama/Llama-2-7b-chat-hf"
 VICUNA_7B = "lmsys/vicuna-7b-v1.3"
 GEMMA3 = "google/gemma-3-4b-it"
+
 DOLLY_EVAL = "testset/dolly_eval.json"
 VICUNA_EVAL = "testset/vicuna_eval.jsonl"
 DEMO_EVAL = "testset/demo.json"
 
-evaluator_models = [DEEPSEEK, MISTRAL]
+evaluator_models = [DEEPSEEK]
 base_llm_models = [LLAMA2_7B, VICUNA_7B, GEMMA3]
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
 base_llm_models = [LLAMA2_7B]
