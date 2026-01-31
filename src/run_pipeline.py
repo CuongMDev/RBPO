@@ -20,11 +20,12 @@ VICUNA_EVAL = "testset/vicuna_eval.jsonl"
 DEMO_EVAL = "testset/demo.json"
 
 evaluator_models = [DEEPSEEK]
-base_llm_models = [LLAMA2_7B, VICUNA_7B, GEMMA3]
+base_llm_models = [VICUNA_7B,LLAMA2_7B, GEMMA3]
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
-base_llm_models = [LLAMA2_7B]
-# base_llm_models = [VICUNA_7B, GEMMA3]
+
+base_llm_models = [GEMMA3]
 evaluator_models = [DEEPSEEK]
+evaluation_datasets = [DEMO_EVAL]
 
 # evaluation_datasets = [DEMO_EVAL]
 
@@ -67,27 +68,27 @@ def clean_name(path_or_id: str):
 # =========================
 if __name__ == "__main__":
     for base_model in base_llm_models:
-        # nuke_hf_cache(MODEL_CACHE_PATH) # Dùng khi chạy lại step 1, load model BPO
+        torch.cuda.empty_cache(), gc.collect()
         
-        # if base_model is base_llm_models[1]:  # nếu là VICUNA_7B
-        #     is_vicuna = True
-        # else:
-        #     is_vicuna = False
+        if base_model is base_llm_models[0]:  # nếu là VICUNA_7B
+            is_vicuna = True
+        else:
+            is_vicuna = False
         
         base_llm_dir = os.path.join(RESULTS_ROOT, clean_name(base_model))
         os.makedirs(base_llm_dir, exist_ok=True)
         
-        # model = AutoModelForCausalLM.from_pretrained(
-        #     base_model,
-        #     cache_dir=MODEL_CACHE_PATH,
-        #     torch_dtype=torch.float16
-        # ).eval().to(device)
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model,
+            cache_dir=MODEL_CACHE_PATH,
+            torch_dtype="auto"
+        ).eval().to(device)
 
-        # tokenizer = AutoTokenizer.from_pretrained(
-        #     base_model,
-        #     cache_dir=MODEL_CACHE_PATH,
-        #     legacy=False
-        # )
+        tokenizer = AutoTokenizer.from_pretrained(
+            base_model,
+            cache_dir=MODEL_CACHE_PATH,
+            legacy=False
+        )
 
         for dataset in evaluation_datasets:
             torch.cuda.empty_cache(), gc.collect()
@@ -122,7 +123,7 @@ if __name__ == "__main__":
                 # )
 
                 # step1_generate_paraphrase(
-                #     model=bpo_model,
+                #     model=bpo_model,  
                 #     tokenizer=bpo_tokenizer,
                 #     input_path=optimized_path,
                 #     tmp_step1=tmp_step1,
@@ -141,8 +142,10 @@ if __name__ == "__main__":
                 #     tmp_step2=tmp_step2,
                 #     output_jsonl=output_path,
                 #     device=device,
-                #     is_vicuna=is_vicuna
+                #     is_vicuna=False
                 # )
+                
+                # nuke_hf_cache(MODEL_CACHE_PATH)
                 
                 print(output_path)
                 print(run_dir)
@@ -152,17 +155,19 @@ if __name__ == "__main__":
                 bpo_rbpo_res = os.path.join(run_dir, "lose_pairwise_results_bpo_rbpo.jsonl")
                 output_jsonl = [ori_bpo_res, ori_rbpo_res, bpo_rbpo_res]
 
-                run_pairwise_ranking(
-                    evaluator=evaluator,
-                    input_path=output_path,
-                    output_jsonls=output_jsonl,
-                    output_dir=run_dir
-                )
+                # run_pairwise_ranking(
+                #     evaluator=evaluator,
+                #     input_path=output_path,
+                #     output_jsonls=output_jsonl,
+                #     output_dir=run_dir
+                # )
 
                 print(f"✓ Run complete → {run_dir}")
 
     # =========================
     # FINAL CLEANUP
     # =========================
-    nuke_hf_cache(MODEL_CACHE_PATH)
+    torch.cuda.empty_cache()
+    gc.collect()
+
     print("\n🎉 ALL EXPERIMENTS DONE")

@@ -4,19 +4,28 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-if not OPENROUTER_API_KEY:
-    raise RuntimeError(
-        "OPENROUTER_API_KEY is not set. "
-        "Please set it via environment variable."
-    )
+# OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+# if not OPENROUTER_API_KEY:
+#     raise RuntimeError(
+#         "OPENROUTER_API_KEY is not set. "
+#         "Please set it via environment variable."
+#     )
+
+# client = OpenAI(
+#     api_key=OPENROUTER_API_KEY,
+#     base_url="https://openrouter.ai/api/v1"
+# )
+
+api_key = os.environ.get("DEEPSEEK_API_KEY")
+if api_key is None:
+    raise RuntimeError(f"Missing API key in env: DEEPSEEK_API_KEY")
 
 client = OpenAI(
-    api_key=OPENROUTER_API_KEY,
-    base_url="https://openrouter.ai/api/v1"
+    api_key=api_key,
+    base_url="https://api.deepseek.com"
 )
 
-MODEL_NAME = "tngtech/deepseek-r1t2-chimera:free"
+MODEL_NAME = "deepseek-chat"
 MAX_TOKENS = 2048
 TEMPERATURE = 0.0
 

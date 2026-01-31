@@ -20,6 +20,7 @@ DEMO_EVAL = "testset/demo.json"
 
 evaluator_models = [DEEPSEEK_EVALUATOR]
 base_llm_models = [LLAMA2_7B, VICUNA_7B, GEMMA3]
+base_llm_models = [VICUNA_7B]
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
 
 def clean_name(path_or_id: str):
@@ -29,19 +30,20 @@ def clean_name(path_or_id: str):
 
 
 if __name__ == "__main__":
-    load_dotenv()
+    
+    # load_dotenv()
 
-    OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-    if not OPENROUTER_API_KEY:
-        raise RuntimeError(
-            "OPENROUTER_API_KEY is not set. "
-            "Please set it via environment variable."
-        )
+    # OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+    # if not OPENROUTER_API_KEY:
+    #     raise RuntimeError(
+    #         "OPENROUTER_API_KEY is not set. "
+    #         "Please set it via environment variable."
+    #     )
         
-    client = OpenAI(
-        api_key=OPENROUTER_API_KEY,
-        base_url="https://openrouter.ai/api/v1"
-    )
+    # client = OpenAI(
+    #     api_key=OPENROUTER_API_KEY,
+    #     base_url="https://openrouter.ai/api/v1"
+    # )
     
     for base_model in base_llm_models:
         base_dir = clean_name(base_model)
@@ -63,7 +65,7 @@ if __name__ == "__main__":
                     
                     classify_dataset(
                         input_json_path=output_path,
-                        output_json_path=output_path.replace("_preprocessed.json","_classified.jsonl"),
+                        output_json_path=output_path.replace("_preprocessed.json","_classified.json"),
                         batch_size=2,     # mỗi batch 1 item
                         max_workers=2     # 4 request song song
                     )

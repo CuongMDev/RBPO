@@ -1,0 +1,1533 @@
+[
+  {
+    "id": 1,
+    "prompt_0": "How can I improve my time management skills?",
+    "prompt_1": "How can I improve my time management skills? Please provide specific strategies and techniques to help me manage my time effectively.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về chiến lược và kỹ thuật để quản lý thời gian."
+      },
+      "evidence": {
+        "Aspect_Expansion": "specific strategies and techniques"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "prompt_0": "What are the most effective ways to deal with stress?",
+    "prompt_1": "What are some effective ways to manage stress?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "some effective ways to manage"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "prompt_0": "What are the main differences between Python and JavaScript programming languages?",
+    "prompt_1": "Compare the main differences between Python and JavaScript programming languages, including their syntax, structure, features, and areas of application.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về cú pháp, cấu trúc, tính năng và lĩnh vực ứng dụng để mở rộng phạm vi nội dung so với lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including their syntax, structure, features, and areas of application"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "prompt_0": "How can I increase my productivity while working from home?",
+    "prompt_1": "How can I increase my productivity while working from home? Please provide specific strategies and tips that can be implemented to improve productivity when working from home.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu đã được làm mạnh hơn bằng cách chỉ định cần cung cấp các chiến lược và mẹo cụ thể.",
+        "Aspect_Expansion": "Đã thêm các khía cạnh cụ thể về nội dung cần trả lời, đó là 'các chiến lược và mẹo cụ thể'."
+      },
+      "evidence": {
+        "Intensification": "Please provide specific strategies and tips",
+        "Aspect_Expansion": "specific strategies and tips"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "prompt_0": "Can you explain the basics of quantum computing?",
+    "prompt_1": "Can you provide a brief explanation of the basics of quantum computing, including the principles of quantum mechanics and the challenges in practical applications?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nguyên lý cơ học lượng tử và thách thức ứng dụng thực tế."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the principles of quantum mechanics and the challenges in practical applications"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "prompt_0": "What are the differences between plant-based and animal-based protein sources?",
+    "prompt_1": "Compare the differences between plant-based and animal-based protein sources, considering the sources, amino acid profiles, and processing methods.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để so sánh mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "considering the sources, amino acid profiles, and processing methods"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "prompt_0": "How can I develop my critical thinking skills?",
+    "prompt_1": "How can I effectively develop my critical thinking skills?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có một thay đổi rất nhỏ, thêm từ 'effectively' mà không làm thay đổi ý nghĩa cốt lõi của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "effectively develop"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "prompt_0": "What are the major challenges faced by the education sector today?",
+    "prompt_1": "What are the major challenges currently faced by the education sector? Please provide specific examples and detailed explanations for each challenge, including any relevant statistics or impacts.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Depth_Requirement",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp thông tin chi tiết và giải thích cụ thể hơn so với bản gốc.",
+        "Depth_Requirement": "Yêu cầu phân tích sâu hơn bằng cách cung cấp giải thích chi tiết và số liệu thống kê.",
+        "Example_Request": "Yêu cầu bổ sung các ví dụ cụ thể để minh họa cho từng thách thức."
+      },
+      "evidence": {
+        "Intensification": "Please provide specific examples and detailed explanations",
+        "Depth_Requirement": "detailed explanations for each challenge, including any relevant statistics",
+        "Example_Request": "Please provide specific examples"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "prompt_0": "What are the primary factors that influence consumer behavior?",
+    "prompt_1": "What are the primary factors that influence consumer behavior? Please provide a detailed explanation of each factor, including its impact on consumer preferences, needs, wants, and behavior.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp giải thích chi tiết hơn so với bản gốc.",
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần phân tích như tác động đến sở thích, nhu cầu, mong muốn và hành vi của người tiêu dùng."
+      },
+      "evidence": {
+        "Intensification": "Please provide a detailed explanation",
+        "Aspect_Expansion": "including its impact on consumer preferences, needs, wants, and behavior"
+      }
+    }
+  },
+  {
+    "id": 10,
+    "prompt_0": "What are the most effective strategies for conflict resolution in the workplace?",
+    "prompt_1": "Provide specific and effective strategies for conflict resolution in the workplace.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Lời nhắc chuyển từ câu hỏi sang một lệnh trực tiếp, nhiệm vụ cụ thể."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide"
+      }
+    }
+  },
+  {
+    "id": 11,
+    "prompt_0": "What are some potential implications of using a single-use plastic bottle versus a reusable bottle on both the environment and human health?",
+    "prompt_1": "What are the potential implications of using a single-use plastic bottle versus a reusable bottle on both the environment and human health? Please provide detailed information on the environmental impacts, such as plastic waste and pollution, and any health risks associated with the use of single-use plastic bottles.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về tác động môi trường và rủi ro sức khỏe để mở rộng nội dung cần phân tích."
+      },
+      "evidence": {
+        "Aspect_Expansion": "such as plastic waste and pollution, and any health risks"
+      }
+    }
+  },
+  {
+    "id": 12,
+    "prompt_0": "What factors would you consider when designing an inclusive and accessible public transportation system?",
+    "prompt_1": "What factors should be considered when designing an inclusive and accessible public transportation system? Please provide a comprehensive explanation covering aspects such as infrastructure, vehicles, technology, operations, and social inclusion.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể như cơ sở hạ tầng, phương tiện, công nghệ, vận hành và hòa nhập xã hội để mở rộng phạm vi nội dung cần trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "infrastructure, vehicles, technology, operations, and social inclusion"
+      }
+    }
+  },
+  {
+    "id": 13,
+    "prompt_0": "How can governments utilize fiscal and monetary policies to combat economic recessions?",
+    "prompt_1": "How can governments effectively utilize fiscal and monetary policies to combat economic recessions? Please provide a detailed explanation of the various tools and strategies that governments can employ to address economic downturns. Additionally, highlight the important role of fiscal and monetary policies in stabilizing the economy and promoting growth.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu được làm mạnh hơn bằng cách thêm từ 'effectively' để nhấn mạnh tính hiệu quả.",
+        "Aspect_Expansion": "Yêu cầu mở rộng nội dung bằng cách thêm các khía cạnh cụ thể như 'various tools and strategies' và 'role... in stabilizing the economy and promoting growth'.",
+        "Depth_Requirement": "Yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới, được thể hiện qua cụm 'provide a detailed explanation'."
+      },
+      "evidence": {
+        "Intensification": "effectively utilize",
+        "Aspect_Expansion": "various tools and strategies",
+        "Depth_Requirement": "provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 14,
+    "prompt_0": "How do language and cultural barriers affect the way people communicate and form relationships in multicultural societies?",
+    "prompt_1": "How do language and cultural barriers affect the way people communicate and form relationships in multicultural societies? Provide a detailed explanation of the impact of language and cultural barriers on communication and relationship formation in multicultural societies. Consider the challenges faced by individuals in navigating different languages and cultural contexts and the potential consequences of these challenges on communication and relationship building.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp một giải thích chi tiết hơn, làm cho nhiệm vụ trở nên mạnh mẽ và đòi hỏi hơn.",
+        "Depth_Requirement": "Yêu cầu phân tích sâu hơn về tác động của các rào cản mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Intensification": "Provide a detailed explanation",
+        "Depth_Requirement": "Consider the challenges faced by individuals"
+      }
+    }
+  },
+  {
+    "id": 15,
+    "prompt_0": "Describe a scenario where artificial intelligence could be used to improve the quality and efficiency of healthcare delivery.",
+    "prompt_1": "Describe a scenario where artificial intelligence could be used to improve the quality and efficiency of healthcare delivery by automating tasks, enhancing decision-making, and improving communication and collaboration between healthcare providers.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về tự động hóa, hỗ trợ ra quyết định và cải thiện giao tiếp để mở rộng nội dung cần mô tả."
+      },
+      "evidence": {
+        "Aspect_Expansion": "by automating tasks, enhancing decision-making, and improving communication"
+      }
+    }
+  },
+  {
+    "id": 16,
+    "prompt_0": "Explain the process of gene editing using CRISPR-Cas9 technology, and discuss its potential applications and ethical implications.",
+    "prompt_1": "Explain the process of gene editing using CRISPR-Cas9 technology, including the steps involved and the potential applications. Also, discuss the ethical implications associated with gene editing.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh cụ thể về nội dung là 'các bước liên quan' mà lời nhắc gốc không đề cập."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the steps involved"
+      }
+    }
+  },
+  {
+    "id": 17,
+    "prompt_0": "How do vaccinations work to protect individuals and communities from infectious diseases, and what is herd immunity?",
+    "prompt_1": "How do vaccinations work to protect individuals and communities from infectious diseases, and what is herd immunity? Please explain the process of vaccination, including the administration of vaccines and the development of immunity. Additionally, explain the concept of herd immunity and its importance in preventing the spread of infectious diseases.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về quy trình tiêm chủng và tầm quan trọng của miễn dịch cộng đồng.",
+        "Depth_Requirement": "Lời nhắc yêu cầu giải thích chi tiết hơn về quá trình tiêm chủng và khái niệm miễn dịch cộng đồng."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the administration of vaccines and the development of immunity",
+        "Depth_Requirement": "Please explain the process of vaccination"
+      }
+    }
+  },
+  {
+    "id": 18,
+    "prompt_0": "How do social media platforms influence the way people consume and share news, and what are the potential implications for the spread of misinformation?",
+    "prompt_1": "Discuss how social media platforms influence the way people consume and share news, focusing on both positive and negative aspects. Also, elaborate on the potential implications of the spread of misinformation on these platforms.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm vào các khía cạnh cụ thể để phân tích, cụ thể là cả mặt tích cực và tiêu cực.",
+        "Implication_Expansion": "Lời nhắc yêu cầu mở rộng phân tích về các hệ quả hoặc tác động tiềm tàng của một vấn đề."
+      },
+      "evidence": {
+        "Aspect_Expansion": "focusing on both positive and negative aspects",
+        "Implication_Expansion": "elaborate on the potential implications"
+      }
+    }
+  },
+  {
+    "id": 19,
+    "prompt_0": "How do cultural, social, and economic factors influence people's food choices, and how can this knowledge be used to promote healthier diets?",
+    "prompt_1": "How do cultural, social, and economic factors influence people's food choices, and what specific strategies can be used to promote healthier diets?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu lệnh gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "what specific strategies"
+      }
+    }
+  },
+  {
+    "id": 20,
+    "prompt_0": "Explain the process of natural selection and how it contributes to the evolution and adaptation of species.",
+    "prompt_1": "Explain the process of natural selection and its role in the evolution and adaptation of species.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của yêu cầu."
+      },
+      "evidence": {
+        "Minimal_Change": "its role in"
+      }
+    }
+  },
+  {
+    "id": 21,
+    "prompt_0": "How would you introduce yourself as a medieval knight at a royal banquet?",
+    "prompt_1": "How would you introduce yourself as a medieval knight at a royal banquet, emphasizing your rank, achievements, and dedication to the kingdom?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần đề cập mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "emphasizing your rank, achievements, and dedication to the kingdom"
+      }
+    }
+  },
+  {
+    "id": 22,
+    "prompt_0": "As a pirate captain, what would you say to your crew to motivate them to search for hidden treasure?",
+    "prompt_1": "As a pirate captain, deliver a motivational speech to your crew to inspire them to search for hidden treasure.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "deliver a motivational speech"
+      }
+    }
+  },
+  {
+    "id": 23,
+    "prompt_0": "If you were a Shakespearean character, how would you declare your love for someone in a soliloquy?",
+    "prompt_1": "If you were a Shakespearean character, how would you declare your love for someone in a soliloquy? Provide a passionate and heartfelt declaration that showcases the depth of the character's emotions and the intensity of their love.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Intensification": "Lời nhắc làm cho yêu cầu ban đầu mạnh mẽ hơn bằng cách chỉ định mức độ cảm xúc và chiều sâu cần có.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về phong cách và chất lượng của câu trả lời, cụ thể là sự đam mê và chân thành."
+      },
+      "evidence": {
+        "Intensification": "showcases the depth of the character's emotions",
+        "Secondary_Objective": "Provide a passionate and heartfelt declaration"
+      }
+    }
+  },
+  {
+    "id": 24,
+    "prompt_0": "As a superhero, how would you explain your origin story to a curious child?",
+    "prompt_1": "As a superhero, please explain your origin story to a curious child in a simple and coherent manner.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức viết câu trả lời, cụ thể là phải đơn giản và mạch lạc."
+      },
+      "evidence": {
+        "Secondary_Objective": "in a simple and coherent manner"
+      }
+    }
+  },
+  {
+    "id": 25,
+    "prompt_0": "Imagine you are a time traveler from the year 3000. What technological advancements would you tell people about?",
+    "prompt_1": "Imagine you are a time traveler from the year 3000. Please provide a detailed list of technological advancements that you would tell people about, including specific examples and explanations for each advancement. Also, consider mentioning any challenges or ethical considerations associated with these advancements.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion",
+        "Example_Request",
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp một danh sách chi tiết thay vì chỉ nói chung chung.",
+        "Aspect_Expansion": "Bổ sung yêu cầu về việc đưa ra các ví dụ cụ thể và giải thích cho từng tiến bộ.",
+        "Example_Request": "Yêu cầu rõ ràng về việc đưa ra các ví dụ cụ thể.",
+        "Implication_Expansion": "Yêu cầu xem xét các thách thức hoặc khía cạnh đạo đức liên quan."
+      },
+      "evidence": {
+        "Intensification": "provide a detailed list",
+        "Aspect_Expansion": "including specific examples and explanations",
+        "Example_Request": "specific examples",
+        "Implication_Expansion": "challenges or ethical considerations"
+      }
+    }
+  },
+  {
+    "id": 26,
+    "prompt_0": "As a sports commentator, describe the winning play in the final seconds of a championship game.",
+    "prompt_1": "As a sports commentator, vividly describe the winning play in the final seconds of a championship game, including the key movements and actions of the players.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần mô tả mà lời nhắc gốc không có."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the key movements and actions of the players"
+      }
+    }
+  },
+  {
+    "id": 27,
+    "prompt_0": "Pretend to be a world-famous chef. How would you describe your signature dish to a panel of judges?",
+    "prompt_1": "Pretend to be a world-famous chef and describe your signature dish to a panel of judges. Make sure to include details about the ingredients, techniques, and presentation, while highlighting the dish's unique qualities and how it has been received.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Intensification"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần mô tả, chẳng hạn như nguyên liệu, kỹ thuật và cách trình bày.",
+        "Intensification": "Lời nhắc đã tăng cường yêu cầu bằng cách chỉ thị 'Make sure to include' và yêu cầu làm nổi bật các phẩm chất độc đáo cùng cách đón nhận của món ăn."
+      },
+      "evidence": {
+        "Aspect_Expansion": "details about the ingredients, techniques, and presentation",
+        "Intensification": "Make sure to include details"
+      }
+    }
+  },
+  {
+    "id": 28,
+    "prompt_0": "You are a mountain climber reaching the summit of Mount Everest. Describe your emotions and the view from the top.",
+    "prompt_1": "You are a mountain climber reaching the summit of Mount Everest. Describe your emotions and the view from the top.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt nhau, không có thay đổi nào về ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": ""
+      }
+    }
+  },
+  {
+    "id": 29,
+    "prompt_0": "As a space colonist on Mars, describe your daily life and the challenges you face living on another planet.",
+    "prompt_1": "As a space colonist on Mars, please describe your daily life, including the environment, daily activities, communication challenges, and any unique experiences. Additionally, explain the challenges you face living on another planet, including isolation, communication delays, and the lack of resources. Please provide accurate and detailed information while maintaining a positive and hopeful tone.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Đề mục đã thêm các khía cạnh cụ thể như môi trường, hoạt động hàng ngày, thách thức giao tiếp và trải nghiệm độc đáo để mở rộng nội dung.",
+        "Secondary_Objective": "Đề mục đã bổ sung yêu cầu về cách viết, cụ thể là duy trì một giọng điệu tích cực và đầy hy vọng."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the environment, daily activities, communication challenges",
+        "Secondary_Objective": "maintaining a positive and hopeful tone"
+      }
+    }
+  },
+  {
+    "id": 30,
+    "prompt_0": "Pretend to be a character in a post-apocalyptic world. Describe how you survive and the allies you encounter.",
+    "prompt_1": "Pretend to be a character in a post-apocalyptic world and describe how you survive. Encounter allies and form a community to help rebuild and protect each other.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể về việc hình thành cộng đồng để xây dựng lại và bảo vệ lẫn nhau."
+      },
+      "evidence": {
+        "Aspect_Expansion": "form a community to help rebuild and protect each other"
+      }
+    }
+  },
+  {
+    "id": 31,
+    "prompt_0": "How can you determine if a restaurant is popular among locals or mainly attracts tourists, and why might this information be useful?",
+    "prompt_1": "How can you determine if a restaurant is popular among locals or mainly attracts tourists, and what are the main factors to consider when making this determination? Provide specific examples and detailed explanations to support your answer.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các yếu tố cụ thể cần xem xét khi đưa ra đánh giá.",
+        "Example_Request": "Lời nhắc yêu cầu cung cấp các ví dụ cụ thể để minh họa cho câu trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "what are the main factors to consider",
+        "Example_Request": "Provide specific examples"
+      }
+    }
+  },
+  {
+    "id": 32,
+    "prompt_0": "What are some subtle clues that suggest someone is pretending to understand a topic or conversation when they are actually confused or uninformed?",
+    "prompt_1": "What are some subtle clues that suggest someone is pretending to understand a topic or conversation when they are actually confused or uninformed? Please provide a list of signs to look for, including specific examples and explanations for each clue.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt yêu cầu liệt kê các dấu hiệu cụ thể, một khía cạnh nội dung mới không có trong bản gốc.",
+        "Example_Request": "Prompt bổ sung yêu cầu cung cấp các ví dụ cụ thể để minh họa cho nội dung.",
+        "Output_Structuring": "Prompt yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, như một danh sách có giải thích."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Please provide a list of signs to look for",
+        "Example_Request": "including specific examples",
+        "Output_Structuring": "including specific examples and explanations for each clue"
+      }
+    }
+  },
+  {
+    "id": 33,
+    "prompt_0": "Why might someone choose to use a paper map or ask for directions instead of relying on a GPS device or smartphone app?",
+    "prompt_1": "Why might someone choose to use a paper map or ask for directions instead of relying on a GPS device or smartphone app? Provide reasons for the appeal of paper maps and directions, as well as limitations or advantages of GPS devices and smartphone apps.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về sức hấp dẫn của bản đồ giấy và các hạn chế của GPS để mở rộng nội dung cần trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Provide reasons for the appeal of paper maps and directions, as well as limitations or advantages of GPS"
+      }
+    }
+  },
+  {
+    "id": 34,
+    "prompt_0": "How can you determine if a person is genuinely interested in a conversation or simply being polite?",
+    "prompt_1": "How can you determine if a person is genuinely interested in a conversation or simply being polite? Provide specific signs of genuine interest and consider the context of the conversation.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể cần xem xét mà không có trong lời nhắc gốc.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "consider the context of the conversation",
+        "Depth_Requirement": "Provide specific signs of genuine interest"
+      }
+    }
+  },
+  {
+    "id": 35,
+    "prompt_0": "Why might someone prefer to shop at a small, locally-owned business instead of a large chain store, even if the prices are higher?",
+    "prompt_1": "Why might someone prefer to shop at a small, locally-owned business instead of a large chain store, even if the prices are higher? Explain the reasons in terms of personalized service, unique items, and supporting the local economy.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để mở rộng nội dung cần giải thích."
+      },
+      "evidence": {
+        "Aspect_Expansion": "personalized service, unique items, and supporting the local economy"
+      }
+    }
+  },
+  {
+    "id": 36,
+    "prompt_0": "How can you assess the credibility of a source of information, such as a news article or blog post, without relying solely on the reputation of the author or publisher?",
+    "prompt_1": "How can you assess the credibility of a source of information, such as a news article or blog post, without relying solely on the reputation of the author or publisher? Provide specific and practical steps to follow, considering factors like the source's expertise, evidence, and potential biases. Emphasize the importance of critical thinking and skepticism.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp các bước cụ thể và thực tế làm cho nhiệm vụ trở nên mạnh mẽ và đòi hỏi hơn.",
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể cần xem xét, như chuyên môn, bằng chứng và thiên kiến của nguồn."
+      },
+      "evidence": {
+        "Intensification": "Provide specific and practical steps to follow",
+        "Aspect_Expansion": "considering factors like the source's expertise, evidence, and potential biases"
+      }
+    }
+  },
+  {
+    "id": 37,
+    "prompt_0": "Why do some people enjoy the sensation of being scared, such as by watching horror movies or going on roller coasters, while others avoid these experiences?",
+    "prompt_1": "Why do some people enjoy the sensation of being scared, such as by watching horror movies or going on roller coasters, while others avoid these experiences? Provide a detailed explanation for the reasons behind their enjoyment and avoidance.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Depth_Requirement": "Provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 38,
+    "prompt_0": "How can observing the behavior of other people in a social situation provide clues about cultural norms and expectations?",
+    "prompt_1": "How can observing the behavior of other people in a social situation provide clues about cultural norms and expectations? Please explain the specific ways in which observing others' behavior can provide insights into cultural norms and expectations, considering factors like body language, facial expressions, and the behavior of others in similar situations.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để phân tích, như ngôn ngữ cơ thể và biểu cảm khuôn mặt."
+      },
+      "evidence": {
+        "Aspect_Expansion": "considering factors like body language, facial expressions"
+      }
+    }
+  },
+  {
+    "id": 39,
+    "prompt_0": "Do we have a moral obligation to explore space, or should we focus on solving Earth's problems first?",
+    "prompt_1": "Do we have a moral obligation to explore space, or should we focus on solving Earth's problems first? Please provide a well-supported response that considers the reasons for exploring space and solving Earth's problems, and suggests a balanced approach.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể cần xem xét, như lý do khám phá không gian và giải quyết vấn đề Trái Đất.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một phản hồi được hỗ trợ tốt và phân tích sâu hơn mà không thêm nội dung hoàn toàn mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "considers the reasons for exploring space and solving Earth's problems",
+        "Depth_Requirement": "Please provide a well-supported response"
+      }
+    }
+  },
+  {
+    "id": 40,
+    "prompt_0": "In a world where automation is becoming increasingly prevalent, is it more important to prioritize job creation or technological progress?",
+    "prompt_1": "In a world where automation is becoming increasingly prevalent, what are the key factors to consider in prioritizing job creation or technological progress? Provide specific examples and analyze the potential impact of automation on employment and technology.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request",
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể cần xem xét khi ưu tiên.",
+        "Example_Request": "Lời nhắc yêu cầu cung cấp các ví dụ cụ thể.",
+        "Implication_Expansion": "Lời nhắc yêu cầu phân tích tác động tiềm năng của vấn đề."
+      },
+      "evidence": {
+        "Aspect_Expansion": "what are the key factors to consider",
+        "Example_Request": "Provide specific examples",
+        "Implication_Expansion": "analyze the potential impact"
+      }
+    }
+  },
+  {
+    "id": 41,
+    "prompt_0": "How many times does the average human blink in a lifetime? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many times does the average human blink in a lifetime? Provide a step-by-step explanation that starts from the average rate of blinking per minute and includes the conversion to blinks per day, weeks, months, and years. Emphasize the importance of considering the individual's age and health status. Make sure to provide accurate calculations throughout the explanation.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể cần xem xét như tỷ lệ chớp mắt trung bình, chuyển đổi sang các đơn vị thời gian khác nhau, và tầm quan trọng của tuổi tác và tình trạng sức khỏe.",
+        "Output_Structuring": "Prompt yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, bắt buộc giải thích từng bước một.",
+        "Depth_Requirement": "Prompt yêu cầu một giải thích chi tiết và sâu sắc hơn bằng cách đưa ra các bước tính toán cụ thể và nhấn mạnh độ chính xác."
+      },
+      "evidence": {
+        "Aspect_Expansion": "includes the conversion to blinks per day, weeks, months, and years. Emphasize the importance of considering the individual's age and health status.",
+        "Output_Structuring": "Provide a step-by-step explanation",
+        "Depth_Requirement": "Make sure to provide accurate calculations throughout"
+      }
+    }
+  },
+  {
+    "id": 42,
+    "prompt_0": "How many atoms are in a grain of salt? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "Explain how many atoms are in a grain of salt, providing a step-by-step explanation that starts from the molecular formula of salt and uses Avogadro's number to convert the number of atoms to grains. Make sure to provide clear and coherent explanations at each step.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể cần được đề cập, như công thức phân tử của muối và số Avogadro.",
+        "Output_Structuring": "Prompt yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể là giải thích từng bước một."
+      },
+      "evidence": {
+        "Aspect_Expansion": "molecular formula of salt and uses Avogadro's number",
+        "Output_Structuring": "step-by-step explanation"
+      }
+    }
+  },
+  {
+    "id": 43,
+    "prompt_0": "How many lightning strikes occur on Earth each day? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many lightning strikes occur on Earth each day? Provide a step-by-step explanation, starting from the formation of thunderstorms and lightning, and ending with the rare occurrence of lightning strikes causing significant damage. Make sure to provide accurate information and reassure the reader with the safety precautions to take during lightning storms.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt thêm các khía cạnh cụ thể về sự hình thành của giông bão và sét, cũng như các biện pháp an toàn.",
+        "Output_Structuring": "Prompt yêu cầu cấu trúc đầu ra theo từng bước một cách rõ ràng.",
+        "Secondary_Objective": "Prompt bổ sung yêu cầu về việc đảm bảo thông tin chính xác và trấn an người đọc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "starting from the formation of thunderstorms and lightning",
+        "Output_Structuring": "Provide a step-by-step explanation",
+        "Secondary_Objective": "reassure the reader with the safety precautions"
+      }
+    }
+  },
+  {
+    "id": 44,
+    "prompt_0": "How many balloons would it take to lift a house like in the movie \"Up\"? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many balloons would it take to lift a house like in the movie \"Up\"? Provide a step-by-step explanation starting from the given context of the movie. Consider the weight of the house, the size and strength of the balloons, and the air pressure. Make sure to provide accurate calculations to determine the number of balloons needed. Clarify that the explanation is based on the movie \"Up\" and emphasize the importance of professional advice for real-life situations.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể cần xem xét như trọng lượng ngôi nhà, kích thước và sức mạnh của bóng bay, và áp suất không khí.",
+        "Output_Structuring": "Prompt yêu cầu cấu trúc đầu ra theo một trình tự cụ thể, bắt đầu từ ngữ cảnh bộ phim.",
+        "Secondary_Objective": "Prompt thêm mục tiêu về chất lượng câu trả lời, yêu cầu làm rõ tính chất giả định và nhấn mạnh lời khuyên chuyên môn."
+      },
+      "evidence": {
+        "Aspect_Expansion": "weight of the house, the size and strength of the balloons, and the air pressure",
+        "Output_Structuring": "Provide a step-by-step explanation starting from the given context",
+        "Secondary_Objective": "Clarify that the explanation is based on the movie \"Up\" and emphasize the importance of professional advice"
+      }
+    }
+  },
+  {
+    "id": 45,
+    "prompt_0": "How many text messages are sent globally in a minute? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many text messages are sent globally in a minute? Provide a step-by-step explanation that starts from the number of text messages sent in a second and then converts the number to messages per minute. Make sure to provide clear and logical steps in your explanation.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Output_Structuring",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, bắt buộc giải thích theo từng bước.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách chỉ định một phương pháp tính toán cụ thể."
+      },
+      "evidence": {
+        "Output_Structuring": "Provide a step-by-step explanation",
+        "Depth_Requirement": "starts from the number of text messages sent in a second"
+      }
+    }
+  },
+  {
+    "id": 46,
+    "prompt_0": "How many words are spoken daily on Earth? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many words are spoken daily on Earth? Provide a step-by-step explanation, starting from the number of people on Earth, and consider the average number of words spoken per person, the average length of a word, and the total number of words spoken daily. Make sure to provide a final estimate based on the average number of words spoken per person.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể cần xem xét, như số người trên Trái Đất và số từ trung bình mỗi người nói.",
+        "Output_Structuring": "Prompt yêu cầu cấu trúc đầu ra theo một trình tự cụ thể, bắt đầu từ số người và tính toán từng bước."
+      },
+      "evidence": {
+        "Aspect_Expansion": "starting from the number of people on Earth, and consider the average number of words spoken per person",
+        "Output_Structuring": "Provide a step-by-step explanation"
+      }
+    }
+  },
+  {
+    "id": 47,
+    "prompt_0": "How many snowflakes fall during a typical winter? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "Explain how many snowflakes fall during a typical winter by providing a step-by-step explanation that takes the reader through your reasoning. Make sure to consider the specific location, the duration of the winter season, and the average number of snowflakes per storm. Provide clear and logical steps to arrive at your answer.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể cần xem xét, như địa điểm, thời lượng mùa đông và số lượng bông tuyết trung bình mỗi trận bão.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết và sâu sắc hơn bằng cách đưa ra các bước rõ ràng và logic để đi đến câu trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "consider the specific location, the duration of the winter season, and the average number of snowflakes per storm",
+        "Depth_Requirement": "Provide clear and logical steps to arrive at your answer"
+      }
+    }
+  },
+  {
+    "id": 48,
+    "prompt_0": "How many pages are in all the books ever written? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many pages are in all the books ever written? Provide a step-by-step explanation, starting from the number of books in existence and gradually increasing the number of pages in each book. Make sure to provide clear and logical steps in your explanation.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Output_Structuring",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Output_Structuring": "Yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, bắt đầu từ số lượng sách và tăng dần số trang.",
+        "Depth_Requirement": "Yêu cầu giải thích chi tiết và sâu hơn với các bước rõ ràng và logic."
+      },
+      "evidence": {
+        "Output_Structuring": "starting from the number of books",
+        "Depth_Requirement": "clear and logical steps"
+      }
+    }
+  },
+  {
+    "id": 49,
+    "prompt_0": "How many times has the Earth orbited the Sun since the beginning of life? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many times has the Earth orbited the Sun since the beginning of life? Please provide a step-by-step explanation, starting from the formation of the Earth and ending at the present day. Make sure to provide accurate and coherent explanations at each step.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Depth_Requirement",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết và chính xác hơn về quá trình từ khi Trái Đất hình thành đến nay.",
+        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời phải được trình bày theo một cấu trúc cụ thể, bắt đầu từ sự hình thành Trái Đất."
+      },
+      "evidence": {
+        "Depth_Requirement": "starting from the formation of the Earth",
+        "Output_Structuring": "Please provide a step-by-step explanation"
+      }
+    }
+  },
+  {
+    "id": 50,
+    "prompt_0": "How many songs have been recorded throughout history? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
+    "prompt_1": "How many songs have been recorded throughout history? Provide a step-by-step explanation, starting from the earliest known recorded songs and moving forward in time. Include specific examples of well-known songs from different genres and eras to support your answer. Make sure to provide a clear and logical progression of songs, showcasing the growth and evolution of music over time.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về lịch sử, thể loại và sự phát triển của âm nhạc.",
+        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, theo trình tự thời gian.",
+        "Example_Request": "Lời nhắc yêu cầu đưa ra các ví dụ cụ thể để minh họa cho nội dung."
+      },
+      "evidence": {
+        "Aspect_Expansion": "starting from the earliest known recorded songs",
+        "Output_Structuring": "Provide a step-by-step explanation",
+        "Example_Request": "Include specific examples of well-known songs"
+      }
+    }
+  },
+  {
+    "id": 51,
+    "prompt_0": "What if the Internet had been invented during the Renaissance period?",
+    "prompt_1": "What would have been the impact of the Internet on society and culture during the Renaissance period?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc văn hóa của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the impact of the Internet on society and culture"
+      }
+    }
+  },
+  {
+    "id": 52,
+    "prompt_0": "What if the Aztecs had successfully repelled the Spanish conquistadors?",
+    "prompt_1": "What would have been the consequences if the Aztecs had successfully repelled the Spanish conquistadors?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "consequences"
+      }
+    }
+  },
+  {
+    "id": 53,
+    "prompt_0": "What if the Black Death had not occurred in the 14th century?",
+    "prompt_1": "What would have been the consequences of the Black Death not occurring in the 14th century?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc ảnh hưởng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the consequences of"
+      }
+    }
+  },
+  {
+    "id": 54,
+    "prompt_0": "What if Isaac Newton had focused on biology instead of physics?",
+    "prompt_1": "What would have been the consequences if Isaac Newton had focused on biology instead of physics?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Lời nhắc yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the consequences"
+      }
+    }
+  },
+  {
+    "id": 55,
+    "prompt_0": "What if the Beatles had never formed as a band?",
+    "prompt_1": "What would have been the impact of the Beatles never forming as a band?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc ảnh hưởng lâu dài của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the impact of"
+      }
+    }
+  },
+  {
+    "id": 56,
+    "prompt_0": "What if Alan Turing had not cracked the Enigma code during World War II?",
+    "prompt_1": "What would have been the consequences if Alan Turing had not cracked the Enigma code during World War II?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Lời nhắc yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "consequences"
+      }
+    }
+  },
+  {
+    "id": 57,
+    "prompt_0": "What if the Suez Canal had never been constructed?",
+    "prompt_1": "What would have been the major consequences of the Suez Canal's construction?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "major consequences"
+      }
+    }
+  },
+  {
+    "id": 58,
+    "prompt_0": "What if the Maya civilization had never mysteriously collapsed?",
+    "prompt_1": "What might have been the consequences if the Maya civilization had never mysteriously collapsed?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Lời nhắc yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the consequences"
+      }
+    }
+  },
+  {
+    "id": 59,
+    "prompt_0": "What if Christopher Columbus had not discovered the Americas?",
+    "prompt_1": "What would have been the impact of Christopher Columbus's discovery of the Americas?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc ảnh hưởng dài hạn của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the impact of"
+      }
+    }
+  },
+  {
+    "id": 60,
+    "prompt_0": "What if Vincent van Gogh had been a successful artist during his lifetime?",
+    "prompt_1": "What would have been the impact of Vincent van Gogh's success as an artist during his lifetime?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc ảnh hưởng lâu dài của vấn đề."
+      },
+      "evidence": {
+        "Implication_Expansion": "the impact of"
+      }
+    }
+  },
+  {
+    "id": 61,
+    "prompt_0": "Develop a C++ program that reads a text file line by line and counts the number of occurrences of a specific word in the file.",
+    "prompt_1": "Develop a C++ program that reads a text file line by line and counts the number of occurrences of a specific word in the file. Make sure to include the necessary include statements and provide a detailed explanation of the program's functionality. Additionally, you can suggest ways to handle common characters like spaces and punctuation, and offer to answer any further questions.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Đề xuất đã thêm các khía cạnh cụ thể mới như xử lý ký tự và trả lời câu hỏi.",
+        "Depth_Requirement": "Đề xuất yêu cầu giải thích chi tiết hơn về chức năng của chương trình."
+      },
+      "evidence": {
+        "Aspect_Expansion": "handle common characters like spaces and punctuation",
+        "Depth_Requirement": "provide a detailed explanation of the program's functionality"
+      }
+    }
+  },
+  {
+    "id": 62,
+    "prompt_0": "Implement a Python function to find the longest common subsequence of two input strings using dynamic programming.",
+    "prompt_1": "Implement a Python function to find the longest common subsequence of two input strings using dynamic programming. Use the dynamic programming algorithm described in the Wikipedia article on the longest common subsequence. Make sure to include the necessary input parameters and return the maximum length of the common subsequence as the output.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt thêm vào các khía cạnh cụ thể về thuật toán và yêu cầu đầu ra mà bản gốc không có.",
+        "Depth_Requirement": "Prompt yêu cầu giải thích chi tiết hơn về cách thức thực hiện và kết quả cụ thể."
+      },
+      "evidence": {
+        "Aspect_Expansion": "algorithm described in the Wikipedia article",
+        "Depth_Requirement": "return the maximum length of the common subsequence"
+      }
+    }
+  },
+  {
+    "id": 63,
+    "prompt_0": "Implement a regular expression in Python to validate an email address.",
+    "prompt_1": "Implement a regular expression in Python to validate an email address using regular expressions. Make sure the regular expression follows the format `^[a-zA-Z0-9_]` and provide an explanation of its purpose and usage. Also, include an example of how to use the regular expression to validate an email address in Python.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể về định dạng và giải thích cho biểu thức chính quy, vốn không có trong prompt gốc.",
+        "Example_Request": "Prompt yêu cầu cung cấp một ví dụ minh họa cụ thể về cách sử dụng biểu thức chính quy."
+      },
+      "evidence": {
+        "Aspect_Expansion": "follows the format `^[a-zA-Z0-9_]` and provide an explanation",
+        "Example_Request": "include an example of how to use"
+      }
+    }
+  },
+  {
+    "id": 64,
+    "prompt_0": "Write a program to find the nth Fibonacci number using dynamic programming.",
+    "prompt_1": "Write a program using dynamic programming to find the nth Fibonacci number. Make sure to explain each step of the program and provide an example output.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Depth_Requirement",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu giải thích chi tiết hơn cho từng bước của chương trình.",
+        "Example_Request": "Yêu cầu cung cấp một ví dụ đầu ra cụ thể."
+      },
+      "evidence": {
+        "Depth_Requirement": "explain each step of the program",
+        "Example_Request": "provide an example output"
+      }
+    }
+  },
+  {
+    "id": 65,
+    "prompt_0": "Implement a binary search algorithm to find a specific element in a sorted array.",
+    "prompt_1": "Implement the binary search algorithm to find a specific element in a sorted array. Make sure to include the necessary input parameters and describe each step of the algorithm. Also, provide an example implementation in Python.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về tham số đầu vào và mô tả từng bước của thuật toán.",
+        "Example_Request": "Lời nhắc yêu cầu cung cấp một ví dụ minh họa cụ thể cho nội dung."
+      },
+      "evidence": {
+        "Aspect_Expansion": "include the necessary input parameters and describe each step",
+        "Example_Request": "provide an example implementation in Python"
+      }
+    }
+  },
+  {
+    "id": 66,
+    "prompt_0": "Implement a queue data structure using two stacks in Python.",
+    "prompt_1": "Implement a queue data structure using two stacks in Python. Provide a clear explanation of the implementation and include code examples for the add, remove, and display methods.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần trình bày mà không có trong lời nhắc gốc.",
+        "Example_Request": "Lời nhắc yêu cầu cung cấp các ví dụ cụ thể để minh họa cho nội dung."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Provide a clear explanation of the implementation",
+        "Example_Request": "include code examples for the add, remove, and display methods"
+      }
+    }
+  },
+  {
+    "id": 67,
+    "prompt_0": "Implement a program to find the common elements in two arrays without using any extra data structures.",
+    "prompt_1": "Implement a program in C++ to find the common elements in two arrays without using any extra data structures. Make sure to include all necessary code and explanations to solve the problem.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh cụ thể về ngôn ngữ lập trình (C++) mà lời nhắc gốc không đề cập.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết và đầy đủ hơn cho giải pháp."
+      },
+      "evidence": {
+        "Aspect_Expansion": "in C++",
+        "Depth_Requirement": "include all necessary code and explanations"
+      }
+    }
+  },
+  {
+    "id": 68,
+    "prompt_0": "Given that f(x) = 5x^3 - 2x + 3, find the value of f(2).",
+    "prompt_1": "Given the function f(x) = 5x^3 - 2x + 3, calculate f(2).",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "calculate f(2)"
+      }
+    }
+  },
+  {
+    "id": 69,
+    "prompt_0": "Solve for x in the equation 3x + 10 = 5(x - 2).",
+    "prompt_1": "Solve the equation 3x + 10 = 5(x - 2) by factoring.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Scope_Narrowing"
+      ],
+      "descriptions": {
+        "Scope_Narrowing": "Lời nhắc giới hạn phương pháp giải quyết vấn đề, yêu cầu sử dụng một kỹ thuật cụ thể."
+      },
+      "evidence": {
+        "Scope_Narrowing": "by factoring"
+      }
+    }
+  },
+  {
+    "id": 70,
+    "prompt_0": "If the endpoints of a line segment are (2, -2) and (10, 4), what is the length of the segment?",
+    "prompt_1": "Calculate the length of a line segment with endpoints (2, -2) and (10, 4).",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Calculate the length"
+      }
+    }
+  },
+  {
+    "id": 71,
+    "prompt_0": "Can you help me write a formal email to a potential business partner proposing a joint venture?",
+    "prompt_1": "Write a formal email to a potential business partner proposing a joint venture. Include a detailed proposal outlining the benefits of the joint venture, a thorough analysis of the market, and a request for a response indicating interest or concerns. Use a professional tone and structure throughout the email.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, nhiệm vụ.",
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh, chi tiết hoặc chủ đề cụ thể không có trong lời nhắc gốc.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách thức viết câu trả lời, như phong cách hoặc giọng điệu."
+      },
+      "evidence": {
+        "Instructional_Framing": "Write a formal email",
+        "Aspect_Expansion": "Include a detailed proposal...analysis of the market",
+        "Secondary_Objective": "Use a professional tone and structure"
+      }
+    }
+  },
+  {
+    "id": 72,
+    "prompt_0": "Can you help me write a resignation letter to my current employer, while leaving on good terms and expressing gratitude for the opportunities provided?",
+    "prompt_1": "Please assist me in writing a resignation letter to my current employer, expressing gratitude for the opportunities provided and leaving on good terms.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please assist me in writing"
+      }
+    }
+  },
+  {
+    "id": 73,
+    "prompt_0": "Use an appropriate format to structure a formal letter of recommendation for a student applying to a prestigious graduate program in computer science.",
+    "prompt_1": "Use a formal and structured format to write a letter of recommendation for a student applying to a prestigious graduate program in computer science. Include the student's name and program applied to, expressing the student's interest and qualifications for the program. Discuss the student's background and accomplishments, including their undergraduate program and any relevant work experience. Highlight the student's personal qualities, such as dedication, creativity, and collaboration. Conclude the letter by expressing confidence in the student's ability to succeed in the graduate program and wishing them well in their future studies.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh nội dung cụ thể như tên sinh viên, chương trình, sở thích, thành tích, phẩm chất cá nhân và lời kết luận.",
+        "Output_Structuring": "Lời nhắc yêu cầu cấu trúc đầu ra theo một định dạng cụ thể, bao gồm các phần được liệt kê rõ ràng."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Include the student's name and program applied to",
+        "Output_Structuring": "Use a formal and structured format"
+      }
+    }
+  },
+  {
+    "id": 74,
+    "prompt_0": "Write a compelling product launch announcement email to inform our customers of our new software solution.",
+    "prompt_1": "Write an engaging and informative product launch announcement email to customers about our new software solution. Include details about the features and benefits of the software, as well as the impact it will have on the customer's experience. Emphasize the importance of the product and how it will help customers achieve more. End the email with gratitude and mention the team's hard work in creating the software.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi cao hơn mà không thay đổi nội dung chính.",
+        "Aspect_Expansion": "Bổ sung các khía cạnh, chi tiết hoặc chủ đề cụ thể không có trong lời nhắc gốc.",
+        "Secondary_Objective": "Thêm yêu cầu về cách thức viết câu trả lời, như phong cách, giọng điệu hoặc sự phù hợp với người đọc."
+      },
+      "evidence": {
+        "Intensification": "engaging and informative",
+        "Aspect_Expansion": "Include details about the features and benefits",
+        "Secondary_Objective": "Write an engaging and informative"
+      }
+    }
+  },
+  {
+    "id": 75,
+    "prompt_0": "Draft an apology email to a customer who experienced a delay in their order, and provide reassurance that the issue has been resolved.",
+    "prompt_1": "Draft an apology email to a customer who experienced a delay in their order, and provide reassurance that the issue has been resolved. Include steps taken to prevent future delays and offer compensation or a gesture of goodwill. Be professional and ensure the email is respectful and harmless.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần bao gồm mà không có trong lời nhắc gốc.",
+        "Secondary_Objective": "Lời nhắc đã bổ sung các yêu cầu về cách thức viết câu trả lời, như phong cách và giọng điệu."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Include steps taken to prevent future delays and offer compensation",
+        "Secondary_Objective": "Be professional and ensure the email is respectful and harmless"
+      }
+    }
+  },
+  {
+    "id": 76,
+    "prompt_0": "Write a script for a YouTube video exploring the history and cultural significance of jazz.",
+    "prompt_1": "Write a script for a YouTube video exploring the history and cultural significance of jazz. Provide an in-depth exploration, including the origins of jazz in Africa, the influence of European classical music, the development of jazz in the USA, and its role in different cultures around the world. Highlight key historical figures, such as Louis Armstrong, Ella Fitzgerald, and Billie Holiday, and discuss the evolution of jazz through different eras, such as the swing era and the fusion era. Explore the cultural significance of jazz, including its role in social and political movements, its impact on popular music, and its enduring legacy. Ensure the script is accurate, informative, and coherent, providing a detailed exploration of the history and cultural significance of jazz.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể như nguồn gốc, ảnh hưởng, sự phát triển và vai trò văn hóa của jazz.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một khám phá chuyên sâu và chi tiết hơn về chủ đề.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về chất lượng đầu ra như tính chính xác, thông tin và mạch lạc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "origins of jazz in Africa, the influence of European classical music",
+        "Depth_Requirement": "Provide an in-depth exploration",
+        "Secondary_Objective": "Ensure the script is accurate, informative, and coherent"
+      }
+    }
+  },
+  {
+    "id": 77,
+    "prompt_0": "Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.",
+    "prompt_1": "Compose a detailed and engaging travel blog post about a recent trip to Hawaii, focusing on cultural experiences and must-see attractions. Provide specific examples and personal experiences, showcasing the beauty of the islands and the warmth of the people. Ensure the response is accurate, helpful, and harmless.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu làm cho nhiệm vụ mạnh mẽ hơn hoặc đòi hỏi cao hơn.",
+        "Aspect_Expansion": "Thêm các khía cạnh, chiều kích hoặc chủ đề cụ thể không có trong lời nhắc gốc.",
+        "Secondary_Objective": "Bổ sung cách thức viết câu trả lời, như phong cách, giọng điệu, hoặc tính phù hợp cho người đọc."
+      },
+      "evidence": {
+        "Intensification": "detailed and engaging",
+        "Aspect_Expansion": "Provide specific examples and personal experiences",
+        "Secondary_Objective": "accurate, helpful, and harmless"
+      }
+    }
+  },
+  {
+    "id": 78,
+    "prompt_0": "Write a captivating movie review for a recently released science fiction film, discussing its plot, characters, and special effects.",
+    "prompt_1": "Write a captivating movie review for a recently released science fiction film, discussing its plot, characters, and special effects. Ensure to provide accurate and detailed information without including any spoilers.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách câu trả lời nên được viết, cụ thể là phải chính xác và chi tiết mà không tiết lộ thông tin quan trọng."
+      },
+      "evidence": {
+        "Secondary_Objective": "accurate and detailed information without including any spoilers"
+      }
+    }
+  },
+  {
+    "id": 79,
+    "prompt_0": "Structure a podcast script for an episode discussing the influence of streaming platforms on the music industry.",
+    "prompt_1": "Structure a podcast script for an episode discussing the influence of streaming platforms on the music industry, including the impact on consumer behavior, the democratization of music production, and the potential loss of intimacy in music. Provide specific examples and analyze the effects of streaming platforms on the industry. Conclude the episode by discussing the future of music streaming and its continued influence on the industry.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request",
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt đã thêm các khía cạnh cụ thể để thảo luận, bao gồm hành vi người tiêu dùng, sự dân chủ hóa sản xuất âm nhạc và sự mất mát sự thân mật.",
+        "Example_Request": "Prompt yêu cầu cung cấp các ví dụ cụ thể để minh họa cho nội dung.",
+        "Implication_Expansion": "Prompt yêu cầu phân tích các tác động và thảo luận về tương lai của vấn đề."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the impact on consumer behavior, the democratization of music production, and the potential loss of intimacy",
+        "Example_Request": "Provide specific examples",
+        "Implication_Expansion": "analyze the effects of streaming platforms on the industry. Conclude the episode by discussing the future"
+      }
+    }
+  },
+  {
+    "id": 80,
+    "prompt_0": "Write a symphony concert review, discussing the orchestra's performance and overall audience experience.",
+    "prompt_1": "Write a symphony concert review, discussing the orchestra's performance and overall audience experience. Provide specific examples and analysis of the orchestra's playing, addressing aspects such as technique, interpretation, and audience engagement. Ensure the review is informative, insightful, and helps to create a vivid and engaging audience experience.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể cần thảo luận như kỹ thuật, diễn giải và sự tương tác với khán giả.",
+        "Secondary_Objective": "Lời nhắc yêu cầu bài đánh giá phải mang tính thông tin, sâu sắc và tạo ra trải nghiệm sống động, hấp dẫn."
+      },
+      "evidence": {
+        "Aspect_Expansion": "addressing aspects such as technique, interpretation, and audience engagement",
+        "Secondary_Objective": "informative, insightful, and helps to create a vivid and engaging"
+      }
+    }
+  }
+]

@@ -9,7 +9,7 @@ src/my-train/optimized_prompts_llama2_7b_res.jsonl
 
 src/__pycache__/
 
-*.png
+# *.png
 
 *.jsonl
 

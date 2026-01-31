@@ -1,0 +1,3547 @@
+[
+  {
+    "id": 1,
+    "prompt_0": "Who owns the largest share of the Vancouver Whitecaps FC?",
+    "prompt_1": "Who owns the largest share of the Vancouver Whitecaps FC? Please provide the name of the owner and any relevant details.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Please provide the name of the owner and any relevant details"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "prompt_0": "Is the Jakobshorn in Davos worth a trip",
+    "prompt_1": "What are the key features and attractions of the Jakobshorn in Davos that make it worth a trip?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "key features and attractions"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "prompt_0": "List all the people mentioned in this paragraph on the history of Unix",
+    "prompt_1": "List all the people mentioned in this paragraph on the history of Unix, providing accurate and relevant information for each person mentioned.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về chất lượng của câu trả lời, cụ thể là tính chính xác và sự liên quan của thông tin."
+      },
+      "evidence": {
+        "Secondary_Objective": "providing accurate and relevant information"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "prompt_0": "What are the best types of pets for a family with kids?",
+    "prompt_1": "What are the best types of pets for a family with kids? Please recommend specific pets that are appropriate for families with kids, considering their energy levels, space requirements, and interests.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể để xem xét khi đề xuất vật nuôi."
+      },
+      "evidence": {
+        "Aspect_Expansion": "considering their energy levels, space requirements, and interests"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "prompt_0": "In what year were the first Air Jordan sneakers released?",
+    "prompt_1": "Provide the release year of the first Air Jordan sneakers.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Verb_Substitution",
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi.",
+        "Instructional_Framing": "Cấu trúc chính của lời nhắc được chuyển từ một câu hỏi sang một lệnh trực tiếp, mang tính định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Verb_Substitution": "Provide the release year",
+        "Instructional_Framing": "Provide the release year"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "prompt_0": "Who created Final Fantasy?",
+    "prompt_1": "Please provide information about the creators of Final Fantasy.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide information"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "prompt_0": "What is the tallest building in Chicago?",
+    "prompt_1": "Please provide the name and location of the current tallest building in Chicago. You can also include any interesting facts about the building.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ cụ thể.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Aspect_Expansion": "name and location"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "prompt_0": "What's a gaya melon? How does it taste like?",
+    "prompt_1": "What does a gaya melon taste like? Please provide a detailed description of the flavor and texture.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu cung cấp một mô tả chi tiết hơn về hương vị và kết cấu."
+      },
+      "evidence": {
+        "Depth_Requirement": "Please provide a detailed description"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "prompt_0": "Given this paragraph about magnesium, what is the boiling point of magnesium in celsius?",
+    "prompt_1": "What is the boiling point of magnesium in Celsius? Please provide a direct answer.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide a direct answer"
+      }
+    }
+  },
+  {
+    "id": 10,
+    "prompt_0": "From the provided paragraph, write a bulleted list of how cheeses can be grouped.",
+    "prompt_1": "From the provided paragraph, write a bulleted list of how cheeses can be grouped based on their characteristics.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Scope_Narrowing"
+      ],
+      "descriptions": {
+        "Scope_Narrowing": "Lời nhắc giới hạn chủ đề hoặc ngữ cảnh để thu hẹp phạm vi câu trả lời."
+      },
+      "evidence": {
+        "Scope_Narrowing": "based on their characteristics"
+      }
+    }
+  },
+  {
+    "id": 11,
+    "prompt_0": "How do you know if a chicken breast is fully cooked?",
+    "prompt_1": "How can you determine if a chicken breast is fully cooked? Please provide multiple methods to check for doneness.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về phương pháp kiểm tra độ chín mà lời nhắc gốc không có.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách cung cấp nhiều phương pháp."
+      },
+      "evidence": {
+        "Aspect_Expansion": "multiple methods to check for doneness",
+        "Depth_Requirement": "Please provide multiple methods"
+      }
+    }
+  },
+  {
+    "id": 12,
+    "prompt_0": "Is the sun a star or a planet?",
+    "prompt_1": "Is the sun a star or a planet? Please provide a detailed explanation to support your answer.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Depth_Requirement": "Please provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 13,
+    "prompt_0": "Extract the shows that Bini the Bunny was featured. Separate them with a comma.",
+    "prompt_1": "Extract the shows that Bini the Bunny was featured on and separate them with a comma. Provide a list of shows, including the name of the show and any relevant details or exceptions.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần trích xuất, chẳng hạn như chi tiết hoặc ngoại lệ liên quan.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the name of the show and any relevant details or exceptions",
+        "Depth_Requirement": "Provide a list of shows, including the name of the show and any relevant details or exceptions"
+      }
+    }
+  },
+  {
+    "id": 14,
+    "prompt_0": "What is a 4x4?",
+    "prompt_1": "What is a 4x4? Please provide a detailed explanation.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp giải thích chi tiết hơn so với bản gốc."
+      },
+      "evidence": {
+        "Intensification": "Please provide a detailed explanation."
+      }
+    }
+  },
+  {
+    "id": 15,
+    "prompt_0": "What are some of the pros of subleasing?",
+    "prompt_1": "What are the pros of subleasing? Please provide a detailed response that explains the advantages of subleasing, including the potential benefits for the sublessee, sublandlord, and the overall efficiency of the rental market. Please also mention the possibility of subleasing with an option to buy.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp một phản hồi chi tiết hơn và giải thích kỹ lưỡng hơn.",
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được đề cập, như lợi ích cho các bên liên quan và một tùy chọn mua lại."
+      },
+      "evidence": {
+        "Intensification": "Please provide a detailed response",
+        "Aspect_Expansion": "including the potential benefits for the sublessee, sublandlord"
+      }
+    }
+  },
+  {
+    "id": 16,
+    "prompt_0": "Tell me about Hong Kong",
+    "prompt_1": "Please provide a comprehensive overview of Hong Kong, including its location, key facts, history, culture, and government.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, có định hướng nhiệm vụ.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể mà không có trong câu lệnh gốc."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Aspect_Expansion": "including its location, key facts, history, culture, and government"
+      }
+    }
+  },
+  {
+    "id": 17,
+    "prompt_0": "What is one of your favorite color?",
+    "prompt_1": "Please provide a response explaining that as a language model, you don't have personal preferences or emotions, but the user can ask you to adopt a certain personality for friendly conversation.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ.",
+        "Secondary_Objective": "Câu lệnh bổ sung cách thức câu trả lời nên được viết, cụ thể là phải giải thích một khía cạnh nhất định."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide a response",
+        "Secondary_Objective": "explaining that as a language model, you don't have personal preferences"
+      }
+    }
+  },
+  {
+    "id": 18,
+    "prompt_0": "What are the names of Tata trusts which Ratan Tata heads?",
+    "prompt_1": "What are the names of the Tata trusts that Ratan Tata heads?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "the Tata trusts that"
+      }
+    }
+  },
+  {
+    "id": 19,
+    "prompt_0": "Who was Hamish",
+    "prompt_1": "Please provide more context about Hamish, such as his age, occupation, or other personal information.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về thông tin cá nhân như tuổi tác, nghề nghiệp."
+      },
+      "evidence": {
+        "Aspect_Expansion": "such as his age, occupation, or other personal information"
+      }
+    }
+  },
+  {
+    "id": 20,
+    "prompt_0": "Which country has the most inhabitants?",
+    "prompt_1": "Which country has the highest population in the world?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi nhỏ về từ ngữ mà không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "highest population in the world"
+      }
+    }
+  },
+  {
+    "id": 21,
+    "prompt_0": "What caused Covid 19?",
+    "prompt_1": "What is the origin and cause of Covid-19?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể ('origin') không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "origin and cause"
+      }
+    }
+  },
+  {
+    "id": 22,
+    "prompt_0": "Who finally conquered Constantinople?",
+    "prompt_1": "Who finally conquered Constantinople?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt nhau, không có sự thay đổi nào về ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Who finally conquered Constantinople?"
+      }
+    }
+  },
+  {
+    "id": 23,
+    "prompt_0": "Which of the following items are types of books: novels, biographies, historical fiction, reference texts, graphic novels, newspapers, magazines, flyers, pamphlets, pocket dictionaries.",
+    "prompt_1": "Identify the types of books among the following items: novels, biographies, historical fiction, reference texts, graphic novels, newspapers, magazines, flyers, pamphlets, pocket dictionaries.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt với lời nhắc gốc, chỉ thay đổi cách diễn đạt nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Identify the types of books"
+      }
+    }
+  },
+  {
+    "id": 24,
+    "prompt_0": "Write an friendly, convincing e-mail to my landlord asking whether I can get a dog.",
+    "prompt_1": "Write a friendly and convincing email to my landlord, requesting permission to have a dog in my apartment. Please provide specific reasons and assure them that I will abide by the rules and regulations of the apartment complex. Thank you!",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần có trong email, như lý do và cam kết tuân thủ quy định.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về phong cách và giọng điệu của câu trả lời, cụ thể là thân thiện và thuyết phục."
+      },
+      "evidence": {
+        "Aspect_Expansion": "provide specific reasons and assure them",
+        "Secondary_Objective": "Write a friendly and convincing email"
+      }
+    }
+  },
+  {
+    "id": 25,
+    "prompt_0": "Make a poem about color and style",
+    "prompt_1": "Make a descriptive and creative poem about the beauty of colors and the way they are reflected in fashion.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu đã được tăng cường để đòi hỏi một bài thơ mang tính mô tả và sáng tạo hơn.",
+        "Aspect_Expansion": "Đã bổ sung khía cạnh cụ thể về cách màu sắc được phản ánh trong thời trang."
+      },
+      "evidence": {
+        "Intensification": "descriptive and creative",
+        "Aspect_Expansion": "reflected in fashion"
+      }
+    }
+  },
+  {
+    "id": 26,
+    "prompt_0": "Tell me about Holi and why so many people in the world celebrate it?",
+    "prompt_1": "Explain the significance of Holi and its widespread celebration around the world.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Verb_Substitution"
+      ],
+      "descriptions": {
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi."
+      },
+      "evidence": {
+        "Verb_Substitution": "Explain the significance"
+      }
+    }
+  },
+  {
+    "id": 27,
+    "prompt_0": "Classify each of the following animals as exoskeleton or endoskeleton: grasshopper, fish, spider, scorpion, ant, monkey",
+    "prompt_1": "Classify each of the following animals as exoskeleton or endoskeleton: grasshopper, fish, spider, scorpion, ant, monkey",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu lệnh gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Classify each of the following animals"
+      }
+    }
+  },
+  {
+    "id": 28,
+    "prompt_0": "Which tastes better, red or green grapes?",
+    "prompt_1": "Which tastes better, red or green grapes? Please provide a detailed comparison of the characteristics and differences between red and green grapes.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt thêm vào các khía cạnh cụ thể như đặc điểm và sự khác biệt để so sánh.",
+        "Depth_Requirement": "Prompt yêu cầu một sự so sánh chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "characteristics and differences between red and green grapes",
+        "Depth_Requirement": "Please provide a detailed comparison"
+      }
+    }
+  },
+  {
+    "id": 29,
+    "prompt_0": "I'm confused as to which of these food staples have gluten and which are gluten-free. From this list can you tell me which is which: Pasta, rice, potatoes, noodles and bread.",
+    "prompt_1": "Can you clarify whether the following food staples contain gluten or are gluten-free? Pasta, rice, potatoes, noodles, and bread.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Can you clarify whether"
+      }
+    }
+  },
+  {
+    "id": 30,
+    "prompt_0": "How do I travel from SF to Aspen ski resorts?",
+    "prompt_1": "What are the different transportation options to travel from San Francisco to Aspen ski resorts?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm vào các khía cạnh cụ thể về nội dung mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "different transportation options"
+      }
+    }
+  },
+  {
+    "id": 31,
+    "prompt_0": "What is the capital of the Netherlands?",
+    "prompt_1": "Please provide the accurate capital city of the Netherlands.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 32,
+    "prompt_0": "Classify each of these as extinct, not extinct, or neither: Mythosaur, Triceratops, Dumbo Octopus, Dodo, Tiger, Lion turtle, Megalodon, Dire wolf, Pegasus, Seahorse",
+    "prompt_1": "Classify each of the following as extinct, not extinct, or neither: Mythosaur, Triceratops, Dumbo Octopus, Dodo, Tiger, Lion turtle, Megalodon, Dire wolf, Pegasus, Seahorse.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ về từ ngữ hoặc dấu câu mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Classify each of the following as"
+      }
+    }
+  },
+  {
+    "id": 33,
+    "prompt_0": "What is the fastest car?",
+    "prompt_1": "What is the current fastest car in the world? Please provide accurate information and acknowledge any potential mistakes.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu được tăng cường bằng cách thêm từ 'current' và 'accurate information' để làm cho nhiệm vụ chính xác và cập nhật hơn.",
+        "Secondary_Objective": "Bổ sung yêu cầu về cách viết câu trả lời, cụ thể là thừa nhận bất kỳ sai sót tiềm ẩn nào."
+      },
+      "evidence": {
+        "Intensification": "current fastest car",
+        "Secondary_Objective": "acknowledge any potential mistakes"
+      }
+    }
+  },
+  {
+    "id": 34,
+    "prompt_0": "Who is Manchester United's current manager?",
+    "prompt_1": "Who is Manchester United's current manager and what is his background?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể về nền tảng của người quản lý."
+      },
+      "evidence": {
+        "Aspect_Expansion": "and what is his background"
+      }
+    }
+  },
+  {
+    "id": 35,
+    "prompt_0": "What can be done about NRA and why gun control is such an issue?",
+    "prompt_1": "What are the main arguments for and against gun control, and why is it such an issue?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "arguments for and against"
+      }
+    }
+  },
+  {
+    "id": 36,
+    "prompt_0": "Out of these animals, categorize them as either 'small' or 'large: A horse, a mouse, an elephant, a snake, and a whale.",
+    "prompt_1": "Out of these animals, categorize them as either 'small' or 'large': A horse, a mouse, an elephant, a snake, and a whale.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có một thay đổi rất nhỏ về dấu câu, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "':' (dấu hai chấm)"
+      }
+    }
+  },
+  {
+    "id": 37,
+    "prompt_0": "Tell me the capital of the UK. Then tell me a famous song about that city.",
+    "prompt_1": "Please provide the capital city of the UK and then share a famous song about that city.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt, chỉ với những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 38,
+    "prompt_0": "I am planning a trip to Spain. I am interested in culture, museums and art, but I also want to go to the beach and have great food. What are 5 places that I should definitely visit?",
+    "prompt_1": "I am planning a trip to Spain and I am interested in culture, museums and art, but I also want to go to the beach and have great food. Please suggest 5 places to visit in Spain that cover a range of cultural attractions, museums, and art, while also offering beach and food options. Please provide some information about each place.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please suggest 5 places to visit in Spain"
+      }
+    }
+  },
+  {
+    "id": 39,
+    "prompt_0": "Extract best tourist attractions in Karnataka",
+    "prompt_1": "Please provide a list of the best tourist attractions in Karnataka.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, nhiệm vụ định hướng."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 40,
+    "prompt_0": "What was the Counter Reformation?",
+    "prompt_1": "Please explain the Counter-Reformation, highlighting its key features and its impact on the Catholic Church.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion",
+        "Implication_Expansion"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một yêu cầu nhiệm vụ trực tiếp.",
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể cần được giải thích.",
+        "Implication_Expansion": "Lời nhắc yêu cầu phân tích tác động hoặc ảnh hưởng của vấn đề."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please explain",
+        "Aspect_Expansion": "highlighting its key features",
+        "Implication_Expansion": "its impact on the Catholic Church"
+      }
+    }
+  },
+  {
+    "id": 41,
+    "prompt_0": "Tell me whether these are flowers or trees: Spruce, Calla Lily, Carnation, pine, beech, Orchid, oak, Tulip, Gerbera Daisy.",
+    "prompt_1": "Identify whether the following are flowers or trees: Spruce, Calla Lily, Carnation, pine, beech, Orchid, oak, Tulip, Gerbera Daisy.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Verb_Substitution"
+      ],
+      "descriptions": {
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi."
+      },
+      "evidence": {
+        "Verb_Substitution": "Identify whether"
+      }
+    }
+  },
+  {
+    "id": 42,
+    "prompt_0": "What is an EV?",
+    "prompt_1": "Please provide a detailed explanation of what an EV is and how it works.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp giải thích chi tiết hơn so với câu hỏi gốc.",
+        "Depth_Requirement": "Yêu cầu giải thích sâu hơn về cách thức hoạt động của EV."
+      },
+      "evidence": {
+        "Intensification": "detailed explanation",
+        "Depth_Requirement": "how it works"
+      }
+    }
+  },
+  {
+    "id": 43,
+    "prompt_0": "What are some strategies to survive in nature?",
+    "prompt_1": "What are some essential strategies for survival in nature?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "essential strategies"
+      }
+    }
+  },
+  {
+    "id": 44,
+    "prompt_0": "What are some things that we can do to help the environment?",
+    "prompt_1": "What are some specific and practical ways that can be done to help the environment?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu được tăng cường bằng cách thêm các từ ngữ cụ thể và thực tế."
+      },
+      "evidence": {
+        "Intensification": "specific and practical ways"
+      }
+    }
+  },
+  {
+    "id": 45,
+    "prompt_0": "What is the best food?",
+    "prompt_1": "What are some general tips for choosing the best food?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc mở rộng nội dung bằng cách thêm các khía cạnh cụ thể về cách lựa chọn."
+      },
+      "evidence": {
+        "Aspect_Expansion": "tips for choosing"
+      }
+    }
+  },
+  {
+    "id": 46,
+    "prompt_0": "what is a sql query?",
+    "prompt_1": "Can you explain what a SQL query is and provide examples of its usage?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Depth_Requirement",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Example_Request": "Lời nhắc thêm yêu cầu cung cấp các ví dụ cụ thể để minh họa nội dung."
+      },
+      "evidence": {
+        "Depth_Requirement": "explain what a SQL query is",
+        "Example_Request": "provide examples of its usage"
+      }
+    }
+  },
+  {
+    "id": 47,
+    "prompt_0": "How spicy is the hottest peppers",
+    "prompt_1": "What is the spice level of the hottest peppers?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "What is the spice level"
+      }
+    }
+  },
+  {
+    "id": 48,
+    "prompt_0": "Identify which instrument is string or percussion: Erxian, Alfaia",
+    "prompt_1": "Identify whether the instrument Erxian or Alfaia is string or percussion.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về cấu trúc câu mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Identify whether the instrument Erxian or Alfaia"
+      }
+    }
+  },
+  {
+    "id": 49,
+    "prompt_0": "Tell me if these are body parts or places: nose, beach, supermarket, feet, eyes, hand, mall, school, restaurant, heart",
+    "prompt_1": "Please identify whether the following are body parts or places: nose, beach, supermarket, feet, eyes, hand, mall, school, restaurant, heart.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please identify whether"
+      }
+    }
+  },
+  {
+    "id": 50,
+    "prompt_0": "How can I compose electronic music in 3 simple ways ?",
+    "prompt_1": "How can I compose electronic music in 3 simple ways, without using complex software or hardware?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Scope_Narrowing"
+      ],
+      "descriptions": {
+        "Scope_Narrowing": "Lời nhắc giới hạn chủ đề hoặc ngữ cảnh để thu hẹp phạm vi câu trả lời."
+      },
+      "evidence": {
+        "Scope_Narrowing": "without using complex software or hardware"
+      }
+    }
+  },
+  {
+    "id": 51,
+    "prompt_0": "Classify each of the following as either cities in Europe or in the United States: Sevilla, Boston, Miami, Dallas, New York, Paris, Frankfurt, Seattle, Milan",
+    "prompt_1": "Classify each of the following cities as either in Europe or in the United States: Sevilla, Boston, Miami, Dallas, New York, Paris, Frankfurt, Seattle, Milan.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của yêu cầu gốc."
+      },
+      "evidence": {
+        "Minimal_Change": "Classify each of the following cities as"
+      }
+    }
+  },
+  {
+    "id": 52,
+    "prompt_0": "What is the game called Lacrosse",
+    "prompt_1": "What is the name of the sport Lacrosse?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "What is the name of the sport"
+      }
+    }
+  },
+  {
+    "id": 53,
+    "prompt_0": "What is a CRM?",
+    "prompt_1": "Explain what a CRM is and its main functionality.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh nội dung cụ thể (chức năng chính) không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "and its main functionality"
+      }
+    }
+  },
+  {
+    "id": 54,
+    "prompt_0": "What were the Crusades?",
+    "prompt_1": "What were the Crusades? Please provide a brief explanation of the Crusades, including the reasons for them and their impact.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được giải thích."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including the reasons for them and their impact"
+      }
+    }
+  },
+  {
+    "id": 55,
+    "prompt_0": "When is the best time to visit San Francisco?",
+    "prompt_1": "When is the best time to visit San Francisco? Please provide a detailed response including the best months to visit and any considerations for timing.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần được đề cập mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "best months to visit and any considerations for timing"
+      }
+    }
+  },
+  {
+    "id": 56,
+    "prompt_0": "What are some defining qualities of authoritarianism?",
+    "prompt_1": "What are the defining qualities of authoritarianism?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có một thay đổi rất nhỏ từ 'some' sang 'the', không làm thay đổi ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "the defining qualities"
+      }
+    }
+  },
+  {
+    "id": 57,
+    "prompt_0": "What are some of the best business podcast to listen to?",
+    "prompt_1": "What are some of the best business podcasts to listen to? Please provide recommendations and brief descriptions for each podcast.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể cần được đề cập trong câu trả lời.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "recommendations and brief descriptions",
+        "Depth_Requirement": "Please provide recommendations and brief descriptions"
+      }
+    }
+  },
+  {
+    "id": 58,
+    "prompt_0": "How do you replace a hole in the drywall?",
+    "prompt_1": "How can you effectively replace a hole in the drywall without causing future issues?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu được tăng cường bằng cách thêm tiêu chí về hiệu quả và tránh vấn đề tương lai.",
+        "Secondary_Objective": "Bổ sung mục tiêu phụ về chất lượng của câu trả lời, yêu cầu giải pháp không gây ra vấn đề sau này."
+      },
+      "evidence": {
+        "Intensification": "effectively ... without causing future issues",
+        "Secondary_Objective": "without causing future issues"
+      }
+    }
+  },
+  {
+    "id": 59,
+    "prompt_0": "What city in Ireland is the band U2 from?",
+    "prompt_1": "What city in Ireland is the band U2 from? Please provide a detailed response.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp phản hồi chi tiết hơn so với bản gốc."
+      },
+      "evidence": {
+        "Intensification": "Please provide a detailed response."
+      }
+    }
+  },
+  {
+    "id": 60,
+    "prompt_0": "Why does oil float on water?",
+    "prompt_1": "Why does oil float on water? Please explain the reason behind the oil's ability to float on water.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa chính của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "Please explain the reason behind"
+      }
+    }
+  },
+  {
+    "id": 61,
+    "prompt_0": "What is renal compensation?",
+    "prompt_1": "Can you explain what renal compensation is and how it works in the context of kidney disease?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể mới là 'trong bối cảnh bệnh thận'.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách hỏi 'nó hoạt động như thế nào'."
+      },
+      "evidence": {
+        "Aspect_Expansion": "in the context of kidney disease",
+        "Depth_Requirement": "how it works"
+      }
+    }
+  },
+  {
+    "id": 62,
+    "prompt_0": "What does the \"E\" stand for in Chuck E. Cheese?",
+    "prompt_1": "What does the \"E\" stand for in Chuck E. Cheese?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giống hệt nhau, không có thay đổi nào về ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "What does the \"E\" stand for in Chuck E. Cheese?"
+      }
+    }
+  },
+  {
+    "id": 63,
+    "prompt_0": "What is the structure of Public Forum debate, as used in US debate competitions?",
+    "prompt_1": "Provide a detailed explanation of the structure of Public Forum debate, as used in US debate competitions. Include information about the purpose of the debate, the roles of the debaters, the use of evidence, and the structure of the debate.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về mục đích, vai trò, bằng chứng và cấu trúc của cuộc tranh luận.",
+        "Instructional_Framing": "Lời nhắc đã chuyển từ một câu hỏi thành một lệnh trực tiếp, nhiệm vụ định hướng."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Include information about the purpose of the debate, the roles of the debaters, the use of evidence, and the structure of the debate.",
+        "Instructional_Framing": "Provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 64,
+    "prompt_0": "What are the first and third eras of aircraft history mentioned in the text below and when did they end? Use a bullet list and the format {Name} ({Year}).",
+    "prompt_1": "What are the first and third eras of aircraft history mentioned in the text below and when did they end? Please provide the names of the eras and the years when they ended. Use a bullet list and the format {Name} ({Year}).",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, chẳng hạn như thêm từ ngữ lịch sự, mà không làm thay đổi ý nghĩa hoặc yêu cầu của câu lệnh gốc."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide the names of the eras"
+      }
+    }
+  },
+  {
+    "id": 65,
+    "prompt_0": "Who is Robert Kiyosaki?",
+    "prompt_1": "Provide a brief description of Robert Kiyosaki, including his background and achievements.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, mang tính định hướng nhiệm vụ.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh cụ thể về nội dung cần bao gồm mà không có trong câu lệnh gốc."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide a brief description",
+        "Aspect_Expansion": "including his background and achievements"
+      }
+    }
+  },
+  {
+    "id": 66,
+    "prompt_0": "How many titles have Liverpool won?",
+    "prompt_1": "Provide a list of titles won by Liverpool.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một lệnh trực tiếp, định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide a list"
+      }
+    }
+  },
+  {
+    "id": 67,
+    "prompt_0": "Why are peanuts not kosher for Passover.",
+    "prompt_1": "Why are peanuts not kosher for Passover? Please explain the reason behind peanuts not being kosher for Passover, including any historical or cultural context.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích, như bối cảnh lịch sử hoặc văn hóa."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including any historical or cultural context"
+      }
+    }
+  },
+  {
+    "id": 68,
+    "prompt_0": "Why can helicopters not fly as fast as airplanes?",
+    "prompt_1": "Why is the top speed of a helicopter limited compared to airplanes?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Why is the top speed of a helicopter limited compared to airplanes?"
+      }
+    }
+  },
+  {
+    "id": 69,
+    "prompt_0": "How many dwarf planets are there in our solar system. Describe each of them",
+    "prompt_1": "Please provide a detailed description of each dwarf planet in our solar system, including their size, mass, composition, and any unique features.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion",
+        "Intensification"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính đã được chuyển từ một câu hỏi thành một yêu cầu trực tiếp, mang tính chỉ dẫn.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh cụ thể cần mô tả mà câu gốc không đề cập.",
+        "Intensification": "Yêu cầu về mức độ chi tiết của mô tả đã được tăng cường."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Aspect_Expansion": "including their size, mass, composition, and any unique features",
+        "Intensification": "detailed description"
+      }
+    }
+  },
+  {
+    "id": 70,
+    "prompt_0": "What is FIFA?",
+    "prompt_1": "Explain what FIFA is and its main functions.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về chức năng chính của FIFA, điều không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "and its main functions"
+      }
+    }
+  },
+  {
+    "id": 71,
+    "prompt_0": "From the passage note down the name of the countries which have most voting power. List the results in comma separated format.",
+    "prompt_1": "From the passage, note down the name of the countries that have the most voting power. List the results in a comma-separated format.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ về dấu câu và từ ngữ mà không làm thay đổi ý nghĩa của yêu cầu."
+      },
+      "evidence": {
+        "Minimal_Change": "note down the name of the countries that have the most voting power"
+      }
+    }
+  },
+  {
+    "id": 72,
+    "prompt_0": "From the passage mention the different educational institutions which Musk attended. Display the results in comma separated format.",
+    "prompt_1": "From the passage, please list the different educational institutions attended by Musk in a comma-separated format.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ về dấu câu hoặc cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "please list the different educational institutions"
+      }
+    }
+  },
+  {
+    "id": 73,
+    "prompt_0": "Where is Salvador Brazil?",
+    "prompt_1": "Can you provide information about Salvador, Brazil?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Can you provide information about"
+      }
+    }
+  },
+  {
+    "id": 74,
+    "prompt_0": "What are some iconic Renaissance period artists?",
+    "prompt_1": "Please provide a list of iconic Renaissance period artists.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 75,
+    "prompt_0": "Why is it so difficult to make every free throw in basketball?",
+    "prompt_1": "Why is it challenging to make every free throw in basketball?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có sự thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "challenging"
+      }
+    }
+  },
+  {
+    "id": 76,
+    "prompt_0": "Who wrote Howl's Moving Castle?",
+    "prompt_1": "Who wrote Howl's Moving Castle and what can you tell me about the author?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể về tác giả mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "what can you tell me about the author"
+      }
+    }
+  },
+  {
+    "id": 77,
+    "prompt_0": "Why Interlaken is famous",
+    "prompt_1": "Why Interlaken is famous? Please provide accurate and detailed information about Interlaken's reputation and the reasons why it is famous.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp thông tin chính xác và chi tiết làm tăng cường độ của nhiệm vụ.",
+        "Depth_Requirement": "Yêu cầu giải thích chi tiết hơn về danh tiếng và lý do nổi tiếng của Interlaken."
+      },
+      "evidence": {
+        "Intensification": "accurate and detailed information",
+        "Depth_Requirement": "reputation and the reasons why it is famous"
+      }
+    }
+  },
+  {
+    "id": 78,
+    "prompt_0": "here is some information about Ross McLean, how many years was Ross president of the Leavue of help for sick and elderly?",
+    "prompt_1": "Could you please provide the specific years Ross McLean was the president of the League of Help for Sick and Elderly?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa cốt lõi của yêu cầu."
+      },
+      "evidence": {
+        "Minimal_Change": "Could you please provide the specific years"
+      }
+    }
+  },
+  {
+    "id": 79,
+    "prompt_0": "What tools do people use to communicate in 2023?",
+    "prompt_1": "What tools do people use to communicate in 2023? Please provide a list of popular communication tools used in 2023, including specific examples and any relevant statistics or data.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể cần được đề cập trong câu trả lời.",
+        "Example_Request": "Lời nhắc yêu cầu cung cấp các ví dụ minh họa cụ thể."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including specific examples and any relevant statistics or data",
+        "Example_Request": "including specific examples"
+      }
+    }
+  },
+  {
+    "id": 80,
+    "prompt_0": "Give me a list of books that are long and hard to read. The sort of books with which I could impress someone who read a lot.",
+    "prompt_1": "Give me a list of books that are considered long and hard to read. The sort of books with which I could impress someone who reads a lot.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "are considered long"
+      }
+    }
+  },
+  {
+    "id": 81,
+    "prompt_0": "Is it wrong to split the infinitive?",
+    "prompt_1": "Is it wrong to split the infinitive? Please provide a detailed explanation of the reasons why infinitives are often split, and whether it is generally considered correct to do so.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về lý do và tính đúng đắn của việc tách động từ nguyên thể.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "reasons why infinitives are often split, and whether it is generally considered correct",
+        "Depth_Requirement": "Please provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 82,
+    "prompt_0": "In which years did Ernie Wilson play his first and last grand finals?",
+    "prompt_1": "Provide the years in which Ernie Wilson played his first and last grand finals.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu lệnh gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Provide the years"
+      }
+    }
+  },
+  {
+    "id": 83,
+    "prompt_0": "Select the dishes that are Chinese from this menu: hamburger, pizza, fried rice, soup dumplings, spaghetti, scallion pancakes.",
+    "prompt_1": "Identify the Chinese dishes from the following menu: hamburger, pizza, fried rice, soup dumplings, spaghetti, scallion pancakes.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Verb_Substitution"
+      ],
+      "descriptions": {
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi."
+      },
+      "evidence": {
+        "Verb_Substitution": "Identify"
+      }
+    }
+  },
+  {
+    "id": 84,
+    "prompt_0": "Which of the following races do participants run in? A marathon, a triathlon, an aqua bike?",
+    "prompt_1": "Which of the following races do participants run in? A marathon, a triathlon, an aqua bike?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu nhắc gần như giữ nguyên, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Không có thay đổi nào."
+      }
+    }
+  },
+  {
+    "id": 85,
+    "prompt_0": "What programming languages does freeCodeCamp teach to students?",
+    "prompt_1": "What programming languages does freeCodeCamp teach to students, and can you provide a detailed explanation of each language covered?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "provide a detailed explanation of each language covered"
+      }
+    }
+  },
+  {
+    "id": 86,
+    "prompt_0": "What is the Mahatma Gandhi Marg (Allahabad)?",
+    "prompt_1": "What is the location and significance of the Mahatma Gandhi Marg in Allahabad?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "location and significance"
+      }
+    }
+  },
+  {
+    "id": 87,
+    "prompt_0": "What is the smallest bird?",
+    "prompt_1": "What is the smallest bird in the world? Please provide accurate information and mention any notable bird species that are known for their small size.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần đề cập, chẳng hạn như các loài chim đáng chú ý.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải cung cấp thông tin chính xác, đây là một yêu cầu về chất lượng của câu trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "mention any notable bird species",
+        "Secondary_Objective": "Please provide accurate information"
+      }
+    }
+  },
+  {
+    "id": 88,
+    "prompt_0": "What advice would you give to FBLA competitors for future years?",
+    "prompt_1": "What specific advice and tips would you suggest for FBLA competitors to prepare for future years?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "specific advice and tips"
+      }
+    }
+  },
+  {
+    "id": 89,
+    "prompt_0": "Using examples taken from the text give me a rundown of the primary environments found in Yellowstone National Park.",
+    "prompt_1": "Using specific examples from the text, provide a detailed rundown of the primary environments found in Yellowstone National Park.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Intensification"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi chi tiết hơn mà không thay đổi nội dung chính."
+      },
+      "evidence": {
+        "Intensification": "provide a detailed rundown"
+      }
+    }
+  },
+  {
+    "id": 90,
+    "prompt_0": "Where is Danny Brannagan from",
+    "prompt_1": "Can you please provide more context or information about Danny Brannagan? This will help me provide a more accurate and detailed response.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Can you please provide more context or information"
+      }
+    }
+  },
+  {
+    "id": 91,
+    "prompt_0": "Name a few cities worldwide where traffic congestion is an issue",
+    "prompt_1": "Provide a list of cities worldwide where traffic congestion is an issue.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Provide a list of cities"
+      }
+    }
+  },
+  {
+    "id": 92,
+    "prompt_0": "Is a vegan diet health for the average person?",
+    "prompt_1": "Is a vegan diet healthy for the average person? Please provide a detailed explanation covering the potential benefits and drawbacks of a vegan diet for overall health. Additionally, suggest ways to ensure a balanced and healthy vegan diet, such as consuming a variety of vegan foods, supplementing with vitamins and minerals, and considering the risk of nutrient deficiencies. Please emphasize the importance of consulting a healthcare professional before starting a vegan diet.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về lợi ích, hạn chế và cách đảm bảo chế độ ăn cân bằng.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thay đổi chủ đề chính."
+      },
+      "evidence": {
+        "Aspect_Expansion": "covering the potential benefits and drawbacks",
+        "Depth_Requirement": "Please provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 93,
+    "prompt_0": "Give me examples of German auto manufacturers still operating.",
+    "prompt_1": "Please provide examples of German auto manufacturers that are still operating.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide examples of"
+      }
+    }
+  },
+  {
+    "id": 94,
+    "prompt_0": "What are the top 5 rock bands of all time?",
+    "prompt_1": "What are the top 5 rock bands of all time? Please provide a list of the bands and acknowledge individual preferences.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Prompt thêm vào các khía cạnh cụ thể về nội dung cần được đề cập mà không có trong prompt gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "acknowledge individual preferences"
+      }
+    }
+  },
+  {
+    "id": 95,
+    "prompt_0": "Extract a list of poems and the year they were published in the following form: {Poem name}: {Year published}\n\nAnd sort the list chronologically",
+    "prompt_1": "Extract a list of poems and their corresponding years of publication in the following form: {Poem name}: {Year published}. Sort the list chronologically.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa của yêu cầu."
+      },
+      "evidence": {
+        "Minimal_Change": "their corresponding years of publication"
+      }
+    }
+  },
+  {
+    "id": 96,
+    "prompt_0": "What is a typical Dutch tradition when a baby is born?",
+    "prompt_1": "What is a typical Dutch tradition that is still practiced today when a baby is born? Please provide a detailed explanation and any additional information about the tradition.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp thông tin chi tiết và giải thích sâu hơn so với bản gốc.",
+        "Depth_Requirement": "Yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Intensification": "Please provide a detailed explanation",
+        "Depth_Requirement": "Please provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 97,
+    "prompt_0": "How many Grammy Awards has Bad Bunny won?",
+    "prompt_1": "How many Grammy Awards has Bad Bunny won? Please provide the total number of Grammy Awards won by Bad Bunny.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide the total number"
+      }
+    }
+  },
+  {
+    "id": 98,
+    "prompt_0": "Given this paragraph about rivers in Europe, tell me what are the two longest rivers in Europe.",
+    "prompt_1": "Based on the provided paragraph about rivers in Europe, please identify the two longest rivers in the region.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về từ ngữ mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Based on the provided paragraph"
+      }
+    }
+  },
+  {
+    "id": 99,
+    "prompt_0": "Which second-season episode of Game of Thrones did Neil Marshall direct?",
+    "prompt_1": "Which second-season episode of Game of Thrones did Neil Marshall direct? Please provide the episode title and any notable details about the episode.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Please provide the episode title and any notable details about the episode."
+      }
+    }
+  },
+  {
+    "id": 100,
+    "prompt_0": "Is the person who invented bitcoin Japanese?",
+    "prompt_1": "Is the person who invented bitcoin Japanese? Please provide an accurate response about the inventor's background and any notable contributions to the cryptocurrency space.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được đề cập."
+      },
+      "evidence": {
+        "Aspect_Expansion": "inventor's background and any notable contributions"
+      }
+    }
+  },
+  {
+    "id": 101,
+    "prompt_0": "When building a pre-stained shelf from Ikea, classify each of the following as useful or not useful for the task: a wooden dowel, a watercolor paint kit, a windowpane, a rubber mallet, a multitool, a screwdriver.",
+    "prompt_1": "When building a pre-stained shelf from Ikea, classify each of the following as useful or not useful for the task: a wooden dowel, a watercolor paint kit, a windowpane, a rubber mallet, a multitool, a screwdriver.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu lệnh gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "prompt_1 giống hệt prompt_0"
+      }
+    }
+  },
+  {
+    "id": 103,
+    "prompt_0": "Snow or Desert",
+    "prompt_1": "Choose between a snowy environment or a desert.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Choose between"
+      }
+    }
+  },
+  {
+    "id": 104,
+    "prompt_0": "What are five totally distinct, creative ways to describe the usefulness of a broken stapler?",
+    "prompt_1": "Provide five creative and diverse ways to describe the usefulness of a broken stapler.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của yêu cầu."
+      },
+      "evidence": {
+        "Minimal_Change": "Provide five creative and diverse ways"
+      }
+    }
+  },
+  {
+    "id": 105,
+    "prompt_0": "Tell me which of these Australian cities are on the coast and which are inland. Brisbane, Melbourne, Canberra, Adelaide, Hobart, Darwin and Perth.",
+    "prompt_1": "Please provide a list of Australian cities that are on the coast and inland. Include the following cities: Brisbane, Melbourne, Canberra, Adelaide, Hobart, Darwin, and Perth.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt với lời nhắc gốc, chỉ có những thay đổi nhỏ về cách diễn đạt và dấu câu mà không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide a list of"
+      }
+    }
+  },
+  {
+    "id": 106,
+    "prompt_0": "What kind of method is Transfer printing",
+    "prompt_1": "Please explain the method of transfer printing, including how it is used and its advantages.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please explain",
+        "Aspect_Expansion": "including how it is used and its advantages"
+      }
+    }
+  },
+  {
+    "id": 107,
+    "prompt_0": "Which is a species of fish? Herring or Hearing",
+    "prompt_1": "Are herring and hearing both species of fish?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi được sửa đổi gần như giống hệt, chỉ thay đổi cấu trúc ngữ pháp và từ vựng nhỏ mà không làm thay đổi ý nghĩa cốt lõi."
+      },
+      "evidence": {
+        "Minimal_Change": "Are herring and hearing both species of fish?"
+      }
+    }
+  },
+  {
+    "id": 108,
+    "prompt_0": "Name a song The Mo is best known for that is not named after a dairy product.",
+    "prompt_1": "Name a song The Mo is best known for that is not named after a dairy product. Please provide the title of the song and any notable details about its popularity or cultural significance.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần đưa ra, chẳng hạn như chi tiết về độ phổ biến hoặc ý nghĩa văn hóa."
+      },
+      "evidence": {
+        "Aspect_Expansion": "any notable details about its popularity or cultural significance"
+      }
+    }
+  },
+  {
+    "id": 109,
+    "prompt_0": "Name some of the popular gaming consoles in the 2020s",
+    "prompt_1": "Name some of the popular gaming consoles in the 2020s, including any relevant details or additional information.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể hoặc chủ đề mới để mở rộng nội dung cần trả lời."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including any relevant details or additional information"
+      }
+    }
+  },
+  {
+    "id": 110,
+    "prompt_0": "Who is Luke Skywalker's parents?",
+    "prompt_1": "Provide information about Luke Skywalker's parents in the Star Wars universe.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide information about"
+      }
+    }
+  },
+  {
+    "id": 111,
+    "prompt_0": "Classify the eight planets of Earth's solar system as rocky or gaseous, according to their primary composition.",
+    "prompt_1": "Classify the eight planets of Earth's solar system as rocky or gaseous, according to their primary composition. Please provide a clear and concise classification for each planet.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức trình bày câu trả lời, cụ thể là sự rõ ràng và súc tích."
+      },
+      "evidence": {
+        "Secondary_Objective": "clear and concise classification"
+      }
+    }
+  },
+  {
+    "id": 112,
+    "prompt_0": "What is Prometheus?",
+    "prompt_1": "Provide a detailed explanation of Prometheus, including its meaning and symbolism, as well as its role in classical Greek mythology.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp một giải thích chi tiết hơn so với câu hỏi gốc.",
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được giải thích, như ý nghĩa, biểu tượng và vai trò trong thần thoại."
+      },
+      "evidence": {
+        "Intensification": "Provide a detailed explanation",
+        "Aspect_Expansion": "including its meaning and symbolism, as well as its role"
+      }
+    }
+  },
+  {
+    "id": 113,
+    "prompt_0": "Does the position of a dog's tail communicate how it is feeling?",
+    "prompt_1": "Does the position of a dog's tail communicate its emotions?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có một thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "its emotions"
+      }
+    }
+  },
+  {
+    "id": 114,
+    "prompt_0": "Which film holds the record for most Academy Award wins?",
+    "prompt_1": "Which film holds the record for the most Academy Award wins? Please provide the name of the film and the number of awards it won.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "the name of the film and the number of awards it won"
+      }
+    }
+  },
+  {
+    "id": 115,
+    "prompt_0": "What is Adventures of Tintin?",
+    "prompt_1": "Can you provide a detailed description of The Adventures of Tintin, including its origins, main characters, and notable themes?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu cung cấp một mô tả chi tiết hơn so với câu hỏi gốc.",
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được đề cập trong câu trả lời."
+      },
+      "evidence": {
+        "Intensification": "a detailed description",
+        "Aspect_Expansion": "including its origins, main characters, and notable themes"
+      }
+    }
+  },
+  {
+    "id": 116,
+    "prompt_0": "Give me a bulleted list of movie ideas.",
+    "prompt_1": "Please provide a bulleted list of movie ideas with brief descriptions for each film.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung mà lời nhắc gốc không có."
+      },
+      "evidence": {
+        "Aspect_Expansion": "with brief descriptions for each film"
+      }
+    }
+  },
+  {
+    "id": 117,
+    "prompt_0": "What is the capital of Australia and when was it founded?",
+    "prompt_1": "Please provide accurate information about the capital city of Australia and its founding date.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Secondary_Objective": "Câu lệnh bổ sung yêu cầu về chất lượng của câu trả lời, như độ chính xác."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Secondary_Objective": "accurate information"
+      }
+    }
+  },
+  {
+    "id": 118,
+    "prompt_0": "Was Richard Nixon born in California?",
+    "prompt_1": "Was Richard Nixon born in California? If not, what was his birth state?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể về nơi sinh của Richard Nixon nếu không phải California."
+      },
+      "evidence": {
+        "Aspect_Expansion": "If not, what was his birth state?"
+      }
+    }
+  },
+  {
+    "id": 119,
+    "prompt_0": "Tell me whether these operation systems are open-source of proprietary; Ubuntu, iOS , Debian, Fedora, CentOS, macOS, Open Suse, Windows",
+    "prompt_1": "Please provide a list of the operating systems you mentioned, specifying whether they are open-source or proprietary: Ubuntu, iOS, Debian, Fedora, CentOS, macOS, Open Suse, Windows.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Lời nhắc chuyển từ câu hỏi sang một lệnh trực tiếp, nhiệm vụ cụ thể."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide a list"
+      }
+    }
+  },
+  {
+    "id": 120,
+    "prompt_0": "Tell me which of these things are fruits or vegetables: Carrot, Apple, Orange, Potato, Peas, Broccoli, Pears",
+    "prompt_1": "Identify the fruits and vegetables among the following options: Carrot, Apple, Orange, Potato, Peas, Broccoli, Pears.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Identify the fruits and vegetables"
+      }
+    }
+  },
+  {
+    "id": 121,
+    "prompt_0": "Which of the achievements listed in the below passage would be considered the best example of an \"outlier\" for a single NBA game?",
+    "prompt_1": "Which of the achievements listed in the below passage would be considered the best example of an \"outlier\" for a single NBA game? Please explain your answer.\n\nThe passage：\n\"The NBA recognizes several individual player achievements, including the NBA Finals MVP, the All-Star Game MVP, and the Rookie of the Year. These awards are given to players who have demonstrated exceptional performance in their respective seasons. Additionally, the NBA also recognizes team achievements, such as the NBA Championship, the Eastern and Western Conferences, and the Rookie Challenge. These achievements are considered the best examples of an \"outlier\" for a single NBA game.\"",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu này thêm vào việc giải thích câu trả lời, đòi hỏi phân tích chi tiết hơn mà không bổ sung khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Depth_Requirement": "Please explain your answer."
+      }
+    }
+  },
+  {
+    "id": 122,
+    "prompt_0": "Classify the numbers based on their divisibility by 5 or 3\n15, 55, 33, 50, 99",
+    "prompt_1": "Classify the numbers by determining if they are divisible by 5 or 3.\n15, 55, 33, 50, 99",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "by determining if they are"
+      }
+    }
+  },
+  {
+    "id": 123,
+    "prompt_0": "Extract the names of the cities where UNESCO has field offices in Asia and Pacific. Separate them with a semi-colon",
+    "prompt_1": "Extract the names of the cities where UNESCO has field offices in Asia and Pacific. Separate them with a semi-colon; If there are any city names that are not listed in the original instruction, please provide the names of the cities where UNESCO has field offices in Asia and Pacific.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "If there are any city names that are not listed in the original instruction"
+      }
+    }
+  },
+  {
+    "id": 124,
+    "prompt_0": "What do dogs like to do?",
+    "prompt_1": "What are some common activities that dogs enjoy doing?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "What are some common activities"
+      }
+    }
+  },
+  {
+    "id": 125,
+    "prompt_0": "Classify each of the following as something used for drinking or eating: cup, bottle, plate, bowl, fork, spoon, can",
+    "prompt_1": "Classify each of the following items as either a cup, bottle, plate, bowl, fork, or spoon. Additionally, if the item is a can, please specify whether it is used for drinking or eating.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Scope_Narrowing"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh cụ thể về việc phân loại 'can' dựa trên mục đích sử dụng, điều này không có trong lời nhắc gốc.",
+        "Scope_Narrowing": "Lời nhắc giới hạn phạm vi phân loại cho các mục được liệt kê cụ thể, loại trừ khả năng phân loại chung thành 'drinking' hoặc 'eating'."
+      },
+      "evidence": {
+        "Aspect_Expansion": "specify whether it is used for drinking or eating",
+        "Scope_Narrowing": "Classify each of the following items as either a cup, bottle, plate, bowl, fork, or spoon"
+      }
+    }
+  },
+  {
+    "id": 126,
+    "prompt_0": "What ages are considered newborn, toddler, child and teenager?",
+    "prompt_1": "Please provide a brief explanation of the different ages considered newborn, toddler, child, and teenager.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide a brief explanation"
+      }
+    }
+  },
+  {
+    "id": 127,
+    "prompt_0": "What is sweep rowing?",
+    "prompt_1": "Please explain what sweep rowing is and provide additional information about the technique.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể (kỹ thuật) không có trong lời nhắc gốc.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "provide additional information about the technique",
+        "Depth_Requirement": "Please explain what sweep rowing is"
+      }
+    }
+  },
+  {
+    "id": 128,
+    "prompt_0": "Who was the first woman to have four country albums reach No. 1 on the Billboard 200?",
+    "prompt_1": "Who was the first woman to have four country albums reach No. 1 on the Billboard 200? Please provide the name of the woman and the specific albums that reached No. 1.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "the specific albums that reached No. 1"
+      }
+    }
+  },
+  {
+    "id": 129,
+    "prompt_0": "According to this paragraph, what are the \"Old Dorms\" at the University of Virginia?",
+    "prompt_1": "According to this paragraph, what are the \"Old Dorms\" at the University of Virginia? Provide a brief description of the dormitories.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh cụ thể về nội dung cần mô tả mà lời nhắc gốc không có."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Provide a brief description of the dormitories."
+      }
+    }
+  },
+  {
+    "id": 130,
+    "prompt_0": "Which of the following are ice cream toppings and which are salad dressings: thousand island, chocolate sauce, hot fudge, balsamic vinaigrette, whipped cream, and Caesar.",
+    "prompt_1": "Which of the following are ice cream toppings and which are salad dressings: thousand island, chocolate sauce, hot fudge, balsamic vinaigrette, whipped cream, and Caesar?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có sự thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "Caesar?"
+      }
+    }
+  },
+  {
+    "id": 131,
+    "prompt_0": "With what opera company is the late soprano and master voice teacher Ellen Faull Gordon most associated?",
+    "prompt_1": "With which opera company is the late soprano and master voice teacher Ellen Faull Gordon most associated? Please provide the name of the opera company and any relevant details if applicable.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về từ ngữ và cấu trúc câu mà không làm thay đổi ý nghĩa cốt lõi."
+      },
+      "evidence": {
+        "Minimal_Change": "which opera company... Please provide the name"
+      }
+    }
+  },
+  {
+    "id": 132,
+    "prompt_0": "Given this paragraph about Gheorge Hagi, tell me which were his top achievements in the Romanian football team.",
+    "prompt_1": "Given this paragraph about Gheorge Hagi, please list his top achievements in the Romanian football team.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "please list"
+      }
+    }
+  },
+  {
+    "id": 133,
+    "prompt_0": "Who invented the Jeans",
+    "prompt_1": "Who invented the Jeans?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉnh sửa rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "\"?\""
+      }
+    }
+  },
+  {
+    "id": 134,
+    "prompt_0": "From the passage mention the services provided by Jio. Also consider the services to be provided in future. Display the results in comma separated format.",
+    "prompt_1": "From the passage, please provide a list of services provided by Jio. Additionally, mention any future services that Jio plans to provide. Please display the results in a comma-separated format.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về dấu câu và từ ngữ không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "please provide a list"
+      }
+    }
+  },
+  {
+    "id": 135,
+    "prompt_0": "Classify each of these car manufacturers as either French, German, American, Japanese, or other: Lexus, Hyundai, Alfa Romeo, VW, Honda, GM, Citroen",
+    "prompt_1": "Classify each of these car manufacturers as either French, German, American, Japanese, or other: Lexus, Hyundai, Alfa Romeo, VW, Honda, GM, Citroen",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Classify each of these car manufacturers as either French, German, American, Japanese, or other: Lexus, Hyundai, Alfa Romeo, VW, Honda, GM, Citroen"
+      }
+    }
+  },
+  {
+    "id": 136,
+    "prompt_0": "Extract the areas of science using differential equations in this text in an alphabetically ordered list.",
+    "prompt_1": "Extract the areas of science using differential equations in this text in an alphabetically ordered list. Please ensure that the response accurately identifies the areas of science related to differential equations.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Prompt thêm yêu cầu về chất lượng của câu trả lời, cụ thể là độ chính xác trong việc xác định các lĩnh vực."
+      },
+      "evidence": {
+        "Secondary_Objective": "Please ensure that the response accurately identifies"
+      }
+    }
+  },
+  {
+    "id": 137,
+    "prompt_0": "From the passage provided, extract the year where C++ was standardized",
+    "prompt_1": "Based on the passage provided, state the year where C++ was standardized.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Based on the passage provided, state"
+      }
+    }
+  },
+  {
+    "id": 138,
+    "prompt_0": "Is weightlifting good for you?",
+    "prompt_1": "Is weightlifting good for you? Please provide a detailed response discussing the benefits, risks, and considerations associated with weightlifting.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để thảo luận mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "discussing the benefits, risks, and considerations"
+      }
+    }
+  },
+  {
+    "id": 139,
+    "prompt_0": "Tell me where the following numbers are odd or even: 13, 200, 334, 420, 5, 12",
+    "prompt_1": "Determine whether the following numbers are odd or even: 13, 200, 334, 420, 5, 12.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Determine whether"
+      }
+    }
+  },
+  {
+    "id": 140,
+    "prompt_0": "Identify which instrument is string or woodwind: Tenoroon, Tembor",
+    "prompt_1": "Please identify whether the instruments \"Tenoroon\" and \"Tembor\" are string or woodwind instruments.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa hoặc yêu cầu của câu lệnh."
+      },
+      "evidence": {
+        "Minimal_Change": "Please identify whether"
+      }
+    }
+  },
+  {
+    "id": 141,
+    "prompt_0": "Which notable person in this list with surname Liebers was born last?",
+    "prompt_1": "Which notable person in this list with a surname Liebers was born last? If there are no notable persons with the surname Liebers, please mention it.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa chính của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "If there are no notable persons with the surname Liebers, please mention it."
+      }
+    }
+  },
+  {
+    "id": 142,
+    "prompt_0": "Which member of *NSYNC was a replacement for another who quit before they got big?",
+    "prompt_1": "Which member of *NSYNC was a replacement for another who quit before they got big? Please provide the name of the replacement member.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của câu hỏi gốc."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide the name of the replacement member."
+      }
+    }
+  },
+  {
+    "id": 143,
+    "prompt_0": "Who is Pearl Jam?",
+    "prompt_1": "Provide a detailed description of Pearl Jam, including information about the band's history, influences, and any notable aspects of their music.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion",
+        "Intensification"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một yêu cầu trực tiếp, mang tính chỉ dẫn.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh cụ thể về nội dung cần đề cập mà không có trong câu lệnh gốc.",
+        "Intensification": "Câu lệnh làm cho yêu cầu trở nên mạnh hơn hoặc đòi hỏi hơn mà không thay đổi chủ đề chính."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide a detailed description",
+        "Aspect_Expansion": "history, influences, and any notable aspects",
+        "Intensification": "detailed description"
+      }
+    }
+  },
+  {
+    "id": 144,
+    "prompt_0": "Who wrote the music and lyrics for Replay?",
+    "prompt_1": "Who wrote the music and lyrics for the Replay song?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có sự thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "the Replay song"
+      }
+    }
+  },
+  {
+    "id": 145,
+    "prompt_0": "What is a metaverse?",
+    "prompt_1": "What is a metaverse? Please provide a detailed explanation of the concept, including its key features and how it is different from a virtual world.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích, như các tính năng chính và sự khác biệt so với thế giới ảo.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including its key features and how it is different from a virtual world",
+        "Depth_Requirement": "Please provide a detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 146,
+    "prompt_0": "Why do people purchase ski passes?",
+    "prompt_1": "Why do people purchase ski passes? Please provide a clear and concise explanation of the reasons why people buy ski passes, considering the reasons for both recreational and professional purposes.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về mục đích giải trí và chuyên nghiệp để mở rộng nội dung cần phân tích.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải rõ ràng và súc tích, quy định cách thức trình bày."
+      },
+      "evidence": {
+        "Aspect_Expansion": "considering the reasons for both recreational and professional purposes",
+        "Secondary_Objective": "Please provide a clear and concise explanation"
+      }
+    }
+  },
+  {
+    "id": 147,
+    "prompt_0": "Marburg Virus Disease belongs to the same family as",
+    "prompt_1": "Marburg Virus Disease belongs to the same family as [provide accurate information].",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những chỉnh sửa rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "[provide accurate information]"
+      }
+    }
+  },
+  {
+    "id": 148,
+    "prompt_0": "Who is the most powerful person in the world?",
+    "prompt_1": "According to Forbes' Global Power List, who is the most powerful person in the world? Please provide the person's name and occupation.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nguồn thông tin và thông tin chi tiết cần cung cấp.",
+        "Output_Structuring": "Lời nhắc yêu cầu cấu trúc đầu ra cụ thể, chỉ định thông tin cần được liệt kê."
+      },
+      "evidence": {
+        "Aspect_Expansion": "According to Forbes' Global Power List",
+        "Output_Structuring": "provide the person's name and occupation"
+      }
+    }
+  },
+  {
+    "id": 149,
+    "prompt_0": "Give me the list of all French president during the fifth Republic",
+    "prompt_1": "Please provide a list of all French presidents during the fifth Republic.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 150,
+    "prompt_0": "What are a couple of simple tricks to make a simple wood carving look more polished and professional?",
+    "prompt_1": "What are a couple of simple tricks to make a simple wood carving look more polished and professional?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt nhau, không có sự thay đổi nào về ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "What are a couple of simple tricks to make a simple wood carving look more polished and professional?"
+      }
+    }
+  },
+  {
+    "id": 151,
+    "prompt_0": "Give me a list of ways to express your love to someone",
+    "prompt_1": "Please provide a list of creative and meaningful ways to express your love to someone.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức viết câu trả lời, cụ thể là phải sáng tạo và có ý nghĩa."
+      },
+      "evidence": {
+        "Secondary_Objective": "creative and meaningful"
+      }
+    }
+  },
+  {
+    "id": 152,
+    "prompt_0": "Which is the oldest dynasty still ruling?",
+    "prompt_1": "Which dynasty is the oldest still ruling?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "Which dynasty is the oldest still ruling?"
+      }
+    }
+  },
+  {
+    "id": 153,
+    "prompt_0": "What is Microsoft Teams?",
+    "prompt_1": "Provide a detailed description of Microsoft Teams, highlighting its key features and benefits.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Depth_Requirement": "Câu lệnh yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide a detailed description",
+        "Depth_Requirement": "detailed description"
+      }
+    }
+  },
+  {
+    "id": 154,
+    "prompt_0": "Given this paragraph about Mark Arminski, why was he famous and what did he study last while still at school?",
+    "prompt_1": "Given the paragraph about Mark Arminski, why was he famous and what did he study last while still at school? Please provide a response that accurately explains Mark's fame and his studies while still in school.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của câu hỏi gốc."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide a response that"
+      }
+    }
+  },
+  {
+    "id": 155,
+    "prompt_0": "List of the biggest oceans in the world",
+    "prompt_1": "List the largest oceans in the world by area.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu lệnh gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "largest oceans in the world by area"
+      }
+    }
+  },
+  {
+    "id": 156,
+    "prompt_0": "What are the examples of eponyms provided in the passage. List them in the bulleted format.",
+    "prompt_1": "What are the examples of eponyms provided in the passage? List them in the bulleted format.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có sự thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "What are the examples of eponyms provided in the passage?"
+      }
+    }
+  },
+  {
+    "id": 157,
+    "prompt_0": "How to prevent the extinction of the human species?",
+    "prompt_1": "What are some practical steps to prevent the extinction of the human species?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung mà lời nhắc gốc không có."
+      },
+      "evidence": {
+        "Aspect_Expansion": "practical steps"
+      }
+    }
+  },
+  {
+    "id": 158,
+    "prompt_0": "What is Azure SQL used for?",
+    "prompt_1": "Please provide a detailed explanation of the uses and capabilities of Azure SQL Database.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Depth_Requirement": "Câu lệnh yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Depth_Requirement": "detailed explanation"
+      }
+    }
+  },
+  {
+    "id": 159,
+    "prompt_0": "What is the loudest animal on Earth?",
+    "prompt_1": "What is the loudest animal on Earth? Please provide accurate information about the animal and its volume.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về thông tin và âm lượng của động vật mà lời nhắc gốc không đề cập."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Please provide accurate information about the animal and its volume."
+      }
+    }
+  },
+  {
+    "id": 160,
+    "prompt_0": "Can you explain how I can analyze Simba logs?",
+    "prompt_1": "Can you provide step-by-step instructions on how to analyze Simba logs?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời tuân theo một cấu trúc cụ thể (ví dụ: từng bước, gạch đầu dòng, với các ví dụ minh họa)."
+      },
+      "evidence": {
+        "Output_Structuring": "step-by-step instructions"
+      }
+    }
+  },
+  {
+    "id": 161,
+    "prompt_0": "Can you give me a short bulleted list of the Murray-Wright's violent activities of the 1980s?",
+    "prompt_1": "Can you provide me with a short bulleted list of the Murray-Wright's violent activities of the 1980s? Please ensure that the response accurately includes information about the specific violent activities and does not include any harmful or unnecessary details.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Verb_Substitution",
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách câu trả lời nên được viết, liên quan đến chất lượng và sự phù hợp."
+      },
+      "evidence": {
+        "Verb_Substitution": "provide",
+        "Secondary_Objective": "does not include any harmful or unnecessary details"
+      }
+    }
+  },
+  {
+    "id": 162,
+    "prompt_0": "What is a good Science fiction book?",
+    "prompt_1": "What are some science fiction books that you would recommend?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "What are some science fiction books"
+      }
+    }
+  },
+  {
+    "id": 163,
+    "prompt_0": "What are the primary colors?",
+    "prompt_1": "Please provide a brief explanation of the primary colors.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Depth_Requirement": "Câu lệnh yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Depth_Requirement": "a brief explanation"
+      }
+    }
+  },
+  {
+    "id": 164,
+    "prompt_0": "Air Lingus is the national airline of which country",
+    "prompt_1": "Which country is Air Lingus, the national airline of?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ về cấu trúc câu mà không làm thay đổi ý nghĩa hoặc yêu cầu của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "Which country is Air Lingus, the national airline of?"
+      }
+    }
+  },
+  {
+    "id": 165,
+    "prompt_0": "How is binary search vs other searching schemes?",
+    "prompt_1": "Compare the binary search algorithm to other searching schemes in terms of efficiency, accuracy, and space complexity.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để so sánh mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "in terms of efficiency, accuracy, and space complexity"
+      }
+    }
+  },
+  {
+    "id": 166,
+    "prompt_0": "What is a small-world network?",
+    "prompt_1": "What is a small-world network? Please explain the concept and provide examples.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Đề bài bổ sung các khía cạnh cụ thể để giải thích mà đề bài gốc không có.",
+        "Example_Request": "Đề bài yêu cầu cung cấp các ví dụ minh họa cụ thể."
+      },
+      "evidence": {
+        "Aspect_Expansion": "explain the concept",
+        "Example_Request": "provide examples"
+      }
+    }
+  },
+  {
+    "id": 167,
+    "prompt_0": "What’s a good way to lose weight",
+    "prompt_1": "What are some effective weight loss methods?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "What are some effective weight loss methods?"
+      }
+    }
+  },
+  {
+    "id": 168,
+    "prompt_0": "Tell me about plant life cycle",
+    "prompt_1": "Please explain the different stages of a plant's life cycle, including its formation, growth, reproduction, and its role in the ecosystem.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Lời nhắc chuyển từ câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including its formation, growth, reproduction, and its role in the ecosystem",
+        "Instructional_Framing": "Please explain"
+      }
+    }
+  },
+  {
+    "id": 169,
+    "prompt_0": "Summarize what the network Bravo is about",
+    "prompt_1": "Summarize what the network Bravo is about, focusing on its programming and target audience.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Scope_Narrowing"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Đề xuất bổ sung các khía cạnh cụ thể về nội dung cần phân tích.",
+        "Scope_Narrowing": "Đề xuất thu hẹp phạm vi chủ đề để tập trung vào một số phần nhất định."
+      },
+      "evidence": {
+        "Aspect_Expansion": "focusing on its programming and target audience",
+        "Scope_Narrowing": "focusing on its programming and target audience"
+      }
+    }
+  },
+  {
+    "id": 170,
+    "prompt_0": "What were the 2 horses represented in greek mythology?",
+    "prompt_1": "Please provide the names of the two horses represented in Greek mythology.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 171,
+    "prompt_0": "How long is the Mars 2020 mission?",
+    "prompt_1": "How long is the Mars 2020 mission planned to be?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "planned to be"
+      }
+    }
+  },
+  {
+    "id": 172,
+    "prompt_0": "What is the population of North Carolina?",
+    "prompt_1": "What is the population of North Carolina? Please provide the population of the state and any relevant details.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "any relevant details"
+      }
+    }
+  },
+  {
+    "id": 173,
+    "prompt_0": "What is a mitochondrial matrix?",
+    "prompt_1": "Please explain what a mitochondrial matrix is and provide additional information about its structure and function.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về cấu trúc và chức năng, vốn không có trong lời nhắc gốc.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn, sâu hơn về chủ đề mà không thay đổi phạm vi nội dung cốt lõi."
+      },
+      "evidence": {
+        "Aspect_Expansion": "its structure and function",
+        "Depth_Requirement": "Please explain what a mitochondrial matrix is"
+      }
+    }
+  },
+  {
+    "id": 174,
+    "prompt_0": "Extract from the following passage, the periods of time does sunrise refer to.",
+    "prompt_1": "Extract from the given passage the periods of time that sunrise refers to.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về từ ngữ mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "the given passage the periods of time that"
+      }
+    }
+  },
+  {
+    "id": 175,
+    "prompt_0": "When is the world diabetes day celebrated?",
+    "prompt_1": "When is the world diabetes day celebrated and what are the main events?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể mới, yêu cầu thông tin về các sự kiện chính."
+      },
+      "evidence": {
+        "Aspect_Expansion": "and what are the main events"
+      }
+    }
+  },
+  {
+    "id": 176,
+    "prompt_0": "Is it a good situation to be a dev ?",
+    "prompt_1": "Is it a good situation to be a developer?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có một thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "developer"
+      }
+    }
+  },
+  {
+    "id": 177,
+    "prompt_0": "What caused the unprecedented five-game winning streak?",
+    "prompt_1": "What were the key factors that contributed to the unprecedented five-game winning streak?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "key factors that contributed"
+      }
+    }
+  },
+  {
+    "id": 178,
+    "prompt_0": "Identify which animal species is alive or extinct: Xenoposeidon, Sloth",
+    "prompt_1": "Identify whether Xenoposeidon and Sloth are alive or extinct.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Identify whether Xenoposeidon and Sloth"
+      }
+    }
+  },
+  {
+    "id": 179,
+    "prompt_0": "Where is Urumqi?",
+    "prompt_1": "Please provide information about Urumqi, including its location, population, and any significant historical or cultural context.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần cung cấp, như vị trí, dân số và bối cảnh lịch sử hoặc văn hóa.",
+        "Instructional_Framing": "Lời nhắc đã chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, nhiệm vụ định hướng."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including its location, population, and any significant historical or cultural context",
+        "Instructional_Framing": "Please provide information"
+      }
+    }
+  },
+  {
+    "id": 180,
+    "prompt_0": "Name some female characters from \"The X-Files.\"",
+    "prompt_1": "Name some female characters from \"The X-Files\" and provide some information about each character.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "provide some information about each character"
+      }
+    }
+  },
+  {
+    "id": 181,
+    "prompt_0": "When do schools close and reopen from summer holidays in India?",
+    "prompt_1": "When do schools in India close for summer holidays and reopen? Please provide the specific dates for the closure and reopening of schools.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu cung cấp thông tin chi tiết hơn về cùng một nội dung."
+      },
+      "evidence": {
+        "Depth_Requirement": "Please provide the specific dates"
+      }
+    }
+  },
+  {
+    "id": 182,
+    "prompt_0": "Who are the Weasleys?",
+    "prompt_1": "Please provide a detailed description of the Weasley family, including their occupation, physical characteristics, and any significant role they play in the Harry Potter series.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion",
+        "Intensification"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh cụ thể về nội dung cần mô tả mà không có trong câu lệnh gốc.",
+        "Intensification": "Câu lệnh yêu cầu thực hiện nhiệm vụ mạnh mẽ hơn, chi tiết hơn mà không thay đổi chủ đề được hỏi."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Aspect_Expansion": "including their occupation, physical characteristics, and any significant role",
+        "Intensification": "a detailed description"
+      }
+    }
+  },
+  {
+    "id": 183,
+    "prompt_0": "From the passage identify the various products and services which are provided by HDFC Bank including the digital products. Display the results in comma separated format.",
+    "prompt_1": "From the passage, identify the various products and services provided by HDFC Bank, including the digital products. Display the results in a comma-separated format.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về dấu câu và từ nối mà không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "From the passage, identify"
+      }
+    }
+  },
+  {
+    "id": 184,
+    "prompt_0": "Can you give a list of novels written by Nancy Kress?",
+    "prompt_1": "Please provide a list of novels written by Nancy Kress.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu lệnh gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide"
+      }
+    }
+  },
+  {
+    "id": 185,
+    "prompt_0": "Who is JFK?",
+    "prompt_1": "Who is JFK and what are his notable accomplishments?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể (thành tựu) không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "what are his notable accomplishments"
+      }
+    }
+  },
+  {
+    "id": 186,
+    "prompt_0": "Without quoting directly from the text give me a summary of how turist visit the falls even if they are used for hydroelectric power production.",
+    "prompt_1": "Without quoting directly from the text, please provide a summary of how tourists visit the falls, including their activities and enjoyment, even though the falls are used for hydroelectric power production.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về hoạt động và sự thưởng thức của khách du lịch, vốn không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including their activities and enjoyment"
+      }
+    }
+  },
+  {
+    "id": 187,
+    "prompt_0": "Who was the lead singer for the band Aerosmith?",
+    "prompt_1": "Who was the lead singer for the band Aerosmith? Provide the name of the lead singer without going into any unnecessary details.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Secondary_Objective"
+      ],
+      "descriptions": {
+        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức trình bày câu trả lời, cụ thể là không đi vào các chi tiết không cần thiết."
+      },
+      "evidence": {
+        "Secondary_Objective": "without going into any unnecessary details"
+      }
+    }
+  },
+  {
+    "id": 188,
+    "prompt_0": "What is the oldest country in the world?",
+    "prompt_1": "What is the oldest country in the world? Please provide accurate information and consider mentioning any countries with ancient civilizations.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể về việc cung cấp thông tin chính xác và đề cập đến các quốc gia có nền văn minh cổ đại."
+      },
+      "evidence": {
+        "Aspect_Expansion": "Please provide accurate information and consider mentioning any countries with ancient civilizations."
+      }
+    }
+  },
+  {
+    "id": 189,
+    "prompt_0": "What are five creative ways to use paper?",
+    "prompt_1": "Provide five creative ways to use paper.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Instructional_Framing"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một lệnh trực tiếp, mang tính định hướng nhiệm vụ."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide"
+      }
+    }
+  },
+  {
+    "id": 190,
+    "prompt_0": "What is the JDK?",
+    "prompt_1": "What is the JDK and what are its main components?",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh hoặc chủ đề cụ thể không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Aspect_Expansion": "and what are its main components"
+      }
+    }
+  },
+  {
+    "id": 191,
+    "prompt_0": "How many teams compete in Formula one world championship?",
+    "prompt_1": "How many teams compete in the Formula One World Championship?",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, chẳng hạn như việc viết hoa và thêm mạo từ, không làm thay đổi ý nghĩa của câu hỏi."
+      },
+      "evidence": {
+        "Minimal_Change": "the Formula One World Championship"
+      }
+    }
+  },
+  {
+    "id": 192,
+    "prompt_0": "Whats the difference between a bass guitar and a regular guitar?",
+    "prompt_1": "What are the main differences between a bass guitar and a regular guitar? Please provide accurate and detailed information about the instrument, including its size, purpose, tone, and playing style.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Intensification",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Intensification": "Yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi nhiều hơn mà không thay đổi nội dung chính.",
+        "Aspect_Expansion": "Bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể không có trong lời nhắc gốc."
+      },
+      "evidence": {
+        "Intensification": "Please provide accurate and detailed information",
+        "Aspect_Expansion": "including its size, purpose, tone, and playing style"
+      }
+    }
+  },
+  {
+    "id": 193,
+    "prompt_0": "When was the NFL founded? Which NFL team won the most Super Bowls? Which quarterback has won the most Super Bowls?",
+    "prompt_1": "When was the NFL founded? Which NFL team has won the most Super Bowls? Which quarterback has won the most Super Bowls? Please provide accurate and detailed information.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Please provide accurate and detailed information."
+      }
+    }
+  },
+  {
+    "id": 194,
+    "prompt_0": "Who are U2",
+    "prompt_1": "Provide a detailed description of U2, including their history, notable works, and impact on music.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Aspect_Expansion"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
+      },
+      "evidence": {
+        "Instructional_Framing": "Provide a detailed description",
+        "Aspect_Expansion": "including their history, notable works, and impact on music"
+      }
+    }
+  },
+  {
+    "id": 195,
+    "prompt_0": "what is the sunniest state in the US?",
+    "prompt_1": "Which state has the highest average annual sunshine in the US?",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "highest average annual sunshine"
+      }
+    }
+  },
+  {
+    "id": 196,
+    "prompt_0": "Based on this summary of Lebron James career, what are the key reasons he is considered the greatest basketball player of all time?",
+    "prompt_1": "Based on this summary of LeBron James' career, what are the key reasons he is considered the greatest basketball player of all time? Please provide specific details and examples to support your response.",
+    "winner": 1,
+    "classification": {
+      "labels": [
+        "Depth_Requirement",
+        "Example_Request"
+      ],
+      "descriptions": {
+        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết và cụ thể hơn.",
+        "Example_Request": "Yêu cầu đưa ra các ví dụ cụ thể để minh họa cho câu trả lời."
+      },
+      "evidence": {
+        "Depth_Requirement": "Please provide specific details",
+        "Example_Request": "and examples to support your response"
+      }
+    }
+  },
+  {
+    "id": 197,
+    "prompt_0": "Which of the following are not colors of the rainbow spectrum?  Purple, Blue, Aqua, Orange, Black, Violet, Pink",
+    "prompt_1": "Identify the colors that are not part of the rainbow spectrum: Purple, Blue, Aqua, Orange, Black, Violet, Pink.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Identify the colors that are not part"
+      }
+    }
+  },
+  {
+    "id": 198,
+    "prompt_0": "Identify the bird from the list: Hoot, Coot, Foot",
+    "prompt_1": "Identify the bird from the list: Hoot, Coot, Foot",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Đề xuất gần như giống hệt nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "Identify the bird from the list: Hoot, Coot, Foot"
+      }
+    }
+  },
+  {
+    "id": 199,
+    "prompt_0": "5 steps to make a fire",
+    "prompt_1": "Please provide a 5-step guide on how to make a fire.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Instructional_Framing",
+        "Output_Structuring"
+      ],
+      "descriptions": {
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi ngắn gọn sang một yêu cầu trực tiếp, mang tính chỉ dẫn.",
+        "Output_Structuring": "Câu lệnh yêu cầu câu trả lời phải được trình bày theo một cấu trúc cụ thể (hướng dẫn 5 bước)."
+      },
+      "evidence": {
+        "Instructional_Framing": "Please provide",
+        "Output_Structuring": "5-step guide"
+      }
+    }
+  },
+  {
+    "id": 200,
+    "prompt_0": "From the paragraph about the painting, \"The Little Street\", tell me the painting's significance with reference to the Dutch Golden Age in that period.",
+    "prompt_1": "From the paragraph about the painting, \"The Little Street\", explain the significance of the painting during the Dutch Golden Age.",
+    "winner": 2,
+    "classification": {
+      "labels": [
+        "Minimal_Change"
+      ],
+      "descriptions": {
+        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt với lời nhắc gốc, chỉ có những thay đổi nhỏ về cấu trúc câu mà không làm thay đổi ý nghĩa."
+      },
+      "evidence": {
+        "Minimal_Change": "explain the significance of the painting"
+      }
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "original_vs_bpo": {
+    "original_win": 27,
+    "bpo_win": 29,
+    "draw": 144
+  },
+  "original_vs_rbpo": {
+    "original_win": 30,
+    "rbpo_win": 33,
+    "draw": 137
+  },
+  "bpo_vs_rbpo": {
+    "bpo_win": 27,
+    "rbpo_win": 34,
+    "draw": 139
+  }
+}

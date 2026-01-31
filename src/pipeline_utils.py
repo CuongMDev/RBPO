@@ -515,5 +515,5 @@ def run_pairwise_ranking(
     #cleanup
     del model
     del tokenizer
-    # nuke_hf_cache(MODEL_CACHE_PATH) # Trong này chỉ dùng Qwen3, không cần xóa
+    # nuke_hf_cache(MODEL_CACHE_PATH)
     return stats
