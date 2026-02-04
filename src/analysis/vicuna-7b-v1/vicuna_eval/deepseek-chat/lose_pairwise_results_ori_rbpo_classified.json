@@ -6,13 +6,13 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Intensification"
       ],
       "descriptions": {
-        "Minimal_Change": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của câu hỏi gốc."
+        "Intensification": "Yêu cầu đã được làm mạnh hơn bằng cách thêm từ 'effectively' để nhấn mạnh tính hiệu quả."
       },
       "evidence": {
-        "Minimal_Change": "effectively"
+        "Intensification": "effectively"
       }
     }
   },
@@ -22,33 +22,35 @@
     "prompt_1": "What are some effective ways to manage stress?",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Câu hỏi gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "manage stress"
-      }
-    }
+"labels": ["Verb_Substitution"],
+"descriptions": {
+"Verb_Substitution": "The prompt replaces the main action verb with a near-synonym while keeping the same overall intent."
+},
+"evidence": {
+"Verb_Substitution": "manage stress"
+}
+}
   },
   {
     "id": 3,
     "prompt_0": "What are the main differences between Python and JavaScript programming languages?",
     "prompt_1": "What are the main differences between Python and JavaScript programming languages? Provide accurate and detailed differences in syntax, structure, and functionality.",
     "winner": 1,
-    "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được đề cập."
-      },
-      "evidence": {
-        "Aspect_Expansion": "differences in syntax, structure, and functionality"
-      }
-    }
+    "classification":{
+"labels": ["Aspect_Expansion", "Depth_Requirement","Instructional_Framing","Intensification"],
+"descriptions": {
+"Aspect_Expansion": "The prompt adds specific dimensions to be compared, including syntax, structure, and functionality.",
+"Depth_Requirement": "The prompt asks for a more detailed and thorough explanation of the differences.",
+"Instructional_Framing": "The prompt is framed as a request for information, guiding the response format.",
+"Intensification": "The prompt emphasizes the need for accuracy and detail, strengthening the task requirement."
+},
+"evidence": {
+"Aspect_Expansion": "differences in syntax, structure, and functionality",
+"Depth_Requirement": "accurate and detailed differences",
+"Instructional_Framing": "Provide",
+"Intensification": "accurate and detailed"
+}
+}
   },
   {
     "id": 4,
@@ -56,16 +58,16 @@
     "prompt_1": "How can I increase my productivity while working from home? Please provide specific strategies and tips to follow.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể hoặc chủ đề mới không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "specific strategies and tips to follow"
-      }
-    }
+"labels": ["Instructional_Framing", "Aspect_Expansion"],
+"descriptions": {
+"Instructional_Framing": "The prompt shifts from an open-ended question to a directive requesting the user to provide information.",
+"Aspect_Expansion": "The prompt adds a requirement to include specific strategies and tips that were not mentioned originally."
+},
+"evidence": {
+"Instructional_Framing": "Please provide",
+"Aspect_Expansion": "specific strategies and tips to follow"
+}
+}
   },
   {
     "id": 5,
@@ -73,16 +75,16 @@
     "prompt_1": "Can you provide an explanation of the basics of quantum computing, including the principles of quantum mechanics, the use of quantum bits (qubits), and the challenges in practical applications?",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần giải thích mà không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "including the principles of quantum mechanics, the use of quantum bits (qubits), and the challenges in practical applications"
-      }
-    }
+"labels": ["Instructional_Framing", "Aspect_Expansion"],
+"descriptions": {
+"Instructional_Framing": "The prompt changes from a question to a directive asking the responder to provide an explanation.",
+"Aspect_Expansion": "The prompt adds specific topics such as principles, qubits, and practical challenges to be covered."
+},
+"evidence": {
+"Instructional_Framing": "Can you provide an explanation",
+"Aspect_Expansion": "including the principles of quantum mechanics, the use of quantum bits"
+}
+}
   },
   {
     "id": 6,
@@ -109,15 +111,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu đã được làm mạnh hơn bằng cách yêu cầu một cách tiếp cận toàn diện.",
-        "Aspect_Expansion": "Đã thêm các khía cạnh cụ thể về các bước trong quá trình phát triển và tầm quan trọng của thực hành và phản hồi."
+        "Aspect_Expansion": "Đã thêm các khía cạnh cụ thể về các bước trong quá trình phát triển và tầm quan trọng của thực hành và phản hồi.",
+        "Secondary_Objective": "Yêu cầu bổ sung về cách thức câu trả lời nên được trình bày, nhấn mạnh tầm quan trọng của thực hành và phản hồi."
       },
       "evidence": {
         "Intensification": "a comprehensive approach",
-        "Aspect_Expansion": "the steps involved in the development process and emphasizes the importance of practice and feedback"
+        "Aspect_Expansion": "the steps involved in the development process and emphasizes the importance of practice and feedback",
+        "Secondary_Objective": "emphasizes the importance of practice and feedback"
       }
     }
   },
@@ -128,13 +133,19 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Intensification",
+        "Depth_Requirement"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời.",
+        "Intensification": "Lời nhắc đã được làm mạnh hơn bằng cách yêu cầu một câu trả lời chi tiết.",
+        "Depth_Requirement": "Lời nhắc yêu cầu giải thích chi tiết hơn về các thách thức đã nêu."
       },
       "evidence": {
-        "Aspect_Expansion": "funding, technology, teacher shortages, early childhood education, and student debt"
+        "Aspect_Expansion": "funding, technology, teacher shortages, early childhood education, and student debt",
+        "Intensification": "Provide a detailed response",
+        "Depth_Requirement": "that addresses the issues"
       }
     }
   },
@@ -143,17 +154,19 @@
     "prompt_0": "What are the primary factors that influence consumer behavior?",
     "prompt_1": "What are the primary factors that influence consumer behavior? Please provide a detailed explanation, including the role of demographic factors, social factors, marketing campaigns, and personal experiences.",
     "winner": 2,
-    "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Prompt thêm vào các khía cạnh hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
-      },
-      "evidence": {
-        "Aspect_Expansion": "demographic factors, social factors, marketing campaigns, and personal experiences"
-      }
-    }
+    "classification":{
+"labels": ["Aspect_Expansion", "Depth_Requirement", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds specific factors and dimensions that must be included in the response.",
+"Depth_Requirement": "The modified prompt requires a more detailed and thorough level of explanation than the original.",
+"Instructional_Framing": "The modified prompt shifts from a simple question to a command-style request for the response."
+},
+"evidence": {
+"Aspect_Expansion": "including the role of demographic factors, social factors",
+"Depth_Requirement": "provide a detailed explanation",
+"Instructional_Framing": "Please provide a detailed explanation"
+}
+}
   },
   {
     "id": 10,
@@ -161,19 +174,18 @@
     "prompt_1": "What are the most effective strategies for conflict resolution in the workplace? Please provide specific and actionable strategies that can be used to effectively resolve conflicts in the workplace.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Intensification",
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Intensification": "Yêu cầu cung cấp các chiến lược cụ thể và có thể hành động, làm tăng độ mạnh của nhiệm vụ.",
-        "Depth_Requirement": "Yêu cầu giải thích chi tiết hơn về các chiến lược mà không thêm khía cạnh nội dung mới."
-      },
-      "evidence": {
-        "Intensification": "specific and actionable strategies",
-        "Depth_Requirement": "effectively resolve conflicts"
-      }
-    }
+"labels": ["Intensification", "Secondary_Objective", "Instructional_Framing"],
+"descriptions": {
+"Intensification": "The modified prompt strengthens the requirement by asking for more specific and actionable strategies.",
+"Secondary_Objective": "The modified prompt adds a quality objective by emphasizing practicality and usability of the response.",
+"Instructional_Framing": "The modified prompt shifts from a simple question to a command-style request for the response."
+},
+"evidence": {
+"Intensification": "specific and actionable strategies",
+"Secondary_Objective": "that can be used to effectively resolve conflicts",
+"Instructional_Framing": "Please provide specific and actionable strategies"
+}
+}
   },
   {
     "id": 11,
@@ -183,15 +195,21 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing",
+        "Intensification"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích, như tác động môi trường và rủi ro sức khỏe, vốn không có trong lời nhắc gốc.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một phân tích chi tiết hơn mà không thay đổi phạm vi nội dung cốt lõi."
+        "Depth_Requirement": "Lời nhắc yêu cầu một phân tích chi tiết hơn mà không thay đổi phạm vi nội dung cốt lõi.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi mở sang một yêu cầu cụ thể để cung cấp phân tích.",
+        "Intensification": "Lời nhắc đã được làm mạnh hơn bằng cách yêu cầu phân tích chi tiết và thảo luận về lợi ích."
       },
       "evidence": {
         "Aspect_Expansion": "environmental impacts, such as plastic waste and pollution, and any health risks",
-        "Depth_Requirement": "Please provide a detailed analysis"
+        "Depth_Requirement": "Please provide a detailed analysis",
+        "Instructional_Framing": "Please provide a detailed analysis",
+        "Intensification": "Additionally, discuss the benefits"
       }
     }
   },
@@ -204,17 +222,20 @@
       "labels": [
         "Intensification",
         "Aspect_Expansion",
-        "Example_Request"
+        "Example_Request",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu trở nên mạnh mẽ hơn, đòi hỏi một danh sách toàn diện và giải thích tầm quan trọng.",
         "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần xem xét, như thiết kế, vị trí, thông tin, giá vé, bảo trì và an toàn.",
-        "Example_Request": "Yêu cầu cung cấp các ví dụ cụ thể để minh họa cho nội dung."
+        "Example_Request": "Yêu cầu cung cấp các ví dụ cụ thể để minh họa cho nội dung.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi mở sang một yêu cầu cụ thể để cung cấp phân tích."
       },
       "evidence": {
         "Intensification": "Please provide a comprehensive list",
         "Aspect_Expansion": "design of the transportation system, the location",
-        "Example_Request": "providing specific examples"
+        "Example_Request": "providing specific examples",
+        "Instructional_Framing": "Please provide a comprehensive list"
       }
     }
   },
@@ -224,19 +245,21 @@
     "prompt_1": "How can governments effectively utilize fiscal and monetary policies to combat economic recessions? Please provide a detailed explanation of the specific actions governments can take and the impact of these policies on the economy.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Intensification",
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Intensification": "Yêu cầu được tăng cường bằng cách thêm từ 'effectively' để nhấn mạnh tính hiệu quả.",
-        "Depth_Requirement": "Yêu cầu một giải thích chi tiết và cụ thể về các hành động và tác động."
-      },
-      "evidence": {
-        "Intensification": "effectively utilize",
-        "Depth_Requirement": "Please provide a detailed explanation"
-      }
-    }
+  "labels": ["Aspect_Expansion", "Depth_Requirement", "Instructional_Framing", "Intensification"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds new dimensions by requesting specific actions and impacts that were not in the original.",
+    "Depth_Requirement": "The modified prompt requires a more detailed and in-depth explanation of the topic.",
+    "Instructional_Framing": "The modified prompt shifts from a question to a directive asking the responder to provide content.",
+    "Intensification": "The modified prompt strengthens the requirement by adding an adverb to emphasize effectiveness."
+  },
+  "evidence": {
+    "Aspect_Expansion": "the specific actions governments can take",
+    "Depth_Requirement": "Please provide a detailed explanation",
+    "Instructional_Framing": "Please provide a detailed explanation",
+    "Intensification": "effectively utilize fiscal and monetary policies"
+  }
+}
+
   },
   {
     "id": 14,
@@ -244,19 +267,19 @@
     "prompt_1": "How do language and cultural barriers affect the way people communicate and form relationships in multicultural societies? Provide specific examples and explore the impact of both positive and negative aspects.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Example_Request"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích, cụ thể là tác động tích cực và tiêu cực.",
-        "Example_Request": "Lời nhắc yêu cầu cung cấp các ví dụ cụ thể để minh họa cho nội dung."
-      },
-      "evidence": {
-        "Aspect_Expansion": "explore the impact of both positive and negative aspects",
-        "Example_Request": "Provide specific examples"
-      }
-    }
+  "labels": ["Example_Request", "Implication_Expansion", "Instructional_Framing"],
+  "descriptions": {
+    "Example_Request": "The modified prompt asks for concrete examples to illustrate how communication and relationships are affected.",
+    "Implication_Expansion": "The modified prompt expands the scope by requiring analysis of both positive and negative impacts.",
+    "Instructional_Framing": "The modified prompt shifts from a question to a directive that instructs the responder to provide content."
+  },
+  "evidence": {
+    "Example_Request": "Provide specific examples",
+    "Implication_Expansion": "explore the impact of both positive and negative aspects",
+    "Instructional_Framing": "Provide specific examples"
+  }
+}
+
   },
   {
     "id": 15,
@@ -300,15 +323,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về cơ chế và quá trình tiêm chủng, cũng như tầm quan trọng của miễn dịch cộng đồng.",
-        "Depth_Requirement": "Lời nhắc yêu cầu giải thích chi tiết hơn về cơ chế của vắc-xin và tầm quan trọng của miễn dịch cộng đồng."
+        "Depth_Requirement": "Lời nhắc yêu cầu giải thích chi tiết hơn về cơ chế của vắc-xin và tầm quan trọng của miễn dịch cộng đồng.",
+        "Instructional_Framing": "Lời nhắc chuyển từ câu hỏi sang hướng dẫn yêu cầu người trả lời cung cấp nội dung." 
       },
       "evidence": {
         "Aspect_Expansion": "including the process of administering the vaccine",
-        "Depth_Requirement": "explain the mechanism of vaccination"
+        "Depth_Requirement": "explain the mechanism of vaccination",
+        "Instructional_Framing": "Please explain"
       }
     }
   },
@@ -320,15 +346,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Implication_Expansion"
+        "Implication_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích, cụ thể là cả mặt tích cực và tiêu cực.",
-        "Implication_Expansion": "Lời nhắc yêu cầu mở rộng phân tích về các hệ quả hoặc tác động tiềm tàng của một vấn đề."
+        "Implication_Expansion": "Lời nhắc yêu cầu mở rộng phân tích về các hệ quả hoặc tác động tiềm tàng của một vấn đề.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
         "Aspect_Expansion": "focusing on both positive and negative aspects",
-        "Implication_Expansion": "elaborate on the potential implications"
+        "Implication_Expansion": "elaborate on the potential implications",
+        "Instructional_Framing": "Discuss how social media platforms"
       }
     }
   },
@@ -374,15 +403,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần đưa vào mà không có trong lời nhắc gốc.",
-        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức viết câu trả lời, chẳng hạn như phong cách hoặc giọng điệu."
+        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức viết câu trả lời, chẳng hạn như phong cách hoặc giọng điệu.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
         "Aspect_Expansion": "your name, occupation, and a notable achievement",
-        "Secondary_Objective": "Use appropriate medieval language and maintain a helpful and harmless tone"
+        "Secondary_Objective": "Use appropriate medieval language and maintain a helpful and harmless tone",
+        "Instructional_Framing": "Provide a formal introduction"
       }
     }
   },
@@ -411,15 +443,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần có trong câu trả lời mà lời nhắc gốc không đề cập.",
-        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về chất lượng hoặc cách thức trình bày của câu trả lời, không phải về nội dung."
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về chất lượng hoặc cách thức trình bày của câu trả lời, không phải về nội dung.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
         "Aspect_Expansion": "Provide a meaningful and creative quote",
-        "Secondary_Objective": "showcases the character's vulnerability and emotions"
+        "Secondary_Objective": "showcases the character's vulnerability and emotions",
+        "Instructional_Framing": "Provide a meaningful and creative quote"
       }
     }
   },
@@ -429,16 +464,16 @@
     "prompt_1": "As a superhero, please explain your origin story to a curious child in a simple and coherent manner.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Secondary_Objective"
-      ],
-      "descriptions": {
-        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức viết câu trả lời, chẳng hạn như phong cách hoặc sự rõ ràng, mà không thay đổi nội dung chính."
-      },
-      "evidence": {
-        "Secondary_Objective": "in a simple and coherent manner"
-      }
-    }
+  "labels": ["Instructional_Framing", "Secondary_Objective"],
+  "descriptions": {
+    "Instructional_Framing": "The modified prompt changes the original question into a direct instruction by asking the responder to explain the origin story.",
+    "Secondary_Objective": "The modified prompt adds a quality requirement by specifying that the explanation should be simple and coherent."
+  },
+  "evidence": {
+    "Instructional_Framing": "please explain your origin story",
+    "Secondary_Objective": "in a simple and coherent manner"
+  }
+}
   },
   {
     "id": 25,
@@ -448,15 +483,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Implication_Expansion"
+        "Implication_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần trình bày, đó là việc liệt kê và mô tả.",
-        "Implication_Expansion": "Lời nhắc yêu cầu phân tích tác động của các tiến bộ công nghệ lên xã hội và giải quyết các lo ngại tiềm ẩn."
+        "Implication_Expansion": "Lời nhắc yêu cầu phân tích tác động của các tiến bộ công nghệ lên xã hội và giải quyết các lo ngại tiềm ẩn.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
         "Aspect_Expansion": "List and describe",
-        "Implication_Expansion": "emphasizing their impact on society and addressing potential concerns"
+        "Implication_Expansion": "emphasizing their impact on society and addressing potential concerns",
+        "Instructional_Framing": "List and describe"
       }
     }
   },
@@ -467,13 +505,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Intensification"
+        "Intensification",
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Intensification": "Yêu cầu mô tả chi tiết và hấp dẫn hơn so với bản gốc."
+        "Intensification": "Yêu cầu mô tả chi tiết và hấp dẫn hơn so với bản gốc.",
+        "Verb_Substitution": "Thay thế động từ 'describe' bằng 'provide a detailed and engaging description' để làm rõ yêu cầu."
       },
       "evidence": {
-        "Intensification": "provide a detailed and engaging description"
+        "Intensification": "provide a detailed and engaging description",
+        "Verb_Substitution": "provide a detailed and engaging description"
       }
     }
   },
@@ -519,15 +560,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Intensification"
+        "Intensification",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể như hoạt động hàng ngày, giờ làm việc và thách thức giao tiếp.",
-        "Intensification": "Lời nhắc yêu cầu cung cấp chi tiết cụ thể và đề cập đến sự phấn khích, kiến thức, làm cho nhiệm vụ trở nên đòi hỏi hơn."
+        "Intensification": "Lời nhắc yêu cầu cung cấp chi tiết cụ thể và đề cập đến sự phấn khích, kiến thức, làm cho nhiệm vụ trở nên đòi hỏi hơn.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
         "Aspect_Expansion": "daily activities, work hours, communication challenges",
-        "Intensification": "Please provide specific details"
+        "Intensification": "Please provide specific details",
+        "Instructional_Framing": "Please provide specific details"
       }
     }
   },
@@ -539,15 +583,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Depth_Requirement"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu mô tả sâu sắc và sáng tạo hơn so với bản gốc.",
-        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần mô tả như thách thức và tài nguyên."
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần mô tả như thách thức và tài nguyên.",
+        "Depth_Requirement": "Yêu cầu cung cấp mô tả chi tiết và sâu sắc hơn về cách sống sót."
       },
       "evidence": {
         "Intensification": "Be creative and provide depth",
-        "Aspect_Expansion": "the challenges you face, the resources you gather"
+        "Aspect_Expansion": "the challenges you face, the resources you gather",
+        "Depth_Requirement": "describe how you survive"
       }
     }
   },
@@ -576,15 +623,18 @@
     "classification": {
       "labels": [
         "Example_Request",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Example_Request": "Yêu cầu bổ sung các ví dụ cụ thể để minh họa cho nội dung.",
-        "Depth_Requirement": "Yêu cầu giải thích chi tiết và sâu hơn mà không thêm khía cạnh nội dung mới."
+        "Depth_Requirement": "Yêu cầu giải thích chi tiết và sâu hơn mà không thêm khía cạnh nội dung mới.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
         "Example_Request": "Provide specific examples",
-        "Depth_Requirement": "explain each clue in detail"
+        "Depth_Requirement": "explain each clue in detail",
+        "Instructional_Framing": "Provide specific examples"
       }
     }
   },
@@ -595,13 +645,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể cần được thảo luận mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể cần được thảo luận mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung."
       },
       "evidence": {
-        "Aspect_Expansion": "lack of dependence on technology, the ability to navigate without electricity or internet access, and the potential cost savings"
+        "Aspect_Expansion": "lack of dependence on technology, the ability to navigate without electricity or internet access, and the potential cost savings",
+        "Instructional_Framing": "Please provide reasons that highlight the advantages"
       }
     }
   },
@@ -611,16 +664,17 @@
     "prompt_1": "How can you determine if a person is genuinely interested in a conversation or simply being polite? Provide specific indicators of genuine interest and consider the context of the conversation.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về chỉ báo và ngữ cảnh mà lời nhắc gốc không đề cập."
-      },
-      "evidence": {
-        "Aspect_Expansion": "Provide specific indicators of genuine interest and consider the context"
-      }
-    }
+  "labels": ["Aspect_Expansion", "Instructional_Framing"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds specific aspects by asking for indicators of genuine interest and consideration of conversational context.",
+    "Instructional_Framing": "The modified prompt shifts from an open question to a command-style request for provided indicators."
+  },
+  "evidence": {
+    "Aspect_Expansion": "Provide specific indicators of genuine interest",
+    "Instructional_Framing": "Provide specific indicators"
+  }
+}
+
   },
   {
     "id": 35,
@@ -628,16 +682,16 @@
     "prompt_1": "Why might someone prefer to shop at a small, locally-owned business instead of a large chain store, even if the prices are higher? Explain the reasons of loyalty, personalized service, unique products, and the positive impact on the local community.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về lý do để giải thích, mở rộng nội dung cần được đề cập."
-      },
-      "evidence": {
-        "Aspect_Expansion": "Explain the reasons of loyalty, personalized service, unique products, and the positive impact"
-      }
-    }
+  "labels": ["Aspect_Expansion", "Instructional_Framing"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds specific aspects by listing particular reasons such as loyalty, personalized service, unique products, and community impact.",
+    "Instructional_Framing": "The modified prompt changes the question into a directive by asking the responder to explain the reasons."
+  },
+  "evidence": {
+    "Aspect_Expansion": "loyalty, personalized service, unique products",
+    "Instructional_Framing": "Explain the reasons"
+  }
+}
   },
   {
     "id": 36,
@@ -648,17 +702,20 @@
       "labels": [
         "Intensification",
         "Aspect_Expansion",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Output_Structuring"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu đánh giá trở nên mạnh mẽ hơn bằng cách thêm từ 'effectively'.",
         "Aspect_Expansion": "Yêu cầu bổ sung các khía cạnh cụ thể để đánh giá như các bước, chuyên môn của tác giả, và kỹ năng tư duy phản biện.",
-        "Secondary_Objective": "Yêu cầu câu trả lời phải đảm bảo các tiêu chí về chất lượng như chính xác, hữu ích và vô hại."
+        "Secondary_Objective": "Yêu cầu câu trả lời phải đảm bảo các tiêu chí về chất lượng như chính xác, hữu ích và vô hại.",
+        "Output_Structuring": ""
       },
       "evidence": {
         "Intensification": "effectively assess",
         "Aspect_Expansion": "Provide specific steps and considerations",
-        "Secondary_Objective": "accurate, helpful, and harmless"
+        "Secondary_Objective": "accurate, helpful, and harmless",
+        "Output_Structuring": "Provide specific steps and considerations"
       }
     }
   },
@@ -670,15 +727,21 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Depth_Requirement"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp một giải thích chi tiết hơn so với bản gốc.",
-        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được khám phá, như lợi ích, tác hại, độ nhạy cảm cá nhân và ảnh hưởng văn hóa."
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được khám phá, như lợi ích, tác hại, độ nhạy cảm cá nhân và ảnh hưởng văn hóa.",
+        "Instructional_Framing": "Lời nhắc chuyển từ một câu hỏi sang một yêu cầu cụ thể để thảo luận về nội dung.",
+        "Depth_Requirement": "Yêu cầu một giải thích sâu sắc và toàn diện hơn về chủ đề."
       },
       "evidence": {
         "Intensification": "Please provide a detailed explanation",
-        "Aspect_Expansion": "including the potential benefits and drawbacks"
+        "Aspect_Expansion": "including the potential benefits and drawbacks",
+        "Instructional_Framing": "Please provide a detailed explanation",
+        "Depth_Requirement": "that explores the reasons behind the attraction and avoidance"
       }
     }
   },
@@ -688,16 +751,16 @@
     "prompt_1": "How can observing the behavior of other people in a social situation provide clues about cultural norms and expectations? Please explain the specific ways in which observing the behavior of others in a social situation can provide insights into cultural norms and expectations.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Depth_Requirement": "Yêu cầu này thêm vào một chỉ dẫn để giải thích chi tiết hơn hoặc sâu hơn mà không mở rộng các khía cạnh nội dung mới."
-      },
-      "evidence": {
-        "Depth_Requirement": "Please explain the specific ways"
-      }
-    }
+  "labels": ["Depth_Requirement", "Instructional_Framing"],
+  "descriptions": {
+    "Depth_Requirement": "The modified prompt requests a more detailed and in-depth explanation of how observing behavior provides cultural insights.",
+    "Instructional_Framing": "The modified prompt shifts from a question to a command-style request by asking the respondent to explain specific ways."
+  },
+  "evidence": {
+    "Depth_Requirement": "Please explain the specific ways",
+    "Instructional_Framing": "Please explain"
+  }
+}
   },
   {
     "id": 39,
@@ -725,19 +788,19 @@
     "prompt_1": "In a world where automation is becoming increasingly prevalent, what are the key considerations in prioritizing job creation and technological progress? Provide a comprehensive analysis of the potential benefits and challenges of each approach, taking into account factors like employment rates, income inequality, education and training, resource competition, and overall productivity. Please make sure to provide well-supported arguments for both prioritizing job creation and technological progress.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm vào các khía cạnh cụ thể để phân tích, như tỷ lệ việc làm và bất bình đẳng thu nhập.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một phân tích toàn diện và chi tiết hơn, với các lập luận được hỗ trợ tốt."
-      },
-      "evidence": {
-        "Aspect_Expansion": "employment rates, income inequality, education and training",
-        "Depth_Requirement": "Provide a comprehensive analysis of the potential benefits and challenges"
-      }
-    }
+  "labels": ["Aspect_Expansion", "Depth_Requirement", "Secondary_Objective"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds new content dimensions by listing specific factors such as employment rates, inequality, education, and productivity to be considered.",
+    "Depth_Requirement": "The modified prompt asks for a more comprehensive and detailed analysis of both job creation and technological progress.",
+    "Secondary_Objective": "The modified prompt introduces a quality requirement by asking for well-supported arguments for both positions."
+  },
+  "evidence": {
+    "Aspect_Expansion": "factors like employment rates, income inequality, education and training",
+    "Depth_Requirement": "Provide a comprehensive analysis",
+    "Secondary_Objective": "provide well-supported arguments"
+  }
+}
+
   },
   {
     "id": 41,
@@ -747,15 +810,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Output_Structuring"
+        "Output_Structuring",
+        "Depth_Requirement"
       ],
       "descriptions": {
         "Aspect_Expansion": "Prompt thêm vào các khía cạnh cụ thể về dữ liệu và phương pháp tính toán không có trong prompt gốc.",
-        "Output_Structuring": "Prompt yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, từng bước một."
+        "Output_Structuring": "Prompt yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, từng bước một.",
+        "Depth_Requirement": "Yêu cầu một lời giải thích chi tiết hơn bằng cách giải thích từng bước trong quá trình tính toán."
       },
       "evidence": {
         "Aspect_Expansion": "starting from the fact that the average human blinks around 12 times per minute",
-        "Output_Structuring": "Provide a step-by-step explanation"
+        "Output_Structuring": "Provide a step-by-step explanation",
+        "Depth_Requirement": "Make sure to explain each step"
       }
     }
   },
@@ -765,19 +831,17 @@
     "prompt_1": "How many atoms are in a grain of salt? Provide a step-by-step explanation, starting from the molecular formula of salt, and show the reader how you arrived at the number of atoms in a grain. Make sure to provide clear and concise explanations throughout your response.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Output_Structuring"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh nội dung cụ thể là công thức phân tử của muối, vốn không có trong lời nhắc gốc.",
-        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, rõ ràng là 'step-by-step'."
-      },
-      "evidence": {
-        "Aspect_Expansion": "starting from the molecular formula of salt",
-        "Output_Structuring": "Provide a step-by-step explanation"
-      }
-    }
+  "labels": ["Aspect_Expansion", "Secondary_Objective"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds a new content aspect by requiring the use of the molecular formula of salt to derive the number of atoms.",
+    "Secondary_Objective": "The modified prompt adds a quality requirement for the response to be clear and concise."
+  },
+  "evidence": {
+    "Aspect_Expansion": "starting from the molecular formula of salt",
+    "Secondary_Objective": "clear and concise explanations"
+  }
+}
+
   },
   {
     "id": 43,
@@ -785,19 +849,18 @@
     "prompt_1": "How many lightning strikes occur on Earth each day? Provide a step-by-step explanation, starting from the formation of thunderstorms, and explain the process of lightning strikes, including the formation of thunderstorms, the development of lightning, and the separation of lightning from the ground. Make sure to provide a comprehensive and accurate explanation while keeping the response safe.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Output_Structuring"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh nội dung cụ thể về quá trình hình thành sấm sét và tách biệt khỏi mặt đất, vốn không có trong lời nhắc gốc.",
-        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, bắt đầu từ một điểm nhất định và đi qua các bước."
-      },
-      "evidence": {
-        "Aspect_Expansion": "formation of thunderstorms, the development of lightning",
-        "Output_Structuring": "Provide a step-by-step explanation, starting from"
-      }
-    }
+  "labels": ["Aspect_Expansion", "Output_Structuring", "Secondary_Objective"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds new content aspects by specifying the formation and development of lightning and thunderstorms to be explained.",
+    "Output_Structuring": "The modified prompt enforces a step-by-step structure for presenting the explanation.",
+    "Secondary_Objective": "The modified prompt adds quality and safety requirements for the response to be comprehensive, accurate, and safe."
+  },
+  "evidence": {
+    "Aspect_Expansion": "including the formation of thunderstorms, the development of lightning",
+    "Output_Structuring": "Provide a step-by-step explanation",
+    "Secondary_Objective": "comprehensive and accurate explanation while keeping the response safe"
+  }
+}
   },
   {
     "id": 44,
@@ -807,15 +870,18 @@
     "classification": {
       "labels": [
         "Depth_Requirement",
-        "Output_Structuring"
+        "Output_Structuring",
+        "Aspect_Expansion"
       ],
       "descriptions": {
         "Depth_Requirement": "Yêu cầu giải thích chi tiết hơn bằng cách chỉ định thông tin cụ thể cần bắt đầu và xem xét.",
-        "Output_Structuring": "Yêu cầu cấu trúc đầu ra theo một trình tự cụ thể, bắt buộc phải có bước tính toán cuối cùng."
+        "Output_Structuring": "Yêu cầu cấu trúc đầu ra theo một trình tự cụ thể, bắt buộc phải có bước tính toán cuối cùng.",
+        "Aspect_Expansion": "Yêu cầu bổ sung các khía cạnh cụ thể về trọng lượng và vị trí của ngôi nhà, cũng như sức mạnh và kích thước của bóng bay."
       },
       "evidence": {
         "Depth_Requirement": "starting from the given information about the house's weight and location, and considering the strength and size of the balloons",
-        "Output_Structuring": "Provide a step-by-step explanation"
+        "Output_Structuring": "Provide a step-by-step explanation",
+        "Aspect_Expansion": "the house's weight and location, and considering the strength and size of the balloons"
       }
     }
   },
@@ -827,15 +893,18 @@
     "classification": {
       "labels": [
         "Output_Structuring",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Output_Structuring": "Yêu cầu câu trả lời phải tuân theo một cấu trúc cụ thể, bắt đầu từ số lượng tin nhắn một ngày rồi suy ra số lượng một phút.",
-        "Depth_Requirement": "Yêu cầu một lời giải thích chi tiết hơn bằng cách cung cấp các phép tính chính xác để đi đến câu trả lời cuối cùng."
+        "Depth_Requirement": "Yêu cầu một lời giải thích chi tiết hơn bằng cách cung cấp các phép tính chính xác để đi đến câu trả lời cuối cùng.",
+        "Secondary_Objective": ""
       },
       "evidence": {
         "Output_Structuring": "starts with the number of text messages sent in a day",
-        "Depth_Requirement": "provide accurate calculations to arrive at the final answer"
+        "Depth_Requirement": "provide accurate calculations to arrive at the final answer",
+        "Secondary_Objective": "provide accurate calculations"
       }
     }
   },
@@ -1059,16 +1128,17 @@
     "prompt_1": "What would be the historical impacts of the Suez Canal not being constructed?",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Implication_Expansion"
-      ],
-      "descriptions": {
-        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
-      },
-      "evidence": {
-        "Implication_Expansion": "historical impacts"
-      }
-    }
+"labels": ["Implication_Expansion", "Scope_Narrowing"],
+"descriptions": {
+"Implication_Expansion": "The modified prompt explicitly asks for the impacts or consequences of the hypothetical scenario instead of just posing it.",
+"Scope_Narrowing": "The modified prompt limits the analysis specifically to historical impacts rather than all possible outcomes."
+},
+"evidence": {
+"Implication_Expansion": "historical impacts",
+"Scope_Narrowing": "historical impacts of the Suez Canal"
+}
+}
+
   },
   {
     "id": 58,
@@ -1076,16 +1146,16 @@
     "prompt_1": "What might have been the impact of the Maya civilization had it not mysteriously collapsed?",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Câu hỏi gần như giống hệt, chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "What might have been the impact"
-      }
-    }
+"labels": ["Implication_Expansion", "Verb_Substitution"],
+"descriptions": {
+"Implication_Expansion": "The modified prompt shifts focus to analyzing the consequences or impacts of the hypothetical scenario.",
+"Verb_Substitution": "The core question is rephrased using a different verb form while preserving the same hypothetical intent."
+},
+"evidence": {
+"Implication_Expansion": "the impact of the Maya civilization",
+"Verb_Substitution": "What might have been the impact"
+}
+}
   },
   {
     "id": 59,
@@ -1093,16 +1163,16 @@
     "prompt_1": "What would have been the impacts of Christopher Columbus's discovery of the Americas?",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Implication_Expansion"
-      ],
-      "descriptions": {
-        "Implication_Expansion": "Câu hỏi yêu cầu phân tích các hậu quả, tác động xã hội hoặc đạo đức, hoặc hiệu ứng dài hạn của vấn đề."
-      },
-      "evidence": {
-        "Implication_Expansion": "impacts"
-      }
-    }
+"labels": ["Implication_Expansion", "Verb_Substitution"],
+"descriptions": {
+"Implication_Expansion": "The modified prompt explicitly asks for the consequences or impacts of the hypothetical scenario rather than just posing it.",
+"Verb_Substitution": "The core action is changed from posing a hypothetical situation to asking about its resulting impact."
+},
+"evidence": {
+"Implication_Expansion": "the impact of the Maya civilization",
+"Verb_Substitution": "What might have been the impact"
+}
+}
   },
   {
     "id": 60,
@@ -1147,17 +1217,20 @@
       "labels": [
         "Aspect_Expansion",
         "Depth_Requirement",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Example_Request"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể như tham khảo mã có sẵn, kiểm thử, tối ưu hóa, và giải thích mã.",
         "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn về việc triển khai mã.",
-        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách trình bày câu trả lời, như cung cấp giải thích và đề cập đến các thư viện cần thiết."
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách trình bày câu trả lời, như cung cấp giải thích và đề cập đến các thư viện cần thiết.",
+        "Example_Request": "Lời nhắc yêu cầu cung cấp một ví dụ cụ thể để minh họa cho việc kiểm thử hàm."
       },
       "evidence": {
         "Aspect_Expansion": "Use the provided code as a reference",
         "Depth_Requirement": "Provide an explanation of the code implementation",
-        "Secondary_Objective": "Provide an explanation of the code implementation"
+        "Secondary_Objective": "Provide an explanation of the code implementation",
+        "Example_Request": "Test the function with different input strings"
       }
     }
   },
@@ -1169,15 +1242,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Example_Request"
+        "Example_Request",
+        "Depth_Requirement"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích và sử dụng một hàm cụ thể, điều không có trong lời nhắc gốc.",
-        "Example_Request": "Lời nhắc yêu cầu cung cấp một đoạn mã minh họa cụ thể để làm rõ nội dung."
+        "Example_Request": "Lời nhắc yêu cầu cung cấp một đoạn mã minh họa cụ thể để làm rõ nội dung.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn về biểu thức chính quy."
       },
       "evidence": {
         "Aspect_Expansion": "provide an explanation of the regular expression",
-        "Example_Request": "provide a code snippet"
+        "Example_Request": "provide a code snippet",
+        "Depth_Requirement": "provide an explanation of the regular expression"
       }
     }
   },
@@ -1187,16 +1263,16 @@
     "prompt_1": "Write a program using dynamic programming to find the nth Fibonacci number. Make sure to include a detailed explanation of the dynamic programming approach and any necessary variables.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết hơn về cách tiếp cận đã được đề cập."
-      },
-      "evidence": {
-        "Depth_Requirement": "detailed explanation of the dynamic programming approach"
-      }
-    }
+"labels": ["Depth_Requirement", "Aspect_Expansion"],
+"descriptions": {
+"Depth_Requirement": "The modified prompt requires a more detailed explanation of how the dynamic programming approach works.",
+"Aspect_Expansion": "The modified prompt adds a requirement to discuss specific elements such as the necessary variables used in the program."
+},
+"evidence": {
+"Depth_Requirement": "include a detailed explanation",
+"Aspect_Expansion": "any necessary variables"
+}
+}
   },
   {
     "id": 65,
@@ -1206,15 +1282,18 @@
     "classification": {
       "labels": [
         "Depth_Requirement",
-        "Output_Structuring"
+        "Output_Structuring",
+        "Aspect_Expansion"
       ],
       "descriptions": {
         "Depth_Requirement": "Yêu cầu cung cấp giải thích chi tiết hơn cho từng bước của thuật toán.",
-        "Output_Structuring": "Yêu cầu cấu trúc đầu ra cụ thể, bao gồm một giải thích từng bước và một triển khai hoàn chỉnh."
+        "Output_Structuring": "Yêu cầu cấu trúc đầu ra cụ thể, bao gồm một giải thích từng bước và một triển khai hoàn chỉnh.",
+        "Aspect_Expansion": "Yêu cầu mở rộng các khía cạnh cụ thể về nội dung cần giải thích."
       },
       "evidence": {
         "Depth_Requirement": "explain each step of the algorithm",
-        "Output_Structuring": "provide a complete implementation in Python"
+        "Output_Structuring": "provide a complete implementation in Python",
+        "Aspect_Expansion": "each step of the algorithm"
       }
     }
   },
@@ -1227,7 +1306,8 @@
       "labels": [
         "Aspect_Expansion",
         "Depth_Requirement",
-        "Example_Request"
+        "Example_Request",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về giải thích cách hoạt động của việc lấy phần tử từ hai ngăn xếp.",
@@ -1265,13 +1345,13 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của yêu cầu."
+        "Verb_Substitution": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của yêu cầu."
       },
       "evidence": {
-        "Minimal_Change": "calculate f(2)"
+        "Verb_Substitution": "calculate f(2)"
       }
     }
   },
@@ -1281,16 +1361,15 @@
     "prompt_1": "Solve the equation 3x + 10 = 5(x - 2) by factoring.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Scope_Narrowing"
-      ],
-      "descriptions": {
-        "Scope_Narrowing": "Lời nhắc giới hạn phương pháp giải quyết vấn đề, yêu cầu sử dụng một kỹ thuật cụ thể."
-      },
-      "evidence": {
-        "Scope_Narrowing": "by factoring"
-      }
-    }
+  "labels": ["Aspect_Expansion"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds a specific method or aspect that was not required in the original task."
+  },
+  "evidence": {
+    "Aspect_Expansion": "by factoring"
+  }
+}
+
   },
   {
     "id": 70,
@@ -1315,19 +1394,19 @@
     "prompt_1": "Write a formal email proposing a joint venture to a potential business partner. Include an introduction, express interest in exploring opportunities, and offer to provide more information and guidance on the proposed joint venture. End the email with gratitude and look forward to hearing back from the potential business partner.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Instructional_Framing",
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, mang tính nhiệm vụ.",
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể cần được đưa vào trong nội dung phản hồi."
-      },
-      "evidence": {
-        "Instructional_Framing": "Write a formal email",
-        "Aspect_Expansion": "Include an introduction, express interest"
-      }
-    }
+  "labels": ["Instructional_Framing", "Output_Structuring","Aspect_Expansion"],
+  "descriptions": {
+    "Instructional_Framing": "The modified prompt changes the original question into a direct command to write the email.",
+    "Output_Structuring": "The modified prompt enforces a specific structure by requiring an introduction, body elements, and a closing.",
+    "Aspect_Expansion":""
+  },
+  "evidence": {
+    "Instructional_Framing": "Write a formal email proposing a joint venture",
+    "Output_Structuring": "Include an introduction, express interest, and offer to provide more information",
+    "Aspect_Expansion":"End the email with gratitude and look forward to hearing back"
+  }
+}
+
   },
   {
     "id": 72,
@@ -1336,13 +1415,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
+        "Instructional_Framing": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "Please help me write"
+        "Instructional_Framing": "Please help me write"
       }
     }
   },
@@ -1351,20 +1430,17 @@
     "prompt_0": "Use an appropriate format to structure a formal letter of recommendation for a student applying to a prestigious graduate program in computer science.",
     "prompt_1": "Use a formal letter of recommendation for a student applying to a prestigious graduate program in computer science. Include specific examples of the student's accomplishments, explain their potential in the field of computer science, and express the recommender's enthusiasm for the student's success.",
     "winner": 2,
-    "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Example_Request"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể cần đưa vào nội dung của lá thư, chẳng hạn như thành tích và tiềm năng của sinh viên.",
-        "Example_Request": "Lời nhắc yêu cầu đưa ra các ví dụ cụ thể để minh họa cho nội dung được đề cập."
-      },
-      "evidence": {
-        "Aspect_Expansion": "Include specific examples of the student's accomplishments, explain their potential",
-        "Example_Request": "Include specific examples of the student's accomplishments"
-      }
-    }
+    "classification":{
+  "labels": ["Aspect_Expansion", "Example_Request"],
+  "descriptions": {
+    "Aspect_Expansion": "The modified prompt adds new content aspects by specifying additional elements to cover in the letter.",
+    "Example_Request": "The modified prompt explicitly asks for concrete examples of the student's accomplishments."
+  },
+  "evidence": {
+    "Aspect_Expansion": "explain their potential in the field of computer science",
+    "Example_Request": "Include specific examples of the student's accomplishments"
+  }
+}
   },
   {
     "id": 74,
@@ -1375,17 +1451,20 @@
       "labels": [
         "Intensification",
         "Aspect_Expansion",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Implication_Expansion"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi cao hơn mà không thay đổi nội dung chính.",
         "Aspect_Expansion": "Bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể không có trong lời nhắc gốc.",
-        "Secondary_Objective": "Thêm cách thức câu trả lời nên được viết, chẳng hạn như phong cách, giọng điệu hoặc sự phù hợp với người đọc."
+        "Secondary_Objective": "Thêm cách thức câu trả lời nên được viết, chẳng hạn như phong cách, giọng điệu hoặc sự phù hợp với người đọc.",
+        "Implication_Expansion": "Yêu cầu phân tích các tác động hoặc hậu quả của chủ đề được đề cập."
       },
       "evidence": {
         "Intensification": "engaging",
         "Aspect_Expansion": "features, benefits, and the impact",
-        "Secondary_Objective": "Emphasize the company's dedication"
+        "Secondary_Objective": "Emphasize the company's dedication",
+        "Implication_Expansion": "the impact it will have on the industry"
       }
     }
   },
@@ -1417,15 +1496,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Output_Structuring"
       ],
       "descriptions": {
         "Aspect_Expansion": "Prompt bổ sung các khía cạnh cụ thể về nguồn gốc, sự tiến hóa và ý nghĩa văn hóa của nhạc jazz.",
-        "Depth_Requirement": "Prompt yêu cầu một sự khám phá chuyên sâu và chi tiết hơn về chủ đề."
+        "Depth_Requirement": "Prompt yêu cầu một sự khám phá chuyên sâu và chi tiết hơn về chủ đề.",
+        "Output_Structuring": "Prompt yêu cầu cấu trúc đầu ra theo một định dạng cụ thể, bao gồm các phần khác nhau và kết luận."
       },
       "evidence": {
         "Aspect_Expansion": "origins of jazz, including the role of African rhythms",
-        "Depth_Requirement": "Provide an in-depth exploration"
+        "Depth_Requirement": "Provide an in-depth exploration",
+        "Output_Structuring": "Conclude the script with a reflection"
       }
     }
   },
