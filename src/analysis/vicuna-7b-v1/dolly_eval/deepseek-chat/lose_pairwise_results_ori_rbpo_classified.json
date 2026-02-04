@@ -6,13 +6,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "Please provide the name of the owner and any relevant details"
+        "Aspect_Expansion": "Please provide the name of the owner and any relevant details",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -40,13 +43,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Depth_Requirement"
       ],
       "descriptions": {
-        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về chất lượng của câu trả lời, cụ thể là tính chính xác và sự liên quan của thông tin."
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về chất lượng của câu trả lời, cụ thể là tính chính xác và sự liên quan của thông tin.",
+        "Depth_Requirement": "Yêu cầu cung cấp một mô tả chi tiết hơn về mỗi người được đề cập."
       },
       "evidence": {
-        "Secondary_Objective": "providing accurate and relevant information"
+        "Secondary_Objective": "providing accurate and relevant information",
+        "Depth_Requirement": "for each person mentioned"
       }
     }
   },
@@ -57,13 +63,19 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể để xem xét khi đề xuất vật nuôi."
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể để xem xét khi đề xuất vật nuôi.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách thức câu trả lời nên được viết, cụ thể là đề xuất các vật nuôi phù hợp."
       },
       "evidence": {
-        "Aspect_Expansion": "considering their energy levels, space requirements, and interests"
+        "Aspect_Expansion": "considering their energy levels, space requirements, and interests",
+        "Instructional_Framing": "Please recommend",
+        "Secondary_Objective": "specific pets that are appropriate for families with kids"
       }
     }
   },
@@ -112,15 +124,18 @@
     "classification": {
       "labels": [
         "Instructional_Framing",
+        "Depth_Requirement",
         "Aspect_Expansion"
       ],
       "descriptions": {
         "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ cụ thể.",
-        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
+        "Depth_Requirement": "Câu lệnh bổ sung các khía cạnh hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời.",
+        "Aspect_Expansion": "Câu lệnh yêu cầu một mô tả chi tiết hơn về tòa nhà, bao gồm các sự kiện thú vị."
       },
       "evidence": {
         "Instructional_Framing": "Please provide",
-        "Aspect_Expansion": "name and location"
+        "Depth_Requirement": "name and location",
+        "Aspect_Expansion": "You can also include any interesting facts about the building"
       }
     }
   },
@@ -130,16 +145,20 @@
     "prompt_1": "What does a gaya melon taste like? Please provide a detailed description of the flavor and texture.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Depth_Requirement": "Yêu cầu cung cấp một mô tả chi tiết hơn về hương vị và kết cấu."
-      },
-      "evidence": {
-        "Depth_Requirement": "Please provide a detailed description"
-      }
-    }
+"labels": ["Aspect_Expansion", "Depth_Requirement", "Instructional_Framing", "Scope_Narrowing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds specific dimensions to describe, namely the flavor and texture of the melon.",
+"Depth_Requirement": "The modified prompt asks for a more detailed explanation of the taste experience.",
+"Instructional_Framing": "The modified prompt shifts from a question to a polite command requesting an action.",
+"Scope_Narrowing": "The modified prompt removes the request for a general definition and focuses only on taste."
+},
+"evidence": {
+"Aspect_Expansion": "flavor and texture",
+"Depth_Requirement": "a detailed description",
+"Instructional_Framing": "Please provide",
+"Scope_Narrowing": "What does a gaya melon taste like"
+}
+}
   },
   {
     "id": 9,
@@ -147,16 +166,18 @@
     "prompt_1": "What is the boiling point of magnesium in Celsius? Please provide a direct answer.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please provide a direct answer"
-      }
-    }
+"labels": ["Scope_Narrowing", "Instructional_Framing", "Secondary_Objective"],
+"descriptions": {
+"Scope_Narrowing": "The modified prompt removes the reference to an external paragraph and focuses only on the factual question.",
+"Instructional_Framing": "The modified prompt adds a polite command directing how the response should be delivered.",
+"Secondary_Objective": "The modified prompt emphasizes clarity by requesting a direct and concise answer."
+},
+"evidence": {
+"Scope_Narrowing": "What is the boiling point of magnesium",
+"Instructional_Framing": "Please provide",
+"Secondary_Objective": "a direct answer"
+}
+}
   },
   {
     "id": 10,
@@ -183,11 +204,15 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Verb_Substitution",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về phương pháp kiểm tra độ chín mà lời nhắc gốc không có.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách cung cấp nhiều phương pháp."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách cung cấp nhiều phương pháp.",
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "multiple methods to check for doneness",
@@ -202,13 +227,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Depth_Requirement": "Please provide a detailed explanation"
+        "Depth_Requirement": "Please provide a detailed explanation",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -220,15 +248,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Output_Structuring"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần trích xuất, chẳng hạn như chi tiết hoặc ngoại lệ liên quan.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Output_Structuring": "Lời nhắc chỉ định định dạng cụ thể cho câu trả lời, cụ thể là một danh sách được phân tách bằng dấu phẩy."
       },
       "evidence": {
         "Aspect_Expansion": "including the name of the show and any relevant details or exceptions",
-        "Depth_Requirement": "Provide a list of shows, including the name of the show and any relevant details or exceptions"
+        "Depth_Requirement": "Provide a list of shows, including the name of the show and any relevant details or exceptions",
+        "Output_Structuring": "separate them with a comma"
       }
     }
   },
@@ -239,13 +270,22 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Intensification"
+        "Intensification",
+        "Instructional_Framing",
+        "Secondary_Objective",
+        "Depth_Requirement"
       ],
       "descriptions": {
-        "Intensification": "Yêu cầu cung cấp giải thích chi tiết hơn so với bản gốc."
+        "Intensification": "Yêu cầu cung cấp giải thích chi tiết hơn so với bản gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách thức câu trả lời nên được viết, cụ thể là phải cung cấp một giải thích chi tiết.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
       },
       "evidence": {
-        "Intensification": "Please provide a detailed explanation."
+        "Intensification": "Please provide a detailed explanation.",
+        "Instructional_Framing": "Please provide",
+        "Secondary_Objective": "a detailed explanation",
+        "Depth_Requirement": "a detailed explanation"
       }
     }
   },
@@ -257,15 +297,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Output_Structuring"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp một phản hồi chi tiết hơn và giải thích kỹ lưỡng hơn.",
-        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được đề cập, như lợi ích cho các bên liên quan và một tùy chọn mua lại."
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được đề cập, như lợi ích cho các bên liên quan và một tùy chọn mua lại.",
+        "Output_Structuring": "Yêu cầu cấu trúc câu trả lời theo cách cụ thể, bao gồm các phần khác nhau."
       },
       "evidence": {
         "Intensification": "Please provide a detailed response",
-        "Aspect_Expansion": "including the potential benefits for the sublessee, sublandlord"
+        "Aspect_Expansion": "including the potential benefits for the sublessee, sublandlord",
+        "Output_Structuring": "Please also mention the possibility of subleasing with an option to buy"
       }
     }
   },
@@ -277,15 +320,18 @@
     "classification": {
       "labels": [
         "Instructional_Framing",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, có định hướng nhiệm vụ.",
-        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể mà không có trong câu lệnh gốc."
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể mà không có trong câu lệnh gốc.",
+        "Secondary_Objective": "Câu lệnh bổ sung yêu cầu về cách thức câu trả lời nên được viết, cụ thể là cung cấp một tổng quan toàn diện."
       },
       "evidence": {
         "Instructional_Framing": "Please provide",
-        "Aspect_Expansion": "including its location, key facts, history, culture, and government"
+        "Aspect_Expansion": "including its location, key facts, history, culture, and government",
+        "Secondary_Objective": "a comprehensive overview"
       }
     }
   },
@@ -295,19 +341,14 @@
     "prompt_1": "Please provide a response explaining that as a language model, you don't have personal preferences or emotions, but the user can ask you to adopt a certain personality for friendly conversation.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Instructional_Framing",
-        "Secondary_Objective"
-      ],
-      "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ.",
-        "Secondary_Objective": "Câu lệnh bổ sung cách thức câu trả lời nên được viết, cụ thể là phải giải thích một khía cạnh nhất định."
-      },
-      "evidence": {
-        "Instructional_Framing": "Please provide a response",
-        "Secondary_Objective": "explaining that as a language model, you don't have personal preferences"
-      }
-    }
+"labels": ["Unclear_or_Other"],
+"descriptions": {
+"Unclear_or_Other": "The modified prompt completely changes the intent by instructing the model to produce a meta-explanation instead of answering the original question."
+},
+"evidence": {
+"Unclear_or_Other": "as a language model, you don't have personal preferences"
+}
+}
   },
   {
     "id": 18,
@@ -333,13 +374,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về thông tin cá nhân như tuổi tác, nghề nghiệp."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về thông tin cá nhân như tuổi tác, nghề nghiệp.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "such as his age, occupation, or other personal information"
+        "Aspect_Expansion": "such as his age, occupation, or other personal information",
+        "Instructional_Framing": "Please provide more context about Hamish"
       }
     }
   },
@@ -400,16 +444,16 @@
     "prompt_1": "Identify the types of books among the following items: novels, biographies, historical fiction, reference texts, graphic novels, newspapers, magazines, flyers, pamphlets, pocket dictionaries.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt với lời nhắc gốc, chỉ thay đổi cách diễn đạt nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Identify the types of books"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the implicit question form with a near-synonymous action verb while preserving the same intent.",
+"Instructional_Framing": "The modified prompt shifts from a question to a command-style instruction."
+},
+"evidence": {
+"Verb_Substitution": "Identify the types of books",
+"Instructional_Framing": "Identify the types of books"
+}
+}
   },
   {
     "id": 24,
@@ -417,19 +461,18 @@
     "prompt_1": "Write a friendly and convincing email to my landlord, requesting permission to have a dog in my apartment. Please provide specific reasons and assure them that I will abide by the rules and regulations of the apartment complex. Thank you!",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Secondary_Objective"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần có trong email, như lý do và cam kết tuân thủ quy định.",
-        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về phong cách và giọng điệu của câu trả lời, cụ thể là thân thiện và thuyết phục."
-      },
-      "evidence": {
-        "Aspect_Expansion": "provide specific reasons and assure them",
-        "Secondary_Objective": "Write a friendly and convincing email"
-      }
-    }
+"labels": ["Aspect_Expansion", "Secondary_Objective", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds new content requirements by asking for specific reasons and assurances about following rules.",
+"Secondary_Objective": "The modified prompt emphasizes tone and quality by reinforcing friendliness and persuasiveness toward the landlord.",
+"Instructional_Framing": "The modified prompt uses a command-style phrasing to direct how the email should be written."
+},
+"evidence": {
+"Aspect_Expansion": "provide specific reasons and assure them",
+"Secondary_Objective": "friendly and convincing",
+"Instructional_Framing": "Please provide"
+}
+}
   },
   {
     "id": 25,
@@ -439,15 +482,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu đã được tăng cường để đòi hỏi một bài thơ mang tính mô tả và sáng tạo hơn.",
-        "Aspect_Expansion": "Đã bổ sung khía cạnh cụ thể về cách màu sắc được phản ánh trong thời trang."
+        "Aspect_Expansion": "Đã bổ sung khía cạnh cụ thể về cách màu sắc được phản ánh trong thời trang.",
+        "Secondary_Objective": "Đã nhấn mạnh yêu cầu về phong cách và chất lượng của bài thơ, cụ thể là vẻ đẹp của màu sắc."
       },
       "evidence": {
         "Intensification": "descriptive and creative",
-        "Aspect_Expansion": "reflected in fashion"
+        "Aspect_Expansion": "reflected in fashion",
+        "Secondary_Objective": "the beauty of colors"
       }
     }
   },
@@ -458,13 +504,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Verb_Substitution"
+        "Verb_Substitution",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi."
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Verb_Substitution": "Explain the significance"
+        "Verb_Substitution": "Explain the significance",
+        "Instructional_Framing": "Explain the significance"
       }
     }
   },
@@ -493,15 +542,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Prompt thêm vào các khía cạnh cụ thể như đặc điểm và sự khác biệt để so sánh.",
-        "Depth_Requirement": "Prompt yêu cầu một sự so sánh chi tiết hơn mà không thêm khía cạnh nội dung mới."
+        "Depth_Requirement": "Prompt yêu cầu một sự so sánh chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "characteristics and differences between red and green grapes",
-        "Depth_Requirement": "Please provide a detailed comparison"
+        "Depth_Requirement": "Please provide a detailed comparison",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -529,13 +581,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm vào các khía cạnh cụ thể về nội dung mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc thêm vào các khía cạnh cụ thể về nội dung mà không có trong lời nhắc gốc.",
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi."
       },
       "evidence": {
-        "Aspect_Expansion": "different transportation options"
+        "Aspect_Expansion": "different transportation options",
+        "Verb_Substitution": "travel from San Francisco to Aspen ski resorts"
       }
     }
   },
@@ -546,13 +601,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Instructional_Framing"
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách thức câu trả lời nên được viết, cụ thể là phải chính xác."
       },
       "evidence": {
-        "Instructional_Framing": "Please provide"
+        "Instructional_Framing": "Please provide",
+        "Secondary_Objective": "accurate capital city"
       }
     }
   },
@@ -581,15 +639,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Scope_Narrowing"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu được tăng cường bằng cách thêm từ 'current' và 'accurate information' để làm cho nhiệm vụ chính xác và cập nhật hơn.",
-        "Secondary_Objective": "Bổ sung yêu cầu về cách viết câu trả lời, cụ thể là thừa nhận bất kỳ sai sót tiềm ẩn nào."
+        "Secondary_Objective": "Bổ sung yêu cầu về cách viết câu trả lời, cụ thể là thừa nhận bất kỳ sai sót tiềm ẩn nào.",
+        "Scope_Narrowing": "Giới hạn phạm vi câu hỏi bằng cách chỉ hỏi về 'current fastest car' thay vì 'fastest car' nói chung."
       },
       "evidence": {
         "Intensification": "current fastest car",
-        "Secondary_Objective": "acknowledge any potential mistakes"
+        "Secondary_Objective": "acknowledge any potential mistakes",
+        "Scope_Narrowing": "current fastest car"
       }
     }
   },
@@ -617,13 +678,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Scope_Narrowing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích mà không có trong lời nhắc gốc.",
+        "Scope_Narrowing": "Lời nhắc thu hẹp phạm vi bằng cách tập trung vào các lập luận về kiểm soát súng thay vì bao quát cả NRA."
       },
       "evidence": {
-        "Aspect_Expansion": "arguments for and against"
+        "Aspect_Expansion": "arguments for and against",
+        "Scope_Narrowing": "gun control"
       }
     }
   },
@@ -650,16 +714,16 @@
     "prompt_1": "Please provide the capital city of the UK and then share a famous song about that city.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt, chỉ với những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please provide"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the original verb phrasing with a near-synonymous action while keeping the same intent.",
+"Instructional_Framing": "The modified prompt shifts from a casual request to a polite, command-style instruction."
+},
+"evidence": {
+"Verb_Substitution": "provide the capital city",
+"Instructional_Framing": "Please provide"
+}
+}
   },
   {
     "id": 38,
@@ -667,16 +731,16 @@
     "prompt_1": "I am planning a trip to Spain and I am interested in culture, museums and art, but I also want to go to the beach and have great food. Please suggest 5 places to visit in Spain that cover a range of cultural attractions, museums, and art, while also offering beach and food options. Please provide some information about each place.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please suggest 5 places to visit in Spain"
-      }
-    }
+"labels": ["Aspect_Expansion", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds a requirement to provide information about each suggested place.",
+"Instructional_Framing": "The modified prompt shifts from an open question to a polite command-style request."
+},
+"evidence": {
+"Aspect_Expansion": "provide some information about each place",
+"Instructional_Framing": "Please suggest 5 places"
+}
+}
   },
   {
     "id": 39,
@@ -684,16 +748,16 @@
     "prompt_1": "Please provide a list of the best tourist attractions in Karnataka.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Instructional_Framing"
-      ],
-      "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, nhiệm vụ định hướng."
-      },
-      "evidence": {
-        "Instructional_Framing": "Please provide"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the original verb with a near-synonymous action while preserving the same intent.",
+"Instructional_Framing": "The modified prompt shifts from a terse command to a polite, command-style instruction."
+},
+"evidence": {
+"Verb_Substitution": "provide a list",
+"Instructional_Framing": "Please provide"
+}
+}
   },
   {
     "id": 40,
@@ -724,16 +788,17 @@
     "prompt_1": "Identify whether the following are flowers or trees: Spruce, Calla Lily, Carnation, pine, beech, Orchid, oak, Tulip, Gerbera Daisy.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Verb_Substitution"
-      ],
-      "descriptions": {
-        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa trong khi vẫn giữ nguyên ý định và phạm vi."
-      },
-      "evidence": {
-        "Verb_Substitution": "Identify whether"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the original verb phrase with a near-synonymous action while preserving the same intent.",
+"Instructional_Framing": "The modified prompt shifts from an informal request to a direct, command-style instruction."
+},
+"evidence": {
+"Verb_Substitution": "Identify whether",
+"Instructional_Framing": "Identify whether the following"
+}
+}
+
   },
   {
     "id": 42,
@@ -743,15 +808,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Aspect_Expansion"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp giải thích chi tiết hơn so với câu hỏi gốc.",
-        "Depth_Requirement": "Yêu cầu giải thích sâu hơn về cách thức hoạt động của EV."
+        "Depth_Requirement": "Yêu cầu giải thích sâu hơn về cách thức hoạt động của EV.",
+        "Aspect_Expansion": "Yêu cầu bổ sung khía cạnh cụ thể về cách thức hoạt động của EV."
       },
       "evidence": {
         "Intensification": "detailed explanation",
-        "Depth_Requirement": "how it works"
+        "Depth_Requirement": "how it works",
+        "Aspect_Expansion": "how it works"
       }
     }
   },
@@ -762,13 +830,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Intensification"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+        "Intensification": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "essential strategies"
+        "Intensification": "essential strategies"
       }
     }
   },
@@ -795,16 +863,14 @@
     "prompt_1": "What are some general tips for choosing the best food?",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc mở rộng nội dung bằng cách thêm các khía cạnh cụ thể về cách lựa chọn."
-      },
-      "evidence": {
-        "Aspect_Expansion": "tips for choosing"
-      }
-    }
+"labels": ["Unclear_or_Other"],
+"descriptions": {
+"Unclear_or_Other": "The modified prompt changes the original intent from identifying the best food to providing general advice, making the type of edit unclear under the defined categories."
+},
+"evidence": {
+"Unclear_or_Other": "general tips for choosing the best food"
+}
+}
   },
   {
     "id": 46,
@@ -814,15 +880,18 @@
     "classification": {
       "labels": [
         "Depth_Requirement",
-        "Example_Request"
+        "Example_Request",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
-        "Example_Request": "Lời nhắc thêm yêu cầu cung cấp các ví dụ cụ thể để minh họa nội dung."
+        "Example_Request": "Lời nhắc thêm yêu cầu cung cấp các ví dụ cụ thể để minh họa nội dung.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Depth_Requirement": "explain what a SQL query is",
-        "Example_Request": "provide examples of its usage"
+        "Example_Request": "provide examples of its usage",
+        "Instructional_Framing": "Can you explain"
       }
     }
   },
@@ -866,16 +935,14 @@
     "prompt_1": "Please identify whether the following are body parts or places: nose, beach, supermarket, feet, eyes, hand, mall, school, restaurant, heart.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please identify whether"
-      }
-    }
+"labels": ["Instructional_Framing"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the open request into a polite, command-style instruction without altering the task itself."
+},
+"evidence": {
+"Instructional_Framing": "Please identify whether the following"
+}
+}
   },
   {
     "id": 50,
@@ -934,16 +1001,16 @@
     "prompt_1": "Explain what a CRM is and its main functionality.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh nội dung cụ thể (chức năng chính) không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "and its main functionality"
-      }
-    }
+"labels": ["Aspect_Expansion", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds a requirement to cover the main functionality in addition to defining the term.",
+"Instructional_Framing": "The modified prompt reframes the question into a direct instruction to explain."
+},
+"evidence": {
+"Aspect_Expansion": "and its main functionality",
+"Instructional_Framing": "Explain what a CRM is"
+}
+}
   },
   {
     "id": 54,
@@ -952,13 +1019,19 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được giải thích."
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được giải thích.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách viết câu trả lời, cụ thể là phải ngắn gọn."
       },
       "evidence": {
-        "Aspect_Expansion": "including the reasons for them and their impact"
+        "Aspect_Expansion": "including the reasons for them and their impact",
+        "Instructional_Framing": "Please provide a brief explanation",
+        "Secondary_Objective": "a brief explanation"
       }
     }
   },
@@ -969,13 +1042,19 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần được đề cập mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần được đề cập mà không có trong lời nhắc gốc.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách viết câu trả lời, cụ thể là phải chi tiết.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "best months to visit and any considerations for timing"
+        "Aspect_Expansion": "best months to visit and any considerations for timing",
+        "Secondary_Objective": "a detailed response",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1004,15 +1083,19 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
+
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể cần được đề cập trong câu trả lời.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "recommendations and brief descriptions",
-        "Depth_Requirement": "Please provide recommendations and brief descriptions"
+        "Depth_Requirement": "Please provide recommendations and brief descriptions",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1024,15 +1107,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Scope_Narrowing"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu được tăng cường bằng cách thêm tiêu chí về hiệu quả và tránh vấn đề tương lai.",
-        "Secondary_Objective": "Bổ sung mục tiêu phụ về chất lượng của câu trả lời, yêu cầu giải pháp không gây ra vấn đề sau này."
+        "Secondary_Objective": "Bổ sung mục tiêu phụ về chất lượng của câu trả lời, yêu cầu giải pháp không gây ra vấn đề sau này.",
+        "Scope_Narrowing": "Hạn chế phạm vi câu hỏi để tập trung vào việc thay thế lỗ trong tường thạch cao một cách hiệu quả và không gây ra vấn đề trong tương lai."
       },
       "evidence": {
         "Intensification": "effectively ... without causing future issues",
-        "Secondary_Objective": "without causing future issues"
+        "Secondary_Objective": "without causing future issues",
+        "Scope_Narrowing": "effectively replace a hole in the drywall without causing future issues"
       }
     }
   },
@@ -1043,13 +1129,19 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Intensification"
+        "Intensification",
+        "Instructional_Framing",
+        "Depth_Requirement"
       ],
       "descriptions": {
-        "Intensification": "Yêu cầu cung cấp phản hồi chi tiết hơn so với bản gốc."
+        "Intensification": "Yêu cầu cung cấp phản hồi chi tiết hơn so với bản gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Depth_Requirement": "Yêu cầu một câu trả lời chi tiết hơn mà không thêm khía cạnh nội dung mới."
       },
       "evidence": {
-        "Intensification": "Please provide a detailed response."
+        "Intensification": "Please provide a detailed response.",
+        "Instructional_Framing": "Please provide",
+        "Depth_Requirement": "detailed response"
       }
     }
   },
@@ -1060,13 +1152,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa chính của câu hỏi."
+        "Instructional_Framing": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa chính của câu hỏi."
       },
       "evidence": {
-        "Minimal_Change": "Please explain the reason behind"
+        "Instructional_Framing": "Please explain the reason behind"
       }
     }
   },
@@ -1078,15 +1170,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể mới là 'trong bối cảnh bệnh thận'.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách hỏi 'nó hoạt động như thế nào'."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn bằng cách hỏi 'nó hoạt động như thế nào'.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "in the context of kidney disease",
-        "Depth_Requirement": "how it works"
+        "Depth_Requirement": "how it works",
+        "Instructional_Framing": "Can you explain"
       }
     }
   },
@@ -1115,15 +1210,21 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Instructional_Framing"
+        "Instructional_Framing",
+        "Depth_Requirement",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về mục đích, vai trò, bằng chứng và cấu trúc của cuộc tranh luận.",
-        "Instructional_Framing": "Lời nhắc đã chuyển từ một câu hỏi thành một lệnh trực tiếp, nhiệm vụ định hướng."
+        "Instructional_Framing": "Lời nhắc đã chuyển từ một câu hỏi thành một lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách viết câu trả lời, cụ thể là phải chi tiết."
       },
       "evidence": {
         "Aspect_Expansion": "Include information about the purpose of the debate, the roles of the debaters, the use of evidence, and the structure of the debate.",
-        "Instructional_Framing": "Provide a detailed explanation"
+        "Instructional_Framing": "Provide a detailed explanation",
+        "Depth_Requirement": "detailed explanation",
+        "Secondary_Objective": "detailed explanation"
       }
     }
   },
@@ -1188,13 +1289,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích, như bối cảnh lịch sử hoặc văn hóa."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích, như bối cảnh lịch sử hoặc văn hóa.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "including any historical or cultural context"
+        "Aspect_Expansion": "including any historical or cultural context",
+        "Instructional_Framing": "Please explain the reason behind"
       }
     }
   },
@@ -1204,16 +1308,14 @@
     "prompt_1": "Why is the top speed of a helicopter limited compared to airplanes?",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Why is the top speed of a helicopter limited compared to airplanes?"
-      }
-    }
+"labels": ["Verb_Substitution"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the core phrasing with a near-synonymous expression while preserving the same intent and scope."
+},
+"evidence": {
+"Verb_Substitution": "is the top speed of a helicopter limited"
+}
+}
   },
   {
     "id": 69,
@@ -1245,13 +1347,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về chức năng chính của FIFA, điều không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về chức năng chính của FIFA, điều không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "and its main functions"
+        "Aspect_Expansion": "and its main functions",
+        "Instructional_Framing": "Explain what FIFA is"
       }
     }
   },
@@ -1279,13 +1384,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ về dấu câu hoặc cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+        "Verb_Substitution": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ về dấu câu hoặc cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "please list the different educational institutions"
+        "Verb_Substitution": "please list the different educational institutions"
       }
     }
   },
@@ -1296,13 +1401,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Instructional_Framing",
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+        "Instructional_Framing": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa.",
+        "Verb_Substitution": "Lời nhắc thay thế động từ gốc bằng một cụm từ tương đương mà không làm thay đổi ý định."
       },
       "evidence": {
-        "Minimal_Change": "Can you provide information about"
+        "Instructional_Framing": "Can you provide information about",
+        "Verb_Substitution": "provide information about"
       }
     }
   },
@@ -1313,13 +1421,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Instructional_Framing"
+        "Instructional_Framing",
+        "Output_Structuring"
       ],
       "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Output_Structuring": "Lời nhắc bổ sung yêu cầu về định dạng đầu ra cụ thể, trong trường hợp này là một danh sách."
       },
       "evidence": {
-        "Instructional_Framing": "Please provide"
+        "Instructional_Framing": "Please provide",
+        "Output_Structuring": "a list of"
       }
     }
   },
@@ -1365,15 +1476,21 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp thông tin chính xác và chi tiết làm tăng cường độ của nhiệm vụ.",
-        "Depth_Requirement": "Yêu cầu giải thích chi tiết hơn về danh tiếng và lý do nổi tiếng của Interlaken."
+        "Depth_Requirement": "Yêu cầu giải thích chi tiết hơn về danh tiếng và lý do nổi tiếng của Interlaken.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Yêu cầu bổ sung về cách viết câu trả lời"
       },
       "evidence": {
         "Intensification": "accurate and detailed information",
-        "Depth_Requirement": "reputation and the reasons why it is famous"
+        "Depth_Requirement": "reputation and the reasons why it is famous",
+        "Instructional_Framing": "Please provide",
+        "Secondary_Objective": "accurate and detailed information"
       }
     }
   },
@@ -1383,16 +1500,16 @@
     "prompt_1": "Could you please provide the specific years Ross McLean was the president of the League of Help for Sick and Elderly?",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa cốt lõi của yêu cầu."
-      },
-      "evidence": {
-        "Minimal_Change": "Could you please provide the specific years"
-      }
-    }
+"labels": ["Scope_Narrowing", "Instructional_Framing"],
+"descriptions": {
+"Scope_Narrowing": "The modified prompt narrows the request from asking for a duration to asking for the exact years of service.",
+"Instructional_Framing": "The modified prompt reframes the original question as a polite, directive request for information."
+},
+"evidence": {
+"Scope_Narrowing": "the specific years Ross McLean was the president",
+"Instructional_Framing": "Could you please provide"
+}
+}
   },
   {
     "id": 79,
@@ -1436,20 +1553,19 @@
     "prompt_0": "Is it wrong to split the infinitive?",
     "prompt_1": "Is it wrong to split the infinitive? Please provide a detailed explanation of the reasons why infinitives are often split, and whether it is generally considered correct to do so.",
     "winner": 1,
-    "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về lý do và tính đúng đắn của việc tách động từ nguyên thể.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
-      },
-      "evidence": {
-        "Aspect_Expansion": "reasons why infinitives are often split, and whether it is generally considered correct",
-        "Depth_Requirement": "Please provide a detailed explanation"
-      }
-    }
+    "classification":{
+"labels": ["Instructional_Framing", "Depth_Requirement", "Aspect_Expansion"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the open question into a polite command requesting the user to provide information.",
+"Depth_Requirement": "The modified prompt asks for a more detailed and thorough explanation than the original question.",
+"Aspect_Expansion": "The modified prompt adds specific aspects to address, such as reasons for splitting infinitives and correctness."
+},
+"evidence": {
+"Instructional_Framing": "Please provide a detailed explanation",
+"Depth_Requirement": "a detailed explanation",
+"Aspect_Expansion": "reasons why infinitives are often split"
+}
+}
   },
   {
     "id": 82,
@@ -1457,16 +1573,16 @@
     "prompt_1": "Provide the years in which Ernie Wilson played his first and last grand finals.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Câu lệnh gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Provide the years"
-      }
-    }
+"labels": ["Instructional_Framing", "Verb_Substitution"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the open question into a command requesting the information to be provided.",
+"Verb_Substitution": "The modified prompt replaces the interrogative form with a directive verb while keeping the same intent."
+},
+"evidence": {
+"Instructional_Framing": "Provide the years",
+"Verb_Substitution": "Provide the years"
+}
+}
   },
   {
     "id": 83,
@@ -1509,13 +1625,19 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Intensification"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Intensification": "Yêu cầu về mức độ chi tiết của giải thích đã được tăng cường."
       },
       "evidence": {
-        "Aspect_Expansion": "provide a detailed explanation of each language covered"
+        "Aspect_Expansion": "provide a detailed explanation of each language covered",
+        "Instructional_FramING": "can you provide",
+        "Intensification": "detailed explanation"
       }
     }
   },
@@ -1544,15 +1666,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần đề cập, chẳng hạn như các loài chim đáng chú ý.",
-        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải cung cấp thông tin chính xác, đây là một yêu cầu về chất lượng của câu trả lời."
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải cung cấp thông tin chính xác, đây là một yêu cầu về chất lượng của câu trả lời.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "mention any notable bird species",
-        "Secondary_Objective": "Please provide accurate information"
+        "Secondary_Objective": "Please provide accurate information",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1579,16 +1704,16 @@
     "prompt_1": "Using specific examples from the text, provide a detailed rundown of the primary environments found in Yellowstone National Park.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Intensification"
-      ],
-      "descriptions": {
-        "Intensification": "Yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi chi tiết hơn mà không thay đổi nội dung chính."
-      },
-      "evidence": {
-        "Intensification": "provide a detailed rundown"
-      }
-    }
+"labels": ["Intensification", "Verb_Substitution"],
+"descriptions": {
+"Intensification": "The modified prompt strengthens the request by adding qualifiers that demand more detail and specificity.",
+"Verb_Substitution": "The modified prompt replaces the original action verb with a near-synonym while keeping the same intent."
+},
+"evidence": {
+"Intensification": "provide a detailed rundown",
+"Verb_Substitution": "provide a detailed rundown"
+}
+}
   },
   {
     "id": 90,
@@ -1596,16 +1721,14 @@
     "prompt_1": "Can you please provide more context or information about Danny Brannagan? This will help me provide a more accurate and detailed response.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Can you please provide more context or information"
-      }
-    }
+"labels": ["Unclear_or_Other"],
+"descriptions": {
+"Unclear_or_Other": "The modified prompt no longer requests the original information but instead asks for additional context from the user."
+},
+"evidence": {
+"Unclear_or_Other": "provide more context or information"
+}
+}
   },
   {
     "id": 91,
@@ -1613,16 +1736,16 @@
     "prompt_1": "Provide a list of cities worldwide where traffic congestion is an issue.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Provide a list of cities"
-      }
-    }
+"labels": ["Instructional_Framing", "Verb_Substitution"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the question into a command that instructs the user to present the information.",
+"Verb_Substitution": "The modified prompt replaces the original verb with a near-synonym while keeping the same intent."
+},
+"evidence": {
+"Instructional_Framing": "Provide a list",
+"Verb_Substitution": "Provide a list"
+}
+}
   },
   {
     "id": 92,
@@ -1630,19 +1753,20 @@
     "prompt_1": "Is a vegan diet healthy for the average person? Please provide a detailed explanation covering the potential benefits and drawbacks of a vegan diet for overall health. Additionally, suggest ways to ensure a balanced and healthy vegan diet, such as consuming a variety of vegan foods, supplementing with vitamins and minerals, and considering the risk of nutrient deficiencies. Please emphasize the importance of consulting a healthcare professional before starting a vegan diet.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion",
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về lợi ích, hạn chế và cách đảm bảo chế độ ăn cân bằng.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thay đổi chủ đề chính."
-      },
-      "evidence": {
-        "Aspect_Expansion": "covering the potential benefits and drawbacks",
-        "Depth_Requirement": "Please provide a detailed explanation"
-      }
-    }
+"labels": ["Aspect_Expansion", "Depth_Requirement", "Instructional_Framing", "Secondary_Objective"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds multiple new content aspects such as benefits, drawbacks, and dietary strategies.",
+"Depth_Requirement": "The modified prompt explicitly asks for a more detailed and comprehensive explanation.",
+"Instructional_Framing": "The modified prompt shifts from a simple question to a directive requesting specific information to be provided.",
+"Secondary_Objective": "The modified prompt introduces a safety and responsibility objective by emphasizing professional consultation."
+},
+"evidence": {
+"Aspect_Expansion": "covering the potential benefits and drawbacks",
+"Depth_Requirement": "Please provide a detailed explanation",
+"Instructional_Framing": "Please provide a detailed explanation",
+"Secondary_Objective": "importance of consulting a healthcare professional"
+}
+}
   },
   {
     "id": 93,
@@ -1651,13 +1775,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+        "Verb_Substitution": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Minimal_Change": "Please provide examples of"
+        "Verb_Substitution": "Please provide examples of",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1667,16 +1794,18 @@
     "prompt_1": "What are the top 5 rock bands of all time? Please provide a list of the bands and acknowledge individual preferences.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Prompt thêm vào các khía cạnh cụ thể về nội dung cần được đề cập mà không có trong prompt gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "acknowledge individual preferences"
-      }
-    }
+"labels": ["Instructional_Framing", "Output_Structuring", "Secondary_Objective"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt reframes the original question into a directive by explicitly asking the responder to provide information.",
+"Output_Structuring": "The modified prompt enforces a specific answer format by requesting the response be presented as a list.",
+"Secondary_Objective": "The modified prompt adds a quality objective by asking the responder to acknowledge subjectivity and personal preferences."
+},
+"evidence": {
+"Instructional_Framing": "Please provide a list",
+"Output_Structuring": "provide a list of the bands",
+"Secondary_Objective": "acknowledge individual preferences"
+}
+}
   },
   {
     "id": 95,
@@ -1703,15 +1832,21 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Scope_Narrowing",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp thông tin chi tiết và giải thích sâu hơn so với bản gốc.",
-        "Depth_Requirement": "Yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+        "Depth_Requirement": "Yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới.",
+        "Scope_Narrowing": "Lời nhắc đã thu hẹp phạm vi bằng cách chỉ tập trung vào các truyền thống vẫn được thực hành ngày nay.",
+        "Instructional_FramING": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Intensification": "Please provide a detailed explanation",
-        "Depth_Requirement": "Please provide a detailed explanation"
+        "Depth_Requirement": "Please provide a detailed explanation",
+        "Scope_Narrowing": "that is still practiced today",
+        "Instructional_FramING": "Please provide"
       }
     }
   },
@@ -1722,13 +1857,13 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Câu hỏi gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+        "Instructional_Framing": "Câu hỏi gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "Please provide the total number"
+        "Instructional_Framing": "Please provide the total number"
       }
     }
   },
@@ -1738,16 +1873,16 @@
     "prompt_1": "Based on the provided paragraph about rivers in Europe, please identify the two longest rivers in the region.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi nhỏ về từ ngữ mà không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Based on the provided paragraph"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The core action is rephrased using a near-synonym while keeping the same intent and scope.",
+"Instructional_Framing": "The prompt is framed more explicitly as a polite instruction rather than a casual request."
+},
+"evidence": {
+"Verb_Substitution": "please identify the two longest rivers",
+"Instructional_Framing": "Based on the provided paragraph"
+}
+}
   },
   {
     "id": 99,
@@ -1756,13 +1891,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "Please provide the episode title and any notable details about the episode."
+        "Aspect_Expansion": "Please provide the episode title and any notable details about the episode.",
+        "Instructional_FramING": "Please provide"
       }
     }
   },
@@ -1773,13 +1911,19 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được đề cập."
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được đề cập.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải cung cấp thông tin chính xác, đây là một yêu cầu về chất lượng của câu trả lời.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "inventor's background and any notable contributions"
+        "Aspect_Expansion": "inventor's background and any notable contributions",
+        "Secondary_Objective": "Please provide an accurate response",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1823,16 +1967,16 @@
     "prompt_1": "Provide five creative and diverse ways to describe the usefulness of a broken stapler.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của yêu cầu."
-      },
-      "evidence": {
-        "Minimal_Change": "Provide five creative and diverse ways"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The main action is rephrased with a near-synonym while preserving the same intent and scope.",
+"Instructional_Framing": "The prompt is converted into a more direct, command-style instruction."
+},
+"evidence": {
+"Verb_Substitution": "describe the usefulness of a broken stapler",
+"Instructional_Framing": "Provide five creative and diverse ways"
+}
+}
   },
   {
     "id": 105,
@@ -1840,16 +1984,16 @@
     "prompt_1": "Please provide a list of Australian cities that are on the coast and inland. Include the following cities: Brisbane, Melbourne, Canberra, Adelaide, Hobart, Darwin, and Perth.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc được sửa đổi gần như giống hệt với lời nhắc gốc, chỉ có những thay đổi nhỏ về cách diễn đạt và dấu câu mà không làm thay đổi ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please provide a list of"
-      }
-    }
+"labels": ["Instructional_Framing", "Output_Structuring"],
+"descriptions": {
+"Instructional_Framing": "The prompt is rewritten as a polite command asking the responder to perform a specific action.",
+"Output_Structuring": "The prompt specifies that the answer should be formatted as a list."
+},
+"evidence": {
+"Instructional_Framing": "Please provide a list of Australian cities",
+"Output_Structuring": "provide a list of Australian cities"
+}
+}
   },
   {
     "id": 106,
@@ -1877,16 +2021,14 @@
     "prompt_1": "Are herring and hearing both species of fish?",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Câu hỏi được sửa đổi gần như giống hệt, chỉ thay đổi cấu trúc ngữ pháp và từ vựng nhỏ mà không làm thay đổi ý nghĩa cốt lõi."
-      },
-      "evidence": {
-        "Minimal_Change": "Are herring and hearing both species of fish?"
-      }
-    }
+"labels": ["Aspect_Expansion"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt expands the scope by asking about both items rather than identifying just one correct option."
+},
+"evidence": {
+"Aspect_Expansion": "Are herring and hearing both species of fish"
+}
+}
   },
   {
     "id": 108,
@@ -1895,13 +2037,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần đưa ra, chẳng hạn như chi tiết về độ phổ biến hoặc ý nghĩa văn hóa."
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần đưa ra, chẳng hạn như chi tiết về độ phổ biến hoặc ý nghĩa văn hóa.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ." 
       },
       "evidence": {
-        "Aspect_Expansion": "any notable details about its popularity or cultural significance"
+        "Aspect_Expansion": "any notable details about its popularity or cultural significance",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1912,13 +2057,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Depth_Requirement"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể hoặc chủ đề mới để mở rộng nội dung cần trả lời."
+        "Depth_Requirement": "Lời nhắc thêm các khía cạnh cụ thể hoặc chủ đề mới để mở rộng nội dung cần trả lời."
       },
       "evidence": {
-        "Aspect_Expansion": "including any relevant details or additional information"
+        "Depth_Requirement": "including any relevant details or additional information"
       }
     }
   },
@@ -1929,13 +2074,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Instructional_Framing"
+        "Instructional_Framing",
+        "Scope_Narrowing"
       ],
       "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng."
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
+        "Scope_Narrowing": "Lời nhắc đã thu hẹp phạm vi bằng cách chỉ tập trung vào bối cảnh cụ thể của vũ trụ Star Wars."
       },
       "evidence": {
-        "Instructional_Framing": "Provide information about"
+        "Instructional_Framing": "Provide information about",
+        "Scope_Narrowing": "in the Star Wars universe"
       }
     }
   },
@@ -1946,13 +2094,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức trình bày câu trả lời, cụ thể là sự rõ ràng và súc tích."
+        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức trình bày câu trả lời, cụ thể là sự rõ ràng và súc tích.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Secondary_Objective": "clear and concise classification"
+        "Secondary_Objective": "clear and concise classification",
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -1964,15 +2115,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp một giải thích chi tiết hơn so với câu hỏi gốc.",
-        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được giải thích, như ý nghĩa, biểu tượng và vai trò trong thần thoại."
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được giải thích, như ý nghĩa, biểu tượng và vai trò trong thần thoại.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Intensification": "Provide a detailed explanation",
-        "Aspect_Expansion": "including its meaning and symbolism, as well as its role"
+        "Aspect_Expansion": "including its meaning and symbolism, as well as its role",
+        "Instructional_Framing": "Provide"
       }
     }
   },
@@ -2000,13 +2154,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc.",
+        "Instructional_FramING": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "the name of the film and the number of awards it won"
+        "Aspect_Expansion": "the name of the film and the number of awards it won",
+        "Instructional_FramING": "Please provide"
       }
     }
   },
@@ -2018,15 +2175,18 @@
     "classification": {
       "labels": [
         "Intensification",
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Intensification": "Yêu cầu cung cấp một mô tả chi tiết hơn so với câu hỏi gốc.",
-        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được đề cập trong câu trả lời."
+        "Aspect_Expansion": "Bổ sung các khía cạnh cụ thể cần được đề cập trong câu trả lời.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Intensification": "a detailed description",
-        "Aspect_Expansion": "including its origins, main characters, and notable themes"
+        "Aspect_Expansion": "including its origins, main characters, and notable themes",
+        "Instructional_Framing": "Can you provide"
       }
     }
   },
@@ -2037,13 +2197,19 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung mà lời nhắc gốc không có."
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung mà lời nhắc gốc không có.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải có các mô tả ngắn gọn, đây là một yêu cầu về chất lượng của câu trả lời."
       },
       "evidence": {
-        "Aspect_Expansion": "with brief descriptions for each film"
+        "Aspect_Expansion": "with brief descriptions for each film",
+        "Instructional_Framing": "Please provide",
+        "Secondary_Objective": "brief descriptions"
       }
     }
   },
@@ -2055,15 +2221,18 @@
     "classification": {
       "labels": [
         "Instructional_Framing",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Aspect_Expansion"
       ],
       "descriptions": {
         "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
-        "Secondary_Objective": "Câu lệnh bổ sung yêu cầu về chất lượng của câu trả lời, như độ chính xác."
+        "Secondary_Objective": "Câu lệnh bổ sung yêu cầu về chất lượng của câu trả lời, như độ chính xác.",
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc."
       },
       "evidence": {
         "Instructional_Framing": "Please provide",
-        "Secondary_Objective": "accurate information"
+        "Secondary_Objective": "accurate information",
+        "Aspect_Expansion": "its founding date"
       }
     }
   },
@@ -2090,16 +2259,16 @@
     "prompt_1": "Please provide a list of the operating systems you mentioned, specifying whether they are open-source or proprietary: Ubuntu, iOS, Debian, Fedora, CentOS, macOS, Open Suse, Windows.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Instructional_Framing"
-      ],
-      "descriptions": {
-        "Instructional_Framing": "Lời nhắc chuyển từ câu hỏi sang một lệnh trực tiếp, nhiệm vụ cụ thể."
-      },
-      "evidence": {
-        "Instructional_Framing": "Please provide a list"
-      }
-    }
+"labels": ["Instructional_Framing", "Output_Structuring"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the original question into a command-style instruction asking the user to provide information.",
+"Output_Structuring": "The modified prompt requires the response to be formatted as a list specifying the status of each item."
+},
+"evidence": {
+"Instructional_Framing": "Please provide a list",
+"Output_Structuring": "specifying whether they are open-source or proprietary"
+}
+}
   },
   {
     "id": 120,
@@ -2108,13 +2277,13 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
+        "Verb_Substitution": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không ảnh hưởng đến ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "Identify the fruits and vegetables"
+        "Verb_Substitution": "Identify the fruits and vegetables"
       }
     }
   },
@@ -2125,13 +2294,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Depth_Requirement": "Yêu cầu này thêm vào việc giải thích câu trả lời, đòi hỏi phân tích chi tiết hơn mà không bổ sung khía cạnh nội dung mới."
+        "Depth_Requirement": "Yêu cầu này thêm vào việc giải thích câu trả lời, đòi hỏi phân tích chi tiết hơn mà không bổ sung khía cạnh nội dung mới.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Depth_Requirement": "Please explain your answer."
+        "Depth_Requirement": "Please explain your answer.",
+        "Instructional_Framing": "Please explain"
       }
     }
   },
@@ -2159,13 +2331,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Aspect_Expansion",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
+        "Aspect_Expansion": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa.",
+        "Instructional_FramING": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Minimal_Change": "If there are any city names that are not listed in the original instruction"
+        "Aspect_Expansion": "If there are any city names that are not listed in the original instruction",
+        "Instructional_FramING": "please provide the names of the cities"
       }
     }
   },
@@ -2175,16 +2350,16 @@
     "prompt_1": "What are some common activities that dogs enjoy doing?",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa của câu hỏi."
-      },
-      "evidence": {
-        "Minimal_Change": "What are some common activities"
-      }
-    }
+"labels": ["Verb_Substitution", "Scope_Narrowing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the core verb phrase with a near-synonym while keeping the same intent.",
+"Scope_Narrowing": "The modified prompt limits the scope by focusing specifically on common activities rather than all possible behaviors."
+},
+"evidence": {
+"Verb_Substitution": "dogs enjoy doing",
+"Scope_Narrowing": "some common activities"
+}
+}
   },
   {
     "id": 125,
@@ -2213,13 +2388,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Instructional_Framing"
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ."
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, mang tính định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải cung cấp một lời giải thích ngắn gọn, đây là một yêu cầu về chất lượng của câu trả lời."
       },
       "evidence": {
-        "Instructional_Framing": "Please provide a brief explanation"
+        "Instructional_Framing": "Please provide a brief explanation",
+        "Secondary_ObjectIVE": "a brief explanation"
       }
     }
   },
@@ -2231,15 +2409,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh nội dung cụ thể (kỹ thuật) không có trong lời nhắc gốc.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "provide additional information about the technique",
-        "Depth_Requirement": "Please explain what sweep rowing is"
+        "Depth_Requirement": "Please explain what sweep rowing is",
+        "Instructional_Framing": "Please explain"
       }
     }
   },
@@ -2249,16 +2430,16 @@
     "prompt_1": "Who was the first woman to have four country albums reach No. 1 on the Billboard 200? Please provide the name of the woman and the specific albums that reached No. 1.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "the specific albums that reached No. 1"
-      }
-    }
+"labels": ["Aspect_Expansion", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds a requirement to list the specific albums that reached No. 1.",
+"Instructional_Framing": "The modified prompt shifts the question into a directive by asking the responder to provide specific information."
+},
+"evidence": {
+"Aspect_Expansion": "the specific albums that reached No. 1",
+"Instructional_Framing": "Please provide the name of the woman"
+}
+}
   },
   {
     "id": 129,
@@ -2267,13 +2448,15 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Depth_Requirement","Instructional_Framing"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm một khía cạnh cụ thể về nội dung cần mô tả mà lời nhắc gốc không có."
+        "Depth_Requirement": "Lời nhắc thêm một khía cạnh cụ thể về nội dung cần mô tả mà lời nhắc gốc không có.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Aspect_Expansion": "Provide a brief description of the dormitories."
+        "Depth_Requirement": "Provide a brief description of the dormitories.",
+        "Instructional_Framing": "Provide"
       }
     }
   },
@@ -2300,16 +2483,16 @@
     "prompt_1": "With which opera company is the late soprano and master voice teacher Ellen Faull Gordon most associated? Please provide the name of the opera company and any relevant details if applicable.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ về từ ngữ và cấu trúc câu mà không làm thay đổi ý nghĩa cốt lõi."
-      },
-      "evidence": {
-        "Minimal_Change": "which opera company... Please provide the name"
-      }
-    }
+"labels": ["Depth_Requirement", "Instructional_Framing"],
+"descriptions": {
+"Depth_Requirement": "The modified prompt asks for additional relevant details beyond simply naming the opera company.",
+"Instructional_Framing": "The modified prompt changes the question into a directive by telling the responder to provide information."
+},
+"evidence": {
+"Depth_Requirement": "any relevant details if applicable",
+"Instructional_Framing": "Please provide the name of the opera company"
+}
+}
   },
   {
     "id": 132,
@@ -2317,16 +2500,17 @@
     "prompt_1": "Given this paragraph about Gheorge Hagi, please list his top achievements in the Romanian football team.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "please list"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the original verb phrase with a near-synonym while keeping the same intent.",
+"Instructional_Framing": "The modified prompt turns the question into a polite directive requesting the responder to perform an action."
+},
+"evidence": {
+"Verb_Substitution": "please list his top achievements",
+"Instructional_Framing": "please list"
+}
+}
+
   },
   {
     "id": 133,
@@ -2403,13 +2587,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+        "Verb_Substitution": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "Based on the passage provided, state"
+        "Verb_Substitution": "Based on the passage provided, state"
       }
     }
   },
@@ -2420,13 +2604,22 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Instructional_Framing",
+        "Secondary_Objective",
+        "Aspect_Expansion",
+        "Intensification"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để thảo luận mà không có trong lời nhắc gốc."
+        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để thảo luận mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải chi tiết hơn, đây là một yêu cầu về chất lượng của câu trả lời.",
+        "Intensification": "Lời nhắc làm cho yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi hơn mà không thay đổi chủ đề chính."
       },
       "evidence": {
-        "Aspect_Expansion": "discussing the benefits, risks, and considerations"
+        "Aspect_Expansion": "discussing the benefits, risks, and considerations",
+        "Instructional_Framing": "Please provide a detailed response",
+        "Secondary_Objective": "a detailed response",
+        "Intensification": "detailed response"  
       }
     }
   },
@@ -2437,13 +2630,13 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+        "Verb_Substitution": "Lời nhắc gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "Determine whether"
+        "Verb_Substitution": "Determine whether"
       }
     }
   },
@@ -2454,13 +2647,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution",
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa hoặc yêu cầu của câu lệnh."
+        "Verb_Substitution": "Chỉ có những thay đổi rất nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa hoặc yêu cầu của câu lệnh.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
-        "Minimal_Change": "Please identify whether"
+        "Verb_Substitution": "Please identify whether",
+        "Instructional_Framing": "Please identify"
       }
     }
   },
@@ -2471,13 +2667,13 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa chính của câu hỏi."
+        "Verb_Substitution": "Chỉ có những thay đổi rất nhỏ, không ảnh hưởng đến ý nghĩa chính của câu hỏi."
       },
       "evidence": {
-        "Minimal_Change": "If there are no notable persons with the surname Liebers, please mention it."
+        "Verb_Substitution": "If there are no notable persons with the surname Liebers, please mention it."
       }
     }
   },
@@ -2488,13 +2684,16 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Instructional_Framing",
+        "Aspect_Expansion"
       ],
       "descriptions": {
-        "Minimal_Change": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của câu hỏi gốc."
+        "Instructional_Framing": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của câu hỏi gốc.",
+        "Aspect_Expansion": "Lời nhắc đã thêm một khía cạnh cụ thể về nội dung cần trả lời mà không có trong lời nhắc gốc."
       },
       "evidence": {
-        "Minimal_Change": "Please provide the name of the replacement member."
+        "Instructional_Framing": "Please provide the name of the replacement member.",
+        "Aspect_Expansion": "the name of the replacement member"
       }
     }
   },
@@ -2507,17 +2706,20 @@
       "labels": [
         "Instructional_Framing",
         "Aspect_Expansion",
-        "Intensification"
+        "Intensification",
+        "Depth_Requirement"
       ],
       "descriptions": {
         "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một yêu cầu trực tiếp, mang tính chỉ dẫn.",
         "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh cụ thể về nội dung cần đề cập mà không có trong câu lệnh gốc.",
-        "Intensification": "Câu lệnh làm cho yêu cầu trở nên mạnh hơn hoặc đòi hỏi hơn mà không thay đổi chủ đề chính."
+        "Intensification": "Câu lệnh làm cho yêu cầu trở nên mạnh hơn hoặc đòi hỏi hơn mà không thay đổi chủ đề chính.",
+        "Depth_Requirement": "Câu lệnh yêu cầu một mô tả chi tiết hơn mà không thêm các khía cạnh nội dung mới."
       },
       "evidence": {
         "Instructional_Framing": "Provide a detailed description",
         "Aspect_Expansion": "history, influences, and any notable aspects",
-        "Intensification": "detailed description"
+        "Intensification": "detailed description",
+        "Depth_Requirement": "detailed description"
       }
     }
   },
@@ -2546,15 +2748,21 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing",
+        "Intensification"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về nội dung cần giải thích, như các tính năng chính và sự khác biệt so với thế giới ảo.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Intensification": "Lời nhắc làm cho yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi hơn mà không thay đổi chủ đề chính."
       },
       "evidence": {
         "Aspect_Expansion": "including its key features and how it is different from a virtual world",
-        "Depth_Requirement": "Please provide a detailed explanation"
+        "Depth_Requirement": "Please provide a detailed explanation",
+        "Instructional_Framing": "Please provide",
+        "Intensification": "detailed explanation"
       }
     }
   },
@@ -2566,7 +2774,8 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về mục đích giải trí và chuyên nghiệp để mở rộng nội dung cần phân tích.",
@@ -2584,16 +2793,14 @@
     "prompt_1": "Marburg Virus Disease belongs to the same family as [provide accurate information].",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những chỉnh sửa rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "[provide accurate information]"
-      }
-    }
+"labels": ["Secondary_Objective"],
+"descriptions": {
+"Secondary_Objective": "The modified prompt adds a quality requirement by emphasizing the need for accurate information in the response."
+},
+"evidence": {
+"Secondary_Objective": "provide accurate information"
+}
+}
   },
   {
     "id": 148,
@@ -2603,15 +2810,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Output_Structuring"
+        "Output_Structuring",
+        "Scope_Narrowing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nguồn thông tin và thông tin chi tiết cần cung cấp.",
-        "Output_Structuring": "Lời nhắc yêu cầu cấu trúc đầu ra cụ thể, chỉ định thông tin cần được liệt kê."
+        "Output_Structuring": "Lời nhắc yêu cầu cấu trúc đầu ra cụ thể, chỉ định thông tin cần được liệt kê.",
+        "Scope_Narrowing": "Lời nhắc giới hạn phạm vi câu trả lời bằng cách yêu cầu thông tin cụ thể từ một nguồn nhất định."
       },
       "evidence": {
         "Aspect_Expansion": "According to Forbes' Global Power List",
-        "Output_Structuring": "provide the person's name and occupation"
+        "Output_Structuring": "provide the person's name and occupation",
+        "Scope_Narrowing": "According to Forbes' Global Power List"
       }
     }
   },
@@ -2621,16 +2831,16 @@
     "prompt_1": "Please provide a list of all French presidents during the fifth Republic.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please provide"
-      }
-    }
+"labels": ["Verb_Substitution", "Instructional_Framing"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the main verb with a near-synonym while keeping the same intent.",
+"Instructional_Framing": "The modified prompt shifts from a casual request to a more formal, command-style instruction."
+},
+"evidence": {
+"Verb_Substitution": "provide a list",
+"Instructional_Framing": "Please provide"
+}
+}
   },
   {
     "id": 150,
@@ -2655,16 +2865,16 @@
     "prompt_1": "Please provide a list of creative and meaningful ways to express your love to someone.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Secondary_Objective"
-      ],
-      "descriptions": {
-        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức viết câu trả lời, cụ thể là phải sáng tạo và có ý nghĩa."
-      },
-      "evidence": {
-        "Secondary_Objective": "creative and meaningful"
-      }
-    }
+"labels": ["Intensification", "Instructional_Framing"],
+"descriptions": {
+"Intensification": "The modified prompt strengthens the request by adding qualitative adjectives to emphasize the desired style of the output.",
+"Instructional_Framing": "The modified prompt changes the open request into a more directive command-style instruction."
+},
+"evidence": {
+"Intensification": "creative and meaningful ways",
+"Instructional_Framing": "Please provide a list"
+}
+}
   },
   {
     "id": 152,
@@ -2691,15 +2901,21 @@
     "classification": {
       "labels": [
         "Instructional_Framing",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Intensification",
+        "Aspect_Expansion"
       ],
       "descriptions": {
         "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
-        "Depth_Requirement": "Câu lệnh yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
+        "Depth_Requirement": "Câu lệnh yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới.",
+        "Intensification": "Câu lệnh làm cho yêu cầu trở nên mạnh mẽ hơn hoặc đòi hỏi hơn mà không thay đổi chủ đề chính.",
+        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh cụ thể về nội dung cần đề cập mà không có trong câu lệnh gốc."
       },
       "evidence": {
         "Instructional_Framing": "Provide a detailed description",
-        "Depth_Requirement": "detailed description"
+        "Depth_Requirement": "detailed description",
+        "Intensification": "detailed description",
+        "Aspect_Expansion": "highlighting its key features and benefits"
       }
     }
   },
@@ -2709,16 +2925,16 @@
     "prompt_1": "Given the paragraph about Mark Arminski, why was he famous and what did he study last while still at school? Please provide a response that accurately explains Mark's fame and his studies while still in school.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Chỉnh sửa rất nhỏ, không làm thay đổi ý nghĩa của câu hỏi gốc."
-      },
-      "evidence": {
-        "Minimal_Change": "Please provide a response that"
-      }
-    }
+"labels": ["Secondary_Objective", "Instructional_Framing"],
+"descriptions": {
+"Secondary_Objective": "The modified prompt adds a quality requirement by emphasizing that the explanation should be accurate and clear.",
+"Instructional_Framing": "The modified prompt shifts from a question to a directive request by asking the user to provide a response."
+},
+"evidence": {
+"Secondary_Objective": "accurately explains Mark's fame and his studies",
+"Instructional_Framing": "Please provide a response"
+}
+}
   },
   {
     "id": 155,
@@ -2777,19 +2993,20 @@
     "prompt_1": "Please provide a detailed explanation of the uses and capabilities of Azure SQL Database.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Instructional_Framing",
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một lệnh trực tiếp, nhiệm vụ định hướng.",
-        "Depth_Requirement": "Câu lệnh yêu cầu một giải thích chi tiết hơn mà không thêm các khía cạnh nội dung mới."
-      },
-      "evidence": {
-        "Instructional_Framing": "Please provide",
-        "Depth_Requirement": "detailed explanation"
-      }
-    }
+"labels": ["Instructional_Framing", "Depth_Requirement", "Aspect_Expansion","Intensification"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt chuyển câu hỏi mở thành dạng mệnh lệnh yêu cầu người trả lời cung cấp thông tin.",
+"Depth_Requirement": "The modified prompt yêu cầu mức độ giải thích chi tiết và sâu hơn so với câu hỏi ban đầu.",
+"Aspect_Expansion": "The modified prompt bổ sung khía cạnh mới bằng cách yêu cầu mô tả cả công dụng và năng lực của Azure SQL.",
+"Intensification": "The modified prompt làm cho yêu cầu trở nên mạnh mẽ hơn bằng cách yêu cầu một giải thích chi tiết."
+},
+"evidence": {
+"Instructional_Framing": "Please provide",
+"Depth_Requirement": "a detailed explanation",
+"Aspect_Expansion": "uses and capabilities",
+"Intensification": "detailed explanation"
+}
+}
   },
   {
     "id": 159,
@@ -2798,13 +3015,19 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về thông tin và âm lượng của động vật mà lời nhắc gốc không đề cập."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể về thông tin và âm lượng của động vật mà lời nhắc gốc không đề cập.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải chính xác hơn, đây là một yêu cầu về chất lượng của câu trả lời."
       },
       "evidence": {
-        "Aspect_Expansion": "Please provide accurate information about the animal and its volume."
+        "Aspect_Expansion": "Please provide accurate information about the animal and its volume.",
+        "Instructional_Framing": "Please provide",
+        "Secondary_Objective": "accurate information"
       }
     }
   },
@@ -2815,13 +3038,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Output_Structuring"
+        "Output_Structuring",
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời tuân theo một cấu trúc cụ thể (ví dụ: từng bước, gạch đầu dòng, với các ví dụ minh họa)."
+        "Output_Structuring": "Lời nhắc yêu cầu câu trả lời tuân theo một cấu trúc cụ thể (ví dụ: từng bước, gạch đầu dòng, với các ví dụ minh họa).",
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa."
       },
       "evidence": {
-        "Output_Structuring": "step-by-step instructions"
+        "Output_Structuring": "step-by-step instructions",
+        "Verb_Substitution": "provide"
       }
     }
   },
@@ -2833,15 +3059,18 @@
     "classification": {
       "labels": [
         "Verb_Substitution",
-        "Secondary_Objective"
+        "Secondary_Objective",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa.",
-        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách câu trả lời nên được viết, liên quan đến chất lượng và sự phù hợp."
+        "Secondary_Objective": "Lời nhắc bổ sung yêu cầu về cách câu trả lời nên được viết, liên quan đến chất lượng và sự phù hợp.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Verb_Substitution": "provide",
-        "Secondary_Objective": "does not include any harmful or unnecessary details"
+        "Secondary_Objective": "does not include any harmful or unnecessary details",
+        "Instructional_Framing": "Please ensure that the response accurately includes"
       }
     }
   },
@@ -2851,16 +3080,16 @@
     "prompt_1": "What are some science fiction books that you would recommend?",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "What are some science fiction books"
-      }
-    }
+"labels": ["Verb_Substitution", "Aspect_Expansion"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt thay thế động từ chính bằng cách chuyển từ hỏi đơn lẻ sang yêu cầu đề xuất.",
+"Aspect_Expansion": "The modified prompt mở rộng phạm vi từ một cuốn sách sang nhiều cuốn sách được đề xuất."
+},
+"evidence": {
+"Verb_Substitution": "that you would recommend",
+"Aspect_Expansion": "some science fiction books"
+}
+}
   },
   {
     "id": 163,
@@ -2905,16 +3134,17 @@
     "prompt_1": "Compare the binary search algorithm to other searching schemes in terms of efficiency, accuracy, and space complexity.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể để so sánh mà không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "in terms of efficiency, accuracy, and space complexity"
-      }
-    }
+"labels": ["Aspect_Expansion", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds specific evaluation dimensions such as efficiency, accuracy, and space complexity.",
+"Instructional_Framing": "The modified prompt reframes the question into a direct command to compare algorithms."
+},
+"evidence": {
+"Aspect_Expansion": "in terms of efficiency, accuracy, and space complexity",
+"Instructional_Framing": "Compare the binary search algorithm"
+}
+}
+
   },
   {
     "id": 166,
@@ -2924,15 +3154,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Example_Request"
+        "Example_Request",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Đề bài bổ sung các khía cạnh cụ thể để giải thích mà đề bài gốc không có.",
-        "Example_Request": "Đề bài yêu cầu cung cấp các ví dụ minh họa cụ thể."
+        "Example_Request": "Đề bài yêu cầu cung cấp các ví dụ minh họa cụ thể.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "explain the concept",
-        "Example_Request": "provide examples"
+        "Example_Request": "provide examples",
+        "Instructional_Framing": "please explain"
       }
     }
   },
@@ -2942,16 +3175,16 @@
     "prompt_1": "What are some effective weight loss methods?",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "What are some effective weight loss methods?"
-      }
-    }
+"labels": ["Aspect_Expansion", "Intensification"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt broadens the scope by asking for multiple methods instead of a single way.",
+"Intensification": "The modified prompt strengthens the requirement by specifying that the methods should be effective."
+},
+"evidence": {
+"Aspect_Expansion": "some effective weight loss methods",
+"Intensification": "effective"
+}
+}
   },
   {
     "id": 168,
@@ -3000,13 +3233,16 @@
     "winner": 2,
     "classification": {
       "labels": [
-        "Instructional_Framing"
+        "Instructional_Framing",
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Verb_Substitution": "Động từ chính của lời nhắc được thay thế bằng một từ gần nghĩa."
       },
       "evidence": {
-        "Instructional_Framing": "Please provide"
+        "Instructional_Framing": "Please provide",
+        "Verb_Substitution": "the names of"
       }
     }
   },
@@ -3033,16 +3269,16 @@
     "prompt_1": "What is the population of North Carolina? Please provide the population of the state and any relevant details.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "any relevant details"
-      }
-    }
+"labels": ["Instructional_Framing", "Depth_Requirement"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the open question into a polite directive requesting the information.",
+"Depth_Requirement": "The modified prompt asks for additional elaboration by requesting more detailed information beyond the basic answer."
+},
+"evidence": {
+"Instructional_Framing": "Please provide the population",
+"Depth_Requirement": "any relevant details"
+}
+}
   },
   {
     "id": 173,
@@ -3052,15 +3288,18 @@
     "classification": {
       "labels": [
         "Aspect_Expansion",
-        "Depth_Requirement"
+        "Depth_Requirement",
+        "Instructional_Framing"
       ],
       "descriptions": {
         "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về cấu trúc và chức năng, vốn không có trong lời nhắc gốc.",
-        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn, sâu hơn về chủ đề mà không thay đổi phạm vi nội dung cốt lõi."
+        "Depth_Requirement": "Lời nhắc yêu cầu một giải thích chi tiết hơn, sâu hơn về chủ đề mà không thay đổi phạm vi nội dung cốt lõi.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ."
       },
       "evidence": {
         "Aspect_Expansion": "its structure and function",
-        "Depth_Requirement": "Please explain what a mitochondrial matrix is"
+        "Depth_Requirement": "Please explain what a mitochondrial matrix is",
+        "Instructional_Framing": "Please explain"
       }
     }
   },
@@ -3121,16 +3360,16 @@
     "prompt_1": "What were the key factors that contributed to the unprecedented five-game winning streak?",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh cụ thể để phân tích mà không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "key factors that contributed"
-      }
-    }
+"labels": ["Verb_Substitution", "Aspect_Expansion"],
+"descriptions": {
+"Verb_Substitution": "The modified prompt replaces the core verb phrase with a near-synonym while preserving the same intent.",
+"Aspect_Expansion": "The modified prompt adds a new content dimension by asking specifically for key factors."
+},
+"evidence": {
+"Verb_Substitution": "contributed to the unprecedented five-game winning streak",
+"Aspect_Expansion": "the key factors"
+}
+}
   },
   {
     "id": 178,
@@ -3176,13 +3415,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Depth_Requirement"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
+        "Depth_Requirement": "Lời nhắc đã thêm các khía cạnh cụ thể về nội dung cần cung cấp mà không có trong lời nhắc gốc."
       },
       "evidence": {
-        "Aspect_Expansion": "provide some information about each character"
+        "Depth_Requirement": "provide some information about each character"
       }
     }
   },
@@ -3192,16 +3431,16 @@
     "prompt_1": "When do schools in India close for summer holidays and reopen? Please provide the specific dates for the closure and reopening of schools.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Depth_Requirement"
-      ],
-      "descriptions": {
-        "Depth_Requirement": "Yêu cầu cung cấp thông tin chi tiết hơn về cùng một nội dung."
-      },
-      "evidence": {
-        "Depth_Requirement": "Please provide the specific dates"
-      }
-    }
+"labels": ["Aspect_Expansion", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds a new requirement to include specific dates for school closure and reopening.",
+"Instructional_Framing": "The modified prompt changes the original question into a directive by explicitly asking the user to provide information."
+},
+"evidence": {
+"Aspect_Expansion": "specific dates for the closure and reopening",
+"Instructional_Framing": "Please provide"
+}
+}
   },
   {
     "id": 182,
@@ -3250,13 +3489,13 @@
     "winner": 0,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Instructional_Framing"
       ],
       "descriptions": {
-        "Minimal_Change": "Câu lệnh gần như giống hệt, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ dạng câu hỏi sang một lệnh trực tiếp, mang tính định hướng nhiệm vụ."
       },
       "evidence": {
-        "Minimal_Change": "Please provide"
+        "Instructional_Framing": "Please provide"
       }
     }
   },
@@ -3283,16 +3522,16 @@
     "prompt_1": "Without quoting directly from the text, please provide a summary of how tourists visit the falls, including their activities and enjoyment, even though the falls are used for hydroelectric power production.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Aspect_Expansion": "Lời nhắc đã thêm các khía cạnh cụ thể về hoạt động và sự thưởng thức của khách du lịch, vốn không có trong lời nhắc gốc."
-      },
-      "evidence": {
-        "Aspect_Expansion": "including their activities and enjoyment"
-      }
-    }
+"labels": ["Aspect_Expansion", "Instructional_Framing"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds new content aspects by requesting details about tourists' activities and enjoyment.",
+"Instructional_Framing": "The modified prompt shifts from a request into a directive using polite command-style wording."
+},
+"evidence": {
+"Aspect_Expansion": "including their activities and enjoyment",
+"Instructional_Framing": "please provide a summary"
+}
+}
   },
   {
     "id": 187,
@@ -3300,16 +3539,16 @@
     "prompt_1": "Who was the lead singer for the band Aerosmith? Provide the name of the lead singer without going into any unnecessary details.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Secondary_Objective"
-      ],
-      "descriptions": {
-        "Secondary_Objective": "Lời nhắc thêm yêu cầu về cách thức trình bày câu trả lời, cụ thể là không đi vào các chi tiết không cần thiết."
-      },
-      "evidence": {
-        "Secondary_Objective": "without going into any unnecessary details"
-      }
-    }
+"labels": ["Instructional_Framing", "Scope_Narrowing"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the question into a directive by explicitly instructing the responder to provide the information.",
+"Scope_Narrowing": "The modified prompt restricts the response to only the name and excludes any additional details."
+},
+"evidence": {
+"Instructional_Framing": "Provide the name of the lead singer",
+"Scope_Narrowing": "without going into any unnecessary details"
+}
+}
   },
   {
     "id": 188,
@@ -3318,13 +3557,16 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Aspect_Expansion"
+        "Aspect_Expansion",
+        "Secondary_Objective"
       ],
       "descriptions": {
-        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể về việc cung cấp thông tin chính xác và đề cập đến các quốc gia có nền văn minh cổ đại."
+        "Aspect_Expansion": "Lời nhắc thêm các khía cạnh hoặc chủ đề cụ thể về việc cung cấp thông tin chính xác và đề cập đến các quốc gia có nền văn minh cổ đại.",
+        "Secondary_Objective": "Lời nhắc yêu cầu câu trả lời phải chính xác hơn, đây là một yêu cầu về chất lượng của câu trả lời."
       },
       "evidence": {
-        "Aspect_Expansion": "Please provide accurate information and consider mentioning any countries with ancient civilizations."
+        "Aspect_Expansion": "Please provide accurate information and consider mentioning any countries with ancient civilizations.",
+        "Secondary_Objective": "accurate information"
       }
     }
   },
@@ -3405,16 +3647,16 @@
     "prompt_1": "When was the NFL founded? Which NFL team has won the most Super Bowls? Which quarterback has won the most Super Bowls? Please provide accurate and detailed information.",
     "winner": 0,
     "classification": {
-      "labels": [
-        "Minimal_Change"
-      ],
-      "descriptions": {
-        "Minimal_Change": "Lời nhắc gần như giống nhau, chỉ có những thay đổi rất nhỏ không ảnh hưởng đến ý nghĩa."
-      },
-      "evidence": {
-        "Minimal_Change": "Please provide accurate and detailed information."
-      }
-    }
+"labels": ["Aspect_Expansion", "Secondary_Objective"],
+"descriptions": {
+"Aspect_Expansion": "The modified prompt adds new content dimensions by specifying particular aspects of the instruments to be covered.",
+"Secondary_Objective": "The modified prompt introduces a quality requirement by emphasizing accuracy and detail in the response."
+},
+"evidence": {
+"Aspect_Expansion": "including its size, purpose, tone, and playing style",
+"Secondary_Objective": "Please provide accurate and detailed information"
+}
+}
   },
   {
     "id": 194,
@@ -3422,19 +3664,18 @@
     "prompt_1": "Provide a detailed description of U2, including their history, notable works, and impact on music.",
     "winner": 2,
     "classification": {
-      "labels": [
-        "Instructional_Framing",
-        "Aspect_Expansion"
-      ],
-      "descriptions": {
-        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi thành một mệnh lệnh trực tiếp, nhiệm vụ định hướng.",
-        "Aspect_Expansion": "Câu lệnh bổ sung các khía cạnh, chiều hướng hoặc chủ đề cụ thể để mở rộng nội dung cần trả lời."
-      },
-      "evidence": {
-        "Instructional_Framing": "Provide a detailed description",
-        "Aspect_Expansion": "including their history, notable works, and impact on music"
-      }
-    }
+"labels": ["Instructional_Framing", "Aspect_Expansion", "Depth_Requirement"],
+"descriptions": {
+"Instructional_Framing": "The modified prompt changes the original question into a command-style request for information.",
+"Aspect_Expansion": "The modified prompt adds new content aspects by specifying history, notable works, and musical impact to be covered.",
+"Depth_Requirement": "The modified prompt explicitly requires a more detailed explanation than the original."
+},
+"evidence": {
+"Instructional_Framing": "Provide a detailed description of U2",
+"Aspect_Expansion": "including their history, notable works, and impact on music",
+"Depth_Requirement": "detailed description"
+}
+}
   },
   {
     "id": 195,
@@ -3443,13 +3684,13 @@
     "winner": 1,
     "classification": {
       "labels": [
-        "Minimal_Change"
+        "Verb_Substitution"
       ],
       "descriptions": {
-        "Minimal_Change": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
+        "Verb_Substitution": "Câu hỏi gần như giữ nguyên, chỉ có những thay đổi nhỏ về cách diễn đạt mà không làm thay đổi ý nghĩa."
       },
       "evidence": {
-        "Minimal_Change": "highest average annual sunshine"
+        "Verb_Substitution": "highest average annual sunshine"
       }
     }
   },
@@ -3459,19 +3700,17 @@
     "prompt_1": "Based on this summary of LeBron James' career, what are the key reasons he is considered the greatest basketball player of all time? Please provide specific details and examples to support your response.",
     "winner": 1,
     "classification": {
-      "labels": [
-        "Depth_Requirement",
-        "Example_Request"
-      ],
-      "descriptions": {
-        "Depth_Requirement": "Yêu cầu cung cấp một giải thích chi tiết và cụ thể hơn.",
-        "Example_Request": "Yêu cầu đưa ra các ví dụ cụ thể để minh họa cho câu trả lời."
-      },
-      "evidence": {
-        "Depth_Requirement": "Please provide specific details",
-        "Example_Request": "and examples to support your response"
-      }
-    }
+"labels": ["Example_Request", "Depth_Requirement"],
+"descriptions": {
+"Example_Request": "The modified prompt adds a requirement to include concrete examples to support the response.",
+"Depth_Requirement": "The modified prompt asks for more detailed and in-depth information than the original."
+},
+"evidence": {
+"Example_Request": "specific details and examples",
+"Depth_Requirement": "Please provide specific details"
+}
+}
+
   },
   {
     "id": 197,
