@@ -33,9 +33,9 @@ src/vicuna-llama
 
 src/vicuna-vicuna
 
-src/llama_vs_vicuna
-src/verify_response
-src/verify_winner
+src/llama_vs_vicuna/
+src/verify_response/
+src/verify_winner/
 
 src/key.txt
 src/key_all.txt
