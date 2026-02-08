@@ -1,4 +1,4 @@
-# ================== PROMPTS (ENGLISH) ==================
+================== PROMPTS (ENGLISH) ==================
 
 SYSTEM_PROMPT = (
 "You are a prompt analysis expert. "
@@ -10,11 +10,11 @@ SYSTEM_PROMPT = (
 )
 
 USER_PROMPT_TEMPLATE = """
-prompt_0 (original prompt):
-\"\"\"{prompt_0}\"\"\"
+prompt_0(original prompt):
+\"\"\"{prompt_0}\"\"\" 
 
-prompt_1 (modified prompt):
-\"\"\"{prompt_1}\"\"\"
+prompt_1 (modified prompt): 
+\"\"\"{prompt_1}\"\"\" 
 
 Task:
 Classify the types of edits that have been applied in prompt_1 compared to prompt_0.
@@ -22,7 +22,7 @@ Classify the types of edits that have been applied in prompt_1 compared to promp
 ================= EDIT CATEGORIES (USE ONLY THE LABELS BELOW) =================
 
 1.Intensification (Increased requirement strength):
-The prompt makes the original task stronger or more demanding (e.g., “more detailed,” “deeper,” “more thorough”) without changing what is being asked.
+The prompt is made “stronger” by adding adverbs or adjectives (e.g., more effective, deeper, more thorough) WITHOUT adding new content.
 
 2.Verb_Substitution (Core verb replacement):
 The main verb of the prompt is replaced with a near-synonym while preserving the same intent and scope.
@@ -37,10 +37,10 @@ The prompt asks for a more detailed or in-depth explanation WITHOUT adding new c
 The prompt requires the answer to follow a specific structure (e.g., step-by-step, bullet points, with illustrative examples).
 
 6.Secondary_Objective (Secondary quality objective):
-The prompt adds how the answer should be written, such as its style, tone, clarity, or suitability for a reader, not what content to include.
+The prompt adds secondary requirements such as clarity, readability, engagement, accuracy, safety, or suitability for a target reader.
 
 7.Instructional_Framing (Command-style framing):
-The prompt’s main clause is shifted from a question to a direct, task-oriented command, rather than simply adding follow-up constraints (e.g., “Write…”, “Present…”, “Generate…”, “Provide…”).
+The prompt is converted from an open question into an instructional or command form (e.g., “Present…”, “Please provide…”).
 
 8.Implication_Expansion (Implication/impact expansion):
 The prompt asks to analyze consequences, social or ethical impacts, or long-term effects of the issue.
@@ -60,6 +60,12 @@ The prompt remains almost the same, with only very minor edits (e.g., punctuatio
 13.Unclear_or_Other (Unclear / other):
 The modification is unclear, ambiguous, or does not fit any of the categories above.
 
+14. Noise/Drift (Instruction drift or irrelevant content):
+The modified prompt introduces content or instructions that are irrelevant to the original task, partially change the task objective, or cause semantic drift from the original intent.
+
+15. Redundancy (Redundant or repetitive content):
+The modified prompt repeats the same instruction, requirement, or phrasing without adding new information, causing unnecessary verbosity.
+
 ================= OUTPUT FORMAT (JSONL ONLY) =================
 
 {{
@@ -68,15 +74,14 @@ The modification is unclear, ambiguous, or does not fit any of the categories ab
 "<label>": "<exact only one description in Vietnamese>"
   }},
   "evidence": {{
-    "<label>": "<short quote from prompt_1 (max 12 words)>"
+    "<label>": "<short quote from prompt_B (max 12 words)>"
   }}
 }}
 
 ================= RULES =================
 -Use only the labels listed above.
--Each description must be exactly one sentence, in Vietnamese.
--Evidence must be quoted verbatim from prompt_1, ONLY the minimal changed phrase.
-- Do not quote the full sentence.
+-Each description must be exactly one sentence, in English.
+-Evidence must be quoted verbatim from prompt_B.
 -If there is almost no change, use only ["Minimal_Change"].
 -"Minimal_Change" and "Unclear_or_Other" MUST NOT be combined with other labels.
 """

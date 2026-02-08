@@ -1,16 +1,6 @@
 import json
 import os
 
-# path = "src/analysis"
-
-# folder_names = ["claude4/vicuna_llama_claude4",
-#                "claude4/vicuna_vicuna_claude4",
-#                "claude4/dolly_vicuna_claude4",
-#                "claude4/dolly_llama_claude4" ]
-
-# file_paths = ["lose_pairwise_results_ori_rbpo.jsonl",
-#              "lose_pairwise_results_bpo_rbpo.jsonl" ]
-
 """Chuyển jsonl sang json. 
 ori vs rbpo giữ 2 key: prompt_0, prompt_1. 
 rbpo vs bpo giữ 3 key: org_prompt, prompt_0, prompt_1.
@@ -87,36 +77,48 @@ def add_id(data, start_id=1):
 
     
 # ================== MAIN LOOP ==================
+def filter_keys(data, keep_keys):
+    """
+    Giữ lại chỉ các key nằm trong keep_keys cho mỗi item.
+    """
+    filtered = []
+    for item in data:
+        filtered.append({k: item[k] for k in keep_keys if k in item})
+    return filtered
+
+def rename_keys(data, key_map):
+    """
+    Đổi tên key trong mỗi item theo key_map dạng:
+    [(old_key1, new_key1), (old_key2, new_key2), ...]
+    """
+    rename_dict = dict(key_map)
+    renamed = []
+
+    for item in data:
+        new_item = {}
+        for k, v in item.items():
+            if k in rename_dict:
+                new_item[rename_dict[k]] = v
+            else:
+                new_item[k] = v
+        renamed.append(new_item)
+
+    return renamed
+
 def data_preprocessing(input_jsonl_path: str,
-                       output_json_path: str):
+    output_json_path: str,
+    keep_keys=None,
+    key_map=None):
     data = load_jsonl(input_jsonl_path)
-    unique_data = remove_duplicates(data, os.path.basename(input_jsonl_path))
-    # reset id cho từng file
-    unique_data = add_id(unique_data, start_id=1)
-    save_json(unique_data, output_json_path)
+
+    # unique_data = remove_duplicates(data, os.path.basename(input_jsonl_path))
     
-# def data_preprocessing(folder_names, file_paths, path):
-#     for folder in folder_names:
-#         for file_name in file_paths:
-#             full_path = os.path.join(path, folder, file_name)
+    if keep_keys is not None:
+        data = filter_keys(data, keep_keys)
 
-#             if not os.path.exists(full_path):
-#                 print(f"[WARN] File not found: {full_path}")
-#                 continue
+    if key_map is not None:
+        data = rename_keys(data, key_map)
 
-#             print(f"[INFO] Processing: {full_path}")
+    data = add_id(data, start_id=1)
 
-#             data = load_jsonl(full_path)
-#             unique_data = remove_duplicates(data, file_name)
-
-#             # reset id cho từng file
-#             unique_data = add_id(unique_data, start_id=1)
-
-#             output_file_name = file_name.replace(".jsonl", "_preprocessed.json")
-#             output_full_path = os.path.join(path, folder, output_file_name)
-
-#             save_json(unique_data, output_full_path)
-            
-            
-
-
+    save_json(data, output_json_path)
