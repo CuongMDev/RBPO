@@ -1,0 +1,62 @@
+[
+  {
+    "base_llm": "Llama-2-7b-chat-hf",
+    "dataset": "dolly_eval",
+    "total_pairs": 200,
+    "loss_to_win": 5,
+    "loss_to_tie": 9,
+    "tie_to_win": 41,
+    "total_improvements": 46,
+    "improvement_rate": 0.23
+  },
+  {
+    "base_llm": "Llama-2-7b-chat-hf",
+    "dataset": "vicuna_eval",
+    "total_pairs": 80,
+    "loss_to_win": 4,
+    "loss_to_tie": 3,
+    "tie_to_win": 11,
+    "total_improvements": 15,
+    "improvement_rate": 0.1875
+  },
+  {
+    "base_llm": "gemma-3-4b-it",
+    "dataset": "dolly_eval",
+    "total_pairs": 200,
+    "loss_to_win": 1,
+    "loss_to_tie": 12,
+    "tie_to_win": 12,
+    "total_improvements": 13,
+    "improvement_rate": 0.065
+  },
+  {
+    "base_llm": "gemma-3-4b-it",
+    "dataset": "vicuna_eval",
+    "total_pairs": 80,
+    "loss_to_win": 0,
+    "loss_to_tie": 3,
+    "tie_to_win": 7,
+    "total_improvements": 7,
+    "improvement_rate": 0.0875
+  },
+  {
+    "base_llm": "vicuna-7b-v1",
+    "dataset": "dolly_eval",
+    "total_pairs": 199,
+    "loss_to_win": 11,
+    "loss_to_tie": 12,
+    "tie_to_win": 37,
+    "total_improvements": 48,
+    "improvement_rate": 0.24120603015075376
+  },
+  {
+    "base_llm": "vicuna-7b-v1",
+    "dataset": "vicuna_eval",
+    "total_pairs": 80,
+    "loss_to_win": 8,
+    "loss_to_tie": 2,
+    "tie_to_win": 16,
+    "total_improvements": 24,
+    "improvement_rate": 0.3
+  }
+]

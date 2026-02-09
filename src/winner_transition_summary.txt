@@ -1,0 +1,84 @@
+================================================================================
+Base LLM : Llama-2-7b-chat-hf
+Dataset  : dolly_eval
+Total pairs: 200
+
+Transition counts:
+  loss → win (0→1): 5
+  loss → tie (0→2): 9
+  tie  → win (2→1): 41
+
+Improvement summary:
+  Total improvements (0→1 + 2→1): 46
+  Improvement rate: 23.00%
+
+================================================================================
+Base LLM : Llama-2-7b-chat-hf
+Dataset  : vicuna_eval
+Total pairs: 80
+
+Transition counts:
+  loss → win (0→1): 4
+  loss → tie (0→2): 3
+  tie  → win (2→1): 11
+
+Improvement summary:
+  Total improvements (0→1 + 2→1): 15
+  Improvement rate: 18.75%
+
+================================================================================
+Base LLM : gemma-3-4b-it
+Dataset  : dolly_eval
+Total pairs: 200
+
+Transition counts:
+  loss → win (0→1): 1
+  loss → tie (0→2): 12
+  tie  → win (2→1): 12
+
+Improvement summary:
+  Total improvements (0→1 + 2→1): 13
+  Improvement rate: 6.50%
+
+================================================================================
+Base LLM : gemma-3-4b-it
+Dataset  : vicuna_eval
+Total pairs: 80
+
+Transition counts:
+  loss → win (0→1): 0
+  loss → tie (0→2): 3
+  tie  → win (2→1): 7
+
+Improvement summary:
+  Total improvements (0→1 + 2→1): 7
+  Improvement rate: 8.75%
+
+================================================================================
+Base LLM : vicuna-7b-v1
+Dataset  : dolly_eval
+Total pairs: 199
+
+Transition counts:
+  loss → win (0→1): 11
+  loss → tie (0→2): 12
+  tie  → win (2→1): 37
+
+Improvement summary:
+  Total improvements (0→1 + 2→1): 48
+  Improvement rate: 24.12%
+
+================================================================================
+Base LLM : vicuna-7b-v1
+Dataset  : vicuna_eval
+Total pairs: 80
+
+Transition counts:
+  loss → win (0→1): 8
+  loss → tie (0→2): 2
+  tie  → win (2→1): 16
+
+Improvement summary:
+  Total improvements (0→1 + 2→1): 24
+  Improvement rate: 30.00%
+
