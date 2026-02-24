@@ -1,0 +1,42 @@
+Model: Llama-2-7b-chat-hf | Dataset: dolly_eval
+Total samples compared: 200
+  - BPO lose to Original: 57 samples
+  - BPO win over Original: 76 samples
+  - RBPO win over BPO: 63 samples
+  - RBPO better than BPO (subset): 23 samples
+--------------------------------------------------------------------------------
+Model: Llama-2-7b-chat-hf | Dataset: vicuna_eval
+Total samples compared: 80
+  - BPO lose to Original: 13 samples
+  - BPO win over Original: 48 samples
+  - RBPO win over BPO: 32 samples
+  - RBPO better than BPO (subset): 24 samples
+--------------------------------------------------------------------------------
+Model: gemma-3-4b-it | Dataset: dolly_eval
+Total samples compared: 200
+  - BPO lose to Original: 47 samples
+  - BPO win over Original: 87 samples
+  - RBPO win over BPO: 73 samples
+  - RBPO better than BPO (subset): 34 samples
+--------------------------------------------------------------------------------
+Model: gemma-3-4b-it | Dataset: vicuna_eval
+Total samples compared: 80
+  - BPO lose to Original: 23 samples
+  - BPO win over Original: 27 samples
+  - RBPO win over BPO: 26 samples
+  - RBPO better than BPO (subset): 6 samples
+--------------------------------------------------------------------------------
+Model: vicuna-7b-v1 | Dataset: dolly_eval
+Total samples compared: 200
+  - BPO lose to Original: 67 samples
+  - BPO win over Original: 82 samples
+  - RBPO win over BPO: 73 samples
+  - RBPO better than BPO (subset): 25 samples
+--------------------------------------------------------------------------------
+Model: vicuna-7b-v1 | Dataset: vicuna_eval
+Total samples compared: 80
+  - BPO lose to Original: 14 samples
+  - BPO win over Original: 25 samples
+  - RBPO win over BPO: 33 samples
+  - RBPO better than BPO (subset): 19 samples
+--------------------------------------------------------------------------------

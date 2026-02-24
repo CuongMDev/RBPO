@@ -1944,6 +1944,30 @@
       }
     }
   },
+   {
+    "id": 102,
+    "prompt_0": "What is wine?",
+    "prompt_1": "Please provide a detailed and informative explanation of what wine is, including its production process, types, and the role of oak aging.",
+    "winner": 0,
+    "classification": {
+      "labels": [
+        "Aspect_Expansion",
+        "Instructional_Framing",
+        "Depth_Requirement"
+      ],
+      "descriptions": {
+        "Aspect_Expansion": "Lời nhắc bổ sung các khía cạnh cụ thể về nội dung cần được đề cập mà không có trong lời nhắc gốc.",
+        "Instructional_Framing": "Câu lệnh chính được chuyển từ một câu hỏi sang một mệnh lệnh trực tiếp, định hướng nhiệm vụ.",
+        "Depth_Requirement": "Yêu cầu một giải thích chi tiết hơn mà không thêm khía cạnh nội dung mới."
+      },
+      "evidence": {
+        "Aspect_Expansion": "including its production process, types, and the role of oak aging",
+        "Instructional_Framing": "Please provide",
+        "Depth_Requirement": "detailed and informative explanation"
+      }
+    }
+  },
+
   {
     "id": 103,
     "prompt_0": "Snow or Desert",

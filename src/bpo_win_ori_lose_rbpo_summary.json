@@ -1,0 +1,50 @@
+[
+    {
+        "model": "Llama-2-7b-chat-hf",
+        "dataset": "dolly_eval",
+        "bpo_lose_ori_count": 57,
+        "bpo_win_ori_count": 76,
+        "rbpo_win_bpo_count": 63,
+        "rbpo_better_than_bpo_count": 23
+    },
+    {
+        "model": "Llama-2-7b-chat-hf",
+        "dataset": "vicuna_eval",
+        "bpo_lose_ori_count": 13,
+        "bpo_win_ori_count": 48,
+        "rbpo_win_bpo_count": 32,
+        "rbpo_better_than_bpo_count": 24
+    },
+    {
+        "model": "gemma-3-4b-it",
+        "dataset": "dolly_eval",
+        "bpo_lose_ori_count": 47,
+        "bpo_win_ori_count": 87,
+        "rbpo_win_bpo_count": 73,
+        "rbpo_better_than_bpo_count": 34
+    },
+    {
+        "model": "gemma-3-4b-it",
+        "dataset": "vicuna_eval",
+        "bpo_lose_ori_count": 23,
+        "bpo_win_ori_count": 27,
+        "rbpo_win_bpo_count": 26,
+        "rbpo_better_than_bpo_count": 6
+    },
+    {
+        "model": "vicuna-7b-v1",
+        "dataset": "dolly_eval",
+        "bpo_lose_ori_count": 67,
+        "bpo_win_ori_count": 82,
+        "rbpo_win_bpo_count": 73,
+        "rbpo_better_than_bpo_count": 25
+    },
+    {
+        "model": "vicuna-7b-v1",
+        "dataset": "vicuna_eval",
+        "bpo_lose_ori_count": 14,
+        "bpo_win_ori_count": 25,
+        "rbpo_win_bpo_count": 33,
+        "rbpo_better_than_bpo_count": 19
+    }
+]
