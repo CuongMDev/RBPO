@@ -1,4 +1,4 @@
-BATCH_SIZE = 4  
+BATCH_SIZE= 10
 from mepo_inference import MePOModel
 from tqdm import tqdm
 import json

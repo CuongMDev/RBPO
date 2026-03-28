@@ -5,6 +5,7 @@ import os
 
 load_dotenv()
 mepo_hf = os.environ.get("HF_TOKEN")
+print(mepo_hf)
 
 MEPO_MODEL_PATH = "zixiaozhu/MePO"
 MEPO_PROMPT_INSTRUCTION_PATH = "optimize_prompt_instruction.txt"
