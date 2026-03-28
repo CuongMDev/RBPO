@@ -6,3 +6,4 @@ accelerate
 openai
 sentencepiece
 protobuf
+dotenv
