@@ -5,16 +5,17 @@ from openai import OpenAI
 from clean_cache import nuke_hf_cache
 from config import MODEL_CACHE_PATH
 from inference_batch import infer_mepo_res_batch, process_mepo_batch, save_mepo_results, merge_mepo_with_original
+from mepo_inference import MePOModel
 from pipeline_utils import loading_data, run_pairwise_ranking, step1_generate_paraphrase, step2_sbert_clustering, step3_infer_response
 from helper import evaluation_datasets, evaluator_models, base_llm_models, create_combined_name, clean_name, GEMMA3, DEEPSEEK, VICUNA_EVAL, DEMO_EVAL
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch.manual_seed(42)
 
-# Demo
-base_llm_models = [GEMMA3]
-evaluator_models = [DEEPSEEK]
-evaluation_datasets = [VICUNA_EVAL]
+# # Demo
+# base_llm_models = [GEMMA3]
+# evaluator_models = [DEEPSEEK]
+# evaluation_datasets = [VICUNA_EVAL]
 
 device = "cuda:0"
 RESULTS_ROOT = "mepo"
@@ -25,6 +26,7 @@ RESULTS_ROOT = "mepo"
 
 if __name__ == "__main__":
     root = "mepo"
+    mepo_model = MePOModel()
     os.makedirs(root, exist_ok=True)
     
     for base_model in base_llm_models:
@@ -35,13 +37,13 @@ if __name__ == "__main__":
         else:
             is_vicuna = False
             
-        model = AutoModelForCausalLM.from_pretrained(
+        model_infer_res = AutoModelForCausalLM.from_pretrained(
             base_model,
             cache_dir=MODEL_CACHE_PATH,
             torch_dtype="auto"
         ).eval().to(device)
 
-        tokenizer = AutoTokenizer.from_pretrained(
+        tokenizer_infer_res = AutoTokenizer.from_pretrained(
             base_model,
             cache_dir=MODEL_CACHE_PATH,
             legacy=False
@@ -61,7 +63,7 @@ if __name__ == "__main__":
                 # FILE PATHS
                 # -------------------------
                 # Step1: infer optimized prompt MePO
-                result, _, _, _ = process_mepo_batch(base_model, data_path, evaluator, model)
+                result, _, _, _ = process_mepo_batch(base_model, data_path, evaluator, mepo_model)
                                 
                 # Step3: Merge MePO result với file JSON gốc (có ori_prompt, bpo_prompt, bpo_res, rbpo_prompt, rbpo_res)
                 
@@ -78,8 +80,8 @@ if __name__ == "__main__":
                 # Step 2: infer response từ optimized prompt MePO
                 # output_mepo_response = f'{file_path}_responses.jsonl'
                 infer_mepo_res_batch(
-                    model = model,
-                    tokenizer=tokenizer,
+                    model = model_infer_res,
+                    tokenizer=tokenizer_infer_res,
                     file_path=file_name,
                     device=device,
                     batch_size=10

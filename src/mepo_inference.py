@@ -3,6 +3,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from dotenv import load_dotenv
 import os
 
+from config import MODEL_CACHE_PATH, OPT_PROMPT_MODEL_CACHE_PATH
+
 load_dotenv()
 mepo_hf = os.environ.get("HF_TOKEN")
 print(mepo_hf)
@@ -39,11 +41,13 @@ class MePOModel:
         model_ = AutoModelForCausalLM.from_pretrained(
             model_path, 
             device_map="auto",
+            cache_dir=OPT_PROMPT_MODEL_CACHE_PATH,
             token=mepo_hf,
             torch_dtype=torch.float16 # Kaggle hỗ trợ
         )
         tokenizer_ = AutoTokenizer.from_pretrained(
             model_path,
+            cache_dir=OPT_PROMPT_MODEL_CACHE_PATH,
             truncation_side='left',
             padding_side='left'
         )

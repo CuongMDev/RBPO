@@ -13,7 +13,9 @@ src/__pycache__/
 
 *.jsonl
 
-# *.json
+*.json
+
+trick.txt
 
 src/dolly_vicuna
 
