@@ -7,7 +7,7 @@ from config import MODEL_CACHE_PATH
 from inference_batch import infer_mepo_res_batch, process_mepo_batch, save_mepo_results, merge_mepo_with_original
 from mepo_inference import MePOModel
 from pipeline_utils import loading_data, run_pairwise_ranking, step1_generate_paraphrase, step2_sbert_clustering, step3_infer_response
-from helper import evaluation_datasets, evaluator_models, base_llm_models, create_combined_name, clean_name, GEMMA3, DEEPSEEK, VICUNA_EVAL, DEMO_EVAL
+from helper import VICUNA_7B, evaluation_datasets, evaluator_models, base_llm_models, create_combined_name, clean_name, GEMMA3, DEEPSEEK, VICUNA_EVAL, DEMO_EVAL
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch.manual_seed(42)
@@ -32,24 +32,24 @@ if __name__ == "__main__":
     for base_model in base_llm_models:
         torch.cuda.empty_cache(), gc.collect()
         
-        if base_model is VICUNA_EVAL:  # nếu là VICUNA_7B
+        if base_model is VICUNA_7B:  # nếu là VICUNA_7B
+            print(f"⚠ Detected Vicuna-style model: {clean_name(base_model)}. Will apply Vicuna-specific prompt template during inference.")
             is_vicuna = True
         else:
+            print(f"✓ Detected standard model: {clean_name(base_model)}. Will apply standard prompt template during inference.")
             is_vicuna = False
             
-        # model_infer_res = AutoModelForCausalLM.from_pretrained(
-        #     base_model,
-        #     cache_dir=MODEL_CACHE_PATH,
-        #     torch_dtype="auto"
-        # ).eval().to(device)
+        model_infer_res = AutoModelForCausalLM.from_pretrained(
+            base_model,
+            cache_dir=MODEL_CACHE_PATH,
+            torch_dtype="auto"
+        ).eval().to(device)
 
-        # tokenizer_infer_res = AutoTokenizer.from_pretrained(
-        #     base_model,
-        #     cache_dir=MODEL_CACHE_PATH,
-        #     legacy=False
-        # )
-        model_infer_res = "inference_model"  # placeholder, sẽ được load trong infer_mepo_res_batch 
-        tokenizer_infer_res = "inference_tokenizer"  # placeholder, sẽ được load trong infer_mepo_res_batch
+        tokenizer_infer_res = AutoTokenizer.from_pretrained(
+            base_model,
+            cache_dir=MODEL_CACHE_PATH,
+            legacy=False
+        )
 
         for data_path in evaluation_datasets:
             torch.cuda.empty_cache(), gc.collect()
@@ -83,7 +83,7 @@ if __name__ == "__main__":
                     file_path=file_name,
                     device=device,
                     is_vicuna=is_vicuna,
-                    batch_size=10
+                    batch_size=4
                 )
                 nuke_hf_cache(MODEL_CACHE_PATH)
                 
