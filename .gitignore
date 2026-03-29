@@ -9,19 +9,21 @@ src/my-train/optimized_prompts_llama2_7b_res.jsonl
 
 src/__pycache__/
 
-# *.png
+*.png
 
 *.jsonl
+
+# *.json
 
 src/dolly_vicuna
 
 src/report
 
-src/resuilt pretrain
+src/results_pretrain
 
 src/run_code.txt
 
-src/save_resuilt
+src/save_results
 
 src/self_instruction_llama
 
@@ -41,5 +43,7 @@ src/key.txt
 src/key_all.txt
 
 *.env
+*venv
+
 
 !src/testset/vicuna_eval.jsonl

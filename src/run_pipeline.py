@@ -1,5 +1,6 @@
 import gc
 import os
+from dotenv import load_dotenv
 import torch
 from openai import OpenAI
 from clean_cache import nuke_hf_cache
@@ -8,6 +9,10 @@ from pipeline_utils import loading_data, run_pairwise_ranking, step1_generate_pa
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch.manual_seed(42)
+
+load_dotenv()
+hf_token = os.getenv("HF_TOKEN")
+
 
 DEEPSEEK = "deepseek-chat"
 
@@ -23,7 +28,7 @@ evaluator_models = [DEEPSEEK]
 base_llm_models = [VICUNA_7B,LLAMA2_7B, GEMMA3]
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
 
-base_llm_models = [GEMMA3]
+base_llm_models = [LLAMA2_7B]
 evaluator_models = [DEEPSEEK]
 evaluation_datasets = [DEMO_EVAL]
 
@@ -81,12 +86,14 @@ if __name__ == "__main__":
         model = AutoModelForCausalLM.from_pretrained(
             base_model,
             cache_dir=MODEL_CACHE_PATH,
+            token = hf_token,
             torch_dtype="auto"
         ).eval().to(device)
 
         tokenizer = AutoTokenizer.from_pretrained(
             base_model,
             cache_dir=MODEL_CACHE_PATH,
+            token = hf_token,
             legacy=False
         )
 
