@@ -26,7 +26,7 @@ RESULTS_ROOT = "mepo"
 
 if __name__ == "__main__":
     root = "mepo"
-    mepo_model = MePOModel()
+    # mepo_model = MePOModel()
     os.makedirs(root, exist_ok=True)
     
     for base_model in base_llm_models:
@@ -37,17 +37,19 @@ if __name__ == "__main__":
         else:
             is_vicuna = False
             
-        model_infer_res = AutoModelForCausalLM.from_pretrained(
-            base_model,
-            cache_dir=MODEL_CACHE_PATH,
-            torch_dtype="auto"
-        ).eval().to(device)
+        # model_infer_res = AutoModelForCausalLM.from_pretrained(
+        #     base_model,
+        #     cache_dir=MODEL_CACHE_PATH,
+        #     torch_dtype="auto"
+        # ).eval().to(device)
 
-        tokenizer_infer_res = AutoTokenizer.from_pretrained(
-            base_model,
-            cache_dir=MODEL_CACHE_PATH,
-            legacy=False
-        )
+        # tokenizer_infer_res = AutoTokenizer.from_pretrained(
+        #     base_model,
+        #     cache_dir=MODEL_CACHE_PATH,
+        #     legacy=False
+        # )
+        model_infer_res = "inference_model"  # placeholder, sẽ được load trong infer_mepo_res_batch 
+        tokenizer_infer_res = "inference_tokenizer"  # placeholder, sẽ được load trong infer_mepo_res_batch
 
         for data_path in evaluation_datasets:
             torch.cuda.empty_cache(), gc.collect()
@@ -55,7 +57,7 @@ if __name__ == "__main__":
             for evaluator in evaluator_models:
                 torch.cuda.empty_cache(), gc.collect()
                 file_path = create_combined_name(base_model, data_path, evaluator)
-                file_name = os.path.join(root, f"{file_path}.jsonl")
+                file_name = os.path.join(root, f"{file_path}.json")
                 # os.makedirs(run_dir, exist_ok=True)
                 
                 print(f"=== Base model: {clean_name(base_model)} | Dataset: {clean_name(data_path)} | Evaluator: {clean_name(evaluator)} ===")
@@ -63,19 +65,15 @@ if __name__ == "__main__":
                 # FILE PATHS
                 # -------------------------
                 # Step1: infer optimized prompt MePO
-                result, _, _, _ = process_mepo_batch(base_model, data_path, evaluator, mepo_model)
+                # result, _, _, _ = process_mepo_batch(base_model, data_path, evaluator, mepo_model)
                                 
                 # Step3: Merge MePO result với file JSON gốc (có ori_prompt, bpo_prompt, bpo_res, rbpo_prompt, rbpo_res)
                 
-                # result = [{
-                #     "ori_prompt": "How can I improve my time management skills?",
-                #     "mepo_prompt": "What is Retrieval-Augmented Generation (RAG)?"
-                # }]
-                if os.path.exists(file_name):
-                    merged_data = merge_mepo_with_original(result, file_name)
-                    print(f"✓ Step2: Merged {len(merged_data)} items")
-                else:
-                    print(f"⚠ File not found: {file_name}") 
+                # if os.path.exists(file_name):
+                #     merged_data = merge_mepo_with_original(result, file_name)
+                #     print(f"✓ Step2: Merged {len(merged_data)} items")
+                # else:
+                #     print(f"⚠ File not found: {file_name}") 
                     
                 # Step 2: infer response từ optimized prompt MePO
                 # output_mepo_response = f'{file_path}_responses.jsonl'
@@ -84,6 +82,7 @@ if __name__ == "__main__":
                     tokenizer=tokenizer_infer_res,
                     file_path=file_name,
                     device=device,
+                    is_vicuna=is_vicuna,
                     batch_size=10
                 )
                 nuke_hf_cache(MODEL_CACHE_PATH)

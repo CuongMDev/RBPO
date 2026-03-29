@@ -6,7 +6,12 @@ from tqdm import tqdm
 import json
 from helper import evaluation_datasets, evaluator_models, base_llm_models, create_combined_name, output_mepo_folder
 from utils import generate_batch
-from utils import generate_batch
+
+from config import (
+    MODEL_CACHE_PATH,
+    prompt_template_optimize,
+    prompt_template_vicuna
+)
 
 
 def process_mepo_batch(base_llm, data_path, evaluator, model=None, batch_size=BATCH_SIZE):
@@ -136,6 +141,7 @@ def infer_mepo_res_batch(model,
     tokenizer,
     file_path,
     device='cuda:0',
+    is_vicuna=False,
     batch_size=10   
     ):
     print("===== STEP 3: Infer response =====")
@@ -156,12 +162,15 @@ def infer_mepo_res_batch(model,
     # 🚀 Batch inference
     for start in tqdm(range(0, len(all_prompts), batch_size), desc="Batch Infer"):
         batch_prompts = all_prompts[start:start+batch_size]
+        if is_vicuna:
+            batch_prompts = [prompt_template_vicuna.format(p) for p in batch_prompts]
         
         batch_outputs = generate_batch(
             model,
             tokenizer,
             batch_prompts,
             do_sample=False,
+            apply_chat_template=not is_vicuna,
             device=device
         )
         
