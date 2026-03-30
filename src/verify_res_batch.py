@@ -1,15 +1,28 @@
 import json
 import os
+from dotenv import load_dotenv
 import requests
 
-from helper import DEEPSEEK, mepo_folder_name
+from helper import LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, DEEPSEEK, DEMO_VERIFY, GEMMA3, mepo_folder_name, evaluator_models, base_llm_models, evaluation_datasets, create_combined_name, mismatch_folder_name
+
+load_dotenv()
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+
+# base_llm_models = [GEMMA3]
+# evaluator_models = [DEEPSEEK]
+# evaluation_datasets = [DOLLY_EVAL,VICUNA_EVAL]
+
+base_llm_models = [VICUNA_7B]
+evaluator_models = [DEEPSEEK]
+evaluation_datasets = [DOLLY_EVAL]
+
 MODEL_NAME = DEEPSEEK
+# INPUT_FILE = "src/l lama_vs_vicuna/Llama-2-7b-chat-hf/dolly_eval/deepseek-chat/lose_pairwise_results_bpo_rbpo.json"
+# OUTPUT_FILE = "src/verify_response/Llama-2-7b-chat-hf/dolly_eval/bpo_rbpo.jsonl"
+PROMPT_FILE = "response_eval_prompt.txt"
 
-INPUT_FILE = "src/l lama_vs_vicuna/Llama-2-7b-chat-hf/dolly_eval/deepseek-chat/lose_pairwise_results_bpo_rbpo.json"
-OUTPUT_FILE = "src/verify_response/Llama-2-7b-chat-hf/dolly_eval/bpo_rbpo.jsonl"
-PROMPT_FILE = "src/response_eval_prompt.txt"
-
-OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+# OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 EXPECTED_CRITERIA = [
     "Correctness", "Relevance", "Completeness", "Clarity_Coherence",
@@ -29,7 +42,7 @@ CRITERIA_MAP = {
 }
 
 # ================= LOAD API KEY =================
-API_KEY_FILE = "src/openrouter_api_key.txt"
+API_KEY_FILE = "openrouter_api_key.txt"
 
 with open(API_KEY_FILE, "r", encoding="utf-8") as f:
     API_KEY = f.read().strip()
@@ -61,16 +74,16 @@ def build_user_prompt(item):
 
     return f"""
 Prompt_A (used to generate Response_A):
-\"\"\"{item.get("prompt_0", "")}\"\"\"
+\"\"\"{item.get("rbpo_prompt", "")}\"\"\"
 
 Response_A:
-\"\"\"{item.get("res_0", "")}\"\"\"
+\"\"\"{item.get("rbpo_res", "")}\"\"\"
 
 Prompt_B (used to generate Response_B):
-\"\"\"{item.get("prompt_1", "")}\"\"\"
+\"\"\"{item.get("mepo_prompt", "")}\"\"\"
 
 Response_B:
-\"\"\"{item.get("res_1", "")}\"\"\"
+\"\"\"{item.get("mepo_response", "")}\"\"\"
 
 # IMPORTANT RULES:
 - Judge Response_A ONLY based on Prompt_A
@@ -125,7 +138,7 @@ Return JSON ONLY in the following format:
 # ================= GENERATION =================
 def generate(system_prompt, user_prompt):
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
+        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
         "Content-Type": "application/json"
     }
 
@@ -137,10 +150,12 @@ def generate(system_prompt, user_prompt):
         ],
         "max_tokens": 2048,
         "temperature": 0.0,
-        "top_p": 1.0
+        "top_p": 1.0,
+        "response_format": {"type": "json_object"} # use only for deepseek
+
     }
 
-    response = requests.post(OPENROUTER_API_URL, headers=headers, json=payload)
+    response = requests.post(DEEPSEEK_API_URL, headers=headers, json=payload)
     if response.status_code != 200:
         print(f"Status: {response.status_code} | Body: {response.text[:300]}")
         response.raise_for_status()
@@ -149,9 +164,8 @@ def generate(system_prompt, user_prompt):
     return data["choices"][0]["message"]["content"].strip()
 
 # ================= EXTRACT JSON =================
-import re
-
 def extract_json(raw):
+    import re
     """Strip thinking tags, markdown code blocks, lấy chỉ phần JSON"""
     # Bỏ <think>...</think>
     raw = re.sub(r'<think>.*?</think>', '', raw, flags=re.DOTALL)
@@ -228,20 +242,6 @@ def is_complete(candidate):
             if not isinstance(candidate[key][c], (int, float)):
                 return False
     return True
-# ================= LOAD PROCESSED =================
-def load_processed_ids(path):
-    ids = set()
-    if not os.path.exists(path):
-        return ids
-
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            try:
-                obj = json.loads(line)
-                ids.add(obj.get("id"))
-            except:
-                continue
-    return ids
 
 # ================= DECIDE WINNER =================
 def decide_winner_from_scores(llm_eval, threshold=0.01):
@@ -261,73 +261,90 @@ def decide_winner_from_scores(llm_eval, threshold=0.01):
         return 0  # response_A win
     else:
         return 1  # response_B win
+    
+def verify_response(item_id, sample, attempt_times=3):
+    parsed = None
+    candidate = None
+    for attempt in range(attempt_times):  # retry tối đa attempt_times-1 lần
+        raw = generate(SYSTEM_PROMPT, build_user_prompt(sample))
+        # print(f"  raw (attempt {attempt+1}): {raw[:200]}")
+        # print(f"[ID={item_id}] attempt {attempt+1}")
+
+        try:
+            candidate = json.loads(extract_json(raw))
+
+            if is_complete(candidate):
+                parsed = candidate
+                return parsed
+
+            # nếu có đủ A và B nhưng thiếu / sai criteria → map
+            if isinstance(candidate, dict) and "response_A" in candidate and "response_B" in candidate:
+                mapped = {
+                    "response_A": map_to_schema(candidate["response_A"]),
+                    "response_B": map_to_schema(candidate["response_B"])
+                }
+                if is_complete(mapped):
+                    parsed = mapped
+                    print("  ✓ Mapped schema")
+                    return parsed
+        except Exception as e:
+            print(f"  ⚠ Parse fail (attempt {attempt+1}): {e}")
+            continue
+    if parsed is None:
+        print(f"  ❌ ID={item_id}: dùng fallback")
+        parsed = empty_schema()
+    return parsed
+
+def batch_iterator(data, batch_size):
+    for i in range(0, len(data), batch_size):
+        yield data[i:i + batch_size]
+
+def process_batch(batch, attempt_times=3):
+    batch_results = []
+
+    for idx, item in enumerate(batch):
+        item_id = item.get("id", idx + 1)
+        parsed = verify_response(item_id, item, attempt_times)
+
+        batch_results.append({
+            "id": item_id,
+            "ori_prompt": item.get("ori_prompt"),
+            "rbpo_prompt": item.get("rbpo_prompt"),
+            "rbpo_res": item.get("rbpo_res"),
+            "mepo_prompt": item.get("mepo_prompt"),
+            "mepo_response": item.get("mepo_response"),
+            # "winner_before": item.get("winner"),
+            "winner": decide_winner_from_scores(parsed),
+            "llm_evaluation": parsed
+        })
+
+    return batch_results
 
 # ================= MAIN =================
-def main():
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+def verify_response_batch(verify_times = 3, BATCH_SIZE = 1):
+    for base_llm in base_llm_models:
+        for dataset in evaluation_datasets:
+            for evaluator in evaluator_models:
+                input_path = create_combined_name(base_llm, dataset, evaluator)
+                print(f"Processing: {input_path}")
+                verify_path = f"{mepo_folder_name}/{input_path}.json"
+                
+                with open(verify_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                for run_idx in range(verify_times):
+                    results = []
+                    output_path = f"{mepo_folder_name}/verify/{input_path}_eval_{run_idx+1}.json"
+                    if not os.path.exists(output_path):
+                        os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    with open(INPUT_FILE, "r", encoding="utf-8") as f:
-        data = json.load(f)
+                    for batch_idx, batch in enumerate(batch_iterator(data, BATCH_SIZE)):
+                        print(f"Processing batch {batch_idx + 1}...")
 
-    processed_ids = load_processed_ids(OUTPUT_FILE)
-    print(f"Already processed: {len(processed_ids)} records")
+                        batch_results = process_batch(batch, attempt_times=3)
+                        results.extend(batch_results)
+                    with open(output_path, "w", encoding="utf-8") as f:
+                        json.dump(results, f, ensure_ascii=False, indent=2)                        
 
-    with open(OUTPUT_FILE, "a", encoding="utf-8") as fout:
-        for i, item in enumerate(data):
-            item_id = item.get("id", i + 1)
-
-            if item_id in processed_ids:
-                continue
-
-            print(f"Processing {i+1}/{len(data)} | ID={item_id}")
-
-            parsed = None
-            candidate = None
-
-            for attempt in range(2):  # retry tối đa 1 lần
-                raw = generate(SYSTEM_PROMPT, build_user_prompt(item))
-                print(f"  raw (attempt {attempt+1}): {raw[:200]}")
-
-                try:
-                    candidate = json.loads(extract_json(raw))
-
-                    if is_complete(candidate):
-                        parsed = candidate
-                        break
-
-                    # nếu có đủ A và B nhưng thiếu / sai criteria → map
-                    if isinstance(candidate, dict) and "response_A" in candidate and "response_B" in candidate:
-                        mapped = {
-                            "response_A": map_to_schema(candidate["response_A"]),
-                            "response_B": map_to_schema(candidate["response_B"])
-                        }
-                        if is_complete(mapped):
-                            parsed = mapped
-                            print("  ✓ Mapped schema")
-                            break
-
-                except Exception as e:
-                    print(f"  ⚠ Parse fail (attempt {attempt+1}): {e}")
-
-            # fallback cuối cùng
-            if parsed is None:
-                print(f"  ❌ ID={item_id}: dùng fallback")
-                parsed = empty_schema()
-
-            result = {
-                "id": item_id,
-                "org_prompt": item.get("org_prompt"),
-                "prompt_0": item.get("prompt_0"),
-                "res_0": item.get("res_0"),
-                "prompt_1": item.get("prompt_1"),
-                "res_1": item.get("res_1"),
-                "winner_before": item.get("winner"),
-                "winner": decide_winner_from_scores(parsed),  # 0/1/2
-                "llm_evaluation": parsed
-            }
-
-            fout.write(json.dumps(result, ensure_ascii=False) + "\n")
-            fout.flush()
 
 if __name__ == "__main__":
-    main()
+    verify_response_batch()

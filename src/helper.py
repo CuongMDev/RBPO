@@ -9,12 +9,14 @@ GEMMA3 = "google/gemma-3-4b-it"
 DOLLY_EVAL = "testset/dolly_eval.json"
 VICUNA_EVAL = "testset/vicuna_eval.json"
 DEMO_EVAL = "testset/demo.json"
+DEMO_VERIFY = "testset/demo_verify.json"
 
-evaluator_models = [DEEPSEEK]
+evaluator_models = [DEEPSEEK]   
 base_llm_models = [VICUNA_7B,LLAMA2_7B, GEMMA3]
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
 
-output_mepo_folder = "mepo"
+mepo_folder_name = "mepo"
+mismatch_folder_name = "mismatch"
 
 
 def clean_name(path_or_id: str):
@@ -32,8 +34,6 @@ def create_combined_name(model_path: str, dataset: str, evaluator: str):
     evaluator_abbr = evaluator_name.split("-")[0].split("_")[0].lower()
     
     return f"{model_abbr}_{dataset_abbr}_{evaluator_abbr}"
-
-
 
 def convert_analysis_path_to_figure(path: str, suffix: str = "ori_rbpo") -> str:
     norm_path = os.path.normpath(path)
@@ -55,7 +55,3 @@ def convert_analysis_path_to_figure(path: str, suffix: str = "ori_rbpo") -> str:
         f"{model}_{eval_name}_{judge}_{suffix}"
     )
     
-# if __name__ == "__main__":
-#     test_path = "src/analysis/llama2-7b-chat-hf/vicuna_eval/deepseek-chat/lose_pairwise_results_ori_rbpo.jsonl"
-#     figure_path = convert_analysis_path_to_figure(test_path, suffix="test")
-#     print(figure_path)

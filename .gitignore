@@ -13,7 +13,7 @@ src/__pycache__/
 
 *.jsonl
 
-*.json
+# *.json
 
 trick.txt
 
@@ -47,5 +47,6 @@ src/key_all.txt
 *.env
 *venv
 
-
 !src/testset/vicuna_eval.jsonl
+
+src/mepo/api.txt

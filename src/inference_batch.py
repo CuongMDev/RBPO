@@ -4,7 +4,7 @@ import torch
 from mepo_inference import MePOModel
 from tqdm import tqdm
 import json
-from helper import evaluation_datasets, evaluator_models, base_llm_models, create_combined_name, output_mepo_folder
+from helper import evaluation_datasets, evaluator_models, base_llm_models, create_combined_name, mepo_folder_name
 from utils import generate_batch
 
 from config import (
@@ -84,9 +84,9 @@ def save_mepo_results(result, base_llm, data_path, evaluator):
         base_llm, data_path, evaluator: Thông tin để tạo tên file
     """
     output_path = create_combined_name(base_llm, data_path, evaluator)
-    with open(f"{output_mepo_folder}/{output_path}.json", "w", encoding="utf-8") as f:
+    with open(f"{mepo_folder_name}/{output_path}.json", "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
-    print(f"Saved results to {output_mepo_folder}/{output_path}.json")
+    print(f"Saved results to {mepo_folder_name}/{output_path}.json")
 
 
 def merge_mepo_with_original(mepo_result, file_path):
