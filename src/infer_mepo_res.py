@@ -33,10 +33,10 @@ if __name__ == "__main__":
         torch.cuda.empty_cache(), gc.collect()
         
         if base_model is VICUNA_7B:  # nếu là VICUNA_7B
-            print(f"⚠ Detected Vicuna-style model: {clean_name(base_model)}. Will apply Vicuna-specific prompt template during inference.")
+            print(f"Detected Vicuna-style model: {clean_name(base_model)}. Will apply Vicuna-specific prompt template during inference.")
             is_vicuna = True
         else:
-            print(f"✓ Detected standard model: {clean_name(base_model)}. Will apply standard prompt template during inference.")
+            print(f"Detected standard model: {clean_name(base_model)}. Will apply standard prompt template during inference.")
             is_vicuna = False
             
         model_infer_res = AutoModelForCausalLM.from_pretrained(
@@ -71,9 +71,9 @@ if __name__ == "__main__":
                 
                 # if os.path.exists(file_name):
                 #     merged_data = merge_mepo_with_original(result, file_name)
-                #     print(f"✓ Step2: Merged {len(merged_data)} items")
+                #     print(f"Step2: Merged {len(merged_data)} items")
                 # else:
-                #     print(f"⚠ File not found: {file_name}") 
+                #     print(f"File not found: {file_name}") 
                     
                 # Step 2: infer response từ optimized prompt MePO
                 # output_mepo_response = f'{file_path}_responses.jsonl'

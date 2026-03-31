@@ -28,7 +28,7 @@ CRITERIA_MAP = {
     "Safety_Compliance":      ["safety", "safety_compliance", "compliance", "bias", "harmful", "safe"]
 }
 
-# ================= LOAD API KEY =================
+#  LOAD API KEY 
 API_KEY_FILE = "src/openrouter_api_key.txt"
 
 with open(API_KEY_FILE, "r", encoding="utf-8") as f:
@@ -37,7 +37,7 @@ with open(API_KEY_FILE, "r", encoding="utf-8") as f:
 if not API_KEY:
     raise ValueError(f"API key rỗng. Kiểm tra lại file: {API_KEY_FILE}")
 
-# ================= LOAD PROMPT FROM FILE =================
+#  LOAD PROMPT FROM FILE 
 if not os.path.exists(PROMPT_FILE):
     raise FileNotFoundError(f"Prompt file not found: {PROMPT_FILE}")
 
@@ -50,7 +50,7 @@ SYSTEM_PROMPT = _prompt_vars["SYSTEM_PROMPT"]
 print("Loaded SYSTEM_PROMPT from response_eval_prompt.txt")
 print(SYSTEM_PROMPT[:200], "\n---")
 
-# ================= USER PROMPT =================
+#  USER PROMPT 
 def build_user_prompt(item):
     # prompt = item.get("org_prompt", "")
     # response_A = item.get("res_0", "")
@@ -122,7 +122,7 @@ Return JSON ONLY in the following format:
 }}
 """
 
-# ================= GENERATION =================
+#  GENERATION 
 def generate(system_prompt, user_prompt):
     headers = {
         "Authorization": f"Bearer {API_KEY}",
@@ -148,7 +148,7 @@ def generate(system_prompt, user_prompt):
     data = response.json()
     return data["choices"][0]["message"]["content"].strip()
 
-# ================= EXTRACT JSON =================
+#  EXTRACT JSON 
 import re
 
 def extract_json(raw):
@@ -208,7 +208,7 @@ def map_to_schema(raw_scores):
 
     return mapped
 
-# ================= FALLBACK =================
+#  FALLBACK 
 def empty_schema():
     return {
         "response_A": {c: 0.0 for c in EXPECTED_CRITERIA},
@@ -228,7 +228,7 @@ def is_complete(candidate):
             if not isinstance(candidate[key][c], (int, float)):
                 return False
     return True
-# ================= LOAD PROCESSED =================
+#  LOAD PROCESSED 
 def load_processed_ids(path):
     ids = set()
     if not os.path.exists(path):
@@ -243,7 +243,7 @@ def load_processed_ids(path):
                 continue
     return ids
 
-# ================= DECIDE WINNER =================
+#  DECIDE WINNER 
 def decide_winner_from_scores(llm_eval, threshold=0.01):
     """
     So sánh scores → return winner
@@ -262,7 +262,7 @@ def decide_winner_from_scores(llm_eval, threshold=0.01):
     else:
         return 1  # response_B win
 
-# ================= MAIN =================
+#  MAIN 
 def main():
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 

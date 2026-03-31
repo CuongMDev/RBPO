@@ -8,20 +8,9 @@ from helper import LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, DEEPSEEK, DEMO
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-base_llm_models = [GEMMA3]
-evaluator_models = [DEEPSEEK]
-evaluation_datasets = [DOLLY_EVAL,VICUNA_EVAL]
-
-base_llm_models = [VICUNA_7B, LLAMA2_7B]   
-evaluator_models = [DEEPSEEK]
-evaluation_datasets = [DOLLY_EVAL,VICUNA_EVAL]
-
 MODEL_NAME = DEEPSEEK
-# INPUT_FILE = "src/l lama_vs_vicuna/Llama-2-7b-chat-hf/dolly_eval/deepseek-chat/lose_pairwise_results_bpo_rbpo.json"
-# OUTPUT_FILE = "src/verify_response/Llama-2-7b-chat-hf/dolly_eval/bpo_rbpo.jsonl"
 PROMPT_FILE = "response_eval_prompt.txt"
 
-# OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 EXPECTED_CRITERIA = [
@@ -41,16 +30,7 @@ CRITERIA_MAP = {
     "Safety_Compliance":      ["safety", "safety_compliance", "compliance", "bias", "harmful", "safe"]
 }
 
-# ================= LOAD API KEY =================
-API_KEY_FILE = "openrouter_api_key.txt"
-
-with open(API_KEY_FILE, "r", encoding="utf-8") as f:
-    API_KEY = f.read().strip()
-
-if not API_KEY:
-    raise ValueError(f"API key rỗng. Kiểm tra lại file: {API_KEY_FILE}")
-
-# ================= LOAD PROMPT FROM FILE =================
+# LOAD PROMPT FROM FILE
 if not os.path.exists(PROMPT_FILE):
     raise FileNotFoundError(f"Prompt file not found: {PROMPT_FILE}")
 
@@ -63,27 +43,20 @@ SYSTEM_PROMPT = _prompt_vars["SYSTEM_PROMPT"]
 print("Loaded SYSTEM_PROMPT from response_eval_prompt.txt")
 print(SYSTEM_PROMPT[:200], "\n---")
 
-# ================= USER PROMPT =================
-def build_user_prompt(item):
-    # prompt = item.get("org_prompt", "")
-    # response_A = item.get("res_0", "")
-    # response_B = item.get("res_1", "")
-
-    # if not prompt:
-    #     raise ValueError(f"Missing org_prompt. Keys: {item.keys()}")
-
+# USER PROMPT
+def build_user_prompt(item, verify_keys):
     return f"""
 Prompt_A (used to generate Response_A):
-\"\"\"{item.get("rbpo_prompt", "")}\"\"\"
+\"\"\"{item.get(verify_keys[0], "")}\"\"\"
 
 Response_A:
-\"\"\"{item.get("rbpo_res", "")}\"\"\"
+\"\"\"{item.get(verify_keys[1], "")}\"\"\"
 
 Prompt_B (used to generate Response_B):
-\"\"\"{item.get("mepo_prompt", "")}\"\"\"
+\"\"\"{item.get(verify_keys[2], "")}\"\"\"
 
 Response_B:
-\"\"\"{item.get("mepo_response", "")}\"\"\"
+\"\"\"{item.get(verify_keys[3], "")}\"\"\"
 
 # IMPORTANT RULES:
 - Judge Response_A ONLY based on Prompt_A
@@ -135,7 +108,7 @@ Return JSON ONLY in the following format:
 }}
 """
 
-# ================= GENERATION =================
+# GENERATION
 def generate(system_prompt, user_prompt):
     headers = {
         "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
@@ -163,7 +136,7 @@ def generate(system_prompt, user_prompt):
     data = response.json()
     return data["choices"][0]["message"]["content"].strip()
 
-# ================= EXTRACT JSON =================
+# EXTRACT JSON
 def extract_json(raw):
     import re
     """Strip thinking tags, markdown code blocks, lấy chỉ phần JSON"""
@@ -222,7 +195,7 @@ def map_to_schema(raw_scores):
 
     return mapped
 
-# ================= FALLBACK =================
+# FALLBACK
 def empty_schema():
     return {
         "response_A": {c: 0.0 for c in EXPECTED_CRITERIA},
@@ -243,7 +216,7 @@ def is_complete(candidate):
                 return False
     return True
 
-# ================= DECIDE WINNER =================
+# DECIDE WINNER
 def decide_winner_from_scores(llm_eval, threshold=0.01):
     """
     So sánh scores → return winner
@@ -262,11 +235,11 @@ def decide_winner_from_scores(llm_eval, threshold=0.01):
     else:
         return 1  # response_B win
     
-def verify_response(item_id, sample, attempt_times=3):
+def verify_response(item_id, sample, verify_keys, attempt_times=3):
     parsed = None
     candidate = None
     for attempt in range(attempt_times):  # retry tối đa attempt_times-1 lần
-        raw = generate(SYSTEM_PROMPT, build_user_prompt(sample))
+        raw = generate(SYSTEM_PROMPT, build_user_prompt(sample, verify_keys))
         # print(f"  raw (attempt {attempt+1}): {raw[:200]}")
         # print(f"[ID={item_id}] attempt {attempt+1}")
 
@@ -288,7 +261,7 @@ def verify_response(item_id, sample, attempt_times=3):
                     print("  ✓ Mapped schema")
                     return parsed
         except Exception as e:
-            print(f"  ⚠ Parse fail (attempt {attempt+1}): {e}")
+            print(f"Parse fail (attempt {attempt+1}): {e}")
             continue
     if parsed is None:
         print(f"  ❌ ID={item_id}: dùng fallback")
@@ -299,20 +272,20 @@ def batch_iterator(data, batch_size):
     for i in range(0, len(data), batch_size):
         yield data[i:i + batch_size]
 
-def process_batch(batch, attempt_times=3):
+def process_batch(batch, verify_keys, attempt_times=3):
     batch_results = []
 
     for idx, item in enumerate(batch):
         item_id = item.get("id", idx + 1)
-        parsed = verify_response(item_id, item, attempt_times)
+        parsed = verify_response(item_id, item, verify_keys, attempt_times)
 
         batch_results.append({
             "id": item_id,
             "ori_prompt": item.get("ori_prompt"),
-            "rbpo_prompt": item.get("rbpo_prompt"),
-            "rbpo_res": item.get("rbpo_res"),
-            "mepo_prompt": item.get("mepo_prompt"),
-            "mepo_response": item.get("mepo_response"),
+            "rbpo_prompt": item.get(verify_keys[0], ""),
+            "rbpo_res": item.get(verify_keys[1], ""),
+            "mepo_prompt": item.get(verify_keys[2], ""),
+            "mepo_response": item.get(verify_keys[3], ""),
             # "winner_before": item.get("winner"),
             "winner": decide_winner_from_scores(parsed),
             "llm_evaluation": parsed
@@ -320,8 +293,8 @@ def process_batch(batch, attempt_times=3):
 
     return batch_results
 
-# ================= MAIN =================
-def verify_response_batch(verify_times = 3, BATCH_SIZE = 1):
+# MAIN
+def verify_response_batch(verify_keys, verify_times = 3, BATCH_SIZE = 1):
     for base_llm in base_llm_models:
         for dataset in evaluation_datasets:
             for evaluator in evaluator_models:
@@ -340,7 +313,7 @@ def verify_response_batch(verify_times = 3, BATCH_SIZE = 1):
                     for batch_idx, batch in enumerate(batch_iterator(data, BATCH_SIZE)):
                         print(f"Processing batch {batch_idx + 1}...")
 
-                        batch_results = process_batch(batch, attempt_times=3)
+                        batch_results = process_batch(batch, verify_keys, attempt_times=3)
                         results.extend(batch_results)
                     with open(output_path, "w", encoding="utf-8") as f:
                         json.dump(results, f, ensure_ascii=False, indent=2)                        
@@ -353,7 +326,7 @@ def load_data_for_consistency_check(input_path, check_runs):
             with open(path, "r", encoding="utf-8") as f:
                 data.append(json.load(f))
         else:
-            print(f"  ⚠ Missing file for consistency check: {path}")
+            print(f"Missing file for consistency check: {path}")
     return data
 
 def check_verify_consistency(check_runs=3):
@@ -371,7 +344,7 @@ def check_verify_consistency(check_runs=3):
                 
                 data = load_data_for_consistency_check(input_path, check_runs)
                 if not data:
-                    print(f"  ⚠ No data loaded for {input_path}")
+                    print(f"No data loaded for {input_path}")
                     continue
                 
                 # Xác định ID cần bỏ dựa trên dataset
@@ -466,8 +439,8 @@ def check_verify_consistency(check_runs=3):
                     with open(mismatch_path, "w", encoding="utf-8") as f:
                         json.dump(mismatch_result, f, ensure_ascii=False, indent=2)
                     
-                    print(f"  ✓ Found {len(mismatches)}/{num_items} mismatches ({mismatch_result['mismatch_rate']})")
-                    print(f"    → Saved: {mismatch_path}")
+                    print(f"Found {len(mismatches)}/{num_items} mismatches ({mismatch_result['mismatch_rate']})")
+                    print(f"Saved: {mismatch_path}")
                 
                 # Lưu file _consistency.json
                 if consistencies:
@@ -495,10 +468,11 @@ def check_verify_consistency(check_runs=3):
                 
                 # Summary
                 if not mismatches and not consistencies:
-                    print(f"  ⚠ No items to process")
+                    print(f"No items to process")
                 else:
-                    print(f"  📊 Summary: {len(mismatches)} mismatches + {len(consistencies)} consistent = {num_items} total")
+                    print(f"Summary: {len(mismatches)} mismatches + {len(consistencies)} consistent = {num_items} total")
                 
 if __name__ == "__main__":
-    # verify_response_batch()
-    check_verify_consistency()
+    verify_keys_rbpo_mepo = ['rbpo_prompt', 'rbpo_res', 'mepo_prompt', 'mepo_response']
+    verify_response_batch(verify_keys_rbpo_mepo, verify_times=3, BATCH_SIZE=1)
+    # check_verify_consistency()

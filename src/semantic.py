@@ -16,7 +16,7 @@ from config import (
 
 torch.manual_seed(42)
 
-# ============ CONFIG ============
+#  CONFIG 
 device = "cuda:0"
 input_jsonl = "optimized_prompts.jsonl"
 tmp_step1 = "tmp_step1_r0.jsonl"

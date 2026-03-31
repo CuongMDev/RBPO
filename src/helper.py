@@ -1,3 +1,4 @@
+import json
 import os
 
 DEEPSEEK = "deepseek-chat"
@@ -8,16 +9,22 @@ GEMMA3 = "google/gemma-3-4b-it"
 
 DOLLY_EVAL = "testset/dolly_eval.json"
 VICUNA_EVAL = "testset/vicuna_eval.json"
+BPO_EVAL = "testset/bpo_test.json"
+SELF_INSTRUCT_EVAL = "testset/self_instruct_eval.json"
+
+
 DEMO_EVAL = "testset/demo.json"
 DEMO_VERIFY = "testset/demo_verify.json"
 
 evaluator_models = [DEEPSEEK]   
 base_llm_models = [VICUNA_7B,LLAMA2_7B, GEMMA3]
-evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
+evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL, BPO_EVAL, SELF_INSTRUCT_EVAL]
 
-mepo_folder_name = "mepo"
+mepo_folder_name = "rbpo_mepo"
 mismatch_folder_name = "mismatch"
 consistency_folder_name = "consistency"
+
+eval_folder_name = "evaluation"
 
 
 def clean_name(path_or_id: str):
@@ -55,4 +62,36 @@ def convert_analysis_path_to_figure(path: str, suffix: str = "ori_rbpo") -> str:
         "figure",
         f"{model}_{eval_name}_{judge}_{suffix}"
     )
+    
+
+
+def dataset_processing(file_path: list):
+    import os
+    os.makedirs(eval_folder_name, exist_ok=True)
+    for base_model in base_llm_models:
+        for data_path in evaluation_datasets:
+            for evaluator in evaluator_models:
+                
+                file_name = create_combined_name(base_model, data_path, evaluator)
+                
+                with open(data_path, "r", encoding="utf-8") as f:
+                    data =  json.load(f)
+                # Chuyển đổi sang định dạng chuẩn: id, ori_prompt, bpo_prompt, bpo_res, rbpo_prompt, rbpo_res, category, expected_response
+                
+                results = []
+                for idx, item in enumerate(data, start=1):
+                    results.append({
+                        "id": item.get("id") or item.get("question_id") or item.get("idx") or idx,  # giữ nguyên id nếu đã có, nếu không có thì để None
+                        "ori_prompt": item.get("instruction", None) or item.get("prompt", None) or item.get("text", None),
+                        "context": item.get("context", None),
+                        "bpo_prompt": item.get("optimized_prompt", None),
+                        "category": item.get("category", None),
+                        "expected_response": item.get("output", None) or item.get("good_res", None) or item.get("response", None)
+                    })
+                
+                with open(f"{eval_folder_name}/{file_name}.json", "w", encoding="utf-8") as f:
+                    json.dump(results, f, ensure_ascii=False, indent=2)
+
+# if __name__ == "__main__":
+#     dataset_processing(evaluation_datasets)
     
