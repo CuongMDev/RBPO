@@ -8,13 +8,13 @@ from helper import LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, DEEPSEEK, DEMO
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-# base_llm_models = [GEMMA3]
-# evaluator_models = [DEEPSEEK]
-# evaluation_datasets = [DOLLY_EVAL,VICUNA_EVAL]
-
-base_llm_models = [VICUNA_7B]
+base_llm_models = [GEMMA3]
 evaluator_models = [DEEPSEEK]
-evaluation_datasets = [DOLLY_EVAL]
+evaluation_datasets = [DOLLY_EVAL,VICUNA_EVAL]
+
+# base_llm_models = [VICUNA_7B]   
+# evaluator_models = [DEEPSEEK]
+# evaluation_datasets = [DOLLY_EVAL]
 
 MODEL_NAME = DEEPSEEK
 # INPUT_FILE = "src/l lama_vs_vicuna/Llama-2-7b-chat-hf/dolly_eval/deepseek-chat/lose_pairwise_results_bpo_rbpo.json"
