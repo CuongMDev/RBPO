@@ -7,3 +7,4 @@ openai
 sentencepiece
 protobuf
 dotenv
+requests

@@ -17,6 +17,7 @@ evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL]
 
 mepo_folder_name = "mepo"
 mismatch_folder_name = "mismatch"
+consistency_folder_name = "consistency"
 
 
 def clean_name(path_or_id: str):
