@@ -9,6 +9,8 @@ src/my-train/optimized_prompts_llama2_7b_res.jsonl
 
 src/__pycache__/
 
+src/hf-cache/model
+
 *.png
 
 *.jsonl
@@ -50,3 +52,8 @@ src/key_all.txt
 !src/testset/vicuna_eval.jsonl
 
 src/mepo/api.txt
+
+*data_processing.py
+*demo_experiment.json
+*demo_experiment.txt
+*demo_output.json

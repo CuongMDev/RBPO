@@ -1,0 +1,140 @@
+import gc
+from sentence_transformers import util
+import json
+from sentence_transformers import SentenceTransformer
+from sklearn.cluster import AgglomerativeClustering
+import torch
+from config import MODEL_CACHE_PATH
+from helper import DISTANCE_THRESHOLD, IMP_ENC, MINILM_MODEL, experiment_file_name, eval_folder_name, device, M
+
+print("===== STEP 2: SBERT clustering =====")
+torch.cuda.empty_cache()
+gc.collect()
+
+
+sbert = SentenceTransformer(
+    MINILM_MODEL,
+    device=device,
+    cache_folder=MODEL_CACHE_PATH
+)
+
+def prompt_clustering(key, item, M):
+    ori_prompt = item.get("ori_prompt", "")
+    samples = item.get(key, [])
+    if M > 0:
+        samples = samples[:M]
+    
+    # Kiểm tra dữ liệu đầu vào
+    if len(samples) < 2:
+        print(f"Warning: Key '{key}' có ít hơn 2 mẫu ({len(samples)}), bỏ qua clustering")
+        return [], None
+    
+    embeddings = sbert.encode(samples, convert_to_tensor=True)
+    embeddings_np = embeddings.cpu().numpy()
+    
+    clustering = AgglomerativeClustering(
+        n_clusters=None,
+        distance_threshold=DISTANCE_THRESHOLD,
+        metric='cosine',
+        linkage='average'
+    )
+    
+    labels = clustering.fit_predict(embeddings_np)
+    clusters = {}
+    for idx, label in enumerate(labels):
+        if label not in clusters:
+            clusters[label] = []
+        clusters[label].append(idx)
+        
+    clusters = list(clusters.values())
+    
+    return clusters, embeddings
+
+def representative_selection(item, clusters, embeddings):
+    ori_prompt = item.get("ori_prompt", "")
+    original_embedding = sbert.encode([ori_prompt], convert_to_tensor=True)[0]
+    cluster_representatives = []
+    single_cluster = False
+    
+    if len(clusters) == 1:
+        cluster = clusters[0]
+        c_embeds = torch.stack([embeddings[i] for i in cluster])
+        c_sims = util.pytorch_cos_sim(original_embedding, c_embeds)[0]
+        c_sorted = torch.argsort(c_sims)
+        best_idx = cluster[c_sorted[len(c_sorted) // 2].item()]
+        cluster_representatives = [best_idx]
+        single_cluster = True
+    else: 
+        for cluster in clusters:
+            if len(cluster) == 1:
+                cluster_representatives.append(cluster[0])
+            else:
+                c_embeds = torch.stack([embeddings[i] for i in cluster])
+                c_sims = util.pytorch_cos_sim(original_embedding, c_embeds)[0]
+                c_sorted = torch.argsort(c_sims)
+                c_median_idx = c_sorted[len(c_sorted) // 2].item()
+                cluster_representatives.append(cluster[c_median_idx])
+    return cluster_representatives, single_cluster   
+
+def compute_consensus_score(key, item, clusters, embeddings, cluster_representatives, single_cluster):
+    if single_cluster:
+        return [0.0]
+    
+    consensus_scores = []
+    ori_prompt = item.get("ori_prompt", "")
+    original_embedding = sbert.encode([ori_prompt], convert_to_tensor=True)[0]
+    
+    for i, rep_idx in enumerate(cluster_representatives):
+        score = 0.0
+        rep_embed = embeddings[rep_idx]
+
+        for j, other_rep_idx in enumerate(cluster_representatives):
+            if i != j:
+                other_embed = embeddings[other_rep_idx]
+                sim = util.pytorch_cos_sim(rep_embed, other_embed).item()
+                score += sim
+
+        score -= util.pytorch_cos_sim(
+            rep_embed, original_embedding
+        ).item() * IMP_ENC
+        consensus_scores.append(score)
+    return consensus_scores
+
+def optimize_prompt_selection(key, item, clusters, embeddings, cluster_representatives, consensus_scores):   
+    best_consensus_score_idx = max(range(len(consensus_scores)), key=lambda i: consensus_scores[i])
+    best_rep_idx = cluster_representatives[best_consensus_score_idx]
+    return best_rep_idx
+
+experiment_file_name = "demo_experiment.txt"
+output_file_name = "demo_output.json"
+method_keys = [
+    "rbpo_paraphrases",
+            #    "rmepo_paraphrases"
+               ]
+with open(experiment_file_name, "r") as f:
+    lines = f.readlines()
+
+for line in lines:
+    path = line.strip()
+    print(f"Processing: {path}")
+    with open(f'{eval_folder_name}/{path}.json', "r") as f:
+        data = json.load(f)
+    print(len(data))
+    
+    for item in data:
+        for key in method_keys:
+            clusters, embeddings = prompt_clustering(key, item, M)
+            if clusters is None or len(clusters) == 0:  # Bỏ qua nếu dữ liệu không đủ
+                print(f"Warning: Không thể thực hiện clustering cho key '{key}' do dữ liệu không đủ, bỏ qua item này")
+                continue
+            cluster_representatives, single_cluster = representative_selection(item, clusters, embeddings)
+            consensus_scores = compute_consensus_score(key, item, clusters, embeddings, cluster_representatives, single_cluster)
+            best_rep_idx = optimize_prompt_selection(key, item, clusters, embeddings, cluster_representatives, consensus_scores)
+            output_key = "rbpo" if key == "bpo_paraphrases" else "rmepo"
+            item[f'{output_key}_clusters'] = [[item[key][idx] for idx in cluster] for cluster in clusters]
+            item[f'{output_key}_prompt'] = item[key][best_rep_idx]
+            item[f"{output_key}_cluster_representatives"] = [item[key][idx] for idx in cluster_representatives]
+            item[f"{output_key}_consensus_scores"] = consensus_scores
+
+    with open(f'{output_file_name}', "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)

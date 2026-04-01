@@ -18,6 +18,47 @@ def make_prompt_template(user_prompt: str, add_system_prompt=True, add_ranking_s
 
     return messages
 
+def make_prompt_template(
+    user_prompt: str,
+    context: str = None,
+    add_system_prompt=True,
+    add_ranking_system_prompt=False
+):
+    messages = []
+
+    # System prompt
+    if add_system_prompt:
+        messages.append({
+            "role": "system",
+            "content": (
+                "You are a helpful and concise assistant. "
+                "Please reply in English only."
+            )
+        })
+    elif add_ranking_system_prompt:
+        messages.append({
+            "role": "system",
+            "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
+        })
+
+    # Inject context nếu có
+    if context is not None and context.strip() != "":
+        user_content = f"""Context:
+{context}
+
+Question:
+{user_prompt}
+"""
+    else:
+        # fallback clean
+        user_content = user_prompt
+
+    messages.append({
+        "role": "user",
+        "content": user_content
+    })
+
+    return messages
 
 def generate(model, tokenizer, prompt, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
     """Generate cho single prompt (backward compatible)"""
@@ -44,8 +85,7 @@ def generate(model, tokenizer, prompt, max_new_tokens=1024, apply_chat_template=
 
     return text.strip()
 
-
-def generate_batch(model, tokenizer, prompts, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
+def generate_batch(model, tokenizer, prompts, context=None, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
     """Generate cho batch prompts - tăng tốc inference"""
     if not prompts:
         return []
@@ -55,7 +95,7 @@ def generate_batch(model, tokenizer, prompts, max_new_tokens=1024, apply_chat_te
     if apply_chat_template:
         processed_prompts = []
         for p in prompts:
-            p = make_prompt_template(p)
+            p = make_prompt_template(user_prompt=p, context=context)
             p = tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
             processed_prompts.append(p)
         prompts = processed_prompts
@@ -98,7 +138,7 @@ import torch
 import torch.nn.functional as F
 
 
-def generate_batch_with_logprob(model, tokenizer, prompts, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
+def generate_batch_with_logprob(model, tokenizer, prompts,context=None, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
     """
     Generate cho batch prompts và trả về cả text lẫn log probability.
 
@@ -116,7 +156,7 @@ def generate_batch_with_logprob(model, tokenizer, prompts, max_new_tokens=1024, 
     if apply_chat_template:
         processed_prompts = []
         for p in prompts:
-            p = make_prompt_template(p)
+            p = make_prompt_template(user_prompt= p, context=context)
             p = tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
             processed_prompts.append(p)
         prompts = processed_prompts

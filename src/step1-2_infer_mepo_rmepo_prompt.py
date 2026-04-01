@@ -11,7 +11,7 @@ from mepo_inference import MePOModel
 
 torch.manual_seed(42)
 
-experiment_file_name = "demo_experiment.json"
+# experiment_file_name = "demo_experiment.txt"
 
 # =========================
 # Step 1: Infer MePO prompt for all items
@@ -104,23 +104,10 @@ for line in lines:
         grouped[idx].append(out)
 
     for i, sample in enumerate(data):
-        sample["mepo_paraphrases"] = grouped.get(i, [])
+        sample["rmepo_paraphrases"] = grouped.get(i, [])
     
     with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         
 print("Delete MePO model to free up memory")
 mepo_model.clean_up()
-
- # batch_prompts = []
-    # batch_refs = []
-    # for sample in tqdm(data, desc=f"Processing {path}"):
-    #     ori_prompt = sample.get("ori_prompt", "")
-
-    #     batch_prompts = [
-    #         prompt_template_optimize.format(ori_prompt) for _ in range(M)
-    #     ]
-        
-    #     mepo_paraphrases = mepo_model.generate_paraphrase_batch(batch_prompts)
-        
-    #     sample["mepo_paraphrases"] = mepo_paraphrases

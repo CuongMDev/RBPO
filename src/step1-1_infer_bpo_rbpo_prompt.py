@@ -6,7 +6,7 @@ from utils import generate, generate_batch
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-experiment_file_name = "demo_experiment.json"
+experiment_file_name = "demo_experiment.txt"
 
 torch.manual_seed(42)
 # Loading BPO
@@ -76,7 +76,7 @@ for line in lines:
         ori_prompt = item.get("ori_prompt", "")
         
         batch_prompt = [prompt_template_optimize.format(ori_prompt) for _ in range(M)]
-        bpo_paraphrases = generate_batch(
+        rbpo_paraphrases = generate_batch(
             bpo_model,
             bpo_tokenizer,
             batch_prompt,
@@ -85,8 +85,8 @@ for line in lines:
             apply_chat_template=False,
             device=device,  
         )
-        assert len(batch_prompt) == len(bpo_paraphrases), "Mismatch between batch size and generated paraphrases"
-        item["bpo_paraphrases"] = bpo_paraphrases
+        assert len(batch_prompt) == len(rbpo_paraphrases), "Mismatch between batch size and generated paraphrases"
+        item["rbpo_paraphrases"] = rbpo_paraphrases
     
     with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)      

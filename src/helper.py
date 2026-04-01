@@ -1,7 +1,11 @@
 import json
 import os
 
-device = "cuda:0"
+import torch
+
+# device = "cuda:0"
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 BPO_MODEL = "THUDM/BPO"
 MINILM_MODEL = "sentence-transformers/all-MiniLM-L12-v2"
 DEEPSEEK = "deepseek-chat"
@@ -24,9 +28,15 @@ consistency_folder_name = "consistency"
 eval_folder_name = "evaluation"
 experiment_file_name = "experiment.txt"
 
+BPO = "bpo"
+RBPO = "rbpo"
+MEPO = "mepo"
+RMEPO = "rmepo"
+METHOD = [BPO, RBPO, MEPO, RMEPO]
+
 M = 10 # prompt optimization iterations
-DISTANCE_THRESHOLD=0.05,
-IMP_ENC=0.5, 
+DISTANCE_THRESHOLD=0.05
+IMP_ENC=0.5
 
 def clean_name(path_or_id: str):
     name = path_or_id.split("/")[-1]        
