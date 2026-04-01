@@ -100,7 +100,7 @@ class MePOModel:
         ]
     
         # tokenize batch
-        inputs = self.tokenizer.apply_chat_template(
+        inputs = self.tokenizer.apply_chat_template(    
             messages_batch,
             return_tensors="pt",
             padding=True,
@@ -123,12 +123,23 @@ class MePOModel:
         # decode batch
         return self.tokenizer.batch_decode(output_tokens, skip_special_tokens=True)
     
+    def template_user_content(self, prompt):
+        return f"""
+Paraphrase the following sentence.
+
+Output format:
+- Only output the sentence
+- Do not explain
+- Do not add phrases like "Certainly", "Here is", etc.
+
+Sentence: {prompt}
+"""
     #Language Models are Few-Shot Learners -> temp = 0.7
     def generate_paraphrase_batch(self, prompts):
         messages_batch = [
             [
                 {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
-                {"role": "user", "content": p}
+                {"role": "user", "content": self.template_user_content(p)}
             ]
             for p in prompts
         ]
