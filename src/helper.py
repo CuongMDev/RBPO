@@ -1,31 +1,29 @@
 import json
 import os
 
+device = "cuda:0"
+BPO_MODEL = "THUDM/BPO"
 DEEPSEEK = "deepseek-chat"
+evaluator_models = [DEEPSEEK]   
 
 LLAMA2_7B = "meta-llama/Llama-2-7b-chat-hf"
 VICUNA_7B = "lmsys/vicuna-7b-v1.3"
 GEMMA3 = "google/gemma-3-4b-it"
+base_llm_models = [VICUNA_7B,LLAMA2_7B, GEMMA3]
 
 DOLLY_EVAL = "testset/dolly_eval.json"
 VICUNA_EVAL = "testset/vicuna_eval.json"
 BPO_EVAL = "testset/bpo_test.json"
 SELF_INSTRUCT_EVAL = "testset/self_instruct_eval.json"
-
-
-DEMO_EVAL = "testset/demo.json"
-DEMO_VERIFY = "testset/demo_verify.json"
-
-evaluator_models = [DEEPSEEK]   
-base_llm_models = [VICUNA_7B,LLAMA2_7B, GEMMA3]
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL, BPO_EVAL, SELF_INSTRUCT_EVAL]
 
 mepo_folder_name = "rbpo_mepo"
 mismatch_folder_name = "mismatch"
 consistency_folder_name = "consistency"
-
 eval_folder_name = "evaluation"
+experiment_file_name = "experiment.txt"
 
+M = 10 # prompt optimization iterations
 
 def clean_name(path_or_id: str):
     name = path_or_id.split("/")[-1]        
@@ -62,8 +60,6 @@ def convert_analysis_path_to_figure(path: str, suffix: str = "ori_rbpo") -> str:
         "figure",
         f"{model}_{eval_name}_{judge}_{suffix}"
     )
-    
-
 
 def dataset_processing(file_path: list):
     import os
@@ -91,7 +87,19 @@ def dataset_processing(file_path: list):
                 
                 with open(f"{eval_folder_name}/{file_name}.json", "w", encoding="utf-8") as f:
                     json.dump(results, f, ensure_ascii=False, indent=2)
+def print_file_names(file_path: str):
+    results = []        
+    for base_model in base_llm_models:
+        for data_path in evaluation_datasets:
+            for evaluator in evaluator_models:
+                file_name = create_combined_name(base_model, data_path, evaluator)
+                results.append(file_name)
+    print("\n".join(results))
+    
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(results))
 
-# if __name__ == "__main__":
-#     dataset_processing(evaluation_datasets)
+if __name__ == "__main__":
+    # dataset_processing(evaluation_datasets)
+    print_file_names(experiment_file_name)
     

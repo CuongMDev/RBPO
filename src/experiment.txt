@@ -1,0 +1,12 @@
+vicuna_vicuna_deepseek
+vicuna_dolly_deepseek
+vicuna_bpo_deepseek
+vicuna_self_deepseek
+llama_vicuna_deepseek
+llama_dolly_deepseek
+llama_bpo_deepseek
+llama_self_deepseek
+gemma_vicuna_deepseek
+gemma_dolly_deepseek
+gemma_bpo_deepseek
+gemma_self_deepseek
