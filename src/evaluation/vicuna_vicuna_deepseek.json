@@ -3,7 +3,7 @@
     "id": 1,
     "ori_prompt": "How can I improve my time management skills?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "ori_prompt": "What are the most effective ways to deal with stress?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "ori_prompt": "What are the main differences between Python and JavaScript programming languages?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "ori_prompt": "How can I increase my productivity while working from home?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "ori_prompt": "Can you explain the basics of quantum computing?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "ori_prompt": "What are the differences between plant-based and animal-based protein sources?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "ori_prompt": "How can I develop my critical thinking skills?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "ori_prompt": "What are the major challenges faced by the education sector today?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "ori_prompt": "What are the primary factors that influence consumer behavior?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "generic",
     "expected_response": null
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "ori_prompt": "What are the most effective strategies for conflict resolution in the workplace?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide specific and practical strategies that can be used to effectively resolve conflicts in the workplace.\nPlease provide specific and practical strategies for conflict resolution in the workplace that can be used to effectively resolve conflicts in the workplace.",
     "category": "generic",
     "expected_response": null
   },
@@ -83,7 +83,7 @@
     "id": 11,
     "ori_prompt": "What are some potential implications of using a single-use plastic bottle versus a reusable bottle on both the environment and human health?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide detailed and specific information.",
     "category": "knowledge",
     "expected_response": null
   },
@@ -91,7 +91,7 @@
     "id": 12,
     "ori_prompt": "What factors would you consider when designing an inclusive and accessible public transportation system?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide a detailed explanation of each factor and how it contributes to creating a more equitable and sustainable transportation system.",
     "category": "knowledge",
     "expected_response": null
   },
@@ -99,7 +99,7 @@
     "id": 13,
     "ori_prompt": "How can governments utilize fiscal and monetary policies to combat economic recessions?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Provide specific examples and analyze the effectiveness of different policy measures.",
     "category": "knowledge",
     "expected_response": null
   },
@@ -107,7 +107,7 @@
     "id": 14,
     "ori_prompt": "How do language and cultural barriers affect the way people communicate and form relationships in multicultural societies?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Provide specific examples and address any potential miscommunication or misunderstandings that may arise.",
     "category": "knowledge",
     "expected_response": null
   },
@@ -115,7 +115,7 @@
     "id": 15,
     "ori_prompt": "Describe a scenario where artificial intelligence could be used to improve the quality and efficiency of healthcare delivery.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Describe a scenario where artificial intelligence could be used to improve the quality and efficiency of healthcare delivery",
     "category": "knowledge",
     "expected_response": null
   },
@@ -123,7 +123,7 @@
     "id": 16,
     "ori_prompt": "Explain the process of gene editing using CRISPR-Cas9 technology, and discuss its potential applications and ethical implications.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "CRISPR-Cas9 is a powerful tool for precision genome editing. Explain the process of using CRISPR-Cas9 to edit a specific gene, including the steps involved and the efficiency of the technology. Discuss the potential applications of CRISPR-Cas9, including basic research, disease treatment, and agriculture. Also, address the ethical implications of using CRISPR-Cas9, including the possibility of unintended consequences and the risk of mosaicism.",
     "category": "knowledge",
     "expected_response": null
   },
@@ -131,7 +131,7 @@
     "id": 17,
     "ori_prompt": "How do vaccinations work to protect individuals and communities from infectious diseases, and what is herd immunity?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "knowledge",
     "expected_response": null
   },
@@ -139,7 +139,7 @@
     "id": 18,
     "ori_prompt": "How do social media platforms influence the way people consume and share news, and what are the potential implications for the spread of misinformation?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide a detailed explanation, including specific examples and the latest research on the topic.\n\n[BEGIN]",
     "category": "knowledge",
     "expected_response": null
   },
@@ -147,7 +147,7 @@
     "id": 19,
     "ori_prompt": "How do cultural, social, and economic factors influence people's food choices, and how can this knowledge be used to promote healthier diets?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide a detailed explanation of the specific ways in which cultural, social, and economic factors shape food choices, and suggest practical strategies to promote healthier diets.",
     "category": "knowledge",
     "expected_response": null
   },
@@ -155,7 +155,7 @@
     "id": 20,
     "ori_prompt": "Explain the process of natural selection and how it contributes to the evolution and adaptation of species.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "knowledge",
     "expected_response": null
   },
@@ -163,7 +163,7 @@
     "id": 21,
     "ori_prompt": "How would you introduce yourself as a medieval knight at a royal banquet?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -171,7 +171,7 @@
     "id": 22,
     "ori_prompt": "As a pirate captain, what would you say to your crew to motivate them to search for hidden treasure?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -179,7 +179,7 @@
     "id": 23,
     "ori_prompt": "If you were a Shakespearean character, how would you declare your love for someone in a soliloquy?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -187,7 +187,7 @@
     "id": 24,
     "ori_prompt": "As a superhero, how would you explain your origin story to a curious child?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -195,7 +195,7 @@
     "id": 25,
     "ori_prompt": "Imagine you are a time traveler from the year 3000. What technological advancements would you tell people about?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -203,7 +203,7 @@
     "id": 26,
     "ori_prompt": "As a sports commentator, describe the winning play in the final seconds of a championship game.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -211,7 +211,7 @@
     "id": 27,
     "ori_prompt": "Pretend to be a world-famous chef. How would you describe your signature dish to a panel of judges?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -219,7 +219,7 @@
     "id": 28,
     "ori_prompt": "You are a mountain climber reaching the summit of Mount Everest. Describe your emotions and the view from the top.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -227,7 +227,7 @@
     "id": 29,
     "ori_prompt": "As a space colonist on Mars, describe your daily life and the challenges you face living on another planet.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide a detailed response that explains your daily activities, the food you eat, the water you drink, the air you breathe, and the challenges you face from the environment and communication difficulties. Also, mention the support you receive from Earth and the future aspirations for your colony.",
     "category": "roleplay",
     "expected_response": null
   },
@@ -235,7 +235,7 @@
     "id": 30,
     "ori_prompt": "Pretend to be a character in a post-apocalyptic world. Describe how you survive and the allies you encounter.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "roleplay",
     "expected_response": null
   },
@@ -243,7 +243,7 @@
     "id": 31,
     "ori_prompt": "How can you determine if a restaurant is popular among locals or mainly attracts tourists, and why might this information be useful?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "common-sense",
     "expected_response": null
   },
@@ -251,7 +251,7 @@
     "id": 32,
     "ori_prompt": "What are some subtle clues that suggest someone is pretending to understand a topic or conversation when they are actually confused or uninformed?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "common-sense",
     "expected_response": null
   },
@@ -259,7 +259,7 @@
     "id": 33,
     "ori_prompt": "Why might someone choose to use a paper map or ask for directions instead of relying on a GPS device or smartphone app?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Provide reasons for both options and consider the user's needs and preferences.\n\nWhy might someone choose to use a paper map or ask for directions instead of relying on a GPS device or smartphone app? Provide reasons for both options and consider the user's needs and preferences.",
     "category": "common-sense",
     "expected_response": null
   },
@@ -267,7 +267,7 @@
     "id": 34,
     "ori_prompt": "How can you determine if a person is genuinely interested in a conversation or simply being polite?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Provide specific indicators of genuine interest and tips for navigating polite conversation.\nIndicators of genuine interest:\n1. Eye contact: Is the person maintaining eye contact?\n2. Listening actively: Are they actively listening and responding to what you say?\n3. Asking questions: Are they asking questions to understand your perspective?\n4. Sharing personal experiences: Are they willing to share personal experiences and be vulnerable?\n5. Providing advice or guidance: Are they offering advice or guidance to help you navigate the situation?\nTips for navigating polite conversation:\n1. Pay attention to the person's body language: Are they relaxed and engaged in the conversation?\n2. Look for consistency: Are their words and actions consistent with their interests and values?\n3. Use active listening: Paraphrase what the person is saying to show you understand and empathize with their perspective.\n4. Ask for clarification: If you're unsure about the person's interest, ask for clarification.\n5. Be honest and vulnerable: Share your own experiences and be honest about your interests and concerns.\nBy following these indicators and tips, you can accurately determine if a person is genuinely interested in a conversation or simply being polite.",
     "category": "common-sense",
     "expected_response": null
   },
@@ -275,7 +275,7 @@
     "id": 35,
     "ori_prompt": "Why might someone prefer to shop at a small, locally-owned business instead of a large chain store, even if the prices are higher?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Explain the advantages of shopping at a small, locally-owned business instead of a large chain store, even if the prices are higher.\nWhy might someone prefer to shop at a small, locally-owned business instead of a large chain store, even if the prices are higher? Explain the advantages of shopping at a small, locally-owned business instead of a large chain store, even if the prices are higher.",
     "category": "common-sense",
     "expected_response": null
   },
@@ -283,7 +283,7 @@
     "id": 36,
     "ori_prompt": "How can you assess the credibility of a source of information, such as a news article or blog post, without relying solely on the reputation of the author or publisher?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "common-sense",
     "expected_response": null
   },
@@ -291,7 +291,7 @@
     "id": 37,
     "ori_prompt": "Why do some people enjoy the sensation of being scared, such as by watching horror movies or going on roller coasters, while others avoid these experiences?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Provide a detailed explanation for the reasons behind these preferences and why some people enjoy being scared.\nWhy do some people enjoy the sensation of being scared, such as by watching horror movies or going on roller coasters, while others avoid these experiences? Provide a detailed explanation for the reasons behind these preferences and why some people enjoy being scared.",
     "category": "common-sense",
     "expected_response": null
   },
@@ -299,7 +299,7 @@
     "id": 38,
     "ori_prompt": "How can observing the behavior of other people in a social situation provide clues about cultural norms and expectations?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "common-sense",
     "expected_response": null
   },
@@ -307,7 +307,7 @@
     "id": 39,
     "ori_prompt": "Do we have a moral obligation to explore space, or should we focus on solving Earth's problems first?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "common-sense",
     "expected_response": null
   },
@@ -315,7 +315,7 @@
     "id": 40,
     "ori_prompt": "In a world where automation is becoming increasingly prevalent, is it more important to prioritize job creation or technological progress?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide a detailed analysis that considers the potential benefits and challenges of each approach.\n\n[BEGIN]",
     "category": "common-sense",
     "expected_response": null
   },
@@ -323,7 +323,7 @@
     "id": 41,
     "ori_prompt": "How many times does the average human blink in a lifetime? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -331,7 +331,7 @@
     "id": 42,
     "ori_prompt": "How many atoms are in a grain of salt? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -339,7 +339,7 @@
     "id": 43,
     "ori_prompt": "How many lightning strikes occur on Earth each day? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -347,7 +347,7 @@
     "id": 44,
     "ori_prompt": "How many balloons would it take to lift a house like in the movie \"Up\"? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -355,7 +355,7 @@
     "id": 45,
     "ori_prompt": "How many text messages are sent globally in a minute? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -363,7 +363,7 @@
     "id": 46,
     "ori_prompt": "How many words are spoken daily on Earth? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please note that the estimation of the number of words spoken daily on Earth is a rough estimate and varies greatly depending on factors such as language, location, and culture.",
     "category": "fermi",
     "expected_response": null
   },
@@ -371,7 +371,7 @@
     "id": 47,
     "ori_prompt": "How many snowflakes fall during a typical winter? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide a clear and coherent explanation.",
     "category": "fermi",
     "expected_response": null
   },
@@ -379,7 +379,7 @@
     "id": 48,
     "ori_prompt": "How many pages are in all the books ever written? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -387,7 +387,7 @@
     "id": 49,
     "ori_prompt": "How many times has the Earth orbited the Sun since the beginning of life? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -395,7 +395,7 @@
     "id": 50,
     "ori_prompt": "How many songs have been recorded throughout history? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "fermi",
     "expected_response": null
   },
@@ -403,7 +403,7 @@
     "id": 51,
     "ori_prompt": "What if the Internet had been invented during the Renaissance period?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "What would have been the implications and benefits?",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -411,7 +411,7 @@
     "id": 52,
     "ori_prompt": "What if the Aztecs had successfully repelled the Spanish conquistadors?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -419,7 +419,7 @@
     "id": 53,
     "ori_prompt": "What if the Black Death had not occurred in the 14th century?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "How might European history have been different without it?",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -427,7 +427,7 @@
     "id": 54,
     "ori_prompt": "What if Isaac Newton had focused on biology instead of physics?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -435,7 +435,7 @@
     "id": 55,
     "ori_prompt": "What if the Beatles had never formed as a band?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "What would have been the impact of their absence on the band's history and popular music as a whole?",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -443,7 +443,7 @@
     "id": 56,
     "ori_prompt": "What if Alan Turing had not cracked the Enigma code during World War II?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "What might have been the consequences?",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -451,7 +451,7 @@
     "id": 57,
     "ori_prompt": "What if the Suez Canal had never been constructed?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -459,7 +459,7 @@
     "id": 58,
     "ori_prompt": "What if the Maya civilization had never mysteriously collapsed?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "What would have been the consequences for the Maya people and their descendants? Please discuss the potential impact on their way of life, social structure, political organization, and cultural development.\n\nPlease provide a detailed analysis of the consequences of the Maya civilization had never mysteriously collapsed. Focus on the potential impact on their way of life, social structure, political organization, and cultural development. Please ensure the response is accurate, informative, and coherent.",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -467,7 +467,7 @@
     "id": 59,
     "ori_prompt": "What if Christopher Columbus had not discovered the Americas?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "What would have been the consequences for the indigenous peoples and the course of Western history?",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -475,7 +475,7 @@
     "id": 60,
     "ori_prompt": "What if Vincent van Gogh had been a successful artist during his lifetime?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "What impact would his success have had on his mental state and overall life trajectory?",
     "category": "counterfactual",
     "expected_response": null
   },
@@ -483,7 +483,7 @@
     "id": 61,
     "ori_prompt": "Develop a C++ program that reads a text file line by line and counts the number of occurrences of a specific word in the file.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Please provide the necessary code and instructions to accomplish this task.",
     "category": "coding",
     "expected_response": null
   },
@@ -491,7 +491,7 @@
     "id": 62,
     "ori_prompt": "Implement a Python function to find the longest common subsequence of two input strings using dynamic programming.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "This function should return a list of substrings that are common to both input strings. Provide an example of how to use the function with a Python string.",
     "category": "coding",
     "expected_response": null
   },
@@ -499,7 +499,7 @@
     "id": 63,
     "ori_prompt": "Implement a regular expression in Python to validate an email address.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Use the pattern `^[a-zA-Z0-9]+(\\\\?[a-zA-Z0-9]+)` and the `re.validate` function from the `re` module. Make sure to provide the email address as a string and include the optional question mark for additional validation.",
     "category": "coding",
     "expected_response": null
   },
@@ -507,7 +507,7 @@
     "id": 64,
     "ori_prompt": "Write a program to find the nth Fibonacci number using dynamic programming.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Example usage: `python fib.py --n=10`\n\nPlease provide a detailed explanation of the dynamic programming algorithm used in the program. Additionally, if there are any optimizations or improvements that can be made, please provide them.",
     "category": "coding",
     "expected_response": null
   },
@@ -515,7 +515,7 @@
     "id": 65,
     "ori_prompt": "Implement a binary search algorithm to find a specific element in a sorted array.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Include explanations and comments to improve understanding.",
     "category": "coding",
     "expected_response": null
   },
@@ -523,7 +523,7 @@
     "id": 66,
     "ori_prompt": "Implement a queue data structure using two stacks in Python.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "You can use the Python library `queue` for this implementation. Make sure to provide a clear explanation of the implementation and provide a sample usage.",
     "category": "coding",
     "expected_response": null
   },
@@ -531,7 +531,7 @@
     "id": 67,
     "ori_prompt": "Implement a program to find the common elements in two arrays without using any extra data structures.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "```c\n#include <stdio.h>\n#include <string.h>\n\nvoid findCommonElements(char arr1[], char arr2[], int size) {\n    for (int i = 0; i < size; i++) {\n        if (arr1[i] == arr2[i]) {\n            printf(\"common element at index %d is %c\\n\", i, arr1[i]);\n        }\n    }\n}\n```",
     "category": "coding",
     "expected_response": null
   },
@@ -539,7 +539,7 @@
     "id": 68,
     "ori_prompt": "Given that f(x) = 5x^3 - 2x + 3, find the value of f(2).",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "math",
     "expected_response": null
   },
@@ -547,7 +547,7 @@
     "id": 69,
     "ori_prompt": "Solve for x in the equation 3x + 10 = 5(x - 2).",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "math",
     "expected_response": null
   },
@@ -555,7 +555,7 @@
     "id": 70,
     "ori_prompt": "If the endpoints of a line segment are (2, -2) and (10, 4), what is the length of the segment?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "math",
     "expected_response": null
   },
@@ -563,7 +563,7 @@
     "id": 71,
     "ori_prompt": "Can you help me write a formal email to a potential business partner proposing a joint venture?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "writing",
     "expected_response": null
   },
@@ -571,7 +571,7 @@
     "id": 72,
     "ori_prompt": "Can you help me write a resignation letter to my current employer, while leaving on good terms and expressing gratitude for the opportunities provided?",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "writing",
     "expected_response": null
   },
@@ -579,7 +579,7 @@
     "id": 73,
     "ori_prompt": "Use an appropriate format to structure a formal letter of recommendation for a student applying to a prestigious graduate program in computer science.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Provide specific examples and explain why they are relevant to the field of computer science. Include letters from professors, researchers, and industry professionals. Use a formal and professional tone throughout the letter. End the letter with gratitude and expressing the willingness to provide more information if needed.",
     "category": "writing",
     "expected_response": null
   },
@@ -587,7 +587,7 @@
     "id": 74,
     "ori_prompt": "Write a compelling product launch announcement email to inform our customers of our new software solution.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Write an engaging and informative product launch announcement email to notify customers about our new software solution.",
     "category": "writing",
     "expected_response": null
   },
@@ -595,7 +595,7 @@
     "id": 75,
     "ori_prompt": "Draft an apology email to a customer who experienced a delay in their order, and provide reassurance that the issue has been resolved.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Here are some key elements to include in the apology email:\n\n1. Acknowledge the delay in the order and apologize for the inconvenience.\n2. Reassure the customer that the issue has been resolved and that their order is on its way.\n3. Offer compensation or a gesture of goodwill for the delay.\n4. Inquire if there is anything else that can be done to make up for the delay.\n\nUse this template to draft the apology email and customize it as needed.",
     "category": "writing",
     "expected_response": null
   },
@@ -603,7 +603,7 @@
     "id": 76,
     "ori_prompt": "Write a script for a YouTube video exploring the history and cultural significance of jazz.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "[Intro]\n\n[Scene 1 - 6]\n\n[Scene 7 - 12]\n\n[Scene 13 - 19]\n\n[Scene 20 - 24]\n\n[Scene 25 - 31]\n\n[Scene 32 - 36]\n\n[Outro]",
     "category": "writing",
     "expected_response": null
   },
@@ -611,7 +611,7 @@
     "id": 77,
     "ori_prompt": "Compose an engaging travel blog post about a recent trip to Hawaii, highlighting cultural experiences and must-see attractions.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "",
     "category": "writing",
     "expected_response": null
   },
@@ -619,7 +619,7 @@
     "id": 78,
     "ori_prompt": "Write a captivating movie review for a recently released science fiction film, discussing its plot, characters, and special effects.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Include specific examples and analyze the film's strengths and weaknesses.",
     "category": "writing",
     "expected_response": null
   },
@@ -627,7 +627,7 @@
     "id": 79,
     "ori_prompt": "Structure a podcast script for an episode discussing the influence of streaming platforms on the music industry.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Streaming platforms have had a profound impact on the music industry, changing the way music is consumed, discovered, and created. In this podcast episode, we'll explore the influence of streaming platforms on the music industry, considering their impact on marketing and promotion, the democratization of music creation, and potential challenges or concerns. We'll discuss both the positive and negative aspects of streaming platforms and their influence on the industry.",
     "category": "writing",
     "expected_response": null
   },
@@ -635,7 +635,7 @@
     "id": 80,
     "ori_prompt": "Write a symphony concert review, discussing the orchestra's performance and overall audience experience.",
     "context": null,
-    "bpo_prompt": null,
+    "bpo_prompt": "Write a comprehensive and detailed symphony concert review, analyzing the orchestra's performance and addressing aspects such as musicianship, interpretation, program choice, and audience experience.",
     "category": "writing",
     "expected_response": null
   }

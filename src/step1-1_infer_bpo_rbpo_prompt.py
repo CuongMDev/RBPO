@@ -38,11 +38,11 @@ for line in lines:
     with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
         data = json.load(f)
     for item in data:
-        original_prompt = item.get("ori_prompt", "")
+        ori_prompt = item.get("ori_prompt", "")
         item["bpo_prompt"] = generate(
             bpo_model,
             bpo_tokenizer,
-            original_prompt,
+            ori_prompt,
             temperature=0.9,
             top_p=0.9,
             apply_chat_template=False,
@@ -64,8 +64,8 @@ for line in lines:
     with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
         data = json.load(f)
     for item in data:
-        prompt = item.get("ori_prompt", "")
-        batch_prompt = [prompt_template_optimize.format(prompt) for _ in range(M)]
+        ori_prompt = item.get("ori_prompt", "")
+        batch_prompt = [prompt_template_optimize.format(ori_prompt) for _ in range(M)]
         bpo_paraphrases = generate_batch(
             bpo_model,
             bpo_tokenizer,

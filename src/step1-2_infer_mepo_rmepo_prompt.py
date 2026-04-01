@@ -1,6 +1,6 @@
 import torch, os, gc, json
 
-import tqdm
+from tqdm import tqdm
 
 from helper import device, experiment_file_name, M, eval_folder_name
 from config import MODEL_CACHE_PATH, prompt_template_optimize
@@ -32,11 +32,11 @@ for line in lines:
     batch_refs = []
     
     for sample in tqdm(data, desc=f"Processing {path}"):
-        prompt = sample.get('ori_prompt')
-        po_qs_input = mepo_model.po_prompt_ins.replace("S_P", prompt)
+        ori_prompt = sample.get("ori_prompt", "")
+        po_qs_input = mepo_model.po_prompt_ins.replace("S_P", ori_prompt)
 
         batch_prompts.append(po_qs_input)
-        batch_refs.append(prompt)
+        batch_refs.append(ori_prompt)
 
         # chạy khi đủ batch
         if len(batch_prompts) == batch_size:
@@ -77,10 +77,10 @@ for line in lines:
     batch_refs = []
     
     for sample in tqdm(data, desc=f"Processing {path}"):
-        prompt = sample.get('ori_prompt')
-        
+        ori_prompt = sample.get("ori_prompt", "")
+
         batch_prompts = [
-            prompt_template_optimize.format(prompt) for _ in range(M)
+            prompt_template_optimize.format(ori_prompt) for _ in range(M)
         ]
         
         mepo_paraphrases = mepo_model.generate_paraphrase_batch(batch_prompts)
