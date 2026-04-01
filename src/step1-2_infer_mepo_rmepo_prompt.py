@@ -16,12 +16,13 @@ torch.manual_seed(42)
 mepo_model = MePOModel()
 batch_size = 8
 
-result = []
+# result = []
 
 with open(experiment_file_name, "r") as f:
     lines = f.readlines()
     
 for line in lines:
+    result = []
     path = line.strip()
     print(f"Processing: {path}")
     with open(f'{eval_folder_name}/{path}.json', "r") as f:
@@ -59,7 +60,11 @@ for line in lines:
                 "mepo_prompt": opt
             })
 
-    merge_mepo_with_original(result, f'{path}.json')
+    merge_mepo_with_original(result, f'{eval_folder_name}/{path}.json')
+    
+torch.cuda.empty_cache()
+gc.collect()
+    
 
 # =========================
 # Step 2: Infer MePO M candidates prompt for all items
@@ -73,22 +78,46 @@ for line in lines:
     with open(f'{eval_folder_name}/{path}.json', "r") as f:
         data = json.load(f)
     
-    batch_prompts = []
-    batch_refs = []
-    
-    for sample in tqdm(data, desc=f"Processing {path}"):
-        ori_prompt = sample.get("ori_prompt", "")
+    all_prompts = []
+    mapping = []
 
-        batch_prompts = [
-            prompt_template_optimize.format(ori_prompt) for _ in range(M)
-        ]
-        
-        mepo_paraphrases = mepo_model.generate_paraphrase_batch(batch_prompts)
-        
-        sample["mepo_paraphrases"] = mepo_paraphrases
+    for i, sample in enumerate(data):
+        ori_prompt = sample.get("ori_prompt", "")
+        for _ in range(M):
+            all_prompts.append(prompt_template_optimize.format(ori_prompt))
+            mapping.append(i)
+            
+    all_outputs = []
+    for i in range(0, len(all_prompts), batch_size):
+        batch = all_prompts[i:i+batch_size]
+        outputs = mepo_model.generate_paraphrase_batch(batch)
+        all_outputs.extend(outputs)
     
-    with open(f'{eval_folder_name}/{path}.json', "w") as f:
+    from collections import defaultdict
+    grouped = defaultdict(list)
+
+    assert len(mapping) == len(all_outputs)
+    for idx, out in zip(mapping, all_outputs):
+        grouped[idx].append(out)
+
+    for i, sample in enumerate(data):
+        sample["mepo_paraphrases"] = grouped.get(i, [])
+    
+    with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         
 print("Delete MePO model to free up memory")
 mepo_model.clean_up()
+
+ # batch_prompts = []
+    # batch_refs = []
+    # for sample in tqdm(data, desc=f"Processing {path}"):
+    #     ori_prompt = sample.get("ori_prompt", "")
+
+    #     batch_prompts = [
+    #         prompt_template_optimize.format(ori_prompt) for _ in range(M)
+    #     ]
+        
+    #     mepo_paraphrases = mepo_model.generate_paraphrase_batch(batch_prompts)
+        
+    #     sample["mepo_paraphrases"] = mepo_paraphrases

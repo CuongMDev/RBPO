@@ -7,6 +7,7 @@ from utils import generate, generate_batch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch.manual_seed(42)
+# Loading BPO
 print("Loading BPO model once...")
 bpo_model = AutoModelForCausalLM.from_pretrained(
     BPO_MODEL,
@@ -37,12 +38,17 @@ for line in lines:
     print(f"Processing: {path}")
     with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
         data = json.load(f)
+        
     for item in data:
+        assert "ori_prompt" in item, f"Missing 'ori_prompt' in item: {item}"
         ori_prompt = item.get("ori_prompt", "")
+        
+        prompt = prompt_template_optimize.format(ori_prompt) # format template
+        
         item["bpo_prompt"] = generate(
             bpo_model,
             bpo_tokenizer,
-            ori_prompt,
+            prompt,
             temperature=0.9,
             top_p=0.9,
             apply_chat_template=False,
@@ -64,7 +70,9 @@ for line in lines:
     with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
         data = json.load(f)
     for item in data:
+        assert "ori_prompt" in item, f"Missing 'ori_prompt' in item: {item}"
         ori_prompt = item.get("ori_prompt", "")
+        
         batch_prompt = [prompt_template_optimize.format(ori_prompt) for _ in range(M)]
         bpo_paraphrases = generate_batch(
             bpo_model,
@@ -75,6 +83,7 @@ for line in lines:
             apply_chat_template=False,
             device=device,  
         )
+        assert len(batch_prompt) == len(bpo_paraphrases), "Mismatch between batch size and generated paraphrases"
         item["bpo_paraphrases"] = bpo_paraphrases
     
     with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
