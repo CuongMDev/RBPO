@@ -1,4 +1,4 @@
-from helper import BPO_MODEL, device, experiment_file_name, M
+from helper import BPO_MODEL, device, experiment_file_name, M, eval_folder_name
 from config import MODEL_CACHE_PATH, prompt_template_optimize
 import torch, os, gc, json
 from utils import generate, generate_batch
@@ -35,7 +35,7 @@ with open(experiment_file_name, "r") as f:
 for line in lines:
     path = line.strip()
     print(f"Processing: {path}")
-    with open(f'{path}.json', "r", encoding="utf-8") as f:
+    with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
         data = json.load(f)
     for item in data:
         original_prompt = item.get("ori_prompt", "")
@@ -49,7 +49,7 @@ for line in lines:
             device=device,
         )
     
-    with open(f'{path}.json', "w", encoding="utf-8") as f:
+    with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)  
         
 # =========================
@@ -61,7 +61,7 @@ with open(experiment_file_name, "r") as f:
 for line in lines:
     path = line.strip()
     print(f"Processing: {path}")
-    with open(f'{path}.json', "r", encoding="utf-8") as f:
+    with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
         data = json.load(f)
     for item in data:
         prompt = item.get("ori_prompt", "")
@@ -77,7 +77,7 @@ for line in lines:
         )
         item["bpo_paraphrases"] = bpo_paraphrases
     
-    with open(f'{path}.json', "w", encoding="utf-8") as f:
+    with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)      
         
 print("Delete BPO model and tokenizer to free up memory")

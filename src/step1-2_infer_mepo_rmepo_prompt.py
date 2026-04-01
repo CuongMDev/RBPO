@@ -2,7 +2,7 @@ import torch, os, gc, json
 
 import tqdm
 
-from helper import device, experiment_file_name, M
+from helper import device, experiment_file_name, M, eval_folder_name
 from config import MODEL_CACHE_PATH, prompt_template_optimize
 from inference_batch import merge_mepo_with_original
 from utils import generate_batch
@@ -24,7 +24,7 @@ with open(experiment_file_name, "r") as f:
 for line in lines:
     path = line.strip()
     print(f"Processing: {path}")
-    with open(f'{path}.json', "r") as f:
+    with open(f'{eval_folder_name}/{path}.json', "r") as f:
         data = json.load(f)
     print(f"Loaded {len(data)} samples from {path}")
 
@@ -70,7 +70,7 @@ with open(experiment_file_name, "r") as f:
 for line in lines:
     path = line.strip()
     print(f"Processing: {path}")
-    with open(f'{path}.json', "r") as f:
+    with open(f'{eval_folder_name}/{path}.json', "r") as f:
         data = json.load(f)
     
     batch_prompts = []
@@ -87,7 +87,7 @@ for line in lines:
         
         sample["mepo_paraphrases"] = mepo_paraphrases
     
-    with open(f'{path}.json', "w") as f:
+    with open(f'{eval_folder_name}/{path}.json', "w") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         
 print("Delete MePO model to free up memory")
