@@ -10,6 +10,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from mepo_inference import MePOModel
 
 torch.manual_seed(42)
+
+experiment_file_name = "demo_experiment.json"
+
 # =========================
 # Step 1: Infer MePO prompt for all items
 # =========================

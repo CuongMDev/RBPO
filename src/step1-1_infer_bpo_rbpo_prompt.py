@@ -6,6 +6,8 @@ from utils import generate, generate_batch
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+experiment_file_name = "demo_experiment.json"
+
 torch.manual_seed(42)
 # Loading BPO
 print("Loading BPO model once...")
