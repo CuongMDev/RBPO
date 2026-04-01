@@ -87,7 +87,7 @@ for line in lines:
     for i, sample in enumerate(data):
         ori_prompt = sample.get("ori_prompt", "")
         for _ in range(M):
-            all_prompts.append(prompt_template_optimize.format(ori_prompt))
+            all_prompts.append(mepo_model.po_prompt_ins.replace("S_P", ori_prompt))
             mapping.append(i)
             
     all_outputs = []
@@ -108,6 +108,3 @@ for line in lines:
     
     with open(f'{eval_folder_name}/{path}.json', "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-        
-print("Delete MePO model to free up memory")
-mepo_model.clean_up()
