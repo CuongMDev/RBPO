@@ -1,9 +1,12 @@
+import gc
+
 import transformers, torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from dotenv import load_dotenv
 import os
 
-from config import MODEL_CACHE_PATH, OPT_PROMPT_MODEL_CACHE_PATH
+from config import OPT_PROMPT_MODEL_CACHE_PATH
+from helper import device
 
 load_dotenv()
 mepo_hf = os.environ.get("HF_TOKEN")
@@ -111,9 +114,46 @@ class MePOModel:
             max_new_tokens=256,
             do_sample=False,
             use_cache=True,
-            pad_token_id=self.tokenizer.eos_token_id
+            pad_token_id=self.tokenizer.eos_token_id,
+            device = device
         )
     
+        # cắt phần input
+        output_tokens = outputs[:, input_len:]
+    
+        # decode batch
+        return self.tokenizer.batch_decode(output_tokens, skip_special_tokens=True)
+    
+    #Language Models are Few-Shot Learners -> temp = 0.7
+    def generate_paraphrase_batch(self, prompts):
+        messages_batch = [
+            [
+                {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
+                {"role": "user", "content": p}
+            ]
+            for p in prompts
+        ]
+    
+        # tokenize batch
+        inputs = self.tokenizer.apply_chat_template(
+            messages_batch,
+            return_tensors="pt",
+            padding=True,
+            add_generation_prompt=True
+        ).to(self.model.device)
+    
+        input_len = inputs["input_ids"].shape[1]
+    
+        outputs = self.model.generate(
+            **inputs,
+            max_new_tokens=256,
+            do_sample=True,
+            use_cache=True,
+            temperature=0.7,
+            top_p=0.9,
+            pad_token_id=self.tokenizer.eos_token_id,
+            device=device
+        )
         # cắt phần input
         output_tokens = outputs[:, input_len:]
     
@@ -130,3 +170,9 @@ class MePOModel:
 
         self.cache[user_query] = result
         return result
+    
+    def clean_up(self):
+        del self.model
+        del self.tokenizer
+        torch.cuda.empty_cache()
+        gc.collect()
