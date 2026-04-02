@@ -130,7 +130,7 @@ for line in lines:
             cluster_representatives, single_cluster = representative_selection(item, clusters, embeddings)
             consensus_scores = compute_consensus_score(key, item, clusters, embeddings, cluster_representatives, single_cluster)
             best_rep_idx = optimize_prompt_selection(key, item, clusters, embeddings, cluster_representatives, consensus_scores)
-            output_key = "rbpo" if key == "bpo_paraphrases" else "rmepo"
+            output_key = "rbpo" if key == "rbpo_paraphrases" else "rmepo"
             item[f'{output_key}_clusters'] = [[item[key][idx] for idx in cluster] for cluster in clusters]
             item[f'{output_key}_prompt'] = item[key][best_rep_idx]
             item[f"{output_key}_cluster_representatives"] = [item[key][idx] for idx in cluster_representatives]

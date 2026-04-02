@@ -4,12 +4,12 @@
   "consistency_rate": "88.89%",
   "check_runs": 2,
   "winner_distribution": {
-    "response_A_win": 25,
-    "response_A_win_rate": "35.21%",
-    "response_B_win": 8,
-    "response_B_win_rate": "11.27%",
-    "draw": 38,
-    "draw_rate": "53.52%",
+    "response_A_win": 38,
+    "response_A_win_rate": "53.52%",
+    "response_B_win": 25,
+    "response_B_win_rate": "35.21%",
+    "draw": 8,
+    "draw_rate": "11.27%",
     "excluded_count": 1,
     "counted_items": 71
   },

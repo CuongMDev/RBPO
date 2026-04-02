@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 import requests
 
-from helper import LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, DEEPSEEK, GEMMA3, mepo_folder_name, evaluator_models, base_llm_models, evaluation_datasets, create_combined_name, mismatch_folder_name, consistency_folder_name
+from helper import LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, DEEPSEEK, GEMMA3, eval_folder_name, evaluator_models, base_llm_models, evaluation_datasets, create_combined_name, mismatch_folder_name, consistency_folder_name
 
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
@@ -138,7 +138,14 @@ def generate(system_prompt, user_prompt):
 
 # EXTRACT JSON
 def extract_json(raw):
+    # check raw la json chua, neu da la json thi return thang do luon
+    import json
     import re
+    try: 
+        return json.loads(raw)
+    except Exception:
+        pass
+        
     """Strip thinking tags, markdown code blocks, lấy chỉ phần JSON"""
     # Bỏ <think>...</think>
     raw = re.sub(r'<think>.*?</think>', '', raw, flags=re.DOTALL)
@@ -235,11 +242,11 @@ def decide_winner_from_scores(llm_eval, threshold=0.01):
     else:
         return 1  # response_B win
     
-def verify_response(item_id, sample, verify_keys, attempt_times=3):
+def verify_response(item_id, sample, verify_methods, attempt_times=3):
     parsed = None
     candidate = None
     for attempt in range(attempt_times):  # retry tối đa attempt_times-1 lần
-        raw = generate(SYSTEM_PROMPT, build_user_prompt(sample, verify_keys))
+        raw = generate(SYSTEM_PROMPT, build_user_prompt(sample, verify_methods))
         # print(f"  raw (attempt {attempt+1}): {raw[:200]}")
         # print(f"[ID={item_id}] attempt {attempt+1}")
 
@@ -250,7 +257,7 @@ def verify_response(item_id, sample, verify_keys, attempt_times=3):
                 parsed = candidate
                 return parsed
 
-            # nếu có đủ A và B nhưng thiếu / sai criteria → map
+            # nếu có đủ A và B nhưng thiếu / sai criteria thì map
             if isinstance(candidate, dict) and "response_A" in candidate and "response_B" in candidate:
                 mapped = {
                     "response_A": map_to_schema(candidate["response_A"]),
@@ -258,13 +265,13 @@ def verify_response(item_id, sample, verify_keys, attempt_times=3):
                 }
                 if is_complete(mapped):
                     parsed = mapped
-                    print("  ✓ Mapped schema")
+                    print("Mapped schema")
                     return parsed
         except Exception as e:
             print(f"Parse fail (attempt {attempt+1}): {e}")
             continue
     if parsed is None:
-        print(f"  ❌ ID={item_id}: dùng fallback")
+        print(f"ID={item_id}: dùng fallback")
         parsed = empty_schema()
     return parsed
 
@@ -272,56 +279,48 @@ def batch_iterator(data, batch_size):
     for i in range(0, len(data), batch_size):
         yield data[i:i + batch_size]
 
-def process_batch(batch, verify_keys, attempt_times=3):
-    batch_results = []
-
+def process_batch(batch, verify_key, verify_methods, attempt_times=3):
+    
     for idx, item in enumerate(batch):
         item_id = item.get("id", idx + 1)
-        parsed = verify_response(item_id, item, verify_keys, attempt_times)
-
-        batch_results.append({
-            "id": item_id,
-            "ori_prompt": item.get("ori_prompt"),
-            "rbpo_prompt": item.get(verify_keys[0], ""),
-            "rbpo_res": item.get(verify_keys[1], ""),
-            "mepo_prompt": item.get(verify_keys[2], ""),
-            "mepo_response": item.get(verify_keys[3], ""),
-            # "winner_before": item.get("winner"),
-            "winner": decide_winner_from_scores(parsed),
-            "llm_evaluation": parsed
-        })
-
-    return batch_results
+        assert len(verify_methods) == 4, "verify_methods phải có đúng 4 keys tương ứng với Prompt_A, Response_A, Prompt_B, Response_B"
+        parsed = verify_response(item_id, item, verify_methods, attempt_times)
+        
+        item['id'] = item_id
+        item['winner'] = decide_winner_from_scores(parsed)
+        item['llm_evaluation'] = parsed
+    
+    return batch        
 
 # MAIN
-def verify_response_batch(verify_keys, verify_times = 3, BATCH_SIZE = 1):
+def verify_response_batch(verify_key, verify_methods, verify_times = 5, BATCH_SIZE = 1):
     for base_llm in base_llm_models:
         for dataset in evaluation_datasets:
             for evaluator in evaluator_models:
                 input_path = create_combined_name(base_llm, dataset, evaluator)
                 print(f"Processing: {input_path}")
-                verify_path = f"{mepo_folder_name}/{input_path}.json"
+                verify_path = f"{eval_folder_name}/{input_path}.json"
                 
                 with open(verify_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 for run_idx in range(verify_times):
                     results = []
-                    output_path = f"{mepo_folder_name}/verify/{input_path}_eval_{run_idx+1}.json"
+                    output_path = f"{eval_folder_name}/verify/{verify_key}/{input_path}_eval_{run_idx+1}.json"
                     if not os.path.exists(output_path):
                         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
                     for batch_idx, batch in enumerate(batch_iterator(data, BATCH_SIZE)):
                         print(f"Processing batch {batch_idx + 1}...")
 
-                        batch_results = process_batch(batch, verify_keys, attempt_times=3)
+                        batch_results = process_batch(batch, verify_key, verify_methods, attempt_times=3)
                         results.extend(batch_results)
                     with open(output_path, "w", encoding="utf-8") as f:
                         json.dump(results, f, ensure_ascii=False, indent=2)                        
 
-def load_data_for_consistency_check(input_path, check_runs):
+def load_data_for_consistency_check(verify_key, input_path, check_runs):
     data = []
     for i in range(1, check_runs + 1):
-        path = f"{mepo_folder_name}/verify/{input_path}_eval_{i}.json"
+        path = f"{eval_folder_name}/verify/{verify_key}/{input_path}_eval_{i}.json"
         if os.path.exists(path):
             with open(path, "r", encoding="utf-8") as f:
                 data.append(json.load(f))
@@ -329,7 +328,7 @@ def load_data_for_consistency_check(input_path, check_runs):
             print(f"Missing file for consistency check: {path}")
     return data
 
-def check_verify_consistency(check_runs=3):
+def check_verify_consistency(verify_key,verify_methods, check_runs=5):
     """
     So sánh kết quả winner giữa nhiều lần chạy verify:
     - Lưu các kết quả LỆCH nhau vào file _mismatch.json
@@ -342,7 +341,7 @@ def check_verify_consistency(check_runs=3):
                 input_path = create_combined_name(base_llm, dataset, evaluator)
                 print(f"\nChecking consistency for: {input_path}")
                 
-                data = load_data_for_consistency_check(input_path, check_runs)
+                data = load_data_for_consistency_check(verify_key, input_path, check_runs)
                 if not data:
                     print(f"No data loaded for {input_path}")
                     continue
@@ -366,10 +365,10 @@ def check_verify_consistency(check_runs=3):
                     item_data = {
                         "id": item_id,
                         "ori_prompt": data[0][idx].get("ori_prompt"),
-                        "rbpo_prompt": data[0][idx].get("rbpo_prompt"),
-                        "rbpo_res": data[0][idx].get("rbpo_res"),
-                        "mepo_prompt": data[0][idx].get("mepo_prompt"),
-                        "mepo_response": data[0][idx].get("mepo_response"),
+                        f"{verify_methods[0]}": data[0][idx].get(verify_methods[0]),
+                        f"{verify_methods[1]}": data[0][idx].get(verify_methods[1]),
+                        f"{verify_methods[2]}": data[0][idx].get(verify_methods[2]),
+                        f"{verify_methods[3]}": data[0][idx].get(verify_methods[3]),
                         "winners_per_run": winners,
                         "llm_evaluations_per_run": [run[idx]["llm_evaluation"] for run in data if idx < len(run)]
                     }
@@ -379,7 +378,6 @@ def check_verify_consistency(check_runs=3):
                     else:  # Ổn định (tất cả winner giống nhau)
                         consistencies.append(item_data)
                 
-                # Helper: Đếm tỷ lệ winner (trừ đi 1, loại trừ ID đặc biệt)
                 def count_winner_distribution(items, exclude_ids):
                     winner_counts = {2: 0, 0: 0, 1: 0}  # 2=draw, 0=A_win, 1=B_win
                     excluded_count = 0
@@ -424,7 +422,7 @@ def check_verify_consistency(check_runs=3):
                 
                 # Lưu file _mismatch.json
                 if mismatches:
-                    mismatch_path = f"{mepo_folder_name}/verify/{mismatch_folder_name}/{input_path}_mismatch.json"
+                    mismatch_path = f"{eval_folder_name}/verify/{mismatch_folder_name}/{input_path}_mismatch.json"
                     os.makedirs(os.path.dirname(mismatch_path), exist_ok=True)
                     
                     mismatch_result = {
@@ -443,7 +441,7 @@ def check_verify_consistency(check_runs=3):
                 
                 # Lưu file _consistency.json
                 if consistencies:
-                    consistency_path = f"{mepo_folder_name}/verify/{consistency_folder_name}/{input_path}_consistency.json"
+                    consistency_path = f"{eval_folder_name}/verify/{consistency_folder_name}/{input_path}_consistency.json"
                     os.makedirs(os.path.dirname(consistency_path), exist_ok=True)
                     
                     consistency_winner_dist = count_winner_distribution(consistencies, exclude_ids)
@@ -461,9 +459,9 @@ def check_verify_consistency(check_runs=3):
                     with open(consistency_path, "w", encoding="utf-8") as f:
                         json.dump(consistency_result, f, ensure_ascii=False, indent=2)
                     
-                    print(f"  ✓ Found {len(consistencies)}/{num_items} consistent items ({consistency_result['consistency_rate']})")
-                    print(f"    Winner (excluding IDs {', '.join(map(str, sorted(exclude_ids)))}): A={consistency_winner_dist['response_A_win']} ({consistency_winner_dist['response_A_win_rate']}) | B={consistency_winner_dist['response_B_win']} ({consistency_winner_dist['response_B_win_rate']}) | Draw={consistency_winner_dist['draw']} ({consistency_winner_dist['draw_rate']}) [Excluded: {consistency_winner_dist.get('excluded_count', 0)}]")
-                    print(f"    → Saved: {consistency_path}")
+                    print(f"Found {len(consistencies)}/{num_items} consistent items ({consistency_result['consistency_rate']})")
+                    print(f"Winner (excluding IDs {', '.join(map(str, sorted(exclude_ids)))}): A={consistency_winner_dist['response_A_win']} ({consistency_winner_dist['response_A_win_rate']}) | B={consistency_winner_dist['response_B_win']} ({consistency_winner_dist['response_B_win_rate']}) | Draw={consistency_winner_dist['draw']} ({consistency_winner_dist['draw_rate']}) [Excluded: {consistency_winner_dist.get('excluded_count', 0)}]")
+                    print(f"Saved: {consistency_path}")
                 
                 # Summary
                 if not mismatches and not consistencies:
@@ -472,6 +470,13 @@ def check_verify_consistency(check_runs=3):
                     print(f"Summary: {len(mismatches)} mismatches + {len(consistencies)} consistent = {num_items} total")
                 
 if __name__ == "__main__":
-    # verify_keys_rbpo_mepo = ['rbpo_prompt', 'rbpo_res', 'mepo_prompt', 'mepo_response']
-    # verify_response_batch(verify_keys_rbpo_mepo, verify_times=3, BATCH_SIZE=1)
-    check_verify_consistency()
+    verify_keys_method = {
+        "bpo_rbpo": ['bpo_prompt', 'bpo_response', 'rbpo_prompt', 'rbpo_response'], # đánh giá BPO vs RBPO
+        "rbpo_mepo": ['rbpo_prompt', 'rbpo_response', 'mepo_prompt', 'mepo_response'], # đánh giá RBPO vs MEPO
+        "rbpo_rmepo": ['rbpo_prompt', 'rbpo_response', 'rmepo_prompt', 'rmepo_response'] # đánh giá RBPO vs RMEPO
+    }
+    for key, keys in verify_keys_method.items():
+        print(f"\n=== VERIFY KEY: {key} ===")
+        print(f"Verify keys: {keys}")
+        verify_response_batch(key, keys, verify_times=5, BATCH_SIZE=1)
+        check_verify_consistency(key,keys,check_runs=5)
