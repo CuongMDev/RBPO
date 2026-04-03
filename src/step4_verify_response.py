@@ -138,11 +138,12 @@ def generate(system_prompt, user_prompt):
 
 # EXTRACT JSON
 def extract_json(raw):
-    # check raw la json chua, neu da la json thi return thang do luon
+    # check raw la json chua, neu da la json thi return string do luon
     import json
     import re
     try: 
-        return json.loads(raw)
+        json.loads(raw)  # Verify it's valid JSON
+        return raw  # Return the raw string, not the parsed dict
     except Exception:
         pass
         
@@ -280,27 +281,39 @@ def batch_iterator(data, batch_size):
         yield data[i:i + batch_size]
 
 def process_batch(batch, verify_key, verify_methods, attempt_times=3):
-    
+    res = []
     for idx, item in enumerate(batch):
         item_id = item.get("id", idx + 1)
         assert len(verify_methods) == 4, "verify_methods phải có đúng 4 keys tương ứng với Prompt_A, Response_A, Prompt_B, Response_B"
         parsed = verify_response(item_id, item, verify_methods, attempt_times)
         
-        item['id'] = item_id
-        item['winner'] = decide_winner_from_scores(parsed)
-        item['llm_evaluation'] = parsed
-    
-    return batch        
+        obj = {
+            'id': item_id,
+            'ori_prompt': item.get('ori_prompt', None),
+            'context': item.get('context', None),
+            verify_methods[0]: item.get(verify_methods[0], None),
+            verify_methods[1]: item.get(verify_methods[1], None),
+            verify_methods[2]: item.get(verify_methods[2], None),
+            verify_methods[3]: item.get(verify_methods[3], None),
+            f'{verify_key}_winner': decide_winner_from_scores(parsed),
+            f'{verify_key}_llm_evaluation': parsed
+        }
+        
+        res.append(obj)
+    return res
 
 # MAIN
 def verify_response_batch(verify_key, verify_methods, verify_times = 5, BATCH_SIZE = 1):
+    print(f"Starting verification for key: {verify_key} with methods: {verify_methods}")
     for base_llm in base_llm_models:
         for dataset in evaluation_datasets:
             for evaluator in evaluator_models:
+                print(f"\n=== VERIFYING: {base_llm} | {dataset} | {evaluator} ===")
                 input_path = create_combined_name(base_llm, dataset, evaluator)
                 print(f"Processing: {input_path}")
                 verify_path = f"{eval_folder_name}/{input_path}.json"
                 
+                # return None
                 with open(verify_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 for run_idx in range(verify_times):
@@ -311,11 +324,10 @@ def verify_response_batch(verify_key, verify_methods, verify_times = 5, BATCH_SI
 
                     for batch_idx, batch in enumerate(batch_iterator(data, BATCH_SIZE)):
                         print(f"Processing batch {batch_idx + 1}...")
-
                         batch_results = process_batch(batch, verify_key, verify_methods, attempt_times=3)
                         results.extend(batch_results)
                     with open(output_path, "w", encoding="utf-8") as f:
-                        json.dump(results, f, ensure_ascii=False, indent=2)                        
+                        json.dump(results, f, ensure_ascii=False, indent=2)   
 
 def load_data_for_consistency_check(verify_key, input_path, check_runs):
     data = []
@@ -360,7 +372,7 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
                 print(f"Checking {num_items} items across {len(data)} runs...")
                 
                 for idx in range(num_items):
-                    winners = [run[idx]["winner"] for run in data if idx < len(run)]
+                    winners = [run[idx][f"{verify_key}_winner"] for run in data if idx < len(run)]
                     item_id = data[0][idx].get("id")
                     item_data = {
                         "id": item_id,
@@ -370,7 +382,7 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
                         f"{verify_methods[2]}": data[0][idx].get(verify_methods[2]),
                         f"{verify_methods[3]}": data[0][idx].get(verify_methods[3]),
                         "winners_per_run": winners,
-                        "llm_evaluations_per_run": [run[idx]["llm_evaluation"] for run in data if idx < len(run)]
+                        "llm_evaluations_per_run": [run[idx][f"{verify_key}_llm_evaluation"] for run in data if idx < len(run)]
                     }
                     
                     if len(set(winners)) > 1:  # Có sự khác biệt
@@ -471,12 +483,12 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
                 
 if __name__ == "__main__":
     verify_keys_method = {
-        "bpo_rbpo": ['bpo_prompt', 'bpo_response', 'rbpo_prompt', 'rbpo_response'], # đánh giá BPO vs RBPO
+        "rbpo_bpo": ['rbpo_prompt', 'rbpo_response', 'bpo_prompt', 'bpo_response'], # đánh giá RBPO vs BPO
         "rbpo_mepo": ['rbpo_prompt', 'rbpo_response', 'mepo_prompt', 'mepo_response'], # đánh giá RBPO vs MEPO
-        "rbpo_rmepo": ['rbpo_prompt', 'rbpo_response', 'rmepo_prompt', 'rmepo_response'] # đánh giá RBPO vs RMEPO
+        "rmepo_mepo": ['rmepo_prompt', 'rmepo_response', 'mepo_prompt', 'mepo_response'] # đánh giá RMEPO vs MEPO
     }
     for key, keys in verify_keys_method.items():
         print(f"\n=== VERIFY KEY: {key} ===")
         print(f"Verify keys: {keys}")
-        verify_response_batch(key, keys, verify_times=5, BATCH_SIZE=1)
-        check_verify_consistency(key,keys,check_runs=5)
+        verify_response_batch(key, keys, verify_times=1, BATCH_SIZE=1)
+        check_verify_consistency(key,keys,check_runs=1)
