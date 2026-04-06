@@ -101,15 +101,6 @@ def optimize_prompt_selection(key, item, clusters, embeddings, cluster_represent
     best_rep_idx = cluster_representatives[best_consensus_score_idx]
     return best_rep_idx
 
-experiment_file_name = "demo_experiment.txt"
-output_file_name = "demo_output.json"
-
-# sbert = SentenceTransformer(
-#     MINILM_MODEL,
-#     device=device,
-#     cache_folder=MODEL_CACHE_PATH
-# )
-
 method_keys = [
     "rbpo_paraphrases",
     "rmepo_paraphrases"

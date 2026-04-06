@@ -10,13 +10,12 @@ BPO_MODEL = "THUDM/BPO"
 MEPO_MODEL= "zixiaozhu/MePO"
 
 MINILM_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L12-v2"
-QWEN_EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-0.6B"
 GEMMA_EMBEDDING_MODEL = "google/embeddinggemma-300m"
-embedding_models = [MINILM_EMBEDDING_MODEL, QWEN_EMBEDDING_MODEL, GEMMA_EMBEDDING_MODEL]
+embedding_models = [MINILM_EMBEDDING_MODEL, GEMMA_EMBEDDING_MODEL]
 
 distance_thresholds = {
     f'{MINILM_EMBEDDING_MODEL}': 0.05,
-    f'{QWEN_EMBEDDING_MODEL}': 0.1,
+    # f'{QWEN_EMBEDDING_MODEL}': 0.1,
     f'{GEMMA_EMBEDDING_MODEL}': 0.14
 }
 
