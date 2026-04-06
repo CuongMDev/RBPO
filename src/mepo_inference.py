@@ -6,13 +6,13 @@ from dotenv import load_dotenv
 import os
 
 from config import OPT_PROMPT_MODEL_CACHE_PATH
-from helper import device
+from helper import device, MEPO_MODEL
 
 load_dotenv()
 mepo_hf = os.environ.get("HF_TOKEN")
 print(mepo_hf)
 
-MEPO_MODEL_PATH = "zixiaozhu/MePO"
+
 MEPO_PROMPT_INSTRUCTION_PATH = "optimize_prompt_instruction.txt"
 
 class Helper:
@@ -31,7 +31,7 @@ class MePOModel:
         self.po_prompt_ins = Helper.read_txt(MEPO_PROMPT_INSTRUCTION_PATH)
     
         print("Loading PO model...")
-        self.model, self.tokenizer = self.load_model_and_tokenizer(MEPO_MODEL_PATH)
+        self.model, self.tokenizer = self.load_model_and_tokenizer(MEPO_MODEL)
 
         try:
             self.model = torch.compile(self.model)
@@ -148,7 +148,7 @@ class MePOModel:
             max_new_tokens=256,
             do_sample=True,
             use_cache=True,
-            temperature=0.7,
+            temperature=0.9, # lan 1: 0.7, lan 2: 0.9 (thử tăng độ đa dạng)
             top_p=0.9,
             pad_token_id=self.tokenizer.eos_token_id
         )

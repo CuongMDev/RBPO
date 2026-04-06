@@ -92,9 +92,3 @@ for line in lines:
         json.dump(data, f, ensure_ascii=False, indent=2)      
         
 print("Delete BPO model and tokenizer to free up memory")
-del bpo_model
-del bpo_tokenizer
-gc.collect()
-if device.type == "cuda":
-    torch.cuda.empty_cache()
-print("Done!")

@@ -1,24 +1,20 @@
 import gc
+import os
+import shutil
 from sentence_transformers import util
 import json
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import AgglomerativeClustering
 import torch
 from config import MODEL_CACHE_PATH
-from helper import DISTANCE_THRESHOLD, IMP_ENC, MINILM_MODEL, experiment_file_name, eval_folder_name, device, M
+from helper import DISTANCE_THRESHOLD, IMP_ENC, clean_name, experiment_file_name, eval_folder_name, device, M, embedding_models, distance_thresholds
 
 print("===== STEP 2: SBERT clustering =====")
 torch.cuda.empty_cache()
 gc.collect()
 
 
-sbert = SentenceTransformer(
-    MINILM_MODEL,
-    device=device,
-    cache_folder=MODEL_CACHE_PATH
-)
-
-def prompt_clustering(key, item, M):
+def prompt_clustering(key, item, embedding_model, M, distance_threshold):
     ori_prompt = item.get("ori_prompt", "")
     samples = item.get(key, [])
     if M > 0:
@@ -29,12 +25,12 @@ def prompt_clustering(key, item, M):
         print(f"Warning: Key '{key}' có ít hơn 2 mẫu ({len(samples)}), bỏ qua clustering")
         return [], None
     
-    embeddings = sbert.encode(samples, convert_to_tensor=True)
+    embeddings = embedding_model.encode(samples, convert_to_tensor=True)
     embeddings_np = embeddings.cpu().numpy()
     
     clustering = AgglomerativeClustering(
         n_clusters=None,
-        distance_threshold=DISTANCE_THRESHOLD,
+        distance_threshold=distance_threshold,
         metric='cosine',
         linkage='average'
     )
@@ -50,9 +46,9 @@ def prompt_clustering(key, item, M):
     
     return clusters, embeddings
 
-def representative_selection(item, clusters, embeddings):
+def representative_selection(item,embedding_model, clusters, embeddings):
     ori_prompt = item.get("ori_prompt", "")
-    original_embedding = sbert.encode([ori_prompt], convert_to_tensor=True)[0]
+    original_embedding = embedding_model.encode([ori_prompt], convert_to_tensor=True)[0]
     cluster_representatives = []
     single_cluster = False
     
@@ -76,13 +72,13 @@ def representative_selection(item, clusters, embeddings):
                 cluster_representatives.append(cluster[c_median_idx])
     return cluster_representatives, single_cluster   
 
-def compute_consensus_score(key, item, clusters, embeddings, cluster_representatives, single_cluster):
+def compute_consensus_score(key, item, embedding_model, clusters, embeddings, cluster_representatives, single_cluster):
     if single_cluster:
         return [0.0]
     
     consensus_scores = []
     ori_prompt = item.get("ori_prompt", "")
-    original_embedding = sbert.encode([ori_prompt], convert_to_tensor=True)[0]
+    original_embedding = embedding_model.encode([ori_prompt], convert_to_tensor=True)[0]
     
     for i, rep_idx in enumerate(cluster_representatives):
         score = 0.0
@@ -107,34 +103,57 @@ def optimize_prompt_selection(key, item, clusters, embeddings, cluster_represent
 
 experiment_file_name = "demo_experiment.txt"
 output_file_name = "demo_output.json"
+
+# sbert = SentenceTransformer(
+#     MINILM_MODEL,
+#     device=device,
+#     cache_folder=MODEL_CACHE_PATH
+# )
+
 method_keys = [
     "rbpo_paraphrases",
-            #    "rmepo_paraphrases"
-               ]
-with open(experiment_file_name, "r") as f:
-    lines = f.readlines()
+    "rmepo_paraphrases"
+    ]
 
-for line in lines:
-    path = line.strip()
-    print(f"Processing: {path}")
-    with open(f'{eval_folder_name}/{path}.json', "r") as f:
-        data = json.load(f)
-    print(len(data))
+from helper import GEMMA_EMBEDDING_MODEL
+
+embedding_models = [GEMMA_EMBEDDING_MODEL]
+for model_name in embedding_models:
+    embed_model = SentenceTransformer(
+        model_name,
+        device=device,
+        cache_folder=MODEL_CACHE_PATH
+    )
     
-    for item in data:
-        for key in method_keys:
-            clusters, embeddings = prompt_clustering(key, item, M)
-            if clusters is None or len(clusters) == 0:  # Bỏ qua nếu dữ liệu không đủ
-                print(f"Warning: Không thể thực hiện clustering cho key '{key}' do dữ liệu không đủ, bỏ qua item này")
-                continue
-            cluster_representatives, single_cluster = representative_selection(item, clusters, embeddings)
-            consensus_scores = compute_consensus_score(key, item, clusters, embeddings, cluster_representatives, single_cluster)
-            best_rep_idx = optimize_prompt_selection(key, item, clusters, embeddings, cluster_representatives, consensus_scores)
-            output_key = "rbpo" if key == "rbpo_paraphrases" else "rmepo"
-            item[f'{output_key}_clusters'] = [[item[key][idx] for idx in cluster] for cluster in clusters]
-            item[f'{output_key}_prompt'] = item[key][best_rep_idx]
-            item[f"{output_key}_cluster_representatives"] = [item[key][idx] for idx in cluster_representatives]
-            item[f"{output_key}_consensus_scores"] = consensus_scores
+    distance_threshold = distance_thresholds.get(model_name,None)
+    assert distance_threshold is not None, f"Distance threshold not found for embedding model '{model_name}'"
+    with open(experiment_file_name, "r") as f:
+        lines = f.readlines()
 
-    with open(f'{output_file_name}', "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    for line in lines:
+        path = line.strip()
+        print(f"Processing: {path}")
+        with open(f'{eval_folder_name}/{path}.json', "r") as f:
+            data = json.load(f)
+        print(len(data))
+        
+        for item in data:
+            for key in method_keys:
+                clusters, embeddings = prompt_clustering(key, item, embed_model, M, distance_threshold)
+                if clusters is None or len(clusters) == 0:  # Bỏ qua nếu dữ liệu không đủ
+                    print(f"Warning: Không thể thực hiện clustering cho key '{key}' do dữ liệu không đủ, bỏ qua item này")
+                    continue
+                cluster_representatives, single_cluster = representative_selection(item, embed_model,clusters, embeddings)
+                consensus_scores = compute_consensus_score(key, item, embed_model, clusters, embeddings, cluster_representatives, single_cluster)
+                best_rep_idx = optimize_prompt_selection(key, item, clusters, embeddings, cluster_representatives, consensus_scores)
+                output_key = "rbpo" if key == "rbpo_paraphrases" else "rmepo"
+                item[f'{output_key}_clusters'] = [[item[key][idx] for idx in cluster] for cluster in clusters]
+                item[f'{output_key}_prompt'] = item[key][best_rep_idx]
+                item[f"{output_key}_cluster_representatives"] = [item[key][idx] for idx in cluster_representatives]
+                item[f"{output_key}_consensus_scores"] = consensus_scores
+
+        with open(f'{clean_name(model_name)}_{output_file_name}', "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    # remove MODEL_CACHE_PATH
+    if os.path.exists(MODEL_CACHE_PATH):
+        shutil.rmtree(MODEL_CACHE_PATH, ignore_errors=True)

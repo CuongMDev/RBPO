@@ -313,7 +313,7 @@ def verify_response_batch(verify_key, verify_methods, verify_times = 5, BATCH_SI
                 print(f"Processing: {input_path}")
                 verify_path = f"{eval_folder_name}/{input_path}.json"
                 
-                # return None
+                # continue
                 with open(verify_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 for run_idx in range(verify_times):
@@ -434,7 +434,7 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
                 
                 # Lưu file _mismatch.json
                 if mismatches:
-                    mismatch_path = f"{eval_folder_name}/verify/{mismatch_folder_name}/{input_path}_mismatch.json"
+                    mismatch_path = f"{eval_folder_name}/verify/{verify_key}/{mismatch_folder_name}/{input_path}_mismatch.json"
                     os.makedirs(os.path.dirname(mismatch_path), exist_ok=True)
                     
                     mismatch_result = {
@@ -453,7 +453,7 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
                 
                 # Lưu file _consistency.json
                 if consistencies:
-                    consistency_path = f"{eval_folder_name}/verify/{consistency_folder_name}/{input_path}_consistency.json"
+                    consistency_path = f"{eval_folder_name}/verify/{verify_key}/{consistency_folder_name}/{input_path}_consistency.json"
                     os.makedirs(os.path.dirname(consistency_path), exist_ok=True)
                     
                     consistency_winner_dist = count_winner_distribution(consistencies, exclude_ids)
@@ -482,6 +482,9 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
                     print(f"Summary: {len(mismatches)} mismatches + {len(consistencies)} consistent = {num_items} total")
                 
 if __name__ == "__main__":
+    BATCH_SIZE = 1
+    VERIFY_TIMES = 3
+    
     verify_keys_method = {
         "rbpo_bpo": ['rbpo_prompt', 'rbpo_response', 'bpo_prompt', 'bpo_response'], # đánh giá RBPO vs BPO
         "rbpo_mepo": ['rbpo_prompt', 'rbpo_response', 'mepo_prompt', 'mepo_response'], # đánh giá RBPO vs MEPO
@@ -490,5 +493,5 @@ if __name__ == "__main__":
     for key, keys in verify_keys_method.items():
         print(f"\n=== VERIFY KEY: {key} ===")
         print(f"Verify keys: {keys}")
-        verify_response_batch(key, keys, verify_times=1, BATCH_SIZE=1)
-        check_verify_consistency(key,keys,check_runs=1)
+        # verify_response_batch(key, keys, verify_times=VERIFY_TIMES, BATCH_SIZE=BATCH_SIZE)
+        check_verify_consistency(key,keys,check_runs=VERIFY_TIMES)
