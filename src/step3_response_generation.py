@@ -12,6 +12,10 @@ from dotenv import load_dotenv
 
 from utils import generate_batch
 
+print("===== STEP 3: Response Generation =====")
+torch.cuda.empty_cache()
+gc.collect()
+
 load_dotenv()
 hf_token = os.getenv("HF_TOKEN")    
 
@@ -83,7 +87,7 @@ for model_name in embedding_models:
                         device=device,
                     )
                     
-                    responses = [unique_responses[ori_to_unique[i]] for i in range(len(all_prompts))]
+                    responses = [unique_responses[ori_to_unique[p]] for p in all_prompts]
                     
                     # item["ori_response"] = responses[0]
                     item["bpo_response"] = responses[0]
@@ -94,5 +98,5 @@ for model_name in embedding_models:
                 with open(f'{eval_folder_name}/{clean_name(model_name)}/{file_name}.json', "w", encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
     
-    if os.path.exists(MODEL_CACHE_PATH):
-        shutil.rmtree(MODEL_CACHE_PATH, ignore_errors=True)
+        if os.path.exists(MODEL_CACHE_PATH):
+            shutil.rmtree(MODEL_CACHE_PATH, ignore_errors=True)

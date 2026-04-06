@@ -142,8 +142,10 @@ for model_name in embedding_models:
                 item[f'{output_key}_prompt'] = item[key][best_rep_idx]
                 item[f"{output_key}_cluster_representatives"] = [item[key][idx] for idx in cluster_representatives]
                 item[f"{output_key}_consensus_scores"] = consensus_scores
-
-        with open(f'{clean_name(model_name)}_{output_file_name}', "w", encoding="utf-8") as f:
+        output_path = f'{eval_folder_name}/{clean_name(model_name)}/{path}.json'
+        if not os.path.exists(os.path.dirname(output_path)):
+            os.makedirs(os.path.dirname(output_path))
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     # remove MODEL_CACHE_PATH
     if os.path.exists(MODEL_CACHE_PATH):
