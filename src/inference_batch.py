@@ -89,7 +89,7 @@ def save_mepo_results(result, base_llm, data_path, evaluator):
     print(f"Saved results to {mepo_folder_name}/{output_path}.json")
 
 
-def merge_mepo_with_original(mepo_result, file_path):
+def merge_optim_prompt_with_original(mepo_result, file_path, method_key):
     """
     Gộp MePO result với file JSON gốc (Step 2)
     
@@ -108,7 +108,7 @@ def merge_mepo_with_original(mepo_result, file_path):
     # Tạo dict từ mepo_result để lookup nhanh
     mepo_map = {}
     for item in mepo_result:
-        mepo_map[item["ori_prompt"]] = item["mepo_prompt"]
+        mepo_map[item["ori_prompt"]] = item[f"{method_key}_prompt"]
     
     # Merge
     merged_data = []
@@ -117,10 +117,10 @@ def merge_mepo_with_original(mepo_result, file_path):
         ori_prompt = item.get("ori_prompt")
         
         if ori_prompt in mepo_map:
-            item["mepo_prompt"] = mepo_map[ori_prompt]
+            item[f"{method_key}_prompt"] = mepo_map[ori_prompt]
             matched += 1
         else:
-            item["mepo_prompt"] = None
+            item[f"{method_key}_prompt"] = None
         
         merged_data.append(item)
     

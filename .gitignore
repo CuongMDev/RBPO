@@ -50,6 +50,7 @@ src/key_all.txt
 *venv
 
 !src/testset/vicuna_eval.jsonl
+!src/testset/
 
 src/mepo/api.txt
 
@@ -57,3 +58,17 @@ src/mepo/api.txt
 *demo_experiment.json
 *demo_experiment.txt
 *demo_output.json
+
+src/analysis/
+src/evaluation/downstream/
+src/evaluation/embeddinggemma-300m
+src/rbpo_mepo/
+src/downstream/demo/
+src/testset/dataset_process.py
+*.parquet
+*piqa.py
+demo.json
+
+.gitignore
+processing.py
+doc/

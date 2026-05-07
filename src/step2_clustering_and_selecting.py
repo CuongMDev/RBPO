@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.cluster import AgglomerativeClustering
 import torch
 from config import MODEL_CACHE_PATH
-from helper import DISTANCE_THRESHOLD, IMP_ENC, clean_name, experiment_file_name, eval_folder_name, device, M, embedding_models, distance_thresholds
+from helper import IMP_ENC, clean_name, experiment_file_name, eval_folder_name, device, M, embedding_models, distance_thresholds, METHOD
 
 print("===== STEP 2: SBERT clustering =====")
 torch.cuda.empty_cache()
@@ -110,6 +110,7 @@ from helper import GEMMA_EMBEDDING_MODEL
 
 embedding_models = [GEMMA_EMBEDDING_MODEL]
 for model_name in embedding_models:
+    
     embed_model = SentenceTransformer(
         model_name,
         device=device,
@@ -117,6 +118,8 @@ for model_name in embedding_models:
     )
     
     distance_threshold = distance_thresholds.get(model_name,None)
+    print(f"Using embedding model: {model_name} with distance threshold: {distance_threshold}")
+    
     assert distance_threshold is not None, f"Distance threshold not found for embedding model '{model_name}'"
     with open(experiment_file_name, "r") as f:
         lines = f.readlines()
@@ -124,8 +127,10 @@ for model_name in embedding_models:
     for line in lines:
         path = line.strip()
         print(f"Processing: {path}")
-        with open(f'{eval_folder_name}/{path}.json', "r") as f:
+        with open(f'{eval_folder_name}/{path}.json', "r", encoding="utf-8") as f:
             data = json.load(f)
+        # with open(f'{eval_folder_name}/{path}.json', "r") as f:
+        #     data = json.load(f)
         print(len(data))
         
         for item in data:
@@ -142,6 +147,10 @@ for model_name in embedding_models:
                 item[f'{output_key}_prompt'] = item[key][best_rep_idx]
                 item[f"{output_key}_cluster_representatives"] = [item[key][idx] for idx in cluster_representatives]
                 item[f"{output_key}_consensus_scores"] = consensus_scores
+                for key in METHOD:
+                    key_to_remove = f"{key}_response"
+                    if item.get(key_to_remove) is not None:
+                        del item[key_to_remove]
         output_path = f'{eval_folder_name}/{clean_name(model_name)}/{path}.json'
         if not os.path.exists(os.path.dirname(output_path)):
             os.makedirs(os.path.dirname(output_path))

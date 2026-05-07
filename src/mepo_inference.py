@@ -6,14 +6,13 @@ from dotenv import load_dotenv
 import os
 
 from config import OPT_PROMPT_MODEL_CACHE_PATH
-from helper import device, MEPO_MODEL
+from helper import device, MEPO_MODEL, OPTIM_PROMPT_INSTRUCTION_PATH
 
 load_dotenv()
 mepo_hf = os.environ.get("HF_TOKEN")
 print(mepo_hf)
 
 
-MEPO_PROMPT_INSTRUCTION_PATH = "optimize_prompt_instruction.txt"
 
 class Helper:
     @staticmethod
@@ -28,7 +27,7 @@ class Helper:
 class MePOModel:
     def __init__(self):
         # load prompt instruction
-        self.po_prompt_ins = Helper.read_txt(MEPO_PROMPT_INSTRUCTION_PATH)
+        self.po_prompt_ins = Helper.read_txt(OPTIM_PROMPT_INSTRUCTION_PATH)
     
         print("Loading PO model...")
         self.model, self.tokenizer = self.load_model_and_tokenizer(MEPO_MODEL)

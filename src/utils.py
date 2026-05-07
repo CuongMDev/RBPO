@@ -69,11 +69,15 @@ def generate(model, tokenizer, prompt, max_new_tokens=1024, apply_chat_template=
     inputs = tokenizer(prompt, return_tensors="pt", truncation=True).to(device)
     input_ids = inputs["input_ids"]
 
+    # Remove max_length from kwargs to avoid conflict with max_new_tokens
+    kwargs.pop('max_length', None)
+
     # Generate
     out = model.generate(
         **inputs,
         max_new_tokens=max_new_tokens,
         do_sample=do_sample,
+        max_length=None,
         **kwargs
     )
 
@@ -85,53 +89,63 @@ def generate(model, tokenizer, prompt, max_new_tokens=1024, apply_chat_template=
 
     return text.strip()
 
-def generate_batch(model, tokenizer, prompts, context=None, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
-    """Generate cho batch prompts - tăng tốc inference"""
+def generate_batch(model, tokenizer, prompts, batch_size=32, context=None, max_new_tokens=1024, apply_chat_template=True, do_sample=True, device="cuda", **kwargs):
+    """Generate cho batch prompts với batch_size cố định - tăng tốc inference"""
     if not prompts:
         return []
-    tokenizer.padding_side='left'
-
-    # Apply chat template nếu cần
-    if apply_chat_template:
-        processed_prompts = []
-        for p in prompts:
-            p = make_prompt_template(user_prompt=p, context=context)
-            p = tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
-            processed_prompts.append(p)
-        prompts = processed_prompts
-
-    # Set pad token nếu chưa có
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-
-    # Tokenize batch với padding
-    inputs = tokenizer(
-        prompts,
-        return_tensors="pt",
-        padding=True,
-        truncation=True
-    ).to(device)
-
-    # Lưu độ dài input của từng prompt (trước padding)
-    input_lengths = [len(ids) for ids in inputs["input_ids"]]
-
-    # Generate
-    outputs = model.generate(
-        **inputs,
-        max_new_tokens=max_new_tokens,
-        do_sample=do_sample,
-        pad_token_id=tokenizer.pad_token_id,
-        **kwargs
-    )
-
-    # Decode từng output, cắt bỏ phần input
+    
+    # Khởi tạo kwargs copy để không thay đổi original
+    gen_kwargs = kwargs.copy()
+    gen_kwargs.pop('max_length', None)
+    
     results = []
-    for i, output in enumerate(outputs):
-        # Cắt bỏ phần input prompt
-        generated_ids = output[input_lengths[i]:]
-        text = tokenizer.decode(generated_ids, skip_special_tokens=True)
-        results.append(text.strip())
-
+    
+    # Xử lý từng batch nhỏ
+    for batch_idx in range(0, len(prompts), batch_size):
+        batch_prompts = prompts[batch_idx:batch_idx + batch_size]
+        tokenizer.padding_side = 'left'
+        
+        # Apply chat template nếu cần
+        if apply_chat_template:
+            processed_prompts = []
+            for p in batch_prompts:
+                p = make_prompt_template(user_prompt=p, context=context)
+                p = tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
+                processed_prompts.append(p)
+            batch_prompts = processed_prompts
+        
+        # Set pad token nếu chưa có
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token
+        
+        # Tokenize batch với padding
+        inputs = tokenizer(
+            batch_prompts,
+            return_tensors="pt",
+            padding=True,
+            truncation=True
+        ).to(device)
+        
+        # Lưu độ dài input của từng prompt (trước padding)
+        input_lengths = [len(ids) for ids in inputs["input_ids"]]
+        
+        # Generate
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            do_sample=do_sample,
+            pad_token_id=tokenizer.pad_token_id,
+            max_length=None,
+            **gen_kwargs
+        )
+        
+        # Decode từng output, cắt bỏ phần input
+        for i, output in enumerate(outputs):
+            # Cắt bỏ phần input prompt
+            generated_ids = output[input_lengths[i]:]
+            text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+            results.append(text.strip())
+    
     return results
 
 import torch
@@ -176,12 +190,16 @@ def generate_batch_with_logprob(model, tokenizer, prompts,context=None, max_new_
     # Lưu độ dài input của từng prompt
     input_lengths = [len(ids) for ids in inputs["input_ids"]]
 
+    # Remove max_length from kwargs to avoid conflict with max_new_tokens
+    kwargs.pop('max_length', None)
+
     # Generate với output_scores
     outputs = model.generate(
         **inputs,
         max_new_tokens=max_new_tokens,
         do_sample=do_sample,
         pad_token_id=tokenizer.pad_token_id,
+        max_length=None,
         output_scores=True,
         return_dict_in_generate=True,
         **kwargs

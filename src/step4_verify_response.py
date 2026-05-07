@@ -3,7 +3,10 @@ import os
 from dotenv import load_dotenv
 import requests
 
-from helper import LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, DEEPSEEK, GEMMA3, eval_folder_name, evaluator_models, base_llm_models, evaluation_datasets, create_combined_name, mismatch_folder_name, consistency_folder_name
+from helper import (GEMMA_EMBEDDING_MODEL, LLAMA2_7B, VICUNA_7B, DOLLY_EVAL, VICUNA_EVAL, 
+    DEEPSEEK, GEMMA3, clean_name, eval_folder_name, evaluator_models, base_llm_models, 
+    evaluation_datasets, create_combined_name, mismatch_folder_name, 
+    consistency_folder_name, embedding_models)
 
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
@@ -305,39 +308,41 @@ def process_batch(batch, verify_key, verify_methods, attempt_times=3):
 # MAIN
 def verify_response_batch(verify_key, verify_methods, verify_times = 5, BATCH_SIZE = 1):
     print(f"Starting verification for key: {verify_key} with methods: {verify_methods}")
-    for base_llm in base_llm_models:
-        for dataset in evaluation_datasets:
-            for evaluator in evaluator_models:
-                print(f"\n=== VERIFYING: {base_llm} | {dataset} | {evaluator} ===")
-                input_path = create_combined_name(base_llm, dataset, evaluator)
-                print(f"Processing: {input_path}")
-                verify_path = f"{eval_folder_name}/{input_path}.json"
-                
-                # continue
-                with open(verify_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                for run_idx in range(verify_times):
-                    results = []
-                    output_path = f"{eval_folder_name}/verify/{verify_key}/{input_path}_eval_{run_idx+1}.json"
-                    if not os.path.exists(output_path):
-                        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    for embed_model in embedding_models:
+        for base_llm in base_llm_models:
+            for dataset in evaluation_datasets:
+                for evaluator in evaluator_models:
+                    print(f"\n=== VERIFYING: {base_llm} | {dataset} | {evaluator} ===")
+                    input_path = create_combined_name(base_llm, dataset, evaluator)
+                    print(f"Processing: {input_path}")
+                    verify_path = f"{eval_folder_name}/{clean_name(embed_model)}/{input_path}.json"
+                    print(f"Verify path: {verify_path}")
+                    
+                    # continue
+                    with open(verify_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    for run_idx in range(verify_times):
+                        results = []
+                        output_path = f"{eval_folder_name}/{clean_name(embed_model)}/verify/{verify_key}/{input_path}_eval_{run_idx+1}.json"
+                        
+                        if not os.path.exists(output_path):
+                            os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-                    for batch_idx, batch in enumerate(batch_iterator(data, BATCH_SIZE)):
-                        print(f"Processing batch {batch_idx + 1}...")
-                        batch_results = process_batch(batch, verify_key, verify_methods, attempt_times=3)
-                        results.extend(batch_results)
-                    with open(output_path, "w", encoding="utf-8") as f:
-                        json.dump(results, f, ensure_ascii=False, indent=2)   
+                        for batch_idx, batch in enumerate(batch_iterator(data, BATCH_SIZE)):
+                            print(f"Processing batch {batch_idx + 1}...")
+                            batch_results = process_batch(batch, verify_key, verify_methods, attempt_times=3)
+                            results.extend(batch_results)
+                        with open(output_path, "w", encoding="utf-8") as f:
+                            json.dump(results, f, ensure_ascii=False, indent=2)   
 
-def load_data_for_consistency_check(verify_key, input_path, check_runs):
+def load_data_for_consistency_check(checked_path, check_runs):
     data = []
     for i in range(1, check_runs + 1):
-        path = f"{eval_folder_name}/verify/{verify_key}/{input_path}_eval_{i}.json"
-        if os.path.exists(path):
-            with open(path, "r", encoding="utf-8") as f:
+        if os.path.exists(checked_path):
+            with open(checked_path, "r", encoding="utf-8") as f:
                 data.append(json.load(f))
         else:
-            print(f"Missing file for consistency check: {path}")
+            print(f"Missing file for consistency check: {checked_path}")
     return data
 
 def check_verify_consistency(verify_key,verify_methods, check_runs=5):
@@ -347,151 +352,156 @@ def check_verify_consistency(verify_key,verify_methods, check_runs=5):
     - Lưu các kết quả ỔN ĐỊNH (giống nhau) vào file _consistency.json đồng thời đếm tỷ lệ winner 0, 1, 2.
     - Lưu ý file eval có id 81 (vicuna) và 201 (dolly) là id tổng hợp kết quả nên winner = 2 (bỏ đi không tính cái này)
     """
-    for base_llm in base_llm_models:
-        for dataset in evaluation_datasets:
-            for evaluator in evaluator_models:
-                input_path = create_combined_name(base_llm, dataset, evaluator)
-                print(f"\nChecking consistency for: {input_path}")
-                
-                data = load_data_for_consistency_check(verify_key, input_path, check_runs)
-                if not data:
-                    print(f"No data loaded for {input_path}")
-                    continue
-                
-                # Xác định ID cần bỏ dựa trên dataset
-                exclude_ids = set()
-                if "vicuna" in dataset.lower():
-                    exclude_ids.add(81)
-                elif "dolly" in dataset.lower():
-                    exclude_ids.add(201)
-                
-                mismatches = []
-                consistencies = []
-                
-                num_items = len(data[0])
-                print(f"Checking {num_items} items across {len(data)} runs...")
-                
-                for idx in range(num_items):
-                    winners = [run[idx][f"{verify_key}_winner"] for run in data if idx < len(run)]
-                    item_id = data[0][idx].get("id")
-                    item_data = {
-                        "id": item_id,
-                        "ori_prompt": data[0][idx].get("ori_prompt"),
-                        f"{verify_methods[0]}": data[0][idx].get(verify_methods[0]),
-                        f"{verify_methods[1]}": data[0][idx].get(verify_methods[1]),
-                        f"{verify_methods[2]}": data[0][idx].get(verify_methods[2]),
-                        f"{verify_methods[3]}": data[0][idx].get(verify_methods[3]),
-                        "winners_per_run": winners,
-                        "llm_evaluations_per_run": [run[idx][f"{verify_key}_llm_evaluation"] for run in data if idx < len(run)]
-                    }
+    for embed_model in embedding_models:
+        for base_llm in base_llm_models:
+            for dataset in evaluation_datasets:
+                for evaluator in evaluator_models:
+                    file_name = create_combined_name(base_llm, dataset, evaluator)
+                    print(f"\nChecking consistency for: {file_name}")
+                    saved_path = f"{eval_folder_name}/{clean_name(embed_model)}/verify/{verify_key}/{file_name}_eval_1.json"
+                    if not os.path.exists(saved_path):
+                        os.makedirs(os.path.dirname(saved_path), exist_ok=True)
                     
-                    if len(set(winners)) > 1:  # Có sự khác biệt
-                        mismatches.append(item_data)
-                    else:  # Ổn định (tất cả winner giống nhau)
-                        consistencies.append(item_data)
-                
-                def count_winner_distribution(items, exclude_ids):
-                    winner_counts = {2: 0, 0: 0, 1: 0}  # 2=draw, 0=A_win, 1=B_win
-                    excluded_count = 0
                     
-                    for item in items:
-                        item_id = item.get("id")
+                    data = load_data_for_consistency_check(saved_path, check_runs)
+                    if not data:
+                        print(f"No data loaded for {file_name}")
+                        continue
+                    
+                    # Xác định ID cần bỏ dựa trên dataset
+                    exclude_ids = set()
+                    if "vicuna" in dataset.lower():
+                        exclude_ids.add(81)
+                    elif "dolly" in dataset.lower():
+                        exclude_ids.add(201)
+                    
+                    mismatches = []
+                    consistencies = []
+                    
+                    num_items = len(data[0])
+                    print(f"Checking {num_items} items across {len(data)} runs...")
+                    
+                    for idx in range(num_items):
+                        winners = [run[idx][f"{verify_key}_winner"] for run in data if idx < len(run)]
+                        item_id = data[0][idx].get("id")
+                        item_data = {
+                            "id": item_id,
+                            "ori_prompt": data[0][idx].get("ori_prompt"),
+                            f"{verify_methods[0]}": data[0][idx].get(verify_methods[0]),
+                            f"{verify_methods[1]}": data[0][idx].get(verify_methods[1]),
+                            f"{verify_methods[2]}": data[0][idx].get(verify_methods[2]),
+                            f"{verify_methods[3]}": data[0][idx].get(verify_methods[3]),
+                            "winners_per_run": winners,
+                            "llm_evaluations_per_run": [run[idx][f"{verify_key}_llm_evaluation"] for run in data if idx < len(run)]
+                        }
                         
-                        if item_id in exclude_ids:
-                            excluded_count += 1
-                            continue
+                        if len(set(winners)) > 1:  # Có sự khác biệt
+                            mismatches.append(item_data)
+                        else:  # Ổn định (tất cả winner giống nhau)
+                            consistencies.append(item_data)
+                    
+                    def count_winner_distribution(items, exclude_ids):
+                        winner_counts = {2: 0, 0: 0, 1: 0}  # 2=draw, 0=A_win, 1=B_win
+                        excluded_count = 0
                         
-                        winners = item.get("winners_per_run", [])
-                        if winners:
-                            if len(set(winners)) == 1:
-                                winner = winners[0]
-                            else:
-                                from collections import Counter
-                                winner = Counter(winners).most_common(1)[0][0]
+                        for item in items:
+                            item_id = item.get("id")
                             
-                            if winner in winner_counts:
-                                winner_counts[winner] += 1
-                    
-                    total = sum(winner_counts.values())
-                    if total == 0:
+                            if item_id in exclude_ids:
+                                excluded_count += 1
+                                continue
+                            
+                            winners = item.get("winners_per_run", [])
+                            if winners:
+                                if len(set(winners)) == 1:
+                                    winner = winners[0]
+                                else:
+                                    from collections import Counter
+                                    winner = Counter(winners).most_common(1)[0][0]
+                                
+                                if winner in winner_counts:
+                                    winner_counts[winner] += 1
+                        
+                        total = sum(winner_counts.values())
+                        if total == 0:
+                            return {
+                                "response_A_win": 0, "response_A_win_rate": "0.00%",
+                                "response_B_win": 0, "response_B_win_rate": "0.00%",
+                                "draw": 0, "draw_rate": "0.00%",
+                                "excluded_count": excluded_count
+                            }
+                        
                         return {
-                            "response_A_win": 0, "response_A_win_rate": "0.00%",
-                            "response_B_win": 0, "response_B_win_rate": "0.00%",
-                            "draw": 0, "draw_rate": "0.00%",
-                            "excluded_count": excluded_count
+                            "response_A_win": winner_counts[0],
+                            "response_A_win_rate": f"{(winner_counts[0] / total * 100):.2f}%",
+                            "response_B_win": winner_counts[1],
+                            "response_B_win_rate": f"{(winner_counts[1] / total * 100):.2f}%",
+                            "draw": winner_counts[2],
+                            "draw_rate": f"{(winner_counts[2] / total * 100):.2f}%",
+                            "excluded_count": excluded_count,
+                            "counted_items": total
                         }
                     
-                    return {
-                        "response_A_win": winner_counts[0],
-                        "response_A_win_rate": f"{(winner_counts[0] / total * 100):.2f}%",
-                        "response_B_win": winner_counts[1],
-                        "response_B_win_rate": f"{(winner_counts[1] / total * 100):.2f}%",
-                        "draw": winner_counts[2],
-                        "draw_rate": f"{(winner_counts[2] / total * 100):.2f}%",
-                        "excluded_count": excluded_count,
-                        "counted_items": total
-                    }
+                    # Lưu file _mismatch.json
+                    if mismatches:
+                        mismatch_path = f"{eval_folder_name}/{clean_name(embed_model)}/verify/{verify_key}/{mismatch_folder_name}/{file_name}_mismatch.json"
+                        os.makedirs(os.path.dirname(mismatch_path), exist_ok=True)
+                        
+                        mismatch_result = {
+                            "total_items": num_items,
+                            "total_mismatches": len(mismatches),
+                            "mismatch_rate": f"{(len(mismatches) / num_items * 100):.2f}%",
+                            "check_runs": len(data),
+                            "mismatches": mismatches
+                        }
+                        
+                        with open(mismatch_path, "w", encoding="utf-8") as f:
+                            json.dump(mismatch_result, f, ensure_ascii=False, indent=2)
+                        
+                        print(f"Found {len(mismatches)}/{num_items} mismatches ({mismatch_result['mismatch_rate']})")
+                        print(f"Saved: {mismatch_path}")
+                    
+                    # Lưu file _consistency.json
+                    if consistencies:
+                        consistency_path = f"{eval_folder_name}/{clean_name(embed_model)}/verify/{verify_key}/{consistency_folder_name}/{file_name}_consistency.json"
+                        os.makedirs(os.path.dirname(consistency_path), exist_ok=True)
+                        
+                        consistency_winner_dist = count_winner_distribution(consistencies, exclude_ids)
+                        
+                        consistency_result = {
+                            "total_items": num_items,
+                            "total_consistent": len(consistencies),
+                            "consistency_rate": f"{(len(consistencies) / num_items * 100):.2f}%",
+                            "check_runs": len(data),
+                            "winner_distribution": consistency_winner_dist,
+                            "note": f"Excluded ID {', '.join(map(str, sorted(exclude_ids)))} (aggregated results)" if exclude_ids else "No exclusions",
+                            "consistent_items": consistencies
+                        }
+                        
+                        with open(consistency_path, "w", encoding="utf-8") as f:
+                            json.dump(consistency_result, f, ensure_ascii=False, indent=2)
+                        
+                        print(f"Found {len(consistencies)}/{num_items} consistent items ({consistency_result['consistency_rate']})")
+                        print(f"Winner (excluding IDs {', '.join(map(str, sorted(exclude_ids)))}): A={consistency_winner_dist['response_A_win']} ({consistency_winner_dist['response_A_win_rate']}) | B={consistency_winner_dist['response_B_win']} ({consistency_winner_dist['response_B_win_rate']}) | Draw={consistency_winner_dist['draw']} ({consistency_winner_dist['draw_rate']}) [Excluded: {consistency_winner_dist.get('excluded_count', 0)}]")
+                        print(f"Saved: {consistency_path}")
+                    
+                    # Summary
+                    if not mismatches and not consistencies:
+                        print(f"No items to process")
+                    else:
+                        print(f"Summary: {len(mismatches)} mismatches + {len(consistencies)} consistent = {num_items} total")
                 
-                # Lưu file _mismatch.json
-                if mismatches:
-                    mismatch_path = f"{eval_folder_name}/verify/{verify_key}/{mismatch_folder_name}/{input_path}_mismatch.json"
-                    os.makedirs(os.path.dirname(mismatch_path), exist_ok=True)
-                    
-                    mismatch_result = {
-                        "total_items": num_items,
-                        "total_mismatches": len(mismatches),
-                        "mismatch_rate": f"{(len(mismatches) / num_items * 100):.2f}%",
-                        "check_runs": len(data),
-                        "mismatches": mismatches
-                    }
-                    
-                    with open(mismatch_path, "w", encoding="utf-8") as f:
-                        json.dump(mismatch_result, f, ensure_ascii=False, indent=2)
-                    
-                    print(f"Found {len(mismatches)}/{num_items} mismatches ({mismatch_result['mismatch_rate']})")
-                    print(f"Saved: {mismatch_path}")
-                
-                # Lưu file _consistency.json
-                if consistencies:
-                    consistency_path = f"{eval_folder_name}/verify/{verify_key}/{consistency_folder_name}/{input_path}_consistency.json"
-                    os.makedirs(os.path.dirname(consistency_path), exist_ok=True)
-                    
-                    consistency_winner_dist = count_winner_distribution(consistencies, exclude_ids)
-                    
-                    consistency_result = {
-                        "total_items": num_items,
-                        "total_consistent": len(consistencies),
-                        "consistency_rate": f"{(len(consistencies) / num_items * 100):.2f}%",
-                        "check_runs": len(data),
-                        "winner_distribution": consistency_winner_dist,
-                        "note": f"Excluded ID {', '.join(map(str, sorted(exclude_ids)))} (aggregated results)" if exclude_ids else "No exclusions",
-                        "consistent_items": consistencies
-                    }
-                    
-                    with open(consistency_path, "w", encoding="utf-8") as f:
-                        json.dump(consistency_result, f, ensure_ascii=False, indent=2)
-                    
-                    print(f"Found {len(consistencies)}/{num_items} consistent items ({consistency_result['consistency_rate']})")
-                    print(f"Winner (excluding IDs {', '.join(map(str, sorted(exclude_ids)))}): A={consistency_winner_dist['response_A_win']} ({consistency_winner_dist['response_A_win_rate']}) | B={consistency_winner_dist['response_B_win']} ({consistency_winner_dist['response_B_win_rate']}) | Draw={consistency_winner_dist['draw']} ({consistency_winner_dist['draw_rate']}) [Excluded: {consistency_winner_dist.get('excluded_count', 0)}]")
-                    print(f"Saved: {consistency_path}")
-                
-                # Summary
-                if not mismatches and not consistencies:
-                    print(f"No items to process")
-                else:
-                    print(f"Summary: {len(mismatches)} mismatches + {len(consistencies)} consistent = {num_items} total")
-                
-if __name__ == "__main__":
-    BATCH_SIZE = 1
-    VERIFY_TIMES = 3
-    
-    verify_keys_method = {
-        "rbpo_bpo": ['rbpo_prompt', 'rbpo_response', 'bpo_prompt', 'bpo_response'], # đánh giá RBPO vs BPO
-        "rbpo_mepo": ['rbpo_prompt', 'rbpo_response', 'mepo_prompt', 'mepo_response'], # đánh giá RBPO vs MEPO
-        "rmepo_mepo": ['rmepo_prompt', 'rmepo_response', 'mepo_prompt', 'mepo_response'] # đánh giá RMEPO vs MEPO
-    }
-    for key, keys in verify_keys_method.items():
-        print(f"\n=== VERIFY KEY: {key} ===")
-        print(f"Verify keys: {keys}")
-        # verify_response_batch(key, keys, verify_times=VERIFY_TIMES, BATCH_SIZE=BATCH_SIZE)
-        check_verify_consistency(key,keys,check_runs=VERIFY_TIMES)
+BATCH_SIZE = 1
+VERIFY_TIMES = 3
+embedding_models = [GEMMA_EMBEDDING_MODEL]
+
+verify_keys_method = {
+    "rbpo_bpo": ['rbpo_prompt', 'rbpo_response', 'bpo_prompt', 'bpo_response'], # đánh giá RBPO vs BPO
+    "rbpo_mepo": ['rbpo_prompt', 'rbpo_response', 'mepo_prompt', 'mepo_response'], # đánh giá RBPO vs MEPO
+    "rmepo_mepo": ['rmepo_prompt', 'rmepo_response', 'mepo_prompt', 'mepo_response'] # đánh giá RMEPO vs MEPO
+}
+for key, keys in verify_keys_method.items():
+    print(f"\n=== VERIFY KEY: {key} ===")
+    print(f"Verify keys: {keys}")
+    # verify_response_batch(key, keys, verify_times=VERIFY_TIMES, BATCH_SIZE=BATCH_SIZE)
+    check_verify_consistency(key,keys,check_runs=VERIFY_TIMES)

@@ -1,13 +1,20 @@
+import enum
 import json
 import os
 
 import torch
+from dotenv import load_dotenv
 
-# device = "cuda:0"
+from config import MODEL_CACHE_PATH
+
+load_dotenv()
+HF_TOKEN = os.getenv("HF_TOKEN")
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 BPO_MODEL = "THUDM/BPO"
 MEPO_MODEL= "zixiaozhu/MePO"
+
 
 MINILM_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L12-v2"
 GEMMA_EMBEDDING_MODEL = "google/embeddinggemma-300m"
@@ -33,10 +40,19 @@ BPO_EVAL = "testset/bpo_test.json"
 SELF_INSTRUCT_EVAL = "testset/self_instruct_eval.json"
 evaluation_datasets = [VICUNA_EVAL, DOLLY_EVAL, BPO_EVAL, SELF_INSTRUCT_EVAL]
 
+BBH = "bbh"
+ARC_C = "arc_challenge"
+ARC_E = "arc_easy"
+GSM8K = "gsm8k"
+PIQA = "piqa"
+downstream_tasks = [BBH, ARC_C, ARC_E, GSM8K, PIQA]
+
 mepo_folder_name = "rbpo_mepo"
 mismatch_folder_name = "mismatch"
 consistency_folder_name = "consistency"
 eval_folder_name = "evaluation"
+downstream_folder_name = "downstream"
+
 experiment_file_name = "experiment.txt"
 
 BPO = "bpo"
@@ -44,10 +60,22 @@ RBPO = "rbpo"
 MEPO = "mepo"
 RMEPO = "rmepo"
 METHOD = [BPO, RBPO, MEPO, RMEPO]
+temp_po_models = {
+    f'{RBPO}': 0.9,
+    f'{RMEPO}': 0.7
+}
 
 M = 10 # prompt optimization iterations
-DISTANCE_THRESHOLD=0.05
+# DISTANCE_THRESHOLD=0.05
 IMP_ENC=0.5
+
+OPTIM_PROMPT_INSTRUCTION_PATH = "optimize_prompt_instruction.txt"
+
+class AnswerKey(enum.Enum):
+    BBH = "target"
+    PIQA = "label"
+    ARC = "answer"
+    GSM8K = "answer"
 
 def clean_name(path_or_id: str):
     name = path_or_id.split("/")[-1]        
@@ -122,6 +150,38 @@ def print_file_names(file_path: str):
     
     with open(file_path, "w", encoding="utf-8") as f:
         f.write("\n".join(results))
+        
+def read_json(file_path):
+    """Reads a JSON file and returns the parsed data."""
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)  # Load JSON data
+    return data
+
+def load_model_and_tokenizer(model_path,
+    device_map="auto",
+    cache_dir=MODEL_CACHE_PATH,
+    token=HF_TOKEN
+):
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+    model = AutoModelForCausalLM.from_pretrained(model_path, 
+        device_map=device_map,
+        cache_dir=cache_dir,
+        token=token,
+        torch_dtype="auto"
+    )
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_path,
+        cache_dir=MODEL_CACHE_PATH,
+        token=HF_TOKEN,
+        legacy=False,
+        truncation_side='left',
+        padding_side='left'
+    )
+    model.config.return_dict = True
+    if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token
+            
+    return model, tokenizer
 
 if __name__ == "__main__":
     # dataset_processing(evaluation_datasets)

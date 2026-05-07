@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 from helper import device, experiment_file_name, M, eval_folder_name
 from config import MODEL_CACHE_PATH, prompt_template_optimize
-from inference_batch import merge_mepo_with_original
+from inference_batch import merge_optim_prompt_with_original
 from utils import generate_batch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from mepo_inference import MePOModel
@@ -63,7 +63,7 @@ for line in lines:
                 "mepo_prompt": opt
             })
 
-    merge_mepo_with_original(result, f'{eval_folder_name}/{path}.json')
+    merge_optim_prompt_with_original(result, f'{eval_folder_name}/{path}.json')
     
 torch.cuda.empty_cache()
 gc.collect()
