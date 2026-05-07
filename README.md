@@ -1,13 +1,13 @@
-# PRISM: Multi-sampling Clustering with Consensus for Reliable Black-box Prompt Optimization
+# PRISM: Multi-sampling Clustering with Consensus for Robust Black-box Prompt Optimization
 
 ## Project Description
 
 PRISM is a framework for optimizing prompts for black-box language models through multi-sampling strategies and consensus-based clustering. The project implements several prompt optimization methods:
 
 - **BPO**: Black-box Prompt Optimization
-- **RBPO**: Reliable Black-box Prompt Optimization  
+- **PRISM(BPO)**: Robust Black-box Prompt Optimization  
 - **MEPO**: Merit-Guided Prompt Optimization model
-- **RMEPO**: Reliable Merit-Guided Prompt Optimization model
+- **PRISM(MePO)**: Robust Merit-Guided Prompt Optimization model
 
 The framework uses clustering consensus to identify the most effective prompts and evaluates them across multiple language models.
 
@@ -19,8 +19,8 @@ The complete workflow consists of 5 sequential steps:
 **File:** `src/step1-1_infer_bpo_rbpo_prompt.py` & `src/step1-2_infer_mepo_rmepo_prompt.py`
 
 Generate and infer optimized prompts using:
-- BPO/RBPO methods with various language models
-- MEPO/RMEPO ensemble methods
+- BPO/PRISM(BPO) methods with various language models
+- MEPO/PRISM(MePO) ensemble methods
 - Stores prompt variations for subsequent clustering
 
 ```bash
